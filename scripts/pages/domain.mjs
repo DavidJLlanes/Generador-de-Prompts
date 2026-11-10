@@ -35,6 +35,7 @@ export function domainPage({ d, domain, domains }) {
       <div class="domain-toolbar">
         <div class="field"><span class="field__icon">${icon('search')}</span><input class="field__input" type="search" data-search placeholder="Buscar en ${esc(meta.short || meta.title)}…  (pulsa /)" aria-label="Buscar opciones en ${esc(meta.short || meta.title)}" autocomplete="off"></div>
         <span class="search-status" data-status role="status"></span>
+        <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
       <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>

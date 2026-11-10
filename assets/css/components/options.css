@@ -22,20 +22,40 @@
 
 .domain-toolbar { position: sticky; top: var(--header-h); z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0 calc(var(--gutter) * -0.4) var(--space-5); padding: var(--space-3) calc(var(--gutter) * 0.4); background: rgba(18, 16, 14, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .domain-toolbar .field { flex: 1 1 240px; max-width: 460px; }
+.domain-toolbar .btn { flex: none; }
 .search-status { font-size: var(--fs-xs); color: var(--text-3); font-family: var(--font-mono); }
 .search-status.is-empty { color: var(--rose); }
+.search-status:empty { display: none; }
 
-.opt-section { padding-block: var(--space-5) var(--space-6); border-top: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 76px); content-visibility: auto; contain-intrinsic-size: auto 320px; }
-.opt-section:first-child { border-top: 0; padding-top: 0; }
-.opt-section__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-4); }
-.opt-section__title { display: flex; align-items: baseline; gap: var(--space-3); font-size: 1.85rem; }
+/* Secciones como acordeón: tarjeta plegable con resumen de lo elegido */
+.opt-sections { display: grid; gap: 10px; }
+.opt-section { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); scroll-margin-top: calc(var(--header-h) + 76px); transition: border-color var(--dur), background var(--dur); }
+.opt-section:hover { border-color: var(--line-2); }
+.opt-section.has-selection { border-color: var(--accent-line); }
+.opt-section.is-open { background: var(--bg-2); }
+.opt-section__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding-right: var(--space-3); }
+.opt-section__heading { flex: 1 1 auto; min-width: 0; font-size: inherit; }
+.opt-section__toggle { display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: 14px 8px 14px 16px; border: 0; border-radius: var(--radius); background: transparent; color: inherit; text-align: left; }
+.opt-section__toggle:hover .opt-section__chev { color: var(--accent-2); }
+.opt-section__chev { display: inline-grid; place-items: center; flex: none; color: var(--text-3); transition: transform var(--dur) var(--ease), color var(--dur); }
+.opt-section.is-open .opt-section__chev { transform: rotate(180deg); color: var(--accent); }
+.opt-section__titles { display: grid; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.opt-section__title { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2) var(--space-3); font-size: 1.4rem; line-height: 1.2; }
 .opt-section__count { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.04em; }
-.opt-section__note { margin-top: var(--space-2); max-width: 42rem; color: var(--text-3); font-size: var(--fs-sm); }
+.opt-section__sel { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-family: var(--font-ui); font-size: 0.68rem; font-weight: 600; }
+.opt-section__summary { overflow: hidden; font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--text-3); white-space: nowrap; text-overflow: ellipsis; }
+.opt-section.has-selection .opt-section__summary { color: var(--text-2); }
+.opt-section.is-open .opt-section__summary { display: none; }
 .opt-section__tools { display: flex; align-items: center; gap: var(--space-1); flex: none; }
+.opt-section:not(.has-selection) [data-act="clear"] { visibility: hidden; }
+.opt-section__panel { padding: var(--space-1) var(--space-4) var(--space-5); border-top: 1px solid var(--line); content-visibility: auto; contain-intrinsic-size: auto 280px; }
+.opt-section__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: var(--space-4) 0; }
+.opt-section__meta:empty { display: none; }
+.opt-section__note { max-width: 42rem; color: var(--text-3); font-size: var(--fs-sm); }
 .opt-section.has-selection .opt-section__title { color: var(--accent-2); }
 
 .opt-group { margin-top: var(--space-5); }
-.opt-group:first-of-type { margin-top: 0; }
+.opt-section__meta + .opt-group { margin-top: 0; }
 .opt-group__title { margin-bottom: var(--space-3); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
 .opt-list { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -61,6 +81,18 @@
 .opt-card__more dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: var(--space-2) 0 0; }
 .opt-card__more dt { color: var(--accent); font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; padding-top: 2px; }
 .opt-card__more dd { margin: 0; color: var(--text-2); }
+
+@media (min-width: 961px) {
+  .opt-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .opt-section.is-open { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+  .domain-toolbar .field { flex: 1 1 0; min-width: 0; }
+  .opt-section__title { font-size: 1.25rem; }
+  .opt-section__toggle { padding: 12px 6px 12px 12px; gap: var(--space-2); }
+  .opt-section__panel { padding-inline: var(--space-3); }
+}
 
 @media (max-width: 960px) {
   .domain-layout { grid-template-columns: 1fr; gap: var(--space-4); }

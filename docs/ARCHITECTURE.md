@@ -74,8 +74,9 @@ Las páginas son HTML generado (`scripts/pages/*.mjs`) con `<title>`, descripci�
 
 - **CSS** en capas: `tokens` (variables) → `base` → `layout` → `components/*`. Un solo acento (dorado), tema oscuro cálido, tipografías propias (Instrument Serif, Inter, JetBrains Mono).
 - **JS de interfaz** con un `h()` mínimo (hyperscript) y delegación de eventos; sin framework.
-- **Rendimiento:** cada página importa solo los dominios que necesita; las secciones usan `content-visibility: auto`; las 1.000 ideas se cargan solo al abrir la galería.
-- **Accesibilidad:** HTML semántico, `aria-pressed` en opciones, foco visible, `prefers-reduced-motion`, atajo `/` para buscar.
+- **Secciones como acordeón** (`ui/option-browser.js`): cada sección de un generador es una tarjeta plegable cuya cabecera muestra el nº de opciones y un resumen de lo elegido; en escritorio las cerradas se reparten en dos columnas y las abiertas ocupan todo el ancho. Solo la primera sección empieza abierta. Lo que el usuario despliega se recuerda por generador en `localStorage` (`lv:v1:open:<dominio>`); la búsqueda abre temporalmente las secciones con resultados sin modificar lo guardado, y los enlaces de la navegación (`#sec-…`) abren su sección. El botón «Desplegar todo / Plegar todo» está en la barra del generador.
+- **Rendimiento:** cada página importa solo los dominios que necesita; los paneles de opciones usan `content-visibility: auto`; las 1.000 ideas se cargan solo al abrir la galería.
+- **Accesibilidad:** HTML semántico, `aria-pressed` en opciones, `aria-expanded`/`aria-controls` en las cabeceras de sección, foco visible, `prefers-reduced-motion`, atajo `/` para buscar.
 
 ## Seguridad
 

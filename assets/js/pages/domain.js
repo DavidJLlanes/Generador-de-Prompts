@@ -16,7 +16,9 @@ const root = $('[data-sections]');
 try {
   const domain = await loadDomain(id);
   root.removeAttribute('aria-busy');
-  mountOptionBrowser({ domain, root, nav: $('[data-nav]'), search: $('[data-search]'), status: $('[data-status]') });
+  const toggleAll = $('[data-toggle-all]');
+  mountOptionBrowser({ domain, root, nav: $('[data-nav]'), search: $('[data-search]'), status: $('[data-status]'), toggleAll });
+  toggleAll.hidden = false;
 
   $('[data-act="random"]').addEventListener('click', () => {
     const sel = randomSelection([domain], store.get(), Math.random, 12);
