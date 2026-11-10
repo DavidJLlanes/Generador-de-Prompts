@@ -1,0 +1,76 @@
+/* TOKENS DE DISEÑO — única fuente de colores, tipografía, espaciado y movimiento. */
+:root {
+  color-scheme: dark;
+
+  /* Superficies (oscuro cálido, «atelier») */
+  --bg: #12100e;
+  --bg-2: #171410;
+  --surface: #1c1814;
+  --surface-2: #26211b;
+  --surface-3: #312a22;
+
+  /* Líneas */
+  --line: rgba(239, 232, 218, 0.09);
+  --line-2: rgba(239, 232, 218, 0.16);
+
+  /* Texto */
+  --text: #efe8da;
+  --text-2: #bdb4a4;
+  --text-3: #8d8475;
+
+  /* Acento dorado (único) */
+  --accent: #d6b27c;
+  --accent-2: #e8c892;
+  --accent-ink: #1b1409;
+  --accent-soft: rgba(214, 178, 124, 0.12);
+  --accent-line: rgba(214, 178, 124, 0.4);
+
+  /* Semánticos */
+  --rose: #d98a7d;
+  --ok: #9cc59a;
+
+  /* Tipografía */
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.75rem, 3.4vw, 2.5rem);
+  --fs-3xl: clamp(2.4rem, 5.2vw, 4rem);
+  --fs-hero: clamp(2.7rem, 7.4vw, 5.9rem);
+
+  /* Espaciado y forma */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --section-gap: clamp(72px, 10vw, 136px);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --header-h: 64px;
+  --dock-h: 68px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 0.22s;
+
+  --shadow-pop: 0 18px 48px -12px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0.01s; }
+}

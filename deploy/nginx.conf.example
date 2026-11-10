@@ -1,0 +1,67 @@
+# Lumen Vitae — configuración de ejemplo para nginx (sitio estático).
+# Copiar a /etc/nginx/sites-available/lumenvitae y adaptar la ruta `root`.
+# Los certificados los gestiona certbot (`certbot --nginx`), que completa los bloques TLS.
+
+# www → dominio principal
+server {
+    listen 80;
+    listen [::]:80;
+    server_name www.lumenvitae.es;
+    return 301 https://lumenvitae.es$request_uri;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name lumenvitae.es;
+
+    root /var/www/lumenvitae;
+    index index.html;
+
+    # --- URLs limpias y 404 propio ---
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+
+    # --- Compresión ---
+    gzip on;
+    gzip_comp_level 6;
+    gzip_min_length 512;
+    gzip_vary on;
+    gzip_types text/css application/javascript text/javascript application/json application/xml image/svg+xml application/manifest+json;
+
+    # --- Caché ---
+    # HTML y datos se revalidan siempre (cambian al publicar).
+    location ~* \.(html|js|css|xml|txt|webmanifest)$ {
+        add_header Cache-Control "no-cache" always;
+        include /etc/nginx/snippets/lumenvitae-security.conf;
+    }
+    # Fuentes e imágenes casi no cambian: un año (si cambias una, renómbrala).
+    location ~* \.(woff2|webp|png|jpg|svg|ico)$ {
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        include /etc/nginx/snippets/lumenvitae-security.conf;
+    }
+
+    # --- Seguridad ---
+    include /etc/nginx/snippets/lumenvitae-security.conf;
+
+    # No servir archivos ocultos ni de desarrollo (`^~` tiene prioridad sobre las expresiones regulares de arriba)
+    location ^~ /node_modules/ { deny all; }
+    location ^~ /tests/ { deny all; }
+    location ^~ /scripts/ { deny all; }
+    location ^~ /deploy/ { deny all; }
+    location ^~ /docs/ { deny all; }
+    location = /package.json { deny all; }
+    location ~ /\.(?!well-known) { deny all; }
+}
+
+# ---------------------------------------------------------------------------
+# /etc/nginx/snippets/lumenvitae-security.conf  (crear este archivo con el contenido siguiente)
+# Son las mismas cabeceras que envía `npm run dev`, así que cualquier incumplimiento aparece en desarrollo.
+#
+#   add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
+#   add_header X-Content-Type-Options "nosniff" always;
+#   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+#   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+# ---------------------------------------------------------------------------

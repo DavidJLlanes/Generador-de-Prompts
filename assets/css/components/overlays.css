@@ -1,0 +1,21 @@
+/* AVISOS (toast) Y CAJÓN DE IDEAS (dialog) */
+.toast-host { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 300; pointer-events: none; }
+.has-dock .toast-host { bottom: calc(var(--dock-h) + 24px); }
+.toast { padding: 12px 22px; border: 1px solid var(--accent-line); border-radius: var(--radius-pill); background: var(--surface-3); color: var(--text); font-size: var(--fs-sm); box-shadow: var(--shadow-pop); opacity: 0; transform: translateY(10px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.toast.is-in { opacity: 1; transform: none; }
+.toast--warn { border-color: rgba(217, 138, 125, 0.55); }
+
+dialog.ideas { padding: 0; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-2); color: var(--text); width: min(1000px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 40px); box-shadow: var(--shadow-pop); }
+dialog.ideas::backdrop { background: rgba(8, 6, 4, 0.74); backdrop-filter: blur(5px); }
+.ideas__panel { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-5); max-height: calc(100vh - 40px); }
+.ideas__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); }
+.ideas__title { font-size: 2.2rem; }
+.ideas__lead { margin-top: var(--space-2); color: var(--text-2); font-size: var(--fs-sm); }
+.ideas__count { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); }
+.ideas__list { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); overflow: auto; min-height: 0; padding-right: 4px; }
+.ideas__more { display: flex; justify-content: center; }
+.idea { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text); text-align: left; transition: all var(--dur) var(--ease); }
+.idea:hover { border-color: var(--accent-line); background: var(--accent-soft); transform: translateY(-2px); }
+.idea__n { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.08em; }
+.idea__title { font-size: var(--fs-sm); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.idea__style { margin-top: auto; padding-top: 4px; font-size: var(--fs-xs); color: var(--text-3); }

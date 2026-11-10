@@ -1,0 +1,71 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { ROOT, loadAllDomains, loadPresetsFor } from '../scripts/lib/domains.mjs';
+import { validateDomain, validatePresets } from '../assets/js/core/schema.js';
+import catalog from '../data/catalog.js';
+import { SLOT_IDS } from '../data/taxonomy.js';
+
+const all = await loadAllDomains();
+
+test('todos los dominios cumplen el esquema (sin errores)', () => {
+  for (const { domain } of all) {
+    const { errors } = validateDomain(domain);
+    assert.deepEqual(errors, [], `${domain.id}: ${errors.slice(0, 3).join(' | ')}`);
+  }
+});
+
+test('los presets apuntan a opciones que existen', async () => {
+  for (const { domain } of all) {
+    const presets = await loadPresetsFor(domain.id);
+    if (presets) assert.deepEqual(validatePresets(presets, domain), []);
+  }
+});
+
+test('el catálogo generado está al día con los datos (ejecuta «npm run build» si falla)', () => {
+  assert.equal(catalog.domains.length, all.length);
+  for (const { domain: d } of all) {
+    const c = catalog.domains.find(x => x.id === d.id);
+    assert.ok(c, `falta ${d.id} en el catálogo`);
+    assert.equal(c.options, d.sections.reduce((n, s) => n + s.options.length, 0), `${d.id}: nº de opciones desactualizado`);
+    assert.equal(c.sections, d.sections.length, `${d.id}: nº de secciones desactualizado`);
+  }
+});
+
+test('cada generador tiene su página y aparece en el sitemap', () => {
+  const sitemap = readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  for (const { domain: d } of all) {
+    assert.ok(existsSync(path.join(ROOT, 'generadores', d.slug, 'index.html')), `falta la página de ${d.slug}`);
+    assert.ok(sitemap.includes(`/generadores/${d.slug}/`), `${d.slug} no está en el sitemap`);
+  }
+});
+
+test('los roles de los dominios son ranuras válidas y hay al menos un dominio por ranura', () => {
+  for (const slot of SLOT_IDS) assert.ok(all.some(x => x.domain.role === slot), `ninguna ranura «${slot}»`);
+});
+
+/* ---------- Política de contenido público (ver docs/CONTENT-POLICY.md) ---------- */
+const BLOCKED_PROMPT = /\b(lingerie|boudoir|garter|bralette|balconette|bustier|thong|g-string|panties|cleavage|busty|boobs?|nipples?|topless|naked|nudity|explicit|sensual|erotic|sexy|porn\w*|nsfw|suicid\w*)\b/i;
+// «desnudo/desnuda» se omite a propósito: en español significa también «sobrio/vacío» (paredes desnudas);
+// la desnudez se vigila en los prompts en inglés (naked, nudity, topless…).
+const BLOCKED_LABEL = /(expl[ií]cit|er[oó]tic|lencer[ií]a|porn|nsfw|suicid)/i;
+
+test('política de contenido: ningún prompt contiene términos explícitos o sugerentes', () => {
+  const bad = [];
+  for (const { domain: d } of all) for (const s of d.sections) for (const o of s.options) {
+    if (BLOCKED_PROMPT.test([o.en, o.rich || '', o.name || ''].join(' '))) bad.push(`${d.id}/${s.id}/${o.id}`);
+    if (BLOCKED_LABEL.test(o.es)) bad.push(`${d.id}/${s.id}/${o.id} [es]`);
+  }
+  assert.deepEqual(bad, [], 'contenido que no debe publicarse; revisa docs/CONTENT-POLICY.md');
+});
+
+test('los prompts están en inglés: las palabras españolas comunes no aparecen en en/rich', () => {
+  // Se excluyen los artículos (el, los, las) porque coinciden con nombres propios como «Las Médulas».
+  const SPANISH = /\b(luz|cielo|noche|agua|piedra|madera|sobre|entre|bajo|con una?|del|pero|donde)\b/i;
+  const bad = [];
+  for (const { domain: d } of all) for (const s of d.sections) for (const o of s.options) {
+    for (const f of ['en', 'rich']) if (o[f] && SPANISH.test(o[f])) bad.push(`${d.id}/${s.id}/${o.id} [${f}]: ${o[f].slice(0, 50)}`);
+  }
+  assert.equal(bad.length, 0, `${bad.length} posibles textos en español en campos de prompt:\n${bad.slice(0, 8).join('\n')}`);
+});

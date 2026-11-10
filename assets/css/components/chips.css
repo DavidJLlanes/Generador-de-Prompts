@@ -1,0 +1,15 @@
+/* ETIQUETAS Y CHIPS */
+.tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
+.tag--neg { color: var(--rose); border-color: rgba(217, 138, 125, 0.35); }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid var(--accent-line); border-radius: var(--radius-pill); background: var(--accent-soft); color: var(--accent-2); font-size: var(--fs-xs); line-height: 1.3; }
+.chip__text { max-width: 30ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip--removable { cursor: pointer; transition: all var(--dur); }
+.chip--removable:hover { background: rgba(217, 138, 125, 0.14); border-color: rgba(217, 138, 125, 0.5); color: var(--rose); }
+.chip--auto { background: transparent; border-style: dashed; color: var(--text-3); border-color: var(--line-2); }
+.chip--neg { background: transparent; color: var(--rose); border-color: rgba(217, 138, 125, 0.35); }
+
+.domain-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); color: var(--text-2); font-size: var(--fs-sm); transition: all var(--dur) var(--ease); }
+.domain-pill:hover { color: var(--text); border-color: var(--accent-line); background: var(--accent-soft); }
+.domain-pill.has-selection { color: var(--accent-2); border-color: var(--accent-line); background: var(--accent-soft); }
+.domain-pill__n { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-size: 0.68rem; font-weight: 600; }

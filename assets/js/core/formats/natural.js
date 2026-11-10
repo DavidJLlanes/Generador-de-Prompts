@@ -1,0 +1,16 @@
+import { toSentences } from '../util.js';
+import { SLOT_BY_ID } from '../../../../data/taxonomy.js';
+import { aspectNote } from '../../../../data/aspects.js';
+
+/** Redacción en lenguaje natural, organizada por bloques: pensada para ChatGPT, Gemini y similares. */
+export function formatNatural(c, state) {
+  if (c.empty) return { id: 'natural', blocks: [], text: '' };
+  const lines = [`Create a highly detailed, high-quality image${c.lead ? ` of ${c.lead}` : ''}.`];
+  for (const s of c.slots) lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(s.parts.map(p => p.text)).join(' ')}`);
+  const note = state.detail !== 'short' ? aspectNote(state.aspect) : '';
+  if (note) lines.push(`Format: ${note}`);
+  if (c.negative.length) lines.push(`Avoid: ${c.negative.map(n => n.text).join(', ')}.`);
+  if (state.aspect) lines.push(`Aspect ratio: ${state.aspect}.`);
+  const text = lines.join('\n');
+  return { id: 'natural', blocks: [{ title: 'Prompt', text }], text };
+}

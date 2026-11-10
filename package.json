@@ -1,0 +1,22 @@
+{
+  "name": "lumen-vitae",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidJLlanes/Generador-de-Prompts.git"
+  },
+  "description": "Lumen Vitae: constructor modular de prompts para imágenes con IA. Interfaz en español, prompts en inglés.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/",
+    "check": "npm run validate && npm run build && npm test"
+  }
+}

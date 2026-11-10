@@ -1,0 +1,15 @@
+/* Hoja de estilos principal: orden = tokens → base → layout → componentes. */
+@import url("fonts.css");
+@import url("tokens.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("components/buttons.css");
+@import url("components/forms.css");
+@import url("components/chips.css");
+@import url("components/cards.css");
+@import url("components/hero.css");
+@import url("components/options.css");
+@import url("components/prompt.css");
+@import url("components/board.css");
+@import url("components/overlays.css");
+@import url("components/prose.css");

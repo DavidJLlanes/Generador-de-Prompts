@@ -1,0 +1,24 @@
+# Dependencias y caché
+node_modules/
+.npm/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Secretos y archivos locales
+.env
+.env.*
+*.local
+*.log
+
+# Contenido retenido por la política de contenido: NUNCA al repositorio público
+new-held-content.json
+*held-content*
+
+# Herramientas de asistencia
+.claude/

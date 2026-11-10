@@ -1,0 +1,108 @@
+/**
+ * PANEL DE PROMPT — muestra el prompt compuesto en el formato elegido y los controles que lo
+ * afectan (detalle, calidad máxima, proporción). Se usa en el dock inferior y en el constructor.
+ */
+import { h, clear } from './dom.js';
+import { icon } from './icons.js';
+import { live } from '../core/live.js';
+import { store } from '../core/store.js';
+import { FORMATS, FORMAT_BY_ID, renderFormat } from '../core/formats/index.js';
+import { ASPECTS } from '../../../data/aspects.js';
+import { SLOT_BY_ID } from '../../../data/taxonomy.js';
+import { shareUrl } from '../core/url-state.js';
+import { fmtNumber } from '../core/util.js';
+import { copyText } from './clipboard.js';
+import { toast } from './toast.js';
+
+function aspectSelect() {
+  const select = h('select', { class: 'select', 'aria-label': 'Proporción de la imagen', onChange: e => store.set({ aspect: e.target.value }) });
+  const groups = new Map();
+  for (const a of ASPECTS) {
+    if (!a.group) { select.append(h('option', { value: a.id }, a.label)); continue; }
+    if (!groups.has(a.group)) { const g = h('optgroup', { label: a.group }); groups.set(a.group, g); select.append(g); }
+    groups.get(a.group).append(h('option', { value: a.id }, a.label));
+  }
+  return select;
+}
+
+function segmented(items, onPick, label) {
+  const root = h('div', { class: 'segmented', role: 'group', 'aria-label': label });
+  items.forEach(([value, text]) => root.append(h('button', { type: 'button', class: 'segmented__btn', dataset: { value }, 'aria-pressed': 'false', onClick: () => onPick(value) }, text)));
+  return root;
+}
+
+export function createPromptPanel({ variant = 'inline' } = {}) {
+  const tabs = h('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Formato de salida' },
+    FORMATS.map(f => h('button', { type: 'button', role: 'tab', class: 'tab', dataset: { format: f.id }, 'aria-selected': 'false', onClick: () => store.set({ format: f.id }) }, f.label)));
+
+  const detail = segmented([['rich', 'Detallado'], ['short', 'Conciso']], v => store.set({ detail: v }), 'Nivel de detalle');
+  const boostInput = h('input', { type: 'checkbox', class: 'switch__input', onChange: e => store.set({ boost: e.target.checked }) });
+  const boost = h('label', { class: 'switch', title: 'Añade un acabado de máxima calidad y los negativos habituales' }, boostInput, h('span', { class: 'switch__track', 'aria-hidden': 'true' }), h('span', { class: 'switch__label' }, 'Calidad máxima'));
+  const aspect = aspectSelect();
+
+  const hint = h('p', { class: 'prompt-panel__hint' });
+  const out = h('div', { class: 'prompt-panel__out', 'aria-live': 'polite' });
+  const meta = h('p', { class: 'prompt-panel__meta' });
+  const summary = h('div', { class: 'prompt-panel__summary' });
+
+  let lastText = '';
+  const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => lastText && copyText(lastText, 'Prompt copiado') }, h('span', { html: icon('copy') }), 'Copiar prompt');
+  const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.countSelected() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
+  const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
+
+  const el = h('section', { class: `prompt-panel prompt-panel--${variant}`, 'aria-label': 'Tu prompt' },
+    tabs,
+    h('div', { class: 'prompt-panel__controls' }, detail, boost, aspect),
+    hint, out, meta, summary,
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, clearBtn));
+
+  function renderSummary(composed) {
+    clear(summary);
+    if (composed.empty) return;
+    for (const s of composed.slots) {
+      const manual = s.parts.filter(p => !p.boost && p.section !== '_rule');
+      const auto = s.parts.length - manual.length;
+      if (!manual.length && !auto) continue;
+      const row = h('div', { class: 'summary-row' }, h('span', { class: 'summary-row__label' }, SLOT_BY_ID[s.slot].es));
+      const chips = h('div', { class: 'summary-row__chips' });
+      manual.forEach(p => chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => store.removeOption(p.domain, p.section, p.option) }, h('span', { class: 'chip__text' }, p.es), h('span', { html: icon('x', 14) }))));
+      if (auto) chips.append(h('span', { class: 'chip chip--auto', title: 'Se añade con «Calidad máxima» o por una regla automática' }, 'Automático'));
+      row.append(chips);
+      summary.append(row);
+    }
+    if (composed.negative.length) summary.append(h('div', { class: 'summary-row' }, h('span', { class: 'summary-row__label' }, 'Evitar'), h('div', { class: 'summary-row__chips' }, h('span', { class: 'chip chip--neg' }, `${composed.negative.length} exclusiones`))));
+  }
+
+  function render({ state, composed }) {
+    el.querySelectorAll('.tab').forEach(t => { const on = t.dataset.format === state.format; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on); });
+    detail.querySelectorAll('.segmented__btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.value === state.detail));
+    boostInput.checked = state.boost;
+    aspect.value = state.aspect;
+    hint.textContent = FORMAT_BY_ID[state.format].hint;
+
+    clear(out);
+    if (composed.empty) {
+      lastText = '';
+      out.append(h('div', { class: 'empty' },
+        h('p', { class: 'empty__title' }, 'Tu prompt aparecerá aquí'),
+        h('p', {}, 'Elige opciones en cualquier generador. Puedes mezclar sujeto, escenario, clima y fotografía: si no eliges algo, simplemente no se incluye.'),
+        h('a', { class: 'btn btn--outline btn--sm', href: '/generadores/' }, 'Explorar generadores')));
+      meta.textContent = '';
+      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = true;
+    } else {
+      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = false;
+      const result = renderFormat(state.format, composed, state);
+      lastText = result.text;
+      const many = result.blocks.length > 1;
+      result.blocks.forEach(b => out.append(h('div', { class: 'out-block' },
+        many ? h('div', { class: 'out-block__head' }, h('h3', {}, b.title), h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => copyText(b.text, `${b.title} copiado`) }, h('span', { html: icon('copy', 16) }), 'Copiar')) : null,
+        h('pre', { class: `out-block__text${state.format === 'ideogram' ? ' is-json' : ''}`, tabindex: '0' }, b.text))));
+      const words = result.text.trim().split(/\s+/).length;
+      meta.textContent = `${fmtNumber(words)} palabras · ${fmtNumber(result.text.length)} caracteres`;
+    }
+    renderSummary(composed);
+  }
+
+  const off = live.subscribe(render);
+  return { el, destroy: off };
+}
