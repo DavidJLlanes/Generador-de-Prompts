@@ -6,7 +6,7 @@
 <title>Personajes animados · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/personajes-animados/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Personajes animados · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/personajes-animados/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/personajes-animados.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Personajes animados · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/personajes-animados.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,10 +55,10 @@
   <p class="domain-hero__intro">Elige un personaje animado (Disney, Pixar, anime y más): su aspecto canónico queda fijado y tú cambias vestuario, expresión y versión. Cruza con una pose, un escenario o un estilo fotográfico.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 6 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
-    <span class="domain-hero__facts">12 secciones · 530 opciones</span>
+    <span class="domain-hero__facts">12 secciones · 526 opciones</span>
   </div>
 </div>
 <div class="container">
@@ -69,7 +74,56 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-personaje">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Personaje<span class="opt-section__count">305</span></h2><p class="opt-section__note">Despliega una categoría y elige una. Su aspecto canónico queda fijado.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Elsa (Frozen)</li><li class="opt opt--static">Anna (Frozen)</li><li class="opt opt--static">Moana</li><li class="opt opt--static">Rapunzel (Enredados)</li><li class="opt opt--static">Bella (La Bella y la Bestia)</li><li class="opt opt--static">Ariel (La Sirenita)</li><li class="opt opt--static">Jasmín (Aladdín)</li><li class="opt opt--static">Mulán</li><li class="opt opt--static">Aurora (La Bella Durmiente)</li><li class="opt opt--static">Cenicienta</li><li class="opt opt--static opt--more">y 295 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-version">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Versión / edad del personaje<span class="opt-section__count">9</span></h2><p class="opt-section__note">Por defecto, su versión de la película.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Canónica</li><li class="opt opt--static">Versión niña pequeña</li><li class="opt opt--static">Versión adolescente</li><li class="opt opt--static">Versión adulta madura</li><li class="opt opt--static">Versión anciana sabia</li><li class="opt opt--static">Versión moderna urbana</li><li class="opt opt--static">Versión guerrera</li><li class="opt opt--static">Versión de gala real</li><li class="opt opt--static">Versión de fantasía oscura</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-vestuario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Vestuario<span class="opt-section__count">34</span></h2><p class="opt-section__note">Por defecto el de la película.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Atuendo canónico</li><li class="opt opt--static">Vestido de gala</li><li class="opt opt--static">Ropa casual moderna</li><li class="opt opt--static">Atuendo de invierno</li><li class="opt opt--static">Armadura de batalla</li><li class="opt opt--static">Traje de baño en la playa</li><li class="opt opt--static">Vestido de novia</li><li class="opt opt--static">Pijama acogedor</li><li class="opt opt--static">Traje elegante negro</li><li class="opt opt--static">Atuendo de fantasía oscura</li><li class="opt opt--static opt--more">y 24 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pose">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pose / postura<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">De pie heroica</li><li class="opt opt--static">Pose Normal</li><li class="opt opt--static">Sentada con elegancia</li><li class="opt opt--static">Caminando con decisión</li><li class="opt opt--static">Corriendo dinámica</li><li class="opt opt--static">Bailando con gracia</li><li class="opt opt--static">Saltando con energía</li><li class="opt opt--static">Mirando por encima del hombro</li><li class="opt opt--static">Brazos cruzados segura</li><li class="opt opt--static">Manos en las caderas</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-expresion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Expresión / emoción<span class="opt-section__count">19</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Alegre y sonriente</li><li class="opt opt--static">Seria y decidida</li><li class="opt opt--static">Melancólica</li><li class="opt opt--static">Sorprendida</li><li class="opt opt--static">Enfadada feroz</li><li class="opt opt--static">Soñadora</li><li class="opt opt--static">Traviesa pícara</li><li class="opt opt--static">Valiente y orgullosa</li><li class="opt opt--static">Tímida ruborizada</li><li class="opt opt--static">Riendo a carcajadas</li><li class="opt opt--static opt--more">y 9 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Acción / qué hace<span class="opt-section__count">31</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">No hace nada en particular</li><li class="opt opt--static">Posando para un retrato</li><li class="opt opt--static">Explorando un lugar nuevo</li><li class="opt opt--static">Luchando en una batalla</li><li class="opt opt--static">Lanzando magia</li><li class="opt opt--static">Cantando</li><li class="opt opt--static">Bailando en un salón</li><li class="opt opt--static">Montando a caballo</li><li class="opt opt--static">Navegando en el mar</li><li class="opt opt--static">Leyendo un libro</li><li class="opt opt--static opt--more">y 21 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-escenario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Escenario / entorno<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Castillo de cuento</li><li class="opt opt--static">Bosque encantado</li><li class="opt opt--static">Reino de hielo</li><li class="opt opt--static">Playa tropical</li><li class="opt opt--static">Ciudad moderna nocturna</li><li class="opt opt--static">Pueblo medieval</li><li class="opt opt--static">Montañas nevadas</li><li class="opt opt--static">Jardín florido</li><li class="opt opt--static">Salón de baile dorado</li><li class="opt opt--static">Biblioteca antigua</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hora">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Hora del día<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Amanecer</li><li class="opt opt--static">Mañana luminosa</li><li class="opt opt--static">Mediodía</li><li class="opt opt--static">Tarde dorada</li><li class="opt opt--static">Atardecer</li><li class="opt opt--static">Hora azul crepúsculo</li><li class="opt opt--static">Noche estrellada</li><li class="opt opt--static">Luz de luna</li><li class="opt opt--static">Bajo auroras boreales</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Clima / atmósfera<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Despejado soleado</li><li class="opt opt--static">Nublado suave</li><li class="opt opt--static">Lluvia ligera</li><li class="opt opt--static">Tormenta dramática</li><li class="opt opt--static">Nevada suave</li><li class="opt opt--static">Niebla mágica</li><li class="opt opt--static">Pétalos al viento</li><li class="opt opt--static">Hojas de otoño cayendo</li><li class="opt opt--static">Brisa cálida</li><li class="opt opt--static">Aire mágico brillante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-compania">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Compañía / elementos en escena<span class="opt-section__count">22</span></h2><p class="opt-section__note">Multiselección.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nada</li><li class="opt opt--static">Su mascota animal</li><li class="opt opt--static">Un dragón compañero</li><li class="opt opt--static">Un caballo majestuoso</li><li class="opt opt--static">Pájaros revoloteando</li><li class="opt opt--static">Criaturas mágicas pequeñas</li><li class="opt opt--static">Hadas brillantes</li><li class="opt opt--static">Mariposas</li><li class="opt opt--static">Un gato</li><li class="opt opt--static">Pétalos de flores flotando</li><li class="opt opt--static opt--more">y 12 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-magia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efectos mágicos<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efectos</li><li class="opt opt--static">Destellos mágicos</li><li class="opt opt--static">Aura de poder brillante</li><li class="opt opt--static">Magia de hielo</li><li class="opt opt--static">Magia de fuego</li><li class="opt opt--static">Luz dorada divina</li><li class="opt opt--static">Partículas flotantes</li><li class="opt opt--static">Energía elemental</li><li class="opt opt--static">Pétalos y luz</li><li class="opt opt--static">Estela de polvo de hadas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tono">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tono / mood<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Épico y grandioso</li><li class="opt opt--static">Romántico y tierno</li><li class="opt opt--static">Alegre y festivo</li><li class="opt opt--static">Melancólico y poético</li><li class="opt opt--static">Misterioso</li><li class="opt opt--static">Oscuro y dramático</li><li class="opt opt--static">Sereno y pacífico</li><li class="opt opt--static">Mágico y ensoñador</li><li class="opt opt--static">Nostálgico</li><li class="opt opt--static">Aventurero y enérgico</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +136,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

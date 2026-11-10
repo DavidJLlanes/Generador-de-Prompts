@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia | Lumen Vitae</title>
+<meta name="description" content="Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Lumen Vitae usar en cada caso.">
+<meta name="theme-color" content="#12100e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://lumenvitae.es/guias/prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lumen Vitae">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia | Lumen Vitae">
+<meta property="og:description" content="Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Lumen Vitae usar en cada caso.">
+<meta property="og:url" content="https://lumenvitae.es/guias/prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney/">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/guia-prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia | Lumen Vitae">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/guia-prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney.webp">
+<link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
+<link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
+<link rel="apple-touch-icon" href="/assets/img/180.webp">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia","description":"Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Lumen Vitae usar en cada caso.","datePublished":"2026-11-10","dateModified":"2026-11-10","inLanguage":"es","author":{"@type":"Organization","name":"Lumen Vitae"},"publisher":{"@type":"Organization","name":"Lumen Vitae"},"mainEntityOfPage":"https://lumenvitae.es/guias/prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney/","image":"https://lumenvitae.es/assets/img/og/guia-prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney.webp"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://lumenvitae.es/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://lumenvitae.es/guias/"},{"@type":"ListItem","position":3,"name":"Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia","item":"https://lumenvitae.es/guias/prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney/"}]}</script>
+</head>
+<body data-dock="off">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Lumen Vitae, inicio"><svg class="brand__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span class="brand__name">Lumen <em>Vitae</em></span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Principal">
+      <a href="/generadores/">Generadores</a>
+      <a href="/constructor/">Constructor</a>
+      <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
+    </nav>
+    <div class="site-header__actions">
+      <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir el menú"><svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 6h13M3.5 10h13M3.5 14h13"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="container">
+  <div class="page-head">
+    <div class="domain-hero__top"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/guias/">Guías</a></div>
+    <h1>Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia</h1>
+    <p class="guide-meta">10 de noviembre de 2026 · 2 min de lectura</p>
+  </div>
+  <article class="prose">
+<p>El mismo prompt no rinde igual en todos los modelos. Unos entienden bien el lenguaje natural; otros prefieren etiquetas cortas, y casi todos tienen sus propios parámetros. Lumen Vitae prepara el prompt en <strong>cinco formatos</strong> para que no tengas que reescribirlo a mano.</p>
+
+<table>
+  <thead><tr><th>Formato</th><th>Cómo es</th><th>Úsalo con</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Texto</strong></td><td>Texto continuo en inglés, en frases</td><td>Cualquier generador</td></tr>
+    <tr><td><strong>ChatGPT / Gemini</strong></td><td>Lenguaje natural, por bloques (Subject, Setting…)</td><td>Asistentes de chat que generan imágenes</td></tr>
+    <tr><td><strong>Stable Diffusion / Flux</strong></td><td>Prompt positivo y negativo, con tamaño sugerido</td><td>ComfyUI, interfaces de Stable Diffusion, Flux</td></tr>
+    <tr><td><strong>Ideogram (JSON)</strong></td><td>Descripción, estilo y composición estructurados</td><td>Ideogram, si admite descripciones estructuradas</td></tr>
+    <tr><td><strong>Midjourney</strong></td><td>Descripción corta con <code>--ar</code> y <code>--no</code></td><td>Midjourney</td></tr>
+  </tbody>
+</table>
+
+<h2>ChatGPT y Gemini</h2>
+<p>Los asistentes de chat entienden bien las instrucciones completas, así que el formato <em>ChatGPT / Gemini</em> redacta el prompt en bloques claros y añade una línea «Avoid» con lo que no quieres. Puedes pegarlo tal cual o pedirle al asistente que lo adapte.</p>
+
+<h2>Stable Diffusion y Flux</h2>
+<p>Los modelos de Stable Diffusion más extendidos procesan el texto en bloques de longitud limitada (del orden de 77 tokens), por lo que conviene un prompt <strong>conciso</strong>: etiquetas cortas separadas por comas. Por eso este formato usa siempre las descripciones cortas, y separa el <em>prompt negativo</em>, que se escribe en su propio campo. Flux suele aceptar descripciones más largas, pero comprueba la documentación de la herramienta que uses. El formato incluye también un <strong>tamaño sugerido</strong> (en torno a un megapíxel y múltiplos de 64) para tu proporción.</p>
+
+<h2>Ideogram</h2>
+<p>El formato JSON organiza la imagen en descripción general, estilo (luz, fotografía, paleta de color) y composición del fondo y los elementos. Úsalo solo si tu versión de Ideogram admite este tipo de descripción estructurada; si no, copia el formato <em>Texto</em>.</p>
+
+<h2>Midjourney</h2>
+<p>Midjourney funciona mejor con descripciones breves y parámetros al final. Lumen Vitae añade <code>--ar</code> con la proporción y <code>--no</code> con lo que quieres evitar. Como Midjourney pide proporciones con números enteros, una proporción como 9:19.5 se convierte en su equivalente reducida (6:13).</p>
+
+<h2>Consejos para todos</h2>
+<ul>
+  <li>Prueba el mismo prompt en dos modelos y compara: es la mejor forma de aprender qué entiende cada uno.</li>
+  <li>Empieza en «Conciso» y pasa a «Detallado» si el resultado se queda corto.</li>
+  <li>Los modelos cambian con frecuencia: trata estas pautas como un punto de partida y consulta la documentación de tu herramienta.</li>
+</ul>
+<p>Elige el formato en el panel <em>Mi prompt</em> de cualquier <a href="/generadores/">generador</a> o en el <a href="/constructor/">constructor</a>.</p></article>
+  <aside class="guide-more" aria-label="Más guías">
+    <h2>Sigue <em>leyendo</em></h2>
+    <ul><li><a href="/guias/como-escribir-un-prompt-de-calidad/">Cómo escribir un prompt de calidad para imágenes con IA</a></li><li><a href="/guias/cruzar-generadores-en-un-solo-prompt/">Cruzar generadores: personajes, escenarios y clima en un solo prompt</a></li><li><a href="/guias/proporciones-para-fondos-de-pantalla/">Proporciones para fondos de pantalla: móvil, escritorio y ultraancho</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="/" aria-label="Lumen Vitae, inicio"><svg class="brand__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span class="brand__name">Lumen <em>Vitae</em></span></a>
+      <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
+    </div>
+    <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
+    <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
+  </div>
+  <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
+</footer>
+<script type="module" src="/assets/js/pages/static.js"></script>
+</body>
+</html>

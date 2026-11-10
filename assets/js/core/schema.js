@@ -79,6 +79,18 @@ export function validateDomain(d) {
     }
   });
 
+  if (d.meta && d.meta.presetsLabel !== undefined && !['ideas', 'recetas'].includes(d.meta.presetsLabel)) at('meta.presetsLabel', 'debe ser «ideas» o «recetas»');
+
+  (d.conflicts || []).forEach((c, i) => {
+    const cp = `conflicts[${i}]`;
+    if (!ID_RX.test(c.id || '')) at(cp, 'id de conflicto no válido');
+    for (const side of ['a', 'b']) {
+      if (!Array.isArray(c[side]) || !c[side].length) { at(cp, `«${side}» debe ser una lista de secciones`); continue; }
+      c[side].forEach(s => { if (!d.sections.some(x => x.id === s)) at(cp, `sección inexistente «${s}»`); });
+    }
+    if (Array.isArray(c.a) && Array.isArray(c.b) && c.a.some(s => c.b.includes(s))) at(cp, 'una sección no puede estar en «a» y en «b»');
+  });
+
   (d.rules || []).forEach((r, i) => {
     const rp = `rules[${i}]`;
     if (!ID_RX.test(r.id || '')) at(rp, 'id de regla no válido');

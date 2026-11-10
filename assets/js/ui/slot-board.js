@@ -75,7 +75,7 @@ export function mountSlotBoard(root) {
 
       clear(r.chips);
       const parts = (composed.slots.find(s => s.slot === slot.id)?.parts || []).filter(p => !p.boost);
-      parts.forEach(p => r.chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => p.section !== '_rule' && store.removeOption(p.domain, p.section, p.option) },
+      parts.forEach(p => r.chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => { if (p.custom) store.set({ custom: '' }); else if (p.section !== '_rule') store.removeOption(p.domain, p.section, p.option); } },
         h('span', { class: 'chip__text' }, p.es), p.section !== '_rule' ? h('span', { html: icon('x', 14) }) : null)));
       r.count.textContent = parts.length ? String(parts.length) : '';
       r.row.classList.toggle('has-selection', parts.length > 0);

@@ -2,6 +2,9 @@
 const P = {
   copy: '<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>',
   check: '<path d="m4.5 10.5 3.5 3.5 7.5-8"/>',
+  bookmark: '<path d="M6 3.5h8a1 1 0 0 1 1 1V17l-5-3.5L5 17V4.5a1 1 0 0 1 1-1Z"/>',
+  download: '<path d="M10 3.5v9m-3.5-3.5 3.5 3.5 3.5-3.5M4 16.5h12"/>',
+  upload: '<path d="M10 12.5v-9m-3.5 3.5L10 3.5l3.5 3.5M4 16.5h12"/>',
   x: '<path d="m5.5 5.5 9 9m0-9-9 9"/>',
   lock: '<rect x="4.5" y="9" width="11" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/>',
   unlock: '<rect x="4.5" y="9" width="11" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 5.6-1.5"/>',

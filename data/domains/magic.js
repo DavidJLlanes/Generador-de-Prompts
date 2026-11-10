@@ -6,12 +6,12 @@ export default {
   "slug": "magia",
   "role": "atmosphere",
   "order": 72,
-  "meta": {"title":"Magia","short":"Magia","kicker":"Diseñador de Magia · Hechizos · Misticismo · Poder Arcano","summary":"Generador de prompts para efectos mágicos y hechicería con IA. Define tipo, color, intensidad y atmósfera.","intro":"Construye un hechizo completo: tipo de magia y escuela arcana, componentes, símbolos, rituales y energía visible, con su poder, duración, coste y efectos secundarios."},
+  "meta": {"title":"Magia","short":"Magia","kicker":"Diseñador de Magia · Hechizos · Misticismo · Poder Arcano","summary":"Generador de prompts para efectos mágicos y hechicería con IA. Define tipo, color, intensidad y atmósfera.","intro":"Construye un hechizo completo: tipo de magia y escuela arcana, componentes, símbolos, rituales y energía visible, con su poder, duración, coste y efectos secundarios.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo-magia",
       "title": "Tipo de magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fire-magic","es":"Magia de fuego","en":"fire magic"},
         {"id":"ice-magic","es":"Magia de hielo","en":"ice magic"},
@@ -55,7 +55,7 @@ export default {
     {
       "id": "escuela-magica",
       "title": "Escuela mágica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"elemental-school","es":"Escuela Elemental","en":"Elemental School"},
         {"id":"divine-school","es":"Escuela Divina","en":"Divine School"},
@@ -99,7 +99,7 @@ export default {
     {
       "id": "elemento-primario",
       "title": "Elemento primario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pure-fire","es":"Fuego puro","en":"pure fire"},
         {"id":"crystalline-ice","es":"Hielo cristalino","en":"crystalline ice"},
@@ -136,7 +136,7 @@ export default {
     {
       "id": "elemento-secundario",
       "title": "Elemento secundario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-secondary-element","es":"Sin segundo elemento","en":"no secondary element"},
         {"id":"secondary-fire","es":"Fuego secundario","en":"secondary fire"},
@@ -173,7 +173,7 @@ export default {
     {
       "id": "metodo-lanzamiento",
       "title": "Método de lanzamiento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"incanted-words","es":"Con palabras incantadas","en":"incanted words"},
         {"id":"mystical-gestures","es":"Con gestos místicos","en":"mystical gestures"},
@@ -210,7 +210,7 @@ export default {
     {
       "id": "complejidad",
       "title": "Complejidad del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"trivial-simplest","es":"Trivial simplísimo","en":"trivial simplest"},
         {"id":"very-simple","es":"Muy simple","en":"very simple"},
@@ -242,7 +242,7 @@ export default {
     {
       "id": "poder-intensidad",
       "title": "Poder/Intensidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"negligible-power","es":"Poder negligible","en":"negligible power"},
         {"id":"weak-power","es":"Poder débil","en":"weak power"},
@@ -274,7 +274,7 @@ export default {
     {
       "id": "duracion",
       "title": "Duración del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"instantaneous","es":"Instantáneo","en":"instantaneous"},
         {"id":"ultra-short","es":"Ultracorta duracion","en":"ultra short"},
@@ -311,7 +311,7 @@ export default {
     {
       "id": "radio-efecto",
       "title": "Radio de efecto",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"personal-only","es":"Personal solo el lanzador","en":"personal only"},
         {"id":"immediate-contact","es":"Contacto inmediato","en":"immediate contact"},
@@ -348,7 +348,7 @@ export default {
     {
       "id": "alcance-espacial",
       "title": "Alcance espacial",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"close-range","es":"Alcance cercano","en":"close range"},
         {"id":"intermediate-range","es":"Alcance intermedio","en":"intermediate range"},
@@ -548,7 +548,7 @@ export default {
     {
       "id": "color-magia",
       "title": "Color de la magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"colorless-transparent","es":"Incolora transparente","en":"colorless transparent"},
         {"id":"pure-white","es":"Blanca pura","en":"pure white"},
@@ -590,7 +590,7 @@ export default {
     {
       "id": "forma-magia",
       "title": "Forma de la magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"sphere-form","es":"Forma de esfera","en":"sphere form"},
         {"id":"cube-form","es":"Forma de cubo","en":"cube form"},
@@ -632,7 +632,7 @@ export default {
     {
       "id": "sonido-magia",
       "title": "Sonido de la magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-sound","es":"Sin sonido","en":"no sound"},
         {"id":"very-soft-sound","es":"Sonido muy suave","en":"very soft sound"},
@@ -674,7 +674,7 @@ export default {
     {
       "id": "aroma-magia",
       "title": "Aroma de la magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-scent","es":"Sin aroma","en":"no scent"},
         {"id":"soft-scent","es":"Aroma suave","en":"soft scent"},
@@ -716,7 +716,7 @@ export default {
     {
       "id": "textura-sensorial",
       "title": "Textura sensorial",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-texture","es":"Sin textura","en":"no texture"},
         {"id":"soft-velvety","es":"Suave aterciopelada","en":"soft velvety"},
@@ -758,7 +758,7 @@ export default {
     {
       "id": "temperatura",
       "title": "Temperatura",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-temperature-change","es":"Sin cambio de temperatura","en":"no temperature change"},
         {"id":"very-cold","es":"Muy fría","en":"very cold"},
@@ -785,7 +785,7 @@ export default {
     {
       "id": "velocidad-hechizo",
       "title": "Velocidad del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"instantaneous","es":"Instantáneo","en":"instantaneous"},
         {"id":"very-fast","es":"Muy rápido","en":"very fast"},
@@ -812,7 +812,7 @@ export default {
     {
       "id": "precision",
       "title": "Precisión",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-precise","es":"Perfectamente preciso","en":"perfectly precise"},
         {"id":"very-precise","es":"Muy preciso","en":"very precise"},
@@ -839,7 +839,7 @@ export default {
     {
       "id": "control",
       "title": "Control del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"total-control","es":"Control total","en":"total control"},
         {"id":"firm-control","es":"Control firme","en":"firm control"},
@@ -866,7 +866,7 @@ export default {
     {
       "id": "estabilidad",
       "title": "Estabilidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-stable","es":"Perfectamente estable","en":"perfectly stable"},
         {"id":"very-stable","es":"Muy estable","en":"very stable"},
@@ -893,7 +893,7 @@ export default {
     {
       "id": "seguridad-lanzador",
       "title": "Seguridad del lanzador",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-safe","es":"Completamente seguro","en":"completely safe"},
         {"id":"very-safe","es":"Muy seguro","en":"very safe"},
@@ -919,7 +919,7 @@ export default {
     {
       "id": "efecto-secundario",
       "title": "Efecto secundario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-side-effects","es":"Sin efectos secundarios","en":"no side effects"},
         {"id":"minor-side-effect","es":"Efecto secundario leve","en":"minor side effect"},
@@ -946,7 +946,7 @@ export default {
     {
       "id": "contrarreaccion",
       "title": "Contrarreacción",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-backlash","es":"Sin contrarreacción","en":"no backlash"},
         {"id":"soft-backlash","es":"Contrarreacción suave","en":"soft backlash"},
@@ -973,7 +973,7 @@ export default {
     {
       "id": "coste-magico",
       "title": "Coste mágico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-cost","es":"Sin coste","en":"no cost"},
         {"id":"minimal-cost","es":"Coste ínfimo","en":"minimal cost"},
@@ -1000,7 +1000,7 @@ export default {
     {
       "id": "coste-fisico",
       "title": "Coste físico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-physical-cost","es":"Sin coste físico","en":"no physical cost"},
         {"id":"minor-cost","es":"Coste menor","en":"minor cost"},
@@ -1027,7 +1027,7 @@ export default {
     {
       "id": "coste-mental",
       "title": "Coste mental",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-mental-cost","es":"Sin coste mental","en":"no mental cost"},
         {"id":"mild-confusion","es":"Confusión suave","en":"mild confusion"},
@@ -1054,7 +1054,7 @@ export default {
     {
       "id": "coste-emocional",
       "title": "Coste emocional",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-emotional-cost","es":"Sin coste emocional","en":"no emotional cost"},
         {"id":"mild-sadness","es":"Tristeza leve","en":"mild sadness"},
@@ -1081,7 +1081,7 @@ export default {
     {
       "id": "afinidad-lanzador",
       "title": "Afinidad del lanzador",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-affinity-required","es":"Sin afinidad requerida","en":"no affinity required"},
         {"id":"fire-affinity","es":"Afinidad elemental fuego","en":"fire affinity"},
@@ -1108,7 +1108,7 @@ export default {
     {
       "id": "compatibilidad",
       "title": "Compatibilidad con otros hechizos",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"highly-compatible","es":"Altamente compatible","en":"highly compatible"},
         {"id":"compatible","es":"Compatible","en":"compatible"},
@@ -1135,7 +1135,7 @@ export default {
     {
       "id": "sinergia",
       "title": "Sinergia mágica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-synergy","es":"Sin sinergia","en":"no synergy"},
         {"id":"weak-synergy","es":"Sinergia débil","en":"weak synergy"},
@@ -1162,7 +1162,7 @@ export default {
     {
       "id": "oposicion-conflicto",
       "title": "Oposición/conflicto mágico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-opposition","es":"Sin oposición","en":"no opposition"},
         {"id":"weak-opposition","es":"Oposición débil","en":"weak opposition"},
@@ -1189,7 +1189,7 @@ export default {
     {
       "id": "tipo-dano",
       "title": "Tipo de daño (si aplica)",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-damage","es":"Sin daño","en":"no damage"},
         {"id":"physical-damage","es":"Daño físico","en":"physical damage"},
@@ -1216,7 +1216,7 @@ export default {
     {
       "id": "tipo-sanacion",
       "title": "Tipo de sanación (si aplica)",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-healing","es":"Sin sanación","en":"no healing"},
         {"id":"physical-healing","es":"Sanación física","en":"physical healing"},
@@ -1243,7 +1243,7 @@ export default {
     {
       "id": "tipo-transmutacion",
       "title": "Tipo de transmutación (si aplica)",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-transmutation","es":"Sin transmutación","en":"no transmutation"},
         {"id":"matter-transmutation","es":"Transmuta materia","en":"matter transmutation"},
@@ -1270,7 +1270,7 @@ export default {
     {
       "id": "tipo-transformacion",
       "title": "Tipo de transformación (si aplica)",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-transformation","es":"Sin transformación","en":"no transformation"},
         {"id":"physical-transformation","es":"Transforma físico","en":"physical transformation"},
@@ -1297,7 +1297,7 @@ export default {
     {
       "id": "penetracion-defensa",
       "title": "Penetración de defensas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-defense-penetration","es":"No penetra defensas","en":"no defense penetration"},
         {"id":"weak-defense-penetration","es":"Penetra defensas débiles","en":"weak defense penetration"},
@@ -1324,7 +1324,7 @@ export default {
     {
       "id": "resistencia-magia",
       "title": "Resistencia a la magia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-resistance","es":"Sin resistencia","en":"no resistance"},
         {"id":"low-resistance","es":"Resistencia baja","en":"low resistance"},
@@ -1351,7 +1351,7 @@ export default {
     {
       "id": "contrarmedidas",
       "title": "Contramedidas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-countermeasures","es":"Sin contramedidas","en":"no countermeasures"},
         {"id":"simple-countermeasure","es":"Contramedida simple","en":"simple countermeasure"},
@@ -1540,7 +1540,7 @@ export default {
     {
       "id": "sinergia-magica",
       "title": "Sinergia mágica final",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-synergy","es":"Sin sinergia especial","en":"no special synergy"},
         {"id":"ritual-synergy","es":"Sinergia con rituales","en":"ritual synergy"},
@@ -1567,7 +1567,7 @@ export default {
     {
       "id": "composicion",
       "title": "Composición visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"simple-composition","es":"Composición simple","en":"simple composition"},
         {"id":"balanced-composition","es":"Composición equilibrada","en":"balanced composition"},
@@ -1594,7 +1594,7 @@ export default {
     {
       "id": "perspectiva",
       "title": "Perspectiva",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"frontal-perspective","es":"Perspectiva frontal","en":"frontal perspective"},
         {"id":"side-perspective","es":"Perspectiva lateral","en":"side perspective"},
@@ -1621,7 +1621,7 @@ export default {
     {
       "id": "estilo-representacion",
       "title": "Estilo de representación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"photorealistic","es":"Realismo fotográfico","en":"photorealistic"},
         {"id":"hyperrealistic","es":"Hiperrealismo","en":"hyperrealistic"},
@@ -1648,7 +1648,7 @@ export default {
     {
       "id": "atmosfera",
       "title": "Atmósfera mágica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"light-atmosphere","es":"Atmósfera ligera","en":"light atmosphere"},
         {"id":"dark-atmosphere","es":"Atmósfera oscura","en":"dark atmosphere"},
@@ -1675,7 +1675,7 @@ export default {
     {
       "id": "aura-final",
       "title": "Aura final del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-aura","es":"Sin aura","en":"no aura"},
         {"id":"weak-aura","es":"Aura débil","en":"weak aura"},
@@ -1702,7 +1702,7 @@ export default {
     {
       "id": "poder-final",
       "title": "Poder final del hechizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"trivial-power","es":"Poder trivial","en":"trivial power"},
         {"id":"weak-power","es":"Poder débil","en":"weak power"},

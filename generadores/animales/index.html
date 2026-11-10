@@ -6,7 +6,7 @@
 <title>Animales · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts de animales con IA: elige especie (o escribe la tuya), edad, proporciones cuki o diabolicas, personalidad y estilo fotografico. Muchisimas opciones.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/animales/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Animales · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts de animales con IA: elige especie (o escribe la tuya), edad, proporciones cuki o diabolicas, personalidad y estilo fotografico. Muchisimas opciones.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/animales/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/animales.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Animales · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/animales.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,7 +55,7 @@
   <p class="domain-hero__intro">Diseña cualquier animal: elige especie, edad, proporciones y una personalidad que va de lo adorable a lo diabólico. Cruza con un escenario, el clima y la fotografía.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 6 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
     <span class="domain-hero__facts">20 secciones · 302 opciones</span>
@@ -69,7 +74,88 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-animal">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo / familia de animal<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mamífero</li><li class="opt opt--static">Ave</li><li class="opt opt--static">Reptil</li><li class="opt opt--static">Anfibio</li><li class="opt opt--static">Pez</li><li class="opt opt--static">Insecto</li><li class="opt opt--static">Arácnido</li><li class="opt opt--static">Crustáceo</li><li class="opt opt--static">Molusco marino</li><li class="opt opt--static">Dinosaurio</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-especie">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Especie<span class="opt-section__count">73</span></h2><p class="opt-section__note">Toca una especie o escribe cualquier otra en el campo de texto de abajo.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perro</li><li class="opt opt--static">Gato</li><li class="opt opt--static">Zorro</li><li class="opt opt--static">Lobo</li><li class="opt opt--static">Oso panda</li><li class="opt opt--static">Oso polar</li><li class="opt opt--static">Oso pardo</li><li class="opt opt--static">León</li><li class="opt opt--static">Tigre</li><li class="opt opt--static">Elefante</li><li class="opt opt--static opt--more">y 63 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-edad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Edad / etapa de vida<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Recién nacido</li><li class="opt opt--static">Cría de días</li><li class="opt opt--static">Bebé</li><li class="opt opt--static">Cachorro</li><li class="opt opt--static">Juvenil</li><li class="opt opt--static">Adulto joven</li><li class="opt opt--static">Adulto en su plenitud</li><li class="opt opt--static">Anciano venerable</li><li class="opt opt--static">Ancestral milenario</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-proporciones">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Proporciones y anatomía<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Proporciones realistas</li><li class="opt opt--static">Cabeza gigante estilo bebé tierno</li><li class="opt opt--static">Ojos enormes que casi se tocan</li><li class="opt opt--static">Cuerpo diminuto vestigial</li><li class="opt opt--static">Extremidades diminutas tipo muñeco</li><li class="opt opt--static">Extremidades larguiruchas inquietantes</li><li class="opt opt--static">Cuerpo hinchado y redondo</li><li class="opt opt--static">Musculatura monstruosa exagerada</li><li class="opt opt--static">Cabeza alargada deforme</li><li class="opt opt--static">Múltiples cabezas</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos<span class="opt-section__count">13</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Grandes redondos brillantes</li><li class="opt opt--static">Rasgados y felinos</li><li class="opt opt--static">Reptilianos con pupila vertical</li><li class="opt opt--static">Múltiples ojos</li><li class="opt opt--static">Ojos que brillan en la oscuridad</li><li class="opt opt--static">Heterocromía llamativa</li><li class="opt opt--static">Ojos llorosos e inocentes</li><li class="opt opt--static">Ojos inyectados en sangre</li><li class="opt opt--static">Sin ojos visibles</li><li class="opt opt--static">Ojos completamente negros</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-rasgos-faciales">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro / hocico / pico<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Hocico rechoncho aplastado</li><li class="opt opt--static">Pico diminuto</li><li class="opt opt--static">Colmillos afilados sobresaliendo</li><li class="opt opt--static">Mandíbula desencajada</li><li class="opt opt--static">Mejillas mofletudas</li><li class="opt opt--static">Bigotes largos y finos</li><li class="opt opt--static">Cuernos pequeños curvados</li><li class="opt opt--static">Sonrisa permanente traviesa</li><li class="opt opt--static">Nariz húmeda brillante</li><li class="opt opt--static">Orejas caídas enormes</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pelaje-piel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pelaje / piel / plumas / escamas<span class="opt-section__count">13</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pelusa suave y esponjosa</li><li class="opt opt--static">Pelaje despeinado y desordenado</li><li class="opt opt--static">Plumón extra voluminoso</li><li class="opt opt--static">Escamas iridiscentes</li><li class="opt opt--static">Piel viscosa y mojada</li><li class="opt opt--static">Piel agrietada como roca</li><li class="opt opt--static">Exoesqueleto brillante quitinoso</li><li class="opt opt--static">Pelaje enmarañado y sucio</li><li class="opt opt--static">Piel translúcida con venas visibles</li><li class="opt opt--static">Pelaje sedoso reluciente</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-colores">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Colores principales<span class="opt-section__count">18</span></h2><p class="opt-section__note">Multiselección: combina varios colores dominantes</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Blanco níveo</li><li class="opt opt--static">Negro azabache</li><li class="opt opt--static">Marrón chocolate</li><li class="opt opt--static">Gris ceniza</li><li class="opt opt--static">Dorado brillante</li><li class="opt opt--static">Plateado metálico</li><li class="opt opt--static">Rosa pastel</li><li class="opt opt--static">Naranja vivo</li><li class="opt opt--static">Rojo sangre</li><li class="opt opt--static">Verde esmeralda</li><li class="opt opt--static opt--more">y 8 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-patrones">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Patrones / marcas<span class="opt-section__count">12</span></h2><p class="opt-section__note">Multiselección de patrones y marcas</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Manchas tipo leopardo</li><li class="opt opt--static">Rayas tipo tigre</li><li class="opt opt--static">Motas dispersas</li><li class="opt opt--static">Runas brillantes grabadas</li><li class="opt opt--static">Cicatrices de batalla</li><li class="opt opt--static">Remolinos hipnóticos</li><li class="opt opt--static">Degradado de color suave</li><li class="opt opt--static">Camuflaje natural</li><li class="opt opt--static">Marcas tribales pintadas</li><li class="opt opt--static">Vetas doradas como grietas</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño / escala<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Diminuto de bolsillo</li><li class="opt opt--static">Pequeño</li><li class="opt opt--static">Tamaño normal</li><li class="opt opt--static">Grande e imponente</li><li class="opt opt--static">Colosal gigantesco</li><li class="opt opt--static">Microscópico</li><li class="opt opt--static">Más grande que un edificio</li><li class="opt opt--static">Cabe en la palma de una mano</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-personalidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Personalidad / mood<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Adorable y tierno</li><li class="opt opt--static">Juguetón travieso</li><li class="opt opt--static">Malvado y diabólico</li><li class="opt opt--static">Siniestro amenazante</li><li class="opt opt--static">Majestuoso y noble</li><li class="opt opt--static">Feroz y salvaje</li><li class="opt opt--static">Melancólico y triste</li><li class="opt opt--static">Heroico y valiente</li><li class="opt opt--static">Chiflado y alocado</li><li class="opt opt--static">Sereno y pacífico</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pose">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pose / postura<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sentado hecho una bola</li><li class="opt opt--static">De pie erguido y orgulloso</li><li class="opt opt--static">Acechando agazapado</li><li class="opt opt--static">Saltando en el aire</li><li class="opt opt--static">Durmiendo acurrucado</li><li class="opt opt--static">Corriendo a toda velocidad</li><li class="opt opt--static">Volando en pleno vuelo</li><li class="opt opt--static">Nadando sumergido</li><li class="opt opt--static">Trepando una superficie</li><li class="opt opt--static">Tumbado panza arriba</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Acción / comportamiento<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cazando a su presa</li><li class="opt opt--static">Jugando con un ovillo</li><li class="opt opt--static">Gruñendo amenazante</li><li class="opt opt--static">Bostezando enorme</li><li class="opt opt--static">Acicalándose</li><li class="opt opt--static">Lanzando un hechizo oscuro</li><li class="opt opt--static">Rugiendo furioso</li><li class="opt opt--static">Mordisqueando un objeto</li><li class="opt opt--static">Mirando directo a cámara</li><li class="opt opt--static">Persiguiendo su cola</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-expresion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Expresión facial<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mirada inocente de cachorro</li><li class="opt opt--static">Sonrisa traviesa</li><li class="opt opt--static">Ceño fruncido enfadado</li><li class="opt opt--static">Ojos entrecerrados calculadores</li><li class="opt opt--static">Boca abierta sorprendido</li><li class="opt opt--static">Mueca malévola</li><li class="opt opt--static">Cabeza ladeada curiosa</li><li class="opt opt--static">Expresión soñolienta</li><li class="opt opt--static">Carcajada maniática</li><li class="opt opt--static">Mirada perdida hipnotizada</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accesorios">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios / disfraz<span class="opt-section__count">12</span></h2><p class="opt-section__note">Multiselección de accesorios</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Corona diminuta</li><li class="opt opt--static">Capa ondeante</li><li class="opt opt--static">Armadura en miniatura</li><li class="opt opt--static">Gafas de sol</li><li class="opt opt--static">Sombrero de mago</li><li class="opt opt--static">Alas de hada añadidas</li><li class="opt opt--static">Collar con joya</li><li class="opt opt--static">Bufanda tejida</li><li class="opt opt--static">Mochila pequeña</li><li class="opt opt--static">Corbata de lazo</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-habitat">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Hábitat / escenario<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bosque encantado brumoso</li><li class="opt opt--static">Sabana al atardecer</li><li class="opt opt--static">Fondo marino coralino</li><li class="opt opt--static">Guarida oscura de dragón</li><li class="opt opt--static">Jardín de flores</li><li class="opt opt--static">Ciudad en miniatura</li><li class="opt opt--static">Castillo gótico</li><li class="opt opt--static">Paisaje nevado polar</li><li class="opt opt--static">Desierto árido</li><li class="opt opt--static">Laboratorio steampunk</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-elementos-apoyo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Elementos de apoyo<span class="opt-section__count">11</span></h2><p class="opt-section__note">Multiselección de elementos de la escena</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Hojas otoñales cayendo</li><li class="opt opt--static">Luciérnagas brillantes</li><li class="opt opt--static">Humo oscuro arremolinado</li><li class="opt opt--static">Chispas mágicas flotantes</li><li class="opt opt--static">Telarañas colgantes</li><li class="opt opt--static">Burbujas ascendiendo</li><li class="opt opt--static">Pétalos de flores flotando</li><li class="opt opt--static">Rayos de tormenta al fondo</li><li class="opt opt--static">Nieve cayendo suavemente</li><li class="opt opt--static">Partículas de polvo doradas</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-clima-ambiente">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Clima / atmósfera<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Niebla baja misteriosa</li><li class="opt opt--static">Luz dorada cálida</li><li class="opt opt--static">Tormenta eléctrica dramática</li><li class="opt opt--static">Nevada suave</li><li class="opt opt--static">Rayos de sol entre árboles</li><li class="opt opt--static">Oscuridad total con luna llena</li><li class="opt opt--static">Día soleado despejado</li><li class="opt opt--static">Atardecer de colores intensos</li><li class="opt opt--static">Lluvia torrencial</li><li class="opt opt--static">Calima abrasadora</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nivel-fantastico">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel realista / fantástico<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Fauna real fotográfica</li><li class="opt opt--static">Ligero toque fantástico</li><li class="opt opt--static">Híbrido fantástico evidente</li><li class="opt opt--static">Criatura mítica pura</li><li class="opt opt--static">Estilo mascota de videojuego</li><li class="opt opt--static">Estilo mascota de cuento de hadas</li><li class="opt opt--static">Criatura de otra dimensión</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-toque-final">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Toque final / rasgo único<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nada extra, limpio y directo</li><li class="opt opt--static">Tercer ojo místico</li><li class="opt opt--static">Aura brillante envolvente</li><li class="opt opt--static">Sombra amenazante proyectada</li><li class="opt opt--static">Halo angelical</li><li class="opt opt--static">Cuernos de fuego</li><li class="opt opt--static">Alas de murciélago añadidas</li><li class="opt opt--static">Cola bífida de diablo</li><li class="opt opt--static">Grietas de energía en la piel</li><li class="opt opt--static">Marca de nacimiento en forma de estrella</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +168,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

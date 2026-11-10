@@ -38,6 +38,7 @@ function styleOf(domain, p) {
 
 export async function openPresets(domain) {
   const presets = await loadPresets(domain.id);
+  const recipes = domain.meta.presetsLabel === 'recetas';
   const items = presets.map(p => ({ p, title: titleOf(domain, p), style: styleOf(domain, p) }));
   items.forEach(i => { i.f = fold(`${i.title} ${i.style} #${i.p.n}`); });
 
@@ -47,19 +48,19 @@ export async function openPresets(domain) {
   const list = h('div', { class: 'ideas__list' });
   const more = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => { shown += PAGE; render(); } }, 'Mostrar más');
   const count = h('p', { class: 'ideas__count' });
-  const search = h('input', { type: 'search', class: 'field__input', placeholder: 'Buscar una idea: «faro», «lluvia», «acuarela»…', 'aria-label': 'Buscar ideas', autocomplete: 'off' });
+  const search = h('input', { type: 'search', class: 'field__input', placeholder: recipes ? 'Buscar una receta…' : 'Buscar una idea: «faro», «lluvia», «acuarela»…', 'aria-label': recipes ? 'Buscar recetas' : 'Buscar ideas', autocomplete: 'off' });
 
   const dialog = h('dialog', { class: 'ideas', 'aria-label': `Ideas de ${domain.meta.short || domain.meta.title}` },
     h('div', { class: 'ideas__panel' },
       h('header', { class: 'ideas__head' },
-        h('div', {}, h('h2', { class: 'ideas__title' }, 'Galería de ', h('em', {}, 'ideas')), h('p', { class: 'ideas__lead' }, `${fmtNumber(presets.length)} escenas listas para usar. Elige una y se aplicará a «${domain.meta.short || domain.meta.title}».`)),
+        h('div', {}, h('h2', { class: 'ideas__title' }, recipes ? 'Recetas de ' : 'Galería de ', h('em', {}, recipes ? (domain.meta.short || domain.meta.title) : 'ideas')), h('p', { class: 'ideas__lead' }, `${fmtNumber(presets.length)} ${recipes ? 'recetas' : 'escenas'} listas para usar. Elige una y se aplicará a «${domain.meta.short || domain.meta.title}»${recipes ? ': luego puedes ajustar cualquier sección.' : '.'}`)),
         h('button', { type: 'button', class: 'icon-btn', 'aria-label': 'Cerrar', onClick: () => dialog.close(), html: icon('x') })),
       h('div', { class: 'field' }, h('span', { class: 'field__icon', html: icon('search') }), search),
       count, list, h('div', { class: 'ideas__more' }, more)));
 
   function render() {
     clear(list);
-    filtered.slice(0, shown).forEach(({ p, title, style }) => list.append(h('button', { type: 'button', class: 'idea', onClick: () => { store.applySelection(domain.id, p.sel); toast(`Idea #${p.n} aplicada`); dialog.close(); } },
+    filtered.slice(0, shown).forEach(({ p, title, style }) => list.append(h('button', { type: 'button', class: 'idea', onClick: () => { store.applySelection(domain.id, p.sel); toast(`${recipes ? 'Receta' : 'Idea'} #${p.n} aplicada`); dialog.close(); } },
       h('span', { class: 'idea__n' }, `#${p.n}`), h('span', { class: 'idea__title' }, title), style ? h('span', { class: 'idea__style' }, style) : null)));
     count.textContent = filtered.length ? `${fmtNumber(Math.min(shown, filtered.length))} de ${fmtNumber(filtered.length)}` : 'Sin resultados';
     more.hidden = shown >= filtered.length;

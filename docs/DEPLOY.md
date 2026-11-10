@@ -6,14 +6,29 @@ El sitio es **100 % estático**: el servidor solo sirve archivos. No hace falta 
 
 ```bash
 sudo apt update && sudo apt install -y nginx git certbot python3-certbot-nginx
-sudo git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/lumenvitae
+
+# Carpeta del sitio, con tu usuario como propietario (así `git pull` no necesita sudo)
+sudo mkdir -p /var/www/lumenvitae.es && sudo chown "$USER":"$USER" /var/www/lumenvitae.es
+git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/lumenvitae.es
+```
+
+Crea el archivo de cabeceras de seguridad que incluye la configuración (**sin él, `nginx -t` falla**):
+
+```bash
+sudo mkdir -p /etc/nginx/snippets
+sudo tee /etc/nginx/snippets/lumenvitae-security.conf > /dev/null <<'EOF'
+add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+EOF
 ```
 
 Configura nginx a partir de `deploy/nginx.conf.example`:
 
 ```bash
-sudo cp /var/www/lumenvitae/deploy/nginx.conf.example /etc/nginx/sites-available/lumenvitae
-sudo ln -s /etc/nginx/sites-available/lumenvitae /etc/nginx/sites-enabled/
+sudo cp /var/www/lumenvitae.es/deploy/nginx.conf.example /etc/nginx/sites-available/lumenvitae.es
+sudo ln -s /etc/nginx/sites-available/lumenvitae.es /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
@@ -35,7 +50,7 @@ git add -A && git commit -m "Describe el cambio" && git push
 En el servidor:
 
 ```bash
-cd /var/www/lumenvitae && git pull
+cd /var/www/lumenvitae.es && git pull
 ```
 
 No hay paso de compilación en el servidor: los archivos generados (catálogo, páginas, sitemap) ya van en el repositorio.

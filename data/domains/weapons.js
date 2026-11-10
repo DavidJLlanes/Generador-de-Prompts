@@ -12,7 +12,7 @@ export default {
     {
       "id": "tipo-arma",
       "title": "Tipo de arma",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"straight-sword","es":"Espada recta","en":"straight sword"},
         {"id":"curved-saber","es":"Espada curvada sable","en":"curved saber"},
@@ -70,7 +70,7 @@ export default {
     {
       "id": "tamano",
       "title": "Tamaño/longitud",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"tiny-10cm","es":"Minúscula 10 cm","en":"tiny 10cm"},
         {"id":"small-30cm","es":"Pequeña 30 cm","en":"small 30cm"},
@@ -92,7 +92,7 @@ export default {
     {
       "id": "material-primario",
       "title": "Material primario de hoja",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"carbon-steel","es":"Acero carbono","en":"carbon steel"},
         {"id":"stainless-steel","es":"Acero inoxidable","en":"stainless steel"},
@@ -139,7 +139,7 @@ export default {
     {
       "id": "material-empunadura",
       "title": "Material empuñadura",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"wrapped-leather","es":"Cuero envuelto","en":"wrapped leather"},
         {"id":"dragon-leather","es":"Piel de dragón","en":"dragon leather"},
@@ -177,7 +177,7 @@ export default {
     {
       "id": "material-vaina",
       "title": "Material vaina/funda",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"leather-lined","es":"Cuero revestido","en":"leather-lined"},
         {"id":"reinforced-wood","es":"Madera reforzada","en":"reinforced wood"},
@@ -214,7 +214,7 @@ export default {
     {
       "id": "brillo-acabado",
       "title": "Brillo/acabado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mirror-polished","es":"Espejo pulido","en":"mirror polished"},
         {"id":"matte-opaque","es":"Mate opaco","en":"matte opaque"},
@@ -242,7 +242,7 @@ export default {
     {
       "id": "color-primario",
       "title": "Color primario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pure-silver","es":"Plata pura","en":"pure silver"},
         {"id":"metallic-grey","es":"Gris metalizado","en":"metallic grey"},
@@ -284,7 +284,7 @@ export default {
     {
       "id": "color-secundario",
       "title": "Color secundario/patrones",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-secondary-color","es":"Sin color secundario","en":"no secondary color"},
         {"id":"grain-veins","es":"Vetas de grano","en":"grain veins"},
@@ -359,7 +359,7 @@ export default {
     {
       "id": "poder-tipo",
       "title": "Tipo de poder mágico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-power","es":"Sin poder","en":"no power"},
         {"id":"very-slight","es":"Muy leve","en":"very slight"},
@@ -398,7 +398,7 @@ export default {
     {
       "id": "poder-nivel",
       "title": "Nivel de poder",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"trivially-weak","es":"Trivial débil","en":"trivially weak"},
         {"id":"very-slight-moderate","es":"Muy leve moderado","en":"very slight moderate"},
@@ -430,7 +430,7 @@ export default {
     {
       "id": "dano-tipo",
       "title": "Tipo de daño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"clean-slash-damage","es":"Daño cortante limpio","en":"clean slash damage"},
         {"id":"deep-piercing","es":"Daño penetrante profundo","en":"deep piercing"},
@@ -463,7 +463,7 @@ export default {
     {
       "id": "nivel-dano",
       "title": "Nivel de daño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"insignificant-scratch","es":"Insignificante rasguño","en":"insignificant scratch"},
         {"id":"light-wound","es":"Leve herida","en":"light wound"},
@@ -496,7 +496,7 @@ export default {
     {
       "id": "aura",
       "title": "Aura/energía emanada",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-visible-aura","es":"Sin aura visible","en":"no visible aura"},
         {"id":"faint-pale-aura","es":"Aura leve pálida","en":"faint pale aura"},
@@ -533,7 +533,7 @@ export default {
     {
       "id": "comportamiento",
       "title": "Comportamiento/temperamento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"passive-obedient","es":"Pasivo obediente","en":"passive obedient"},
         {"id":"neutral-indifferent","es":"Neutral indiferente","en":"neutral indifferent"},
@@ -576,7 +576,7 @@ export default {
     {
       "id": "edad-antiguedad",
       "title": "Edad/antigüedad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"newly-forged","es":"Recién creada","en":"newly forged"},
         {"id":"few-decades","es":"Pocas décadas","en":"few decades"},
@@ -605,7 +605,7 @@ export default {
     {
       "id": "condicion",
       "title": "Condición/estado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pristine-perfect","es":"Pristina perfecta","en":"pristine perfect"},
         {"id":"well-maintained","es":"Muy bien mantenida","en":"well-maintained"},

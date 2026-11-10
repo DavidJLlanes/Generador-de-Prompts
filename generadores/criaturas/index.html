@@ -6,7 +6,7 @@
 <title>Criaturas · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/criaturas/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Criaturas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/criaturas/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/criaturas.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Criaturas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/criaturas.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,7 +55,7 @@
   <p class="domain-hero__intro">Diseña la criatura definitiva: tipo de especie, anatomía, piel, alas, cuernos, extremidades, propósito y expresión. Cruza con un escenario y un estilo fotográfico.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 6 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
     <span class="domain-hero__facts">31 secciones · 597 opciones</span>
@@ -69,7 +74,132 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de criatura<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Dragón clásico</li><li class="opt opt--static">Dragón de fuego</li><li class="opt opt--static">Dragón de hielo</li><li class="opt opt--static">Dragón de sombra</li><li class="opt opt--static">Demonio cornudo</li><li class="opt opt--static">Demonio infernal</li><li class="opt opt--static">Ángel caído</li><li class="opt opt--static">Alienígena reptiliano</li><li class="opt opt--static">Alienígena insectoide</li><li class="opt opt--static">Alienígena gelatinoso</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Diminuto insecto</li><li class="opt opt--static">Pequeño mascota</li><li class="opt opt--static">Tamaño humano</li><li class="opt opt--static">Mediano 3-4 metros</li><li class="opt opt--static">Grande 8-10 metros</li><li class="opt opt--static">Muy grande 20+ metros</li><li class="opt opt--static">Colosal 50+ metros</li><li class="opt opt--static">Gigante de montaña</li><li class="opt opt--static">Mas grande que un edificio</li><li class="opt opt--static">Visible desde el espacio</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-anatomia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Anatomía / morfología<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bípedo humanoid</li><li class="opt opt--static">Cuadrúpedo</li><li class="opt opt--static">Artrópodo múltiples patas</li><li class="opt opt--static">Reptiliano</li><li class="opt opt--static">Pez/marino</li><li class="opt opt--static">Cefalópodo tentáculos</li><li class="opt opt--static">Gelatinoso blando</li><li class="opt opt--static">Insectoide</li><li class="opt opt--static">Esqueleto óseo</li><li class="opt opt--static">Híbrido múltiples formas</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cabeza">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabeza / rostro<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cabeza humanoide</li><li class="opt opt--static">Cráneo animal</li><li class="opt opt--static">Múltiples cabezas</li><li class="opt opt--static">Cabeza sin rostro</li><li class="opt opt--static">Cabeza reptiliana</li><li class="opt opt--static">Cabeza insectoide</li><li class="opt opt--static">Cabeza canina</li><li class="opt opt--static">Cabeza felina</li><li class="opt opt--static">Cabeza de ave rapaz</li><li class="opt opt--static">Cabeza pisciforme</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ojos humanos normales</li><li class="opt opt--static">Ojos reptilianos</li><li class="opt opt--static">Ojos grandes negros</li><li class="opt opt--static">Ojos múltiples</li><li class="opt opt--static">Ojos fluorescentes</li><li class="opt opt--static">Ojos sin iris</li><li class="opt opt--static">Ojos de insecto compuestos</li><li class="opt opt--static">Ojos de fuego</li><li class="opt opt--static">Ojos de hielo</li><li class="opt opt--static">Ojos brillantes dorados</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-boca">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Boca / mandíbula<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Boca humana normal</li><li class="opt opt--static">Mandíbula enorme</li><li class="opt opt--static">Pico de ave</li><li class="opt opt--static">Hocico animal</li><li class="opt opt--static">Múltiples mandíbulas</li><li class="opt opt--static">Mandíbula desencajada</li><li class="opt opt--static">Boca llena de colmillos</li><li class="opt opt--static">Boca llena de dientes afilados</li><li class="opt opt--static">Boca tubular</li><li class="opt opt--static">Boca sin dientes</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-orejas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Orejas / apéndices cefálicos<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin orejas</li><li class="opt opt--static">Orejas humanas normales</li><li class="opt opt--static">Orejas puntiagudas élficas</li><li class="opt opt--static">Orejas grandes murciélago</li><li class="opt opt--static">Orejas pequeñas redondas</li><li class="opt opt--static">Orejas con cuernos</li><li class="opt opt--static">Orejas membranosas</li><li class="opt opt--static">Tentáculos en lugar de orejas</li><li class="opt opt--static">Antenas</li><li class="opt opt--static">Múltiples apéndices</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-piel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Textura de piel<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Piel humana normal</li><li class="opt opt--static">Escamas reptilianas</li><li class="opt opt--static">Escamas de pez</li><li class="opt opt--static">Exoesqueleto quitinoso</li><li class="opt opt--static">Cuero rugoso</li><li class="opt opt--static">Piel lisa aceitosa</li><li class="opt opt--static">Piel pegajosa</li><li class="opt opt--static">Piel de gelatina</li><li class="opt opt--static">Caparazón</li><li class="opt opt--static">Espinas erizado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color de piel<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Blanco pálido</li><li class="opt opt--static">Gris oscuro</li><li class="opt opt--static">Negro azabache</li><li class="opt opt--static">Rojo intenso</li><li class="opt opt--static">Rojo oscuro</li><li class="opt opt--static">Naranja ardiente</li><li class="opt opt--static">Amarillo dorado</li><li class="opt opt--static">Verde oscuro</li><li class="opt opt--static">Verde neón</li><li class="opt opt--static">Azul profundo</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pelaje">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pelaje / plumaje<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin pelaje liso</li><li class="opt opt--static">Pelaje corto fino</li><li class="opt opt--static">Pelaje largo rizado</li><li class="opt opt--static">Pelaje grueso denso</li><li class="opt opt--static">Pelaje esponjoso</li><li class="opt opt--static">Pelaje erizado áspero</li><li class="opt opt--static">Plumaje de ave</li><li class="opt opt--static">Plumas largas fluidas</li><li class="opt opt--static">Plumas cortas densas</li><li class="opt opt--static">Plumas con colores metálicos</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cuernos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuernos / protuberancias<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin cuernos</li><li class="opt opt--static">Dos cuernos simples</li><li class="opt opt--static">Cuernos ramificados</li><li class="opt opt--static">Cuernos enormes</li><li class="opt opt--static">Cuernos curvados</li><li class="opt opt--static">Cuernos espirales</li><li class="opt opt--static">Cuernos retorcidos</li><li class="opt opt--static">Múltiples cuernos</li><li class="opt opt--static">Cuernos de fuego</li><li class="opt opt--static">Cuernos de hielo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-alas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Alas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin alas</li><li class="opt opt--static">Alas de murciélago</li><li class="opt opt--static">Alas de dragón</li><li class="opt opt--static">Alas de pájaro</li><li class="opt opt--static">Alas de insecto</li><li class="opt opt--static">Alas de demonio</li><li class="opt opt--static">Alas de ángel</li><li class="opt opt--static">Múltiples pares de alas</li><li class="opt opt--static">Alas de fuego</li><li class="opt opt--static">Alas de hielo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cola">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cola<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin cola</li><li class="opt opt--static">Cola simple felina</li><li class="opt opt--static">Cola bifurcada</li><li class="opt opt--static">Cola con púas</li><li class="opt opt--static">Cola de látigo</li><li class="opt opt--static">Cola escamosa</li><li class="opt opt--static">Cola de fuego</li><li class="opt opt--static">Cola de hielo</li><li class="opt opt--static">Cola con cabeza</li><li class="opt opt--static">Cola con aguja</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-extremidades">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Extremidades / brazos<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Brazos humanoides</li><li class="opt opt--static">Brazos muy largos</li><li class="opt opt--static">Brazos musculosos</li><li class="opt opt--static">Brazos delgados frágiles</li><li class="opt opt--static">Brazos con garras</li><li class="opt opt--static">Brazos de tentáculo</li><li class="opt opt--static">Múltiples brazos</li><li class="opt opt--static">Brazos retráctiles</li><li class="opt opt--static">Brazos mecánicos</li><li class="opt opt--static">Brazos de fuego</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-manos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Manos / garras<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Manos humanas</li><li class="opt opt--static">Garras de raptor</li><li class="opt opt--static">Garras de bestia</li><li class="opt opt--static">Garras de dragón</li><li class="opt opt--static">Pinzas de crustáceo</li><li class="opt opt--static">Múltiples dedos</li><li class="opt opt--static">Dedos largos frágiles</li><li class="opt opt--static">Dedos cortos robustos</li><li class="opt opt--static">Veneno en dedos</li><li class="opt opt--static">Dedos de fuego</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-patas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Patas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Patas humanoides</li><li class="opt opt--static">Patas de ave</li><li class="opt opt--static">Patas de bestia</li><li class="opt opt--static">Patas de insecto</li><li class="opt opt--static">Patas de araña</li><li class="opt opt--static">Patas con aletas</li><li class="opt opt--static">Patas musculosas</li><li class="opt opt--static">Patas delgadas</li><li class="opt opt--static">Patas con garras</li><li class="opt opt--static">Patas de llama</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-armadura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Armadura natural<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin armadura</li><li class="opt opt--static">Escamas</li><li class="opt opt--static">Caparazón duro</li><li class="opt opt--static">Piel de piedra</li><li class="opt opt--static">Hueso sobresaliente</li><li class="opt opt--static">Placas de metal</li><li class="opt opt--static">Cristal</li><li class="opt opt--static">Coraza oscura</li><li class="opt opt--static">Armadura de fuego</li><li class="opt opt--static">Armadura de hielo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-armas-naturales">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Armas naturales<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin armas</li><li class="opt opt--static">Colmillos</li><li class="opt opt--static">Colmillos gigantes</li><li class="opt opt--static">Veneno</li><li class="opt opt--static">Aliento de fuego</li><li class="opt opt--static">Aliento de hielo</li><li class="opt opt--static">Aliento ácido</li><li class="opt opt--static">Aliento tóxico</li><li class="opt opt--static">Electricidad</li><li class="opt opt--static">Radiación</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-habilidades">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Habilidades especiales<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Vuelo</li><li class="opt opt--static">Invisibilidad</li><li class="opt opt--static">Regeneración</li><li class="opt opt--static">Cambio de forma</li><li class="opt opt--static">Teleportación</li><li class="opt opt--static">Cura</li><li class="opt opt--static">Control mental</li><li class="opt opt--static">Telekinesis</li><li class="opt opt--static">Visión térmica</li><li class="opt opt--static">Visión nocturna</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-aura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Aura / energía<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin aura</li><li class="opt opt--static">Aura roja ardiente</li><li class="opt opt--static">Aura azul eléctrica</li><li class="opt opt--static">Aura dorada sagrada</li><li class="opt opt--static">Aura púrpura mágica</li><li class="opt opt--static">Aura negra oscura</li><li class="opt opt--static">Aura verde tóxica</li><li class="opt opt--static">Aura blanca radiante</li><li class="opt opt--static">Aura iridiscente</li><li class="opt opt--static">Aura pulsante</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-expresion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Expresión / intención<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Neutral serena</li><li class="opt opt--static">Furiosa encolerizada</li><li class="opt opt--static">Malévolentement sonriendo</li><li class="opt opt--static">Hambrienta depredadora</li><li class="opt opt--static">Triste melancólica</li><li class="opt opt--static">Confusa desconcertada</li><li class="opt opt--static">Sagacemente inteligente</li><li class="opt opt--static">Locamente demente</li><li class="opt opt--static">Noble digna</li><li class="opt opt--static">Vil malvada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-edad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Edad aparente<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Recién nacida</li><li class="opt opt--static">Joven juvenil</li><li class="opt opt--static">Adolescente</li><li class="opt opt--static">Adulta joven</li><li class="opt opt--static">Adulta madura</li><li class="opt opt--static">Vieja anciana</li><li class="opt opt--static">Milenaria antigua</li><li class="opt opt--static">Primordial</li><li class="opt opt--static">Ageless sin edad</li><li class="opt opt--static">Renacida resurrección</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-salud">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estado de salud<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfecta vibrante</li><li class="opt opt--static">Fuerte robusta</li><li class="opt opt--static">Normal promedio</li><li class="opt opt--static">Lesionada herida</li><li class="opt opt--static">Enferma debilitada</li><li class="opt opt--static">Mutilada dañada</li><li class="opt opt--static">Hambrienta famélica</li><li class="opt opt--static">Envenenada tóxica</li><li class="opt opt--static">Consumida erosionada</li><li class="opt opt--static">Moribunda expirante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cicatrices">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cicatrices / marcas de batalla<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin cicatrices</li><li class="opt opt--static">Pocas cicatrices</li><li class="opt opt--static">Varias cicatrices</li><li class="opt opt--static">Muchas cicatrices</li><li class="opt opt--static">Completamente cicatrizada</li><li class="opt opt--static">Tatuajes de guerra</li><li class="opt opt--static">Marcas de quemadura</li><li class="opt opt--static">Marcas de corte</li><li class="opt opt--static">Marcas de mordida</li><li class="opt opt--static">Cicatrices de esclavitud</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-simbolos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Símbolos / marcas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin marcas</li><li class="opt opt--static">Marcas naturales</li><li class="opt opt--static">Rayas</li><li class="opt opt--static">Manchas</li><li class="opt opt--static">Puntos</li><li class="opt opt--static">Bandas</li><li class="opt opt--static">Líneas</li><li class="opt opt--static">Rombos</li><li class="opt opt--static">Símbolos ocultos</li><li class="opt opt--static">Runes arcanas</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-adornos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Adornos / accesorios<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin adornos</li><li class="opt opt--static">Joyas</li><li class="opt opt--static">Cadenas</li><li class="opt opt--static">Coronas</li><li class="opt opt--static">Bandas</li><li class="opt opt--static">Anillos</li><li class="opt opt--static">Gemas incrustadas</li><li class="opt opt--static">Arnés de cuero</li><li class="opt opt--static">Telas drapeadas</li><li class="opt opt--static">Velos</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-magia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Presencia mágica<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mundana no mágica</li><li class="opt opt--static">Levemente mágica</li><li class="opt opt--static">Mágica</li><li class="opt opt--static">Altamente mágica</li><li class="opt opt--static">Totalmente mágica</li><li class="opt opt--static">Sobrenatural alien</li><li class="opt opt--static">Dimensión otra</li><li class="opt opt--static">Caos puro</li><li class="opt opt--static">Orden perfecta</li><li class="opt opt--static">Dualidad mágica</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-especie">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Especie mitológica<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Dragón antiguo</li><li class="opt opt--static">Demonio infernal</li><li class="opt opt--static">Ángel oscuro</li><li class="opt opt--static">Alienígena Zeta</li><li class="opt opt--static">Alienígena reptil</li><li class="opt opt--static">Fénix inmortal</li><li class="opt opt--static">Grifo noble</li><li class="opt opt--static">Quimera mitológica</li><li class="opt opt--static">Basilisco letal</li><li class="opt opt--static">Hidra de muchas cabezas</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-origen">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Origen / linaje<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nativa del mundo</li><li class="opt opt--static">De otro planeta</li><li class="opt opt--static">Del inframundo</li><li class="opt opt--static">Del cielo</li><li class="opt opt--static">Criada artificialmente</li><li class="opt opt--static">Mutación natural</li><li class="opt opt--static">Resultado de magia</li><li class="opt opt--static">Experimento científico</li><li class="opt opt--static">Fusión de especies</li><li class="opt opt--static">Maldición antigua</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-inteligencia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Inteligencia aparente<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Instintiva animal</li><li class="opt opt--static">Simple primitiva</li><li class="opt opt--static">Normal media</li><li class="opt opt--static">Sagacidad animal</li><li class="opt opt--static">Inteligente astuta</li><li class="opt opt--static">Muy inteligente</li><li class="opt opt--static">Superlativa genio</li><li class="opt opt--static">Alienígena incomprehensible</li><li class="opt opt--static">Colmena mental</li><li class="opt opt--static">Vacía sin mente</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-comportamiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Comportamiento<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Depredador cazador</li><li class="opt opt--static">Herbívoro pacífico</li><li class="opt opt--static">Carroñero</li><li class="opt opt--static">Territorial agresivo</li><li class="opt opt--static">Gregario social</li><li class="opt opt--static">Solitario recluido</li><li class="opt opt--static">Curiosa exploradora</li><li class="opt opt--static">Dormida letárgica</li><li class="opt opt--static">Hiperactive frenética</li><li class="opt opt--static">Compasiva benevolente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +212,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

@@ -6,7 +6,7 @@
 <title>Clima · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Crea prompts para efectos de clima y atmósfera con IA. Define condiciones, luz, nubosidad y ambiente.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/clima/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Clima · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Crea prompts para efectos de clima y atmósfera con IA. Define condiciones, luz, nubosidad y ambiente.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/clima/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/clima.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Clima · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/clima.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,140 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de clima general<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Despejado soleado</li><li class="opt opt--static">Parcialmente nublado</li><li class="opt opt--static">Nublado cubierto</li><li class="opt opt--static">Lluvia ligera</li><li class="opt opt--static">Lluvia moderada</li><li class="opt opt--static">Lluvia torrencial</li><li class="opt opt--static">Nieve ligera</li><li class="opt opt--static">Nieve moderada</li><li class="opt opt--static">Nevasca blanca</li><li class="opt opt--static">Tormenta eléctrica</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tipo-lluvia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de lluvia<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin lluvia</li><li class="opt opt--static">Llovizna</li><li class="opt opt--static">Lluvia ligera</li><li class="opt opt--static">Lluvia moderada</li><li class="opt opt--static">Lluvia fuerte</li><li class="opt opt--static">Lluvia torrencial</li><li class="opt opt--static">Lluvia a cántaros</li><li class="opt opt--static">Lluvia fría</li><li class="opt opt--static">Lluvia tibia</li><li class="opt opt--static">Lluvia ácida</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tipo-nieve">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de nieve<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin nieve</li><li class="opt opt--static">Copos ligeros</li><li class="opt opt--static">Copos moderados</li><li class="opt opt--static">Copos densamente</li><li class="opt opt--static">Nieve polvo fino</li><li class="opt opt--static">Nieve mojada pesada</li><li class="opt opt--static">Nieve granulosa</li><li class="opt opt--static">Nieve compacta</li><li class="opt opt--static">Nieve crujiente</li><li class="opt opt--static">Nieve resbaladiza</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tipo-tormenta">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de tormenta<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin tormenta</li><li class="opt opt--static">Tormenta eléctrica leve</li><li class="opt opt--static">Tormenta eléctrica moderada</li><li class="opt opt--static">Tormenta eléctrica severa</li><li class="opt opt--static">Tormenta de granizo</li><li class="opt opt--static">Tormenta de viento</li><li class="opt opt--static">Tormenta de polvo</li><li class="opt opt--static">Tormenta de arena</li><li class="opt opt--static">Tormenta de fuego</li><li class="opt opt--static">Tormenta de hielo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tipo-niebla">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de niebla<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin niebla</li><li class="opt opt--static">Niebla ligera</li><li class="opt opt--static">Niebla moderada</li><li class="opt opt--static">Niebla densa</li><li class="opt opt--static">Niebla impenetrable</li><li class="opt opt--static">Bruma fresca</li><li class="opt opt--static">Bruma cálida</li><li class="opt opt--static">Niebla baja</li><li class="opt opt--static">Niebla elevada</li><li class="opt opt--static">Niebla marina</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tipo-tornado">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de tornado/vórtice<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin tornado</li><li class="opt opt--static">Tornado débil</li><li class="opt opt--static">Tornado moderado</li><li class="opt opt--static">Tornado fuerte</li><li class="opt opt--static">Tornado devastador</li><li class="opt opt--static">Tornado de polvo</li><li class="opt opt--static">Tornado de agua</li><li class="opt opt--static">Tornado de fuego</li><li class="opt opt--static">Tornado de nieve</li><li class="opt opt--static">Tornado de arena</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-intensidad-general">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Intensidad general<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna</li><li class="opt opt--static">Muy leve</li><li class="opt opt--static">Leve</li><li class="opt opt--static">Moderada</li><li class="opt opt--static">Considerable</li><li class="opt opt--static">Intensa</li><li class="opt opt--static">Muy intensa</li><li class="opt opt--static">Extrema</li><li class="opt opt--static">Catastrófica</li><li class="opt opt--static">Apocalíptica</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-visibilidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Visibilidad/rango visual<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfecta claridad</li><li class="opt opt--static">Muy buena visión</li><li class="opt opt--static">Buena visión</li><li class="opt opt--static">Visión moderada</li><li class="opt opt--static">Visión reducida</li><li class="opt opt--static">Visión muy pobre</li><li class="opt opt--static">Casi nada visible</li><li class="opt opt--static">Completamente oscuro</li><li class="opt opt--static">Alcance metros</li><li class="opt opt--static">Alcance kilómetro</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-temperatura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Temperatura<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Extremadamente fría</li><li class="opt opt--static">Muy fría</li><li class="opt opt--static">Fría</li><li class="opt opt--static">Fresca</li><li class="opt opt--static">Templada normal</li><li class="opt opt--static">Cálida</li><li class="opt opt--static">Muy cálida</li><li class="opt opt--static">Caliente</li><li class="opt opt--static">Extremadamente caliente</li><li class="opt opt--static">Abrasadora</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-humedad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Humedad<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy seca</li><li class="opt opt--static">Seca</li><li class="opt opt--static">Moderada</li><li class="opt opt--static">Húmeda</li><li class="opt opt--static">Muy húmeda</li><li class="opt opt--static">Extremadamente húmeda</li><li class="opt opt--static">Pegajosa sofocante</li><li class="opt opt--static">Saturada de agua</li><li class="opt opt--static">Defoliación</li><li class="opt opt--static">Mojada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-rayo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto relámpago<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin relámpagos</li><li class="opt opt--static">Relámpagos ocasionales</li><li class="opt opt--static">Relámpagos frecuentes</li><li class="opt opt--static">Relámpagos constantes</li><li class="opt opt--static">Relámpago simple</li><li class="opt opt--static">Relámpago bifurcado</li><li class="opt opt--static">Relámpago en red</li><li class="opt opt--static">Relámpago de bola</li><li class="opt opt--static">Relámpago de fuego</li><li class="opt opt--static">Relámpago azul</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-granizo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto granizo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin granizo</li><li class="opt opt--static">Granizo pequeño</li><li class="opt opt--static">Granizo mediano</li><li class="opt opt--static">Granizo grande</li><li class="opt opt--static">Granizo gigante</li><li class="opt opt--static">Granizo fino</li><li class="opt opt--static">Granizo pesado</li><li class="opt opt--static">Granizo hielo puro</li><li class="opt opt--static">Granizo translúcido</li><li class="opt opt--static">Granizo opaco</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-arcoiris">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto arcoíris<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin arcoíris</li><li class="opt opt--static">Arcoíris débil</li><li class="opt opt--static">Arcoíris claro</li><li class="opt opt--static">Arcoíris brillante</li><li class="opt opt--static">Arcoíris vibrante</li><li class="opt opt--static">Arcoíris doble</li><li class="opt opt--static">Arcoíris múltiple</li><li class="opt opt--static">Arcoíris 360 grados</li><li class="opt opt--static">Arcoíris invertido</li><li class="opt opt--static">Arcoíris blanco</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-neblina">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto neblina especial<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efecto especial</li><li class="opt opt--static">Neblina ondulante</li><li class="opt opt--static">Neblina remolino</li><li class="opt opt--static">Neblina flotante</li><li class="opt opt--static">Neblina descendente</li><li class="opt opt--static">Neblina ascendente</li><li class="opt opt--static">Neblina que respira</li><li class="opt opt--static">Neblina pulsante</li><li class="opt opt--static">Neblina luminosa</li><li class="opt opt--static">Neblina oscura</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cielo-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de cielo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Despejado azul claro</li><li class="opt opt--static">Cielo pálido</li><li class="opt opt--static">Cielo gris</li><li class="opt opt--static">Cielo blanco</li><li class="opt opt--static">Cielo negro</li><li class="opt opt--static">Cielo rojo</li><li class="opt opt--static">Cielo naranja</li><li class="opt opt--static">Cielo púrpura</li><li class="opt opt--static">Cielo verde</li><li class="opt opt--static">Cielo turquesa</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cielo-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color de cielo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Azul claro</li><li class="opt opt--static">Azul puro</li><li class="opt opt--static">Azul oscuro</li><li class="opt opt--static">Azul marino</li><li class="opt opt--static">Gris pálido</li><li class="opt opt--static">Gris medio</li><li class="opt opt--static">Gris oscuro</li><li class="opt opt--static">Blanco</li><li class="opt opt--static">Blanco cremoso</li><li class="opt opt--static">Negro profundo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nubes-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de nubes<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin nubes</li><li class="opt opt--static">Nubes cumulus</li><li class="opt opt--static">Nubes cumulonimbus</li><li class="opt opt--static">Nubes stratus</li><li class="opt opt--static">Nubes stratocumulus</li><li class="opt opt--static">Nubes altocumulus</li><li class="opt opt--static">Nubes altostratus</li><li class="opt opt--static">Nubes cirrus</li><li class="opt opt--static">Nubes cirrocumulus</li><li class="opt opt--static">Nubes nimboestratus</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nubes-cobertura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cobertura de nubes<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cielo despejado 0%</li><li class="opt opt--static">Casi despejado 10%</li><li class="opt opt--static">Poco nublado 25%</li><li class="opt opt--static">Parcialmente nublado 50%</li><li class="opt opt--static">Mayormente nublado 75%</li><li class="opt opt--static">Completamente cubierto 100%</li><li class="opt opt--static">Cobertura variable</li><li class="opt opt--static">Cobertura parcheada</li><li class="opt opt--static">Cobertura en capas</li><li class="opt opt--static">Cobertura concentrada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nubes-movimiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Movimiento de nubes<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Estáticas inmóviles</li><li class="opt opt--static">Movimiento muy lento</li><li class="opt opt--static">Movimiento lento</li><li class="opt opt--static">Movimiento moderado</li><li class="opt opt--static">Movimiento rápido</li><li class="opt opt--static">Movimiento muy rápido</li><li class="opt opt--static">Movimiento turbulento</li><li class="opt opt--static">Movimiento ondulante</li><li class="opt opt--static">Movimiento remolino</li><li class="opt opt--static">Movimiento fluido</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-precipitacion-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de precipitación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna</li><li class="opt opt--static">Llovizna</li><li class="opt opt--static">Lluvia</li><li class="opt opt--static">Nieve</li><li class="opt opt--static">Aguanieve</li><li class="opt opt--static">Granizo</li><li class="opt opt--static">Lluvia de fuego</li><li class="opt opt--static">Lluvia de polvo</li><li class="opt opt--static">Lluvia de arena</li><li class="opt opt--static">Lluvia de piedra</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-precipitacion-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño de precipitación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Micro partículas</li><li class="opt opt--static">Muy pequeño</li><li class="opt opt--static">Pequeño</li><li class="opt opt--static">Mediano</li><li class="opt opt--static">Grande</li><li class="opt opt--static">Muy grande</li><li class="opt opt--static">Gigante</li><li class="opt opt--static">Enorme</li><li class="opt opt--static">Variable tamaño</li><li class="opt opt--static">Tamaño inconsistente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-precipitacion-velocidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Velocidad de precipitación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Casi estática</li><li class="opt opt--static">Muy lenta</li><li class="opt opt--static">Lenta</li><li class="opt opt--static">Moderada</li><li class="opt opt--static">Rápida</li><li class="opt opt--static">Muy rápida</li><li class="opt opt--static">Extremadamente rápida</li><li class="opt opt--static">Supersónica</li><li class="opt opt--static">Velocidad variable</li><li class="opt opt--static">Velocidad pulsante</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-precipitacion-densidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Densidad de precipitación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna</li><li class="opt opt--static">Muy leve</li><li class="opt opt--static">Leve</li><li class="opt opt--static">Moderada</li><li class="opt opt--static">Pesada</li><li class="opt opt--static">Muy pesada</li><li class="opt opt--static">Extremadamente pesada</li><li class="opt opt--static">Opaca</li><li class="opt opt--static">Casi sólida</li><li class="opt opt--static">Densidad variable</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sonido-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sonido del clima<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Silencio total</li><li class="opt opt--static">Sonido muy suave</li><li class="opt opt--static">Sonido suave</li><li class="opt opt--static">Sonido moderado</li><li class="opt opt--static">Sonido fuerte</li><li class="opt opt--static">Sonido muy fuerte</li><li class="opt opt--static">Ensordecedor</li><li class="opt opt--static">Susurro viento</li><li class="opt opt--static">Silbido viento</li><li class="opt opt--static">Rugido viento</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-luz-ambiente">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Luz ambiente general<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Brillante luz solar</li><li class="opt opt--static">Luz diurna clara</li><li class="opt opt--static">Luz diurna nublada</li><li class="opt opt--static">Luz crepuscular</li><li class="opt opt--static">Penumbra oscuridad</li><li class="opt opt--static">Oscuridad casi total</li><li class="opt opt--static">Oscuridad completa</li><li class="opt opt--static">Luz lunar</li><li class="opt opt--static">Luz de estrellas</li><li class="opt opt--static">Luz aurora boreal</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-luz-dramatica">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Luz dramática/efectos<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efecto dramático</li><li class="opt opt--static">Contraluz</li><li class="opt opt--static">Luz lateral</li><li class="opt opt--static">Luz frontal</li><li class="opt opt--static">Luz cenital</li><li class="opt opt--static">Luz rasante</li><li class="opt opt--static">Sombras alargadas</li><li class="opt opt--static">Sombras cortantes</li><li class="opt opt--static">Sombras suaves</li><li class="opt opt--static">Alto contraste</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-especial-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto especial climático<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efecto especial</li><li class="opt opt--static">Efecto de arco iris</li><li class="opt opt--static">Efecto de halo</li><li class="opt opt--static">Efecto de gloria de Brocken</li><li class="opt opt--static">Efecto de rayo verde</li><li class="opt opt--static">Efecto de corona</li><li class="opt opt--static">Efecto de parhelio</li><li class="opt opt--static">Efecto de luz zodiacal</li><li class="opt opt--static">Efecto de crepúsculo</li><li class="opt opt--static">Efecto de mirage</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-aura-energia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Aura/energía climática<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin aura visible</li><li class="opt opt--static">Aura débil</li><li class="opt opt--static">Aura moderada</li><li class="opt opt--static">Aura fuerte</li><li class="opt opt--static">Aura radiante</li><li class="opt opt--static">Aura de poder</li><li class="opt opt--static">Aura de energía eléctrica</li><li class="opt opt--static">Aura de fuego</li><li class="opt opt--static">Aura de hielo</li><li class="opt opt--static">Aura de luz</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-animacion-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Animación/movimiento<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente estático</li><li class="opt opt--static">Movimiento muy suave</li><li class="opt opt--static">Movimiento suave</li><li class="opt opt--static">Movimiento moderado</li><li class="opt opt--static">Movimiento activo</li><li class="opt opt--static">Movimiento muy activo</li><li class="opt opt--static">Movimiento caótico</li><li class="opt opt--static">Pulsación</li><li class="opt opt--static">Oscilación</li><li class="opt opt--static">Rotación</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-duracion-evento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Duración del evento climático<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Instantáneo</li><li class="opt opt--static">Muy breve segundos</li><li class="opt opt--static">Breve minutos</li><li class="opt opt--static">Corta duración horas</li><li class="opt opt--static">Media duración medio día</li><li class="opt opt--static">Larga duración día</li><li class="opt opt--static">Muy larga duración días</li><li class="opt opt--static">Duración semanas</li><li class="opt opt--static">Duración meses</li><li class="opt opt--static">Duración estación completa</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cambio-temporal">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cambio temporal del clima<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin cambio estable</li><li class="opt opt--static">Cambio muy lento</li><li class="opt opt--static">Cambio lento</li><li class="opt opt--static">Cambio gradual</li><li class="opt opt--static">Cambio moderado</li><li class="opt opt--static">Cambio rápido</li><li class="opt opt--static">Cambio abrupto</li><li class="opt opt--static">Cambios extremos</li><li class="opt opt--static">Mejora</li><li class="opt opt--static">Empeoramiento</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-composicion-visual">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Composición visual<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Composición simple</li><li class="opt opt--static">Composición equilibrada</li><li class="opt opt--static">Composición asimétrica</li><li class="opt opt--static">Composición vertical</li><li class="opt opt--static">Composición horizontal</li><li class="opt opt--static">Composición diagonal</li><li class="opt opt--static">Composición circular</li><li class="opt opt--static">Composición radial</li><li class="opt opt--static">Composición de capas</li><li class="opt opt--static">Composición en profundidad</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-atmosfera-emocional">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Atmósfera emocional<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Serena pacífica</li><li class="opt opt--static">Tranquila calmada</li><li class="opt opt--static">Neutral normal</li><li class="opt opt--static">Tensa incómoda</li><li class="opt opt--static">Dramática intensa</li><li class="opt opt--static">Ominosa amenazante</li><li class="opt opt--static">Aterradora aterradora</li><li class="opt opt--static">Misterio encubierto</li><li class="opt opt--static">Mágica fantástica</li><li class="opt opt--static">Onírica surrealista</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +220,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

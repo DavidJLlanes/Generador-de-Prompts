@@ -11,7 +11,7 @@ export default {
     {
       "id": "tipo-clima",
       "title": "Tipo de clima general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"clear-sunny","es":"Despejado soleado","en":"clear sunny"},
         {"id":"partly-cloudy","es":"Parcialmente nublado","en":"partly cloudy"},
@@ -38,7 +38,7 @@ export default {
     {
       "id": "tipo-lluvia",
       "title": "Tipo de lluvia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-rain","es":"Sin lluvia","en":"no rain"},
         {"id":"drizzle","es":"Llovizna","en":"drizzle"},
@@ -65,7 +65,7 @@ export default {
     {
       "id": "tipo-nieve",
       "title": "Tipo de nieve",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-snow","es":"Sin nieve","en":"no snow"},
         {"id":"light-flakes","es":"Copos ligeros","en":"light flakes"},
@@ -92,7 +92,7 @@ export default {
     {
       "id": "tipo-tormenta",
       "title": "Tipo de tormenta",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-storm","es":"Sin tormenta","en":"no storm"},
         {"id":"mild-thunderstorm","es":"Tormenta eléctrica leve","en":"mild thunderstorm"},
@@ -119,7 +119,7 @@ export default {
     {
       "id": "tipo-niebla",
       "title": "Tipo de niebla",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-fog","es":"Sin niebla","en":"no fog"},
         {"id":"light-fog","es":"Niebla ligera","en":"light fog"},
@@ -146,7 +146,7 @@ export default {
     {
       "id": "tipo-tornado",
       "title": "Tipo de tornado/vórtice",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-tornado","es":"Sin tornado","en":"no tornado"},
         {"id":"weak-tornado","es":"Tornado débil","en":"weak tornado"},
@@ -173,7 +173,7 @@ export default {
     {
       "id": "intensidad-general",
       "title": "Intensidad general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"none","es":"Ninguna","en":"none"},
         {"id":"very-mild","es":"Muy leve","en":"very mild"},
@@ -200,7 +200,7 @@ export default {
     {
       "id": "visibilidad",
       "title": "Visibilidad/rango visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfect-clarity","es":"Perfecta claridad","en":"perfect clarity"},
         {"id":"very-good-visibility","es":"Muy buena visión","en":"very good visibility"},
@@ -227,7 +227,7 @@ export default {
     {
       "id": "temperatura",
       "title": "Temperatura",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"extremely-cold","es":"Extremadamente fría","en":"extremely cold"},
         {"id":"very-cold","es":"Muy fría","en":"very cold"},
@@ -254,7 +254,7 @@ export default {
     {
       "id": "humedad",
       "title": "Humedad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"very-dry","es":"Muy seca","en":"very dry"},
         {"id":"dry","es":"Seca","en":"dry"},
@@ -281,7 +281,7 @@ export default {
     {
       "id": "efecto-rayo",
       "title": "Efecto relámpago",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-lightning","es":"Sin relámpagos","en":"no lightning"},
         {"id":"occasional-lightning","es":"Relámpagos ocasionales","en":"occasional lightning"},
@@ -308,7 +308,7 @@ export default {
     {
       "id": "efecto-granizo",
       "title": "Efecto granizo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-hail","es":"Sin granizo","en":"no hail"},
         {"id":"small-hail","es":"Granizo pequeño","en":"small hail"},
@@ -335,7 +335,7 @@ export default {
     {
       "id": "efecto-arcoiris",
       "title": "Efecto arcoíris",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-rainbow","es":"Sin arcoíris","en":"no rainbow"},
         {"id":"faint-rainbow","es":"Arcoíris débil","en":"faint rainbow"},
@@ -362,7 +362,7 @@ export default {
     {
       "id": "efecto-neblina",
       "title": "Efecto neblina especial",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-effect","es":"Sin efecto especial","en":"no special effect"},
         {"id":"undulating-mist","es":"Neblina ondulante","en":"undulating mist"},
@@ -389,7 +389,7 @@ export default {
     {
       "id": "cielo-tipo",
       "title": "Tipo de cielo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"clear-blue-sky","es":"Despejado azul claro","en":"clear blue sky"},
         {"id":"pale-sky","es":"Cielo pálido","en":"pale sky"},
@@ -416,7 +416,7 @@ export default {
     {
       "id": "cielo-color",
       "title": "Color de cielo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"light-blue","es":"Azul claro","en":"light blue"},
         {"id":"pure-blue","es":"Azul puro","en":"pure blue"},
@@ -443,7 +443,7 @@ export default {
     {
       "id": "nubes-tipo",
       "title": "Tipo de nubes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-clouds","es":"Sin nubes","en":"no clouds"},
         {"id":"cumulus-clouds","es":"Nubes cumulus","en":"cumulus clouds"},
@@ -470,7 +470,7 @@ export default {
     {
       "id": "nubes-cobertura",
       "title": "Cobertura de nubes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"clear-sky-0","es":"Cielo despejado 0%","en":"clear sky 0%"},
         {"id":"almost-clear-10","es":"Casi despejado 10%","en":"almost clear 10%"},
@@ -497,7 +497,7 @@ export default {
     {
       "id": "nubes-movimiento",
       "title": "Movimiento de nubes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"static-stationary","es":"Estáticas inmóviles","en":"static stationary"},
         {"id":"very-slow-movement","es":"Movimiento muy lento","en":"very slow movement"},
@@ -524,7 +524,7 @@ export default {
     {
       "id": "precipitacion-tipo",
       "title": "Tipo de precipitación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"none","es":"Ninguna","en":"none"},
         {"id":"drizzle","es":"Llovizna","en":"drizzle"},
@@ -551,7 +551,7 @@ export default {
     {
       "id": "precipitacion-tamano",
       "title": "Tamaño de precipitación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"micro-particles","es":"Micro partículas","en":"micro particles"},
         {"id":"very-small","es":"Muy pequeño","en":"very small"},
@@ -578,7 +578,7 @@ export default {
     {
       "id": "precipitacion-velocidad",
       "title": "Velocidad de precipitación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"almost-static","es":"Casi estática","en":"almost static"},
         {"id":"very-slow","es":"Muy lenta","en":"very slow"},
@@ -605,7 +605,7 @@ export default {
     {
       "id": "precipitacion-densidad",
       "title": "Densidad de precipitación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"none","es":"Ninguna","en":"none"},
         {"id":"very-light","es":"Muy leve","en":"very light"},
@@ -632,7 +632,7 @@ export default {
     {
       "id": "sonido-clima",
       "title": "Sonido del clima",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"complete-silence","es":"Silencio total","en":"complete silence"},
         {"id":"very-soft-sound","es":"Sonido muy suave","en":"very soft sound"},
@@ -659,7 +659,7 @@ export default {
     {
       "id": "luz-ambiente",
       "title": "Luz ambiente general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"bright-sunlight","es":"Brillante luz solar","en":"bright sunlight"},
         {"id":"clear-daylight","es":"Luz diurna clara","en":"clear daylight"},
@@ -686,7 +686,7 @@ export default {
     {
       "id": "luz-dramatica",
       "title": "Luz dramática/efectos",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-dramatic-effect","es":"Sin efecto dramático","en":"no dramatic effect"},
         {"id":"backlit","es":"Contraluz","en":"backlit"},
@@ -713,7 +713,7 @@ export default {
     {
       "id": "efecto-especial-clima",
       "title": "Efecto especial climático",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-effect","es":"Sin efecto especial","en":"no special effect"},
         {"id":"rainbow-effect","es":"Efecto de arco iris","en":"rainbow effect"},
@@ -740,7 +740,7 @@ export default {
     {
       "id": "aura-energia",
       "title": "Aura/energía climática",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-visible-aura","es":"Sin aura visible","en":"no visible aura"},
         {"id":"weak-aura","es":"Aura débil","en":"weak aura"},
@@ -767,7 +767,7 @@ export default {
     {
       "id": "animacion-clima",
       "title": "Animación/movimiento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-static","es":"Completamente estático","en":"completely static"},
         {"id":"very-smooth-movement","es":"Movimiento muy suave","en":"very smooth movement"},
@@ -794,7 +794,7 @@ export default {
     {
       "id": "duracion-evento",
       "title": "Duración del evento climático",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"instantaneous","es":"Instantáneo","en":"instantaneous"},
         {"id":"very-brief-seconds","es":"Muy breve segundos","en":"very brief seconds"},
@@ -821,7 +821,7 @@ export default {
     {
       "id": "cambio-temporal",
       "title": "Cambio temporal del clima",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-change-stable","es":"Sin cambio estable","en":"no change stable"},
         {"id":"very-slow-change","es":"Cambio muy lento","en":"very slow change"},
@@ -848,7 +848,7 @@ export default {
     {
       "id": "composicion-visual",
       "title": "Composición visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"simple-composition","es":"Composición simple","en":"simple composition"},
         {"id":"balanced-composition","es":"Composición equilibrada","en":"balanced composition"},
@@ -875,7 +875,7 @@ export default {
     {
       "id": "atmosfera-emocional",
       "title": "Atmósfera emocional",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"serene-peaceful","es":"Serena pacífica","en":"serene peaceful"},
         {"id":"calm-tranquil","es":"Tranquila calmada","en":"calm tranquil"},

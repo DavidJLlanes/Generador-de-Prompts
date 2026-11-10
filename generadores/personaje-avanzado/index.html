@@ -6,7 +6,7 @@
 <title>Personaje avanzado · épocas y culturas · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/personaje-avanzado/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Personaje avanzado · épocas y culturas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/personaje-avanzado/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/personaje-avanzado.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Personaje avanzado · épocas y culturas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/personaje-avanzado.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,7 +55,7 @@
   <p class="domain-hero__intro">Un generador de personajes femeninos adultos (de 18 a 80 años) con épocas, culturas y moda: elige una década para vestirla con su estilo, parte de una receta o ajusta cada rasgo, cada tejido y cada color.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Galería de 11 ideas</button>
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 11 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
     <span class="domain-hero__facts">79 secciones · 1.654 opciones</span>
@@ -69,7 +74,249 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-era">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Época / Década<span class="opt-section__count">13</span></h2><p class="opt-section__note">Al elegir una década, el modo «Detallado» describe el pelo, el maquillaje, la ropa, el calzado, los accesorios y el aspecto fotográfico típicos de esa época.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Años 1900</li><li class="opt opt--static">Años 1910</li><li class="opt opt--static">Años 1920</li><li class="opt opt--static">Años 1930</li><li class="opt opt--static">Años 1940</li><li class="opt opt--static">Años 1950</li><li class="opt opt--static">Años 1960</li><li class="opt opt--static">Años 1970</li><li class="opt opt--static">Años 1980</li><li class="opt opt--static">Años 1990</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-identity-age">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Identidad y Origen · Edad<span class="opt-section__count">63</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">18 años</li><li class="opt opt--static">19 años</li><li class="opt opt--static">20 años</li><li class="opt opt--static">21 años</li><li class="opt opt--static">22 años</li><li class="opt opt--static">23 años</li><li class="opt opt--static">24 años</li><li class="opt opt--static">25 años</li><li class="opt opt--static">26 años</li><li class="opt opt--static">27 años</li><li class="opt opt--static opt--more">y 53 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-identity-heritage">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Identidad y Origen · Origen / Región<span class="opt-section__count">179</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">aborigen australiana</li><li class="opt opt--static">afgana</li><li class="opt opt--static">rasgos afroamericanos</li><li class="opt opt--static">afrolatina</li><li class="opt opt--static">argelina</li><li class="opt opt--static">amazigh (bereber)</li><li class="opt opt--static">angoleña</li><li class="opt opt--static">argentina</li><li class="opt opt--static">armenia</li><li class="opt opt--static">austriaca</li><li class="opt opt--static opt--more">y 169 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-identity-height">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Identidad y Origen · Estatura / Contextura<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">menuda</li><li class="opt opt--static">baja y compacta</li><li class="opt opt--static">esbelta y menuda</li><li class="opt opt--static">estatura media</li><li class="opt opt--static">alta</li><li class="opt opt--static">alta y esbelta</li><li class="opt opt--static">escultural</li><li class="opt opt--static">imponente y muy alta</li><li class="opt opt--static">de piernas largas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-identity-build">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Identidad y Origen · Complexión / Tipo de cuerpo<span class="opt-section__count">33</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">delgada</li><li class="opt opt--static">fina</li><li class="opt opt--static">atlética</li><li class="opt opt--static">en forma</li><li class="opt opt--static">tonificada</li><li class="opt opt--static">musculosa</li><li class="opt opt--static">curvilínea</li><li class="opt opt--static">voluminosa</li><li class="opt opt--static">figura de reloj de arena clásica</li><li class="opt opt--static">con forma de pera</li><li class="opt opt--static opt--more">y 23 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-waist">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Cintura<span class="opt-section__count">5</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">cintura estrecha</li><li class="opt opt--static">cintura marcada</li><li class="opt opt--static">cintura suave</li><li class="opt opt--static">cintura media</li><li class="opt opt--static">torso largo</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-hips">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Caderas<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">caderas estrechas</li><li class="opt opt--static">caderas medias</li><li class="opt opt--static">caderas curvas</li><li class="opt opt--static">caderas anchas</li><li class="opt opt--static">curvas generosas</li><li class="opt opt--static">caderas atléticas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-muscle-tone">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Tono muscular<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">suave y sin entrenar</li><li class="opt opt--static">suavemente tonificada</li><li class="opt opt--static">definición atlética</li><li class="opt opt--static">músculo de bailarina</li><li class="opt opt--static">esculpida</li><li class="opt opt--static">magrez de fisicoculturismo</li><li class="opt opt--static">tonificada de yoga</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-posture">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Postura<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">postura erguida y segura</li><li class="opt opt--static">postura relajada</li><li class="opt opt--static">postura elegante y airosa</li><li class="opt opt--static">postura casual</li><li class="opt opt--static">porte gracioso</li><li class="opt opt--static">postura atlética en tensión</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-skin-tone">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Tono de piel<span class="opt-section__count">32</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">piel clara de porcelana</li><li class="opt opt--static">piel clara con matices rosados</li><li class="opt opt--static">piel clara</li><li class="opt opt--static">piel aceitunada clara</li><li class="opt opt--static">piel aceitunada</li><li class="opt opt--static">piel bronceada cálida</li><li class="opt opt--static">piel dorada besada por el sol</li><li class="opt opt--static">piel color miel</li><li class="opt opt--static">piel caramelo</li><li class="opt opt--static">piel morena</li><li class="opt opt--static opt--more">y 22 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-skin-finish">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Acabado de piel<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">piel suave impecable</li><li class="opt opt--static">piel luminosa hidratada</li><li class="opt opt--static">piel mate aterciopelada</li><li class="opt opt--static">piel con pecas</li><li class="opt opt--static">piel con pecas del sol</li><li class="opt opt--static">piel natural con textura</li><li class="opt opt--static">piel suave como porcelana</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-body-body-marks">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cuerpo · Marcas en el cuerpo<span class="opt-section__count">13</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">pecas dispersas</li><li class="opt opt--static">lunar sobre el labio</li><li class="opt opt--static">lunar en la mejilla</li><li class="opt opt--static">tatuaje delicado en la clavícula</li><li class="opt opt--static">tatuaje floral en el hombro</li><li class="opt opt--static">tatuaje en toda la manga</li><li class="opt opt--static">pequeño tatuaje en la muñeca</li><li class="opt opt--static">cicatriz descolorida</li><li class="opt opt--static">cicatriz quirúrgica</li><li class="opt opt--static">marca de nacimiento</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-face-shape">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Forma del rostro<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">rostro ovalado</li><li class="opt opt--static">rostro redondo</li><li class="opt opt--static">rostro en forma de corazón</li><li class="opt opt--static">rostro de mandíbula cuadrada</li><li class="opt opt--static">rostro en forma de diamante</li><li class="opt opt--static">rostro alargado</li><li class="opt opt--static">rostro triangular</li><li class="opt opt--static">rasgos faciales delicados y refinados</li><li class="opt opt--static">rostro de pómulos altos</li><li class="opt opt--static">rasgos angulosos y marcados</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-eye-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Color de ojos<span class="opt-section__count">33</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">marrón oscuro</li><li class="opt opt--static">marrón cálido</li><li class="opt opt--static">avellana</li><li class="opt opt--static">ámbar</li><li class="opt opt--static">color miel</li><li class="opt opt--static">verde</li><li class="opt opt--static">verde esmeralda</li><li class="opt opt--static">azul profundo</li><li class="opt opt--static">azul acero</li><li class="opt opt--static">azul hielo</li><li class="opt opt--static opt--more">y 23 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-eye-shape">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Forma de los ojos<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">almendrados</li><li class="opt opt--static">grandes de cervatillo</li><li class="opt opt--static">elevados estilo gato</li><li class="opt opt--static">con párpado caído</li><li class="opt opt--static">monólidos</li><li class="opt opt--static">encapotados</li><li class="opt opt--static">redondos</li><li class="opt opt--static">hundidos</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-eyelashes">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Pestañas<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">pestañas largas naturales</li><li class="opt opt--static">pestañas voluminosas</li><li class="opt opt--static">pestañas sutiles</li><li class="opt opt--static">pestañas rizadas</li><li class="opt opt--static">pestañas postizas dramáticas</li><li class="opt opt--static">pestañas apenas perceptibles</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-eyebrows">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Cejas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">cejas naturales suaves</li><li class="opt opt--static">cejas oscuras marcadas</li><li class="opt opt--static">cejas arqueadas</li><li class="opt opt--static">cejas rectas</li><li class="opt opt--static">cejas en plumilla</li><li class="opt opt--static">cejas finas y elegantes</li><li class="opt opt--static">cejas gruesas y arregladas</li><li class="opt opt--static">cejas naturales peinadas hacia arriba</li><li class="opt opt--static">cejas gruesas y marcadas</li><li class="opt opt--static">cejas finas y definidas</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-nose">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Nariz<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">nariz recta y delgada</li><li class="opt opt--static">naricilla respingona</li><li class="opt opt--static">nariz aquilina definida</li><li class="opt opt--static">nariz ancha</li><li class="opt opt--static">nariz vuelta hacia arriba</li><li class="opt opt--static">nariz estrecha y delicada</li><li class="opt opt--static">nariz escultórica y orgullosa</li><li class="opt opt--static">nariz recta</li><li class="opt opt--static">nariz pequeña respingona</li><li class="opt opt--static">naricilla de botón</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-lips">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Labios<span class="opt-section__count">18</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">labios carnosos</li><li class="opt opt--static">labios rosados naturales</li><li class="opt opt--static">labios en forma de corazón</li><li class="opt opt--static">labios anchos y expresivos</li><li class="opt opt--static">labios finos y elegantes</li><li class="opt opt--static">labios con arco de cupido</li><li class="opt opt--static">labios suaves y generosos</li><li class="opt opt--static">labios naturales y suaves</li><li class="opt opt--static">labios finos y elegantes</li><li class="opt opt--static">labios con arco de cupido definido</li><li class="opt opt--static opt--more">y 8 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-cheeks">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Mejillas<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">pómulos altos y esculturales</li><li class="opt opt--static">mejillas suaves y redondas</li><li class="opt opt--static">mejillas con hoyuelos</li><li class="opt opt--static">mejillas hundidas y definidas</li><li class="opt opt--static">mejillas rosadas</li><li class="opt opt--static">mejillas juveniles y llenas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-jaw-chin">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Mandíbula y mentón<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">mandíbula definida y afilada</li><li class="opt opt--static">mandíbula suave y redondeada</li><li class="opt opt--static">mentón puntiagudo</li><li class="opt opt--static">mentón con hoyuelo</li><li class="opt opt--static">mandíbula cuadrada y fuerte</li><li class="opt opt--static">mentón delicado</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-face-expression">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rostro · Expresión en reposo<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">sonrisa cálida</li><li class="opt opt--static">expresión suave y serena</li><li class="opt opt--static">media sonrisa cómplice</li><li class="opt opt--static">gran sonrisa alegre</li><li class="opt opt--static">sonrisa de labios cerrados</li><li class="opt opt--static">mirada pensativa</li><li class="opt opt--static">mirada fiera y segura</li><li class="opt opt--static">expresión amable y divertida</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hair-length">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabello · Largo<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">rapado</li><li class="opt opt--static">corte pixie</li><li class="opt opt--static">a la altura del mentón</li><li class="opt opt--static">hasta los hombros</li><li class="opt opt--static">hasta media espalda</li><li class="opt opt--static">largo</li><li class="opt opt--static">muy largo</li><li class="opt opt--static">a la cintura</li><li class="opt opt--static">hasta el suelo</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hair-texture">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabello · Textura<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">lacio perfecto</li><li class="opt opt--static">liso natural</li><li class="opt opt--static">ondas suaves</li><li class="opt opt--static">ondas sueltas</li><li class="opt opt--static">ondas playeras</li><li class="opt opt--static">rizos rebeldes</li><li class="opt opt--static">rizos apretados</li><li class="opt opt--static">rizos muy apretados</li><li class="opt opt--static">afro rizado</li><li class="opt opt--static">textura afro</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hair-style">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabello · Peinado<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">suelto</li><li class="opt opt--static">en una coleta alta</li><li class="opt opt--static">en una coleta baja</li><li class="opt opt--static">en un moño pulcro</li><li class="opt opt--static">en un moño desordenado</li><li class="opt opt--static">estilo medio recogido</li><li class="opt opt--static">en una trenza lateral</li><li class="opt opt--static">en trenzas largas separadas</li><li class="opt opt--static">en trenzas pegadas al cuero cabelludo</li><li class="opt opt--static">en dos trenzas</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hair-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabello · Color<span class="opt-section__count">29</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">negro azulado</li><li class="opt opt--static">negro</li><li class="opt opt--static">marrón oscuro</li><li class="opt opt--static">castaño</li><li class="opt opt--static">marrón cálido</li><li class="opt opt--static">marrón claro</li><li class="opt opt--static">rubio miel</li><li class="opt opt--static">caramelo</li><li class="opt opt--static">castaño rojizo</li><li class="opt opt--static">rojo cobrizo</li><li class="opt opt--static opt--more">y 19 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hair-state">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cabello · Estado<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">arreglado con esmero</li><li class="opt opt--static">despeinado</li><li class="opt opt--static">desordenado sin esfuerzo</li><li class="opt opt--static">agitado por el viento</li><li class="opt opt--static">con aspecto húmedo</li><li class="opt opt--static">hacia atrás con gel</li><li class="opt opt--static">voluminoso</li><li class="opt opt--static">brillante y pulcro</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-level">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Nivel de maquillaje<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">cara lavada y natural</li><li class="opt opt--static">maquillaje mínimo de diario</li><li class="opt opt--static">glam suave</li><li class="opt opt--static">glam total</li><li class="opt opt--static">maquillaje editorial audaz</li><li class="opt opt--static">maquillaje de pasarela dramático</li><li class="opt opt--static">sin maquillaje</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-foundation">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Acabado de base<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">base luminosa hidratada</li><li class="opt opt--static">base mate impecable</li><li class="opt opt--static">acabado natural de piel</li><li class="opt opt--static">base radiante luminosa</li><li class="opt opt--static">base ligera apenas perceptible</li><li class="opt opt--static">acabado de piel de porcelana</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-eye-makeup">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Maquillaje de ojos<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ojo ahumado</li><li class="opt opt--static">delineado alado marcado</li><li class="opt opt--static">bronce neutro y suave</li><li class="opt opt--static">párpados dorados brillantes</li><li class="opt opt--static">eyeliner gráfico</li><li class="opt opt--static">párpados con purpurina</li><li class="opt opt--static">párpados desnudos con máscara</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-lip-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Color de labios<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">labio nude</li><li class="opt opt--static">labio rosa suave</li><li class="opt opt--static">labio brilloso</li><li class="opt opt--static">labio rojo intenso</li><li class="opt opt--static">labio baya profundo</li><li class="opt opt--static">labio ciruela</li><li class="opt opt--static">labio coral</li><li class="opt opt--static">labio malva mate</li><li class="opt opt--static">labio degradado</li><li class="opt opt--static">labio natural</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-blush">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Rubor / Contorno<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">rubor durazno suave</li><li class="opt opt--static">rubor sonrosado</li><li class="opt opt--static">calor soleado</li><li class="opt opt--static">contorno esculpido</li><li class="opt opt--static">rubor extendido</li><li class="opt opt--static">sin rubor</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-makeup-nails">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maquillaje y Arreglo · Uñas<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">uñas cortas naturales</li><li class="opt opt--static">uñas largas en almendra</li><li class="opt opt--static">uñas estilo stiletto</li><li class="opt opt--static">uñas cuadradas con francesas</li><li class="opt opt--static">uñas rojas brillantes</li><li class="opt opt--static">esmalte nude</li><li class="opt opt--static">esmalte negro</li><li class="opt opt--static">uñas cromadas</li><li class="opt opt--static">uñas con purpurina</li><li class="opt opt--static">nail art intrincado</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-type">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Prenda<span class="opt-section__count">36</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">camiseta</li><li class="opt opt--static">top corto</li><li class="opt opt--static">camiseta de tirantes</li><li class="opt opt--static">camisola</li><li class="opt opt--static">blusa</li><li class="opt opt--static">camisa con botones</li><li class="opt opt--static">cuello alto</li><li class="opt opt--static">jersey</li><li class="opt opt--static">top de hombros descubiertos</li><li class="opt opt--static">top halter</li><li class="opt opt--static opt--more">y 26 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-neckline">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Escote<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">cuello redondo</li><li class="opt opt--static">cuello en V</li><li class="opt opt--static">escote redondo amplio</li><li class="opt opt--static">escote corazón</li><li class="opt opt--static">escote pronunciado</li><li class="opt opt--static">cuello alto</li><li class="opt opt--static">escote cuadrado</li><li class="opt opt--static">escote asimétrico</li><li class="opt opt--static">escote barco</li><li class="opt opt--static">cuello halter</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-sleeves">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Mangas<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">sin mangas</li><li class="opt opt--static">manga corta</li><li class="opt opt--static">mangas casquillo</li><li class="opt opt--static">manga tres cuartos</li><li class="opt opt--static">manga larga</li><li class="opt opt--static">mangas acampanadas</li><li class="opt opt--static">mangas abullonadas</li><li class="opt opt--static">mangas enrolladas</li><li class="opt opt--static">mangas de volante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-fit">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Ajuste<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ajustado al cuerpo</li><li class="opt opt--static">corte entallado</li><li class="opt opt--static">suelto y fluido</li><li class="opt opt--static">oversize</li><li class="opt opt--static">corto</li><li class="opt opt--static">a medida</li><li class="opt opt--static">ajustado al cuerpo</li><li class="opt opt--static">relajado</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-fabric">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Tela<span class="opt-section__count">21</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">algodón</li><li class="opt opt--static">seda</li><li class="opt opt--static">satén</li><li class="opt opt--static">lino</li><li class="opt opt--static">encaje</li><li class="opt opt--static">gasa</li><li class="opt opt--static">terciopelo</li><li class="opt opt--static">punto</li><li class="opt opt--static">lana</li><li class="opt opt--static">cuero</li><li class="opt opt--static opt--more">y 11 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-pattern">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Estampado<span class="opt-section__count">13</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">liso</li><li class="opt opt--static">de rayas</li><li class="opt opt--static">floral</li><li class="opt opt--static">de lunares</li><li class="opt opt--static">de cuadros</li><li class="opt opt--static">estampado animal</li><li class="opt opt--static">estampado de leopardo</li><li class="opt opt--static">estampado de serpiente</li><li class="opt opt--static">geométrico</li><li class="opt opt--static">bloques de color</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-top-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ropa — Parte superior · Color<span class="opt-section__count">68</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">blanco</li><li class="opt opt--static">crema</li><li class="opt opt--static">marfil</li><li class="opt opt--static">beige</li><li class="opt opt--static">blanco roto</li><li class="opt opt--static">negro</li><li class="opt opt--static">gris carbón</li><li class="opt opt--static">gris</li><li class="opt opt--static">plateado</li><li class="opt opt--static">azul marino</li><li class="opt opt--static opt--more">y 58 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-type">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Prenda<span class="opt-section__count">21</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">vestido</li><li class="opt opt--static">vestido de gala</li><li class="opt opt--static">falda</li><li class="opt opt--static">minifalda</li><li class="opt opt--static">falda midi</li><li class="opt opt--static">falda maxi</li><li class="opt opt--static">vaqueros</li><li class="opt opt--static">vaqueros pitillo</li><li class="opt opt--static">pantalón de pierna ancha</li><li class="opt opt--static">pantalón de vestir</li><li class="opt opt--static opt--more">y 11 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-length">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Largo<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">micro-mini</li><li class="opt opt--static">mini</li><li class="opt opt--static">sobre la rodilla</li><li class="opt opt--static">hasta la rodilla</li><li class="opt opt--static">midi</li><li class="opt opt--static">hasta media pantorrilla</li><li class="opt opt--static">maxi</li><li class="opt opt--static">hasta el suelo</li><li class="opt opt--static">hasta el tobillo</li><li class="opt opt--static">corto</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-fit">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Ajuste<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ajustado</li><li class="opt opt--static">entallado</li><li class="opt opt--static">recto</li><li class="opt opt--static">relajado</li><li class="opt opt--static">holgado</li><li class="opt opt--static">línea A</li><li class="opt opt--static">plisado</li><li class="opt opt--static">acampanado</li><li class="opt opt--static">bodycon</li><li class="opt opt--static">cintura alta</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-fabric">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Tela<span class="opt-section__count">21</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">algodón</li><li class="opt opt--static">seda</li><li class="opt opt--static">satén</li><li class="opt opt--static">lino</li><li class="opt opt--static">encaje</li><li class="opt opt--static">gasa</li><li class="opt opt--static">terciopelo</li><li class="opt opt--static">punto</li><li class="opt opt--static">lana</li><li class="opt opt--static">cuero</li><li class="opt opt--static opt--more">y 11 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-pattern">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Estampado<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">liso</li><li class="opt opt--static">de rayas</li><li class="opt opt--static">floral</li><li class="opt opt--static">de lunares</li><li class="opt opt--static">de cuadros</li><li class="opt opt--static">estampado animal</li><li class="opt opt--static">geométrico</li><li class="opt opt--static">bloques de color</li><li class="opt opt--static">bordado</li><li class="opt opt--static">textura plisada</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-bottom-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parte inferior / Vestido · Color<span class="opt-section__count">68</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">blanco</li><li class="opt opt--static">crema</li><li class="opt opt--static">marfil</li><li class="opt opt--static">beige</li><li class="opt opt--static">blanco roto</li><li class="opt opt--static">negro</li><li class="opt opt--static">gris carbón</li><li class="opt opt--static">gris</li><li class="opt opt--static">plateado</li><li class="opt opt--static">azul marino</li><li class="opt opt--static opt--more">y 58 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-outerwear-type">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Abrigos y Capas · Prenda<span class="opt-section__count">23</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ninguno</li><li class="opt opt--static">chaqueta de mezclilla</li><li class="opt opt--static">chaqueta de cuero</li><li class="opt opt--static">chaqueta de motera</li><li class="opt opt--static">chaqueta bomber</li><li class="opt opt--static">americana / chaqueta de traje</li><li class="opt opt--static">americana / chaqueta de traje oversize</li><li class="opt opt--static">gabardina</li><li class="opt opt--static">abrigo de lana</li><li class="opt opt--static">abrigo de paño</li><li class="opt opt--static opt--more">y 13 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-outerwear-length">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Abrigos y Capas · Largo<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">corto</li><li class="opt opt--static">a la cintura</li><li class="opt opt--static">a la cadera</li><li class="opt opt--static">a medio muslo</li><li class="opt opt--static">hasta la rodilla</li><li class="opt opt--static">largo</li><li class="opt opt--static">hasta el suelo</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-outerwear-fabric">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Abrigos y Capas · Tela<span class="opt-section__count">21</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">algodón</li><li class="opt opt--static">seda</li><li class="opt opt--static">satén</li><li class="opt opt--static">lino</li><li class="opt opt--static">encaje</li><li class="opt opt--static">gasa</li><li class="opt opt--static">terciopelo</li><li class="opt opt--static">punto</li><li class="opt opt--static">lana</li><li class="opt opt--static">cuero</li><li class="opt opt--static opt--more">y 11 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-outerwear-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Abrigos y Capas · Color<span class="opt-section__count">68</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">blanco</li><li class="opt opt--static">crema</li><li class="opt opt--static">marfil</li><li class="opt opt--static">beige</li><li class="opt opt--static">blanco roto</li><li class="opt opt--static">negro</li><li class="opt opt--static">gris carbón</li><li class="opt opt--static">gris</li><li class="opt opt--static">plateado</li><li class="opt opt--static">azul marino</li><li class="opt opt--static opt--more">y 58 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-footwear-type">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Calzado · Tipo<span class="opt-section__count">22</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">descalza</li><li class="opt opt--static">stilettos</li><li class="opt opt--static">tacones altos</li><li class="opt opt--static">zapatos de salón</li><li class="opt opt--static">tacones gruesos</li><li class="opt opt--static">plataformas</li><li class="opt opt--static">botas hasta la rodilla</li><li class="opt opt--static">botas hasta el muslo</li><li class="opt opt--static">botines</li><li class="opt opt--static">botas militares</li><li class="opt opt--static opt--more">y 12 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-footwear-heel-height">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Calzado · Altura del tacón<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">plano</li><li class="opt opt--static">tacón bajo</li><li class="opt opt--static">tacón medio</li><li class="opt opt--static">tacón alto</li><li class="opt opt--static">tacón altísimo</li><li class="opt opt--static">tacón grueso</li><li class="opt opt--static">tacón ancho</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-footwear-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Calzado · Color<span class="opt-section__count">68</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">blanco</li><li class="opt opt--static">crema</li><li class="opt opt--static">marfil</li><li class="opt opt--static">beige</li><li class="opt opt--static">blanco roto</li><li class="opt opt--static">negro</li><li class="opt opt--static">gris carbón</li><li class="opt opt--static">gris</li><li class="opt opt--static">plateado</li><li class="opt opt--static">azul marino</li><li class="opt opt--static opt--more">y 58 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accessories-jewelry">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios · Joyería<span class="opt-section__count">19</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">collar delicado</li><li class="opt opt--static">collar llamativo</li><li class="opt opt--static">collares en capas</li><li class="opt opt--static">gargantilla</li><li class="opt opt--static">aretes de aro</li><li class="opt opt--static">aretes de tachuela</li><li class="opt opt--static">pendientes de araña</li><li class="opt opt--static">aretes colgantes</li><li class="opt opt--static">anillos apilados</li><li class="opt opt--static">anillo llamativo único</li><li class="opt opt--static opt--more">y 9 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accessories-eyewear">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios · Anteojos<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ninguno</li><li class="opt opt--static">gafas redondas</li><li class="opt opt--static">gafas cuadradas</li><li class="opt opt--static">anteojos estilo ojo de gato</li><li class="opt opt--static">gafas de aviador</li><li class="opt opt--static">gafas wayfarer</li><li class="opt opt--static">gafas oversize</li><li class="opt opt--static">gafas con espejado</li><li class="opt opt--static">gafas de lectura</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accessories-headwear">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios · Sombrero / Tocado<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ninguno</li><li class="opt opt--static">gorra de béisbol</li><li class="opt opt--static">gorro de lana</li><li class="opt opt--static">sombrero de pescador</li><li class="opt opt--static">sombrero de ala ancha</li><li class="opt opt--static">sombrero fedora</li><li class="opt opt--static">boina</li><li class="opt opt--static">tocado</li><li class="opt opt--static">corona de flores</li><li class="opt opt--static">banda para el cabello</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accessories-bag">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios · Bolso<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">ninguno</li><li class="opt opt--static">bolso estructurado</li><li class="opt opt--static">bolso tote</li><li class="opt opt--static">bolso cruzado</li><li class="opt opt--static">bolso de mano (cartera de mano)</li><li class="opt opt--static">bolso mini</li><li class="opt opt--static">mochila</li><li class="opt opt--static">bolso de hombro</li><li class="opt opt--static">cartera</li><li class="opt opt--static">bolso mensajero</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accessories-extras">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios · Extras<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">bufanda de seda</li><li class="opt opt--static">cinturón de cuero</li><li class="opt opt--static">cinturón llamativo</li><li class="opt opt--static">reloj de pulsera</li><li class="opt opt--static">guantes largos</li><li class="opt opt--static">guantes sin dedos</li><li class="opt opt--static">paraguas</li><li class="opt opt--static">abanico</li><li class="opt opt--static">gafas de sol sobre la cabeza</li><li class="opt opt--static">auriculares en el cuello</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pose-body-pose">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pose y Expresión · Pose del cuerpo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">de pie y erguida</li><li class="opt opt--static">de pie en contrapposto</li><li class="opt opt--static">sentada con las piernas cruzadas</li><li class="opt opt--static">sentada en una silla</li><li class="opt opt--static">encaramada en un taburete</li><li class="opt opt--static">apoyada contra una pared</li><li class="opt opt--static">apoyada en una baranda</li><li class="opt opt--static">caminando a medio paso</li><li class="opt opt--static">reclinada con gracia</li><li class="opt opt--static">arrodillada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pose-hand-placement">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pose y Expresión · Manos<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">a los lados</li><li class="opt opt--static">una mano en la cadera</li><li class="opt opt--static">ambas manos en las caderas</li><li class="opt opt--static">brazos cruzados</li><li class="opt opt--static">manos en los bolsillos</li><li class="opt opt--static">una mano tocándose el rostro</li><li class="opt opt--static">dedos en el cabello</li><li class="opt opt--static">sosteniendo un objeto</li><li class="opt opt--static">ajustándose la ropa</li><li class="opt opt--static">apoyadas en una superficie</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<p class="notice">Y 19 secciones más, disponibles al cargar el generador.</p>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +329,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

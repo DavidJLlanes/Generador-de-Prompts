@@ -6,7 +6,7 @@
 <title>Tatuajes · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para diseños de tatuajes únicos con IA. Controla estilo, tamaño, motivo y detalle.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/tatuajes/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Tatuajes · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para diseños de tatuajes únicos con IA. Controla estilo, tamaño, motivo y detalle.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/tatuajes/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/tatuajes.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tatuajes · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/tatuajes.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,168 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-marca">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de marca/tatuaje<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Tatuaje permanente</li><li class="opt opt--static">Tatuaje temporal</li><li class="opt opt--static">Marca de nacimiento</li><li class="opt opt--static">Cicatriz tatuada</li><li class="opt opt--static">Marca de fuego</li><li class="opt opt--static">Marca de tinta</li><li class="opt opt--static">Marca mágica</li><li class="opt opt--static">Marca sagrada</li><li class="opt opt--static">Marca profana</li><li class="opt opt--static">Marca de esclavitud</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo-tribal">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo tribal<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Tribal polinésio</li><li class="opt opt--static">Tribal maorí</li><li class="opt opt--static">Tribal hawaiano</li><li class="opt opt--static">Tribal africano</li><li class="opt opt--static">Tribal azteca</li><li class="opt opt--static">Tribal maya</li><li class="opt opt--static">Tribal indígena americano</li><li class="opt opt--static">Tribal nativo australiano</li><li class="opt opt--static">Tribal africano bantú</li><li class="opt opt--static">Tribal aymara</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo-japones">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo japonés<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Tatuaje Yakuza</li><li class="opt opt--static">Tatuaje Irezumi</li><li class="opt opt--static">Tatuaje Ukiyo-e</li><li class="opt opt--static">Tatuaje de dragón</li><li class="opt opt--static">Tatuaje de carpa</li><li class="opt opt--static">Tatuaje de peonía</li><li class="opt opt--static">Tatuaje de cerezo</li><li class="opt opt--static">Tatuaje de bambú</li><li class="opt opt--static">Tatuaje de onda</li><li class="opt opt--static">Tatuaje de montaña Fuji</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo-celta">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo celta<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nudo celta</li><li class="opt opt--static">Patrón entrelazado</li><li class="opt opt--static">Espiral celta</li><li class="opt opt--static">Cruz celta</li><li class="opt opt--static">Triskelion</li><li class="opt opt--static">Triskele</li><li class="opt opt--static">Salteador celta</li><li class="opt opt--static">Cadena de nudos</li><li class="opt opt--static">Dragón celta</li><li class="opt opt--static">Borde de patrón</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo-moderno">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo moderno<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Minimalista línea fina</li><li class="opt opt--static">Geométrico abstracto</li><li class="opt opt--static">Acuarela</li><li class="opt opt--static">Sketch desenfoque</li><li class="opt opt--static">Puntillismo dotwork</li><li class="opt opt--static">Realismo fotográfico</li><li class="opt opt--static">Lucha libre</li><li class="opt opt--static">Surrealista</li><li class="opt opt--static">Pop art</li><li class="opt opt--static">Cubista</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo-magico">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo mágico<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Runas antiguas</li><li class="opt opt--static">Símbolos de poder</li><li class="opt opt--static">Círculo mágico</li><li class="opt opt--static">Pentágrama</li><li class="opt opt--static">Hexagrama</li><li class="opt opt--static">Símbolo alquímico</li><li class="opt opt--static">Glifo cabalístico</li><li class="opt opt--static">Sigilo demoníaco</li><li class="opt opt--static">Marca angélica</li><li class="opt opt--static">Símbolo elemental</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion-cabeza">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación - cabeza/cara<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Frente centro</li><li class="opt opt--static">Frente lateral</li><li class="opt opt--static">Entre cejas</li><li class="opt opt--static">Ceja derecha</li><li class="opt opt--static">Ceja izquierda</li><li class="opt opt--static">Párpado superior</li><li class="opt opt--static">Párpado inferior</li><li class="opt opt--static">Mejilla derecha</li><li class="opt opt--static">Mejilla izquierda</li><li class="opt opt--static">Sien derecha</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion-torso">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación - torso<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pecho centro</li><li class="opt opt--static">Pecho derecho</li><li class="opt opt--static">Pecho izquierdo</li><li class="opt opt--static">Sobre corazón</li><li class="opt opt--static">Costillas derecho</li><li class="opt opt--static">Costillas izquierdo</li><li class="opt opt--static">Costillas completo</li><li class="opt opt--static">Abdomen centro</li><li class="opt opt--static">Bajo ombligo</li><li class="opt opt--static">Espalda alta</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion-brazos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación - brazos<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bíceps derecho</li><li class="opt opt--static">Bíceps izquierdo</li><li class="opt opt--static">Tríceps derecho</li><li class="opt opt--static">Tríceps izquierdo</li><li class="opt opt--static">Antebrazo derecho</li><li class="opt opt--static">Antebrazo izquierdo</li><li class="opt opt--static">Muñeca derecha</li><li class="opt opt--static">Muñeca izquierda</li><li class="opt opt--static">Palma derecha</li><li class="opt opt--static">Palma izquierda</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion-piernas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación - piernas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muslo derecho</li><li class="opt opt--static">Muslo izquierdo</li><li class="opt opt--static">Rodilla derecha</li><li class="opt opt--static">Rodilla izquierda</li><li class="opt opt--static">Pantorrilla derecha</li><li class="opt opt--static">Pantorrilla izquierda</li><li class="opt opt--static">Espinilla derecha</li><li class="opt opt--static">Espinilla izquierda</li><li class="opt opt--static">Tobillo derecho</li><li class="opt opt--static">Tobillo izquierdo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion-cuello">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación - cuello<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cuello frente</li><li class="opt opt--static">Cuello atrás</li><li class="opt opt--static">Cuello lado derecho</li><li class="opt opt--static">Cuello lado izquierdo</li><li class="opt opt--static">Cuello completo</li><li class="opt opt--static">Bajo mandíbula</li><li class="opt opt--static">Manzana de Adán</li><li class="opt opt--static">Esternocleidomastoideo</li><li class="opt opt--static">Nuca</li><li class="opt opt--static">Línea del cuello</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño del tatuaje<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Diminuto milímetros</li><li class="opt opt--static">Muy pequeño centímetro</li><li class="opt opt--static">Pequeño 5 centímetros</li><li class="opt opt--static">Pequeño medio 10 centímetros</li><li class="opt opt--static">Mediano 15 centímetros</li><li class="opt opt--static">Mediano grande 20 centímetros</li><li class="opt opt--static">Grande 30 centímetros</li><li class="opt opt--static">Muy grande 50 centímetros</li><li class="opt opt--static">Extra grande 80 centímetros</li><li class="opt opt--static">Monumental 1 metro</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-forma-contorno">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Forma/contorno<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Círculo perfecto</li><li class="opt opt--static">Óvalo suave</li><li class="opt opt--static">Rectángulo angular</li><li class="opt opt--static">Cuadrado</li><li class="opt opt--static">Triángulo</li><li class="opt opt--static">Diamante</li><li class="opt opt--static">Estrella</li><li class="opt opt--static">Corazón</li><li class="opt opt--static">Luna creciente</li><li class="opt opt--static">Espiral</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-primario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color primario<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Negro profundo</li><li class="opt opt--static">Negro puro</li><li class="opt opt--static">Gris oscuro</li><li class="opt opt--static">Gris medio</li><li class="opt opt--static">Gris claro</li><li class="opt opt--static">Rojo profundo</li><li class="opt opt--static">Rojo brillante</li><li class="opt opt--static">Naranja oscuro</li><li class="opt opt--static">Naranja brillante</li><li class="opt opt--static">Amarillo dorado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-secundario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color secundario<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin color secundario</li><li class="opt opt--static">Negro con detalles</li><li class="opt opt--static">Rojo con negro</li><li class="opt opt--static">Azul con negro</li><li class="opt opt--static">Verde con negro</li><li class="opt opt--static">Naranja con rojo</li><li class="opt opt--static">Púrpura con azul</li><li class="opt opt--static">Multicolor</li><li class="opt opt--static">Arcoíris</li><li class="opt opt--static">Degradado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-simbolo-primario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Símbolo primario<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Dragón mitológico</li><li class="opt opt--static">Fénix fuego</li><li class="opt opt--static">Serpiente enroscada</li><li class="opt opt--static">Águila majestuosa</li><li class="opt opt--static">Tigre feroz</li><li class="opt opt--static">León poderoso</li><li class="opt opt--static">Lobo salvaje</li><li class="opt opt--static">Ciervo noble</li><li class="opt opt--static">Oso imponente</li><li class="opt opt--static">Espada cruzada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tema-categoria">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tema/categoría<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mitología</li><li class="opt opt--static">Naturaleza fauna</li><li class="opt opt--static">Naturaleza flora</li><li class="opt opt--static">Celestial cósmico</li><li class="opt opt--static">Elementos</li><li class="opt opt--static">Geometría sagrada</li><li class="opt opt--static">Símbolos religiosos</li><li class="opt opt--static">Símbolos demoníacos</li><li class="opt opt--static">Muerte oscuro</li><li class="opt opt--static">Amor romance</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-significado">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Significado/interpretación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin significado particular</li><li class="opt opt--static">Protección personal</li><li class="opt opt--static">Bendición divina</li><li class="opt opt--static">Maldición ancestral</li><li class="opt opt--static">Marca de linaje</li><li class="opt opt--static">Rito de iniciación</li><li class="opt opt--static">Promesa amor</li><li class="opt opt--static">Juramento honor</li><li class="opt opt--static">Pacto oscuro</li><li class="opt opt--static">Convención alianza</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-complejidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Complejidad de diseño<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ultra simple</li><li class="opt opt--static">Muy simple</li><li class="opt opt--static">Simple</li><li class="opt opt--static">Moderadamente simple</li><li class="opt opt--static">Intermedio</li><li class="opt opt--static">Moderadamente complejo</li><li class="opt opt--static">Complejo</li><li class="opt opt--static">Muy complejo</li><li class="opt opt--static">Extremadamente complejo</li><li class="opt opt--static">Imposiblemente complejo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-lineas-estilo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Líneas - estilo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Línea fina delicada</li><li class="opt opt--static">Línea media</li><li class="opt opt--static">Línea gruesa audaz</li><li class="opt opt--static">Línea variable</li><li class="opt opt--static">Línea suave redondeada</li><li class="opt opt--static">Línea afilada angular</li><li class="opt opt--static">Línea temblorosa inestable</li><li class="opt opt--static">Línea perfecta precisa</li><li class="opt opt--static">Línea punteada</li><li class="opt opt--static">Línea discontinua</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sombreado">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sombreado/profundidad<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin sombreado</li><li class="opt opt--static">Sombreado muy suave</li><li class="opt opt--static">Sombreado suave</li><li class="opt opt--static">Sombreado moderado</li><li class="opt opt--static">Sombreado intenso</li><li class="opt opt--static">Sombreado extremo</li><li class="opt opt--static">Sombreado puntillista</li><li class="opt opt--static">Sombreado rayado</li><li class="opt opt--static">Sombreado de línea</li><li class="opt opt--static">Sombreado de degradado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-detalle-nivel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel de detalle<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ultra minimalista</li><li class="opt opt--static">Minimalista</li><li class="opt opt--static">Poco detalle</li><li class="opt opt--static">Detalle moderado</li><li class="opt opt--static">Muy detallado</li><li class="opt opt--static">Hiperrealista</li><li class="opt opt--static">Detalles fotográficos</li><li class="opt opt--static">Detalles sutiles</li><li class="opt opt--static">Detalles prominentes</li><li class="opt opt--static">Detalles abrumadores</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-textura-visual">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Textura visual<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Textura lisa</li><li class="opt opt--static">Textura puntillista</li><li class="opt opt--static">Textura granulada</li><li class="opt opt--static">Textura de rayas</li><li class="opt opt--static">Textura de líneas</li><li class="opt opt--static">Textura de escamas</li><li class="opt opt--static">Textura de trama</li><li class="opt opt--static">Textura de malla</li><li class="opt opt--static">Textura cristalina</li><li class="opt opt--static">Textura de fuego</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-brillo-resplandor">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Brillo/resplandor<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin brillo mate</li><li class="opt opt--static">Brillo muy suave</li><li class="opt opt--static">Brillo suave</li><li class="opt opt--static">Brillo moderado</li><li class="opt opt--static">Brillo intenso</li><li class="opt opt--static">Brillo cegador</li><li class="opt opt--static">Lustre perlado</li><li class="opt opt--static">Lustre metálico</li><li class="opt opt--static">Brillo iridiscente</li><li class="opt opt--static">Brillo fosforescente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efecto-visual">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efecto visual especial<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efecto especial</li><li class="opt opt--static">Efecto de movimiento</li><li class="opt opt--static">Efecto de profundidad</li><li class="opt opt--static">Efecto 3D relieve</li><li class="opt opt--static">Efecto de sombra</li><li class="opt opt--static">Efecto de luz</li><li class="opt opt--static">Efecto de llama</li><li class="opt opt--static">Efecto de humo</li><li class="opt opt--static">Efecto de agua</li><li class="opt opt--static">Efecto de viento</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-animacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Animación/movimiento<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin movimiento estático</li><li class="opt opt--static">Animación suave leve</li><li class="opt opt--static">Animación moderada</li><li class="opt opt--static">Animación vibrante activa</li><li class="opt opt--static">Animación extrema</li><li class="opt opt--static">Que brilla y oscurece</li><li class="opt opt--static">Que titila</li><li class="opt opt--static">Que ondula</li><li class="opt opt--static">Que se enrolla</li><li class="opt opt--static">Que fluye</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-maldicion-bendicion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Maldición/bendición<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Neutral sin magia</li><li class="opt opt--static">Bendición suave</li><li class="opt opt--static">Bendición moderada</li><li class="opt opt--static">Bendición potente</li><li class="opt opt--static">Bendición abrumadora</li><li class="opt opt--static">Bendición de protección</li><li class="opt opt--static">Bendición de poder</li><li class="opt opt--static">Bendición de amor</li><li class="opt opt--static">Bendición de suerte</li><li class="opt opt--static">Maldición leve</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-origen-historia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Origen/historia<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Origen desconocido</li><li class="opt opt--static">Antiguo ancestral</li><li class="opt opt--static">Hereditario familiar</li><li class="opt opt--static">Tributo cultural</li><li class="opt opt--static">Ritual sagrado</li><li class="opt opt--static">Ceremonia iniciación</li><li class="opt opt--static">Pacto acuerdo</li><li class="opt opt--static">Promesa personal</li><li class="opt opt--static">Memoria conmemorativa</li><li class="opt opt--static">Recuerdo de amor</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cultura-tradicion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cultura/tradición<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cultura polinésio</li><li class="opt opt--static">Cultura maorí</li><li class="opt opt--static">Cultura japonesa</li><li class="opt opt--static">Cultura celta</li><li class="opt opt--static">Cultura nórdica</li><li class="opt opt--static">Cultura africana</li><li class="opt opt--static">Cultura nativa americana</li><li class="opt opt--static">Cultura hindú</li><li class="opt opt--static">Cultura china</li><li class="opt opt--static">Cultura árabe</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-localizacion-especifica">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Localización específica<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Centro exacto</li><li class="opt opt--static">Lado derecho</li><li class="opt opt--static">Lado izquierdo</li><li class="opt opt--static">Línea central simetría</li><li class="opt opt--static">Diagonal</li><li class="opt opt--static">Espiral centrípeta</li><li class="opt opt--static">Espiral centrífuga</li><li class="opt opt--static">Bordeando articulación</li><li class="opt opt--static">Atravesando línea</li><li class="opt opt--static">Envolviendo circularmente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-numero-elementos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Número de elementos<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Un solo elemento</li><li class="opt opt--static">Dos elementos pares</li><li class="opt opt--static">Tres elementos</li><li class="opt opt--static">Cuatro elementos</li><li class="opt opt--static">Cinco elementos</li><li class="opt opt--static">Seis a ocho elementos</li><li class="opt opt--static">Nueve a doce elementos</li><li class="opt opt--static">Trece elementos</li><li class="opt opt--static">Muchos elementos abundantes</li><li class="opt opt--static">Incontables elementos</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-densidad-cobertura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Densidad/cobertura<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Minimalista muy poco</li><li class="opt opt--static">Poco cubierto</li><li class="opt opt--static">Moderadamente cubierto</li><li class="opt opt--static">Bien cubierto</li><li class="opt opt--static">Muy cubierto denso</li><li class="opt opt--static">Completamente cubierto</li><li class="opt opt--static">Sobradamente cubierto</li><li class="opt opt--static">Cubierto delicadamente</li><li class="opt opt--static">Cubierto agresivamente</li><li class="opt opt--static">Cubierta con espacios</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-duracion-permanencia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Duración/permanencia<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Temporal horas</li><li class="opt opt--static">Temporal días</li><li class="opt opt--static">Temporal semanas</li><li class="opt opt--static">Temporal meses</li><li class="opt opt--static">Semi-permanente años</li><li class="opt opt--static">Permanente toda la vida</li><li class="opt opt--static">Más allá de la vida</li><li class="opt opt--static">Hereditario generaciones</li><li class="opt opt--static">Eterno infinito</li><li class="opt opt--static">Que desaparece lentamente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-interaccion-cuerpo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Interacción con el cuerpo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente estático</li><li class="opt opt--static">Vibra con pulso</li><li class="opt opt--static">Cambia con temperatura</li><li class="opt opt--static">Cambia con humor</li><li class="opt opt--static">Cambia con magia</li><li class="opt opt--static">Se ilumina emoción</li><li class="opt opt--static">Se oscurece oscuridad</li><li class="opt opt--static">Quema cuando miente</li><li class="opt opt--static">Duele cuando cura</li><li class="opt opt--static">Se mueve independiente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-visibilidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Visibilidad/opacidad<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente visible</li><li class="opt opt--static">Muy visible notorio</li><li class="opt opt--static">Visible pero sutil</li><li class="opt opt--static">Apenas visible</li><li class="opt opt--static">Completamente invisible</li><li class="opt opt--static">Invisible normal luz</li><li class="opt opt--static">Invisible bajo UV</li><li class="opt opt--static">Invisible bajo IR</li><li class="opt opt--static">Visible solo de cerca</li><li class="opt opt--static">Visible bajo cierto ángulo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-reaccion-emociones">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Reacción a emociones<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin reacción emocional</li><li class="opt opt--static">Brilla con alegría</li><li class="opt opt--static">Se oscurece con tristeza</li><li class="opt opt--static">Arde con ira</li><li class="opt opt--static">Congelante con miedo</li><li class="opt opt--static">Se enrojece vergüenza</li><li class="opt opt--static">Tiembla con pasión</li><li class="opt opt--static">Pulsa con amor</li><li class="opt opt--static">Duele con odio</li><li class="opt opt--static">Sanador con compasión</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-poder-especial">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Poder especial otorgado<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin poder especial</li><li class="opt opt--static">Otorga protección</li><li class="opt opt--static">Otorga fuerza</li><li class="opt opt--static">Otorga velocidad</li><li class="opt opt--static">Otorga resistencia</li><li class="opt opt--static">Otorga curación</li><li class="opt opt--static">Otorga regeneración</li><li class="opt opt--static">Otorga invisibilidad</li><li class="opt opt--static">Otorga detección</li><li class="opt opt--static">Otorga telepátía</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cambio-tiempo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cambio con el tiempo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin cambio permanente</li><li class="opt opt--static">Cambia lentamente</li><li class="opt opt--static">Cambia gradualmente</li><li class="opt opt--static">Cambia rápidamente</li><li class="opt opt--static">Se oscurece con años</li><li class="opt opt--static">Se aclara con años</li><li class="opt opt--static">Se desvanece lentamente</li><li class="opt opt--static">Se intensifica</li><li class="opt opt--static">Se decolora</li><li class="opt opt--static">Se regenera</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-reaccion-luz">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Reacción a luz<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin reacción luz</li><li class="opt opt--static">Brilla bajo luz solar</li><li class="opt opt--static">Se oscurece bajo luz solar</li><li class="opt opt--static">Brilla bajo luna llena</li><li class="opt opt--static">Brilla bajo eclipse</li><li class="opt opt--static">Brilla bajo luz artificial</li><li class="opt opt--static">Brilla bajo fuego</li><li class="opt opt--static">Brilla bajo electricidad</li><li class="opt opt--static">Brilla bajo magia</li><li class="opt opt--static">Invisible bajo luz solar</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-composicion-final">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Composición final<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Composición simple</li><li class="opt opt--static">Composición equilibrada</li><li class="opt opt--static">Composición asimétrica</li><li class="opt opt--static">Composición radial</li><li class="opt opt--static">Composición lineal</li><li class="opt opt--static">Composición caótica</li><li class="opt opt--static">Composición ordenada</li><li class="opt opt--static">Composición fractal</li><li class="opt opt--static">Composición concéntrica</li><li class="opt opt--static">Composición dispersa</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +248,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

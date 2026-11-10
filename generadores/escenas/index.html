@@ -6,7 +6,7 @@
 <title>Escenas · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para escenas cinematográficas con IA. Controla ambiente, iluminación, personajes y acción.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/escenas/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Escenas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para escenas cinematográficas con IA. Controla ambiente, iluminación, personajes y acción.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/escenas/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/escenas.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Escenas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/escenas.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,144 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de escena<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Batalla épica</li><li class="opt opt--static">Duelo uno contra uno</li><li class="opt opt--static">Encuentro romántico</li><li class="opt opt--static">Beso apasionado</li><li class="opt opt--static">Sexo apasionado</li><li class="opt opt--static">Conversación profunda</li><li class="opt opt--static">Revelación chocante</li><li class="opt opt--static">Confrontación emocional</li><li class="opt opt--static">Escena de duelo verbal</li><li class="opt opt--static">Persecución acción</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-genero">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Género narrativo<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Acción y aventura</li><li class="opt opt--static">Drama emocional</li><li class="opt opt--static">Romance épico</li><li class="opt opt--static">Horror sobrenatural</li><li class="opt opt--static">Suspenso psicológico</li><li class="opt opt--static">Comedia ligera</li><li class="opt opt--static">Comedia oscura</li><li class="opt opt--static">Crimen criminal</li><li class="opt opt--static">Ciencia ficción</li><li class="opt opt--static">Fantasía épica</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-conflicto">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Conflicto principal<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Lucha física brutal</li><li class="opt opt--static">Conflicto moral</li><li class="opt opt--static">Batalla emocional</li><li class="opt opt--static">Contra fuerza maligna</li><li class="opt opt--static">Contra naturaleza</li><li class="opt opt--static">Contra sistema opresivo</li><li class="opt opt--static">Conflicto interno</li><li class="opt opt--static">Rivalidad competencia</li><li class="opt opt--static">Lucha por supervivencia</li><li class="opt opt--static">Búsqueda perdida</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-personajes-qty">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Número de personajes<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Totalmente solitario</li><li class="opt opt--static">Uno versus medio ambiente</li><li class="opt opt--static">Pareja dueto</li><li class="opt opt--static">Trío triángulo</li><li class="opt opt--static">Grupo pequeño</li><li class="opt opt--static">Grupo mediano</li><li class="opt opt--static">Multitud dispersa</li><li class="opt opt--static">Ejército batalla</li><li class="opt opt--static">Masas ciudad</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-protagonista">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rol del protagonista<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Héroe noble</li><li class="opt opt--static">Antiheroe moralmente gris</li><li class="opt opt--static">Villano carismatico</li><li class="opt opt--static">Víctima inocente</li><li class="opt opt--static">Rebelde revolucionario</li><li class="opt opt--static">Sobreviviente traumatizado</li><li class="opt opt--static">Traidor secreto</li><li class="opt opt--static">Mentor sabio</li><li class="opt opt--static">Aprendiz inseguro</li><li class="opt opt--static">Conspirador amorfo</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-dinamica">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Dinámica de relación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Enemigos mortales</li><li class="opt opt--static">Rivales competidores</li><li class="opt opt--static">Amantes prohibidos</li><li class="opt opt--static">Pareja estable</li><li class="opt opt--static">Amigos de toda la vida</li><li class="opt opt--static">Compañeros de aventura</li><li class="opt opt--static">Familia disfuncional</li><li class="opt opt--static">Mentor y alumno</li><li class="opt opt--static">Amos y siervos</li><li class="opt opt--static">Extraños encontrados</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-emocion-primaria">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Emoción primaria<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Miedo abismal</li><li class="opt opt--static">Amor incondicional</li><li class="opt opt--static">Ira ardiente</li><li class="opt opt--static">Alegría exuberante</li><li class="opt opt--static">Tristeza desgarradora</li><li class="opt opt--static">Sorpresa impactante</li><li class="opt opt--static">Disgusto visceral</li><li class="opt opt--static">Esperanza frágil</li><li class="opt opt--static">Desesperación absoluta</li><li class="opt opt--static">Culpa atormentadora</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-emociones-sec">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Emociones secundarias<span class="opt-section__count">16</span></h2><p class="opt-section__note">Selecciona hasta 3 emociones adicionales</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ansiedad</li><li class="opt opt--static">Frustración</li><li class="opt opt--static">Alivio</li><li class="opt opt--static">Dolor físico</li><li class="opt opt--static">Placer sensorial</li><li class="opt opt--static">Incredulidad</li><li class="opt opt--static">Determinación</li><li class="opt opt--static">Sumisión</li><li class="opt opt--static">Defensa</li><li class="opt opt--static">Resignación</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-momento-narrativo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Momento narrativo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Encuentro inicial</li><li class="opt opt--static">Punto de no retorno</li><li class="opt opt--static">Clímax del conflicto</li><li class="opt opt--static">Giro revelador</li><li class="opt opt--static">Reconciliación inesperada</li><li class="opt opt--static">Despedida final</li><li class="opt opt--static">Confeso emocional</li><li class="opt opt--static">Alianza forjada</li><li class="opt opt--static">Enemistad nacida</li><li class="opt opt--static">Muerte línea final</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hora-dia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Hora del día<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Amanecer rosado</li><li class="opt opt--static">Mañana temprana</li><li class="opt opt--static">Mediodía brutal</li><li class="opt opt--static">Tarde con sombras</li><li class="opt opt--static">Atardecer dorado</li><li class="opt opt--static">Anochecer crepuscular</li><li class="opt opt--static">Noche estrellada</li><li class="opt opt--static">Medianoche profunda</li><li class="opt opt--static">Madrugada oscura</li><li class="opt opt--static">Hora mágica oro</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Clima y condiciones<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Despejado cristalino</li><li class="opt opt--static">Nublado dramático</li><li class="opt opt--static">Lluvia torrencial</li><li class="opt opt--static">Lluvia suave fina</li><li class="opt opt--static">Nieve abundante</li><li class="opt opt--static">Tormenta eléctrica</li><li class="opt opt--static">Niebla sofocante</li><li class="opt opt--static">Viento violento</li><li class="opt opt--static">Calor abrasador</li><li class="opt opt--static">Frío glacial</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ubicacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ubicación general<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Castillo medieval</li><li class="opt opt--static">Palacio opulento</li><li class="opt opt--static">Cabaña rústica</li><li class="opt opt--static">Ciudad oscura</li><li class="opt opt--static">Metrópolis futurista</li><li class="opt opt--static">Bosque antiguo</li><li class="opt opt--static">Desierto árido</li><li class="opt opt--static">Montaña pico</li><li class="opt opt--static">Acantilado costero</li><li class="opt opt--static">Playa paradisíaca</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-detalles-ubicacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Detalles de la ubicación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Entrada monumental</li><li class="opt opt--static">Salón columnado</li><li class="opt opt--static">Escalera dramática</li><li class="opt opt--static">Ventanas altas</li><li class="opt opt--static">Suelo de mármol</li><li class="opt opt--static">Paredes de piedra</li><li class="opt opt--static">Iluminación tétrica</li><li class="opt opt--static">Decoración opulenta</li><li class="opt opt--static">Desnudez vacía</li><li class="opt opt--static">Caos destructivo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-giro-sorpresa">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Elemento de sorpresa<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin sorpresa</li><li class="opt opt--static">Llegada inesperada</li><li class="opt opt--static">Revelación chocante</li><li class="opt opt--static">Traición repentina</li><li class="opt opt--static">Aparición sobrenatural</li><li class="opt opt--static">Giro de poder</li><li class="opt opt--static">Información oculta</li><li class="opt opt--static">Aliado convertido enemigo</li><li class="opt opt--static">Identidad oculta</li><li class="opt opt--static">Enemigo convertido aliado</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-peligro-nivel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel de peligro<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente seguro</li><li class="opt opt--static">Levemente arriesgado</li><li class="opt opt--static">Moderadamente peligroso</li><li class="opt opt--static">Muy peligroso</li><li class="opt opt--static">Mortalmente crítico</li><li class="opt opt--static">Apocalipticamente catastrófico</li><li class="opt opt--static">Sobrevivencia improbable</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-escala-narrativa">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Escala de la escena<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Íntima personal</li><li class="opt opt--static">Familiar doméstica</li><li class="opt opt--static">Comunitaria local</li><li class="opt opt--static">Regional territorial</li><li class="opt opt--static">Nacional política</li><li class="opt opt--static">Continental épica</li><li class="opt opt--static">Global mundial</li><li class="opt opt--static">Planetaria</li><li class="opt opt--static">Cósmica universal</li><li class="opt opt--static">Multidimensional</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-movimiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Movimiento y dinamismo<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Totalmente estático</li><li class="opt opt--static">Lentitud meditativa</li><li class="opt opt--static">Ritmo calmo</li><li class="opt opt--static">Movimiento moderado</li><li class="opt opt--static">Dinamismo acelerado</li><li class="opt opt--static">Velocidad extrema</li><li class="opt opt--static">Caos puro frenético</li><li class="opt opt--static">Movimiento orbital</li><li class="opt opt--static">Movimiento flotante</li><li class="opt opt--static">Movimiento contrastante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ritmo-narrativo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ritmo narrativo<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pausa contemplativa</li><li class="opt opt--static">Respiración lenta</li><li class="opt opt--static">Ritmo andante</li><li class="opt opt--static">Tempo moderato</li><li class="opt opt--static">Accelerando creciente</li><li class="opt opt--static">Presto acelerado</li><li class="opt opt--static">Fortissimo explosivo</li><li class="opt opt--static">Syncopación irregular</li><li class="opt opt--static">Pulso hipnótico</li><li class="opt opt--static">Ritmo quebrado</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tono-emocional">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tono emocional general<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Solemne reverente</li><li class="opt opt--static">Ligero juguetón</li><li class="opt opt--static">Dramático intenso</li><li class="opt opt--static">Trágico desgarrador</li><li class="opt opt--static">Cómico absurdo</li><li class="opt opt--static">Misterioso enigmático</li><li class="opt opt--static">Aterrador inquietante</li><li class="opt opt--static">Romántico apasionado</li><li class="opt opt--static">Filosófico reflexivo</li><li class="opt opt--static">Esperanzador inspirador</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ilum-atmosferica">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Iluminación atmosférica<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Luz blanca natural</li><li class="opt opt--static">Luz dorada cálida</li><li class="opt opt--static">Luz azul fría</li><li class="opt opt--static">Luz roja dramática</li><li class="opt opt--static">Luz púrpura mística</li><li class="opt opt--static">Luz verde enferma</li><li class="opt opt--static">Luz blanca brillante</li><li class="opt opt--static">Penumbra oscura</li><li class="opt opt--static">Contraluz dramático</li><li class="opt opt--static">Luz de fuego</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ruido">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sonido ambiental<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Silencio absoluto</li><li class="opt opt--static">Silencio casi total</li><li class="opt opt--static">Susurros débiles</li><li class="opt opt--static">Respiración audible</li><li class="opt opt--static">Latido cardíaco</li><li class="opt opt--static">Música ambiental</li><li class="opt opt--static">Sonidos de naturaleza</li><li class="opt opt--static">Ruido de ciudad</li><li class="opt opt--static">Maquinaria industrial</li><li class="opt opt--static">Grito y caos</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sensacion-tactica">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sensación táctil dominante<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Suave terciopelo</li><li class="opt opt--static">Áspero quebradizo</li><li class="opt opt--static">Cálido abrazo</li><li class="opt opt--static">Frío glacial</li><li class="opt opt--static">Húmedo pegajoso</li><li class="opt opt--static">Seco polvoriento</li><li class="opt opt--static">Suave sedoso</li><li class="opt opt--static">Erizado espinoso</li><li class="opt opt--static">Líquido fluido</li><li class="opt opt--static">Viscoso gelatinoso</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-acciones">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Acciones clave del personaje<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Caminata decidida</li><li class="opt opt--static">Correr frenético</li><li class="opt opt--static">Salto acrobático</li><li class="opt opt--static">Caída descontrolada</li><li class="opt opt--static">Lucha feroz</li><li class="opt opt--static">Ataque sorpresivo</li><li class="opt opt--static">Defensa desesperada</li><li class="opt opt--static">Abrazo reconfortante</li><li class="opt opt--static">Beso intenso</li><li class="opt opt--static">Grito liberador</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-objetos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Objetos significativos<span class="opt-section__count">20</span></h2><p class="opt-section__note">Selecciona los objetos presentes</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Espada reliquias</li><li class="opt opt--static">Anillo poderoso</li><li class="opt opt--static">Gema brillante</li><li class="opt opt--static">Llave antigua</li><li class="opt opt--static">Carta misteriosa</li><li class="opt opt--static">Fotografía nostálgica</li><li class="opt opt--static">Vial de veneno</li><li class="opt opt--static">Cáliz sagrado</li><li class="opt opt--static">Libro hechizado</li><li class="opt opt--static">Corona de oro</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-magia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Presencia mágica<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente mundano</li><li class="opt opt--static">Levemente sobrenatural</li><li class="opt opt--static">Magia presente</li><li class="opt opt--static">Magia abundante</li><li class="opt opt--static">Magia descontrolada</li><li class="opt opt--static">Milagro imposible</li><li class="opt opt--static">Maldición antigua</li><li class="opt opt--static">Bendición divina</li><li class="opt opt--static">Caos dimensional</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tecnologia-presente">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tecnología presente<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin tecnología</li><li class="opt opt--static">Primitiva simple</li><li class="opt opt--static">Medieval</li><li class="opt opt--static">Renacentista</li><li class="opt opt--static">Industrial</li><li class="opt opt--static">Contemporánea</li><li class="opt opt--static">Futurista</li><li class="opt opt--static">Hyperfuturista</li><li class="opt opt--static">Cyberpunk neon</li><li class="opt opt--static">Post-humana</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-violencia-nivel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel de violencia<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente no-violenta</li><li class="opt opt--static">Sutilmente tensa</li><li class="opt opt--static">Confrontación verbal</li><li class="opt opt--static">Empujones leves</li><li class="opt opt--static">Combate moderado</li><li class="opt opt--static">Violencia cruda</li><li class="opt opt--static">Violencia brutal</li><li class="opt opt--static">Sangre abundante</li><li class="opt opt--static">Destrucción masiva</li><li class="opt opt--static">Apocalipsis gore</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sensualidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sensualidad y romance<span class="opt-section__count">7</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente casto</li><li class="opt opt--static">Sutilmente romántico</li><li class="opt opt--static">Romántico obvio</li><li class="opt opt--static">Pasión ardiente</li><li class="opt opt--static">Tensión sexual no resuelta</li><li class="opt opt--static">Beso apasionado</li><li class="opt opt--static">Seducción manipuladora</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-humor">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Humor y levedad<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente serio</li><li class="opt opt--static">Sutilmente irónico</li><li class="opt opt--static">Burlón desenfadado</li><li class="opt opt--static">Comedia física</li><li class="opt opt--static">Chiste verbal</li><li class="opt opt--static">Comedia oscura</li><li class="opt opt--static">Absurdo surrealista</li><li class="opt opt--static">Parodia irónica</li><li class="opt opt--static">Humor negro</li><li class="opt opt--static">Sarcasmo mordiente</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-simbolismo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Simbolismo visual<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin simbolismo</li><li class="opt opt--static">Sutil implícito</li><li class="opt opt--static">Presente obvio</li><li class="opt opt--static">Alegoría clara</li><li class="opt opt--static">Metáfora visual</li><li class="opt opt--static">Iconografía religiosa</li><li class="opt opt--static">Mitología antigua</li><li class="opt opt--static">Psicología arquetípica</li><li class="opt opt--static">Dualismo Yin Yang</li><li class="opt opt--static">Renacimiento fénix</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-momento-cinematografico">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Momento cinematográfico<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Plano establecimiento</li><li class="opt opt--static">Primer plano emocional</li><li class="opt opt--static">Plano medio dinámico</li><li class="opt opt--static">Plano general épico</li><li class="opt opt--static">Plano detalle</li><li class="opt opt--static">Plano perfil silueta</li><li class="opt opt--static">Plano picado poder</li><li class="opt opt--static">Plano contrapicado vulnerabilidad</li><li class="opt opt--static">Plano montaje rápido</li><li class="opt opt--static">Transición suave disolución</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-perspectiva-narrativa">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Perspectiva narrativa<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perspectiva protagonista</li><li class="opt opt--static">Omnisciente observador</li><li class="opt opt--static">Tercera persona distante</li><li class="opt opt--static">Perspectiva oponente</li><li class="opt opt--static">Perspectiva testigo</li><li class="opt opt--static">Múltiples perspectivas</li><li class="opt opt--static">Introspectiva mental</li><li class="opt opt--static">Perspectiva animal</li><li class="opt opt--static">Perspectiva inanima</li><li class="opt opt--static">Perspectiva divina</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-punto-vista-camara">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Punto de vista de cámara<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Altura ojos</li><li class="opt opt--static">Picado fuerte</li><li class="opt opt--static">Contrapicado fuerte</li><li class="opt opt--static">Perfil puro</li><li class="opt opt--static">Tres cuartos</li><li class="opt opt--static">Dorso espalda</li><li class="opt opt--static">Sombra silueta</li><li class="opt opt--static">Reflejo espejo</li><li class="opt opt--static">Través cristal</li><li class="opt opt--static">Sobre hombro</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-movimiento-camara">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Movimiento de cámara<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cámara estática</li><li class="opt opt--static">Pan horizontal</li><li class="opt opt--static">Tilt vertical</li><li class="opt opt--static">Zoom óptico</li><li class="opt opt--static">Traveling seguimiento</li><li class="opt opt--static">Dolly acercamiento</li><li class="opt opt--static">Crane elevación</li><li class="opt opt--static">Circular órbita</li><li class="opt opt--static">Revoloteo flotante</li><li class="opt opt--static">Movimiento veloz</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +224,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

@@ -2,6 +2,8 @@
  * ALEATORIO — elige opciones al azar respetando secciones bloqueadas y la probabilidad
  * `chance` de cada sección (por defecto 0,6; ponla a 0 para excluir una sección del azar).
  */
+import { resolveConflicts } from './conflicts.js';
+
 const DEFAULT_CHANCE = 0.6;
 
 /** Máximo de secciones que rellena «Aleatorio» por dominio según su ranura: mantiene el prompt coherente. */
@@ -37,6 +39,7 @@ export function randomSelection(domains, state, rng = Math.random, maxSections =
     const cap = typeof maxSections === 'function' ? maxSections(dom) : maxSections;
     const free = Object.keys(selection).filter(id => !state.locks[dom.id]?.[id]);
     while (free.length > cap) delete selection[free.splice(Math.floor(rng() * free.length), 1)[0]];
+    resolveConflicts(dom, selection, { locked: state.locks[dom.id] || {}, rng }); // p. ej. idea destacada vs. motivo
     if (Object.keys(selection).length) out[dom.id] = selection;
   }
   return out;

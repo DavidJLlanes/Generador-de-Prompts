@@ -1,4 +1,4 @@
-import { toSentences, withArticle } from '../util.js';
+import { toSentences, withArticle, sentenceItem } from '../util.js';
 import { aspectNote } from '../../../../data/aspects.js';
 
 /** Formato genérico: texto continuo en inglés, válido para cualquier generador de imágenes. */
@@ -10,8 +10,8 @@ export function formatText(c, state) {
     : 'Create a highly detailed, high-quality image';
   // Sin sujeto con «lead», la frase inicial va sola y el contenido arranca en la oración siguiente.
   const sentences = c.lead
-    ? toSentences(parts.map(p => p.text), opener)
-    : [opener + '.', ...toSentences(parts.map(p => p.text))];
+    ? toSentences(parts.map(sentenceItem), opener)
+    : [opener + '.', ...toSentences(parts.map(sentenceItem))];
   const note = state.detail !== 'short' ? aspectNote(state.aspect) : '';
   if (note) sentences.push(note);
   if (c.negative.length) sentences.push(`Avoid: ${c.negative.map(n => n.text).join(', ')}.`);

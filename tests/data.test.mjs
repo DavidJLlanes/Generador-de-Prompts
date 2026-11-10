@@ -46,7 +46,7 @@ test('los roles de los dominios son ranuras válidas y hay al menos un dominio p
 });
 
 /* ---------- Política de contenido público (ver docs/CONTENT-POLICY.md) ---------- */
-const BLOCKED_PROMPT = /\b(lingerie|boudoir|garter|bralette|balconette|bustier|thong|g-string|panties|cleavage|busty|boobs?|nipples?|topless|naked|nudity|explicit|sensual|erotic|sexy|porn\w*|nsfw|suicid\w*)\b/i;
+const BLOCKED_PROMPT = /\b(lingerie|boudoir|garters?|bralette|balconette|bustier|thong|g-string|panties|cleavage|busty|boobs?|nipples?|topless|naked|nudity|explicit|sensual|erotic|sexy|porn\w*|nsfw|suicid\w*|latex|chemise|babydoll|negligee|teddy|lace set|body harness|open-cup)\b/i;
 // «desnudo/desnuda» se omite a propósito: en español significa también «sobrio/vacío» (paredes desnudas);
 // la desnudez se vigila en los prompts en inglés (naked, nudity, topless…).
 const BLOCKED_LABEL = /(expl[ií]cit|er[oó]tic|lencer[ií]a|porn|nsfw|suicid)/i;

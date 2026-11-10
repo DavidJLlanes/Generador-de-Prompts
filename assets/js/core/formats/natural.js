@@ -1,4 +1,4 @@
-import { toSentences } from '../util.js';
+import { toSentences, sentenceItem, endSentence } from '../util.js';
 import { SLOT_BY_ID } from '../../../../data/taxonomy.js';
 import { aspectNote } from '../../../../data/aspects.js';
 
@@ -6,7 +6,12 @@ import { aspectNote } from '../../../../data/aspects.js';
 export function formatNatural(c, state) {
   if (c.empty) return { id: 'natural', blocks: [], text: '' };
   const lines = [`Create a highly detailed, high-quality image${c.lead ? ` of ${c.lead}` : ''}.`];
-  for (const s of c.slots) lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(s.parts.map(p => p.text)).join(' ')}`);
+  for (const s of c.slots) {
+    const parts = s.parts.filter(p => !p.custom); // el texto libre del usuario va aparte
+    if (parts.length) lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(parts.map(sentenceItem)).join(' ')}`);
+  }
+  const custom = c.parts.find(p => p.custom);
+  if (custom) lines.push(`Additional details: ${endSentence(custom.text)}`);
   const note = state.detail !== 'short' ? aspectNote(state.aspect) : '';
   if (note) lines.push(`Format: ${note}`);
   if (c.negative.length) lines.push(`Avoid: ${c.negative.map(n => n.text).join(', ')}.`);

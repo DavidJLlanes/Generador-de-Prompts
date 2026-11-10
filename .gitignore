@@ -22,3 +22,6 @@ new-held-content.json
 
 # Herramientas de asistencia
 .claude/
+
+# Capturas de las pruebas de navegador
+e2e/shots/

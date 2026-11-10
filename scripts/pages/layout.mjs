@@ -1,6 +1,8 @@
 /** Plantilla común de todas las páginas: <head> con SEO, cabecera, pie y carga del script de página. */
 import { esc } from '../../assets/js/core/util.js';
 import { icon } from '../../assets/js/ui/icons.js';
+import { existsSync } from 'node:fs';
+import { ROOT } from '../lib/domains.mjs';
 
 export const SITE = {
   name: 'Lumen Vitae',
@@ -20,6 +22,7 @@ function header() {
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open>${icon('layers', 16)}<span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -38,7 +41,7 @@ function footer(domains) {
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul>${top.map(d => `<li><a href="/generadores/${d.slug}/">${esc(d.short)}</a></li>`).join('')}<li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© ${SITE.year} Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
@@ -56,8 +59,11 @@ function footer(domains) {
  * @param {object[]} [p.jsonld]     objetos JSON-LD
  * @param {object[]} p.domains      catálogo (para el pie)
  * @param {boolean} [p.noindex]
+ * @param {string} [p.og]           nombre de la imagen social en assets/img/og/ (sin extensión); si no existe, se usa la genérica
  */
-export function layout({ path, title, description, main, script, bodyData = {}, jsonld = [], domains, noindex = false }) {
+export function layout({ path, title, description, main, script, bodyData = {}, jsonld = [], domains, noindex = false, og = '' }) {
+  const ogFile = og && existsSync(`${ROOT}/assets/img/og/${og}.webp`);
+  const image = `${SITE.origin}${ogFile ? `/assets/img/og/${og}.webp` : '/assets/img/og-image.webp'}`;
   const url = SITE.origin + path;
   const data = Object.entries(bodyData).map(([k, v]) => ` data-${k}="${esc(v)}"`).join('');
   return `<!doctype html>
@@ -68,7 +74,7 @@ export function layout({ path, title, description, main, script, bodyData = {}, 
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="${SITE.themeColor}">
-${noindex ? '<meta name="robots" content="noindex">' : ''}
+<meta name="robots" content="${noindex ? 'noindex' : 'index, follow, max-image-preview:large'}">
 <link rel="canonical" href="${url}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${SITE.name}">
@@ -76,8 +82,12 @@ ${noindex ? '<meta name="robots" content="noindex">' : ''}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${SITE.origin}/assets/img/og-image.webp">
+<meta property="og:image" content="${image}">
+${ogFile ? `<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+` : ''}<meta property="og:image:alt" content="${esc(title)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${image}">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">

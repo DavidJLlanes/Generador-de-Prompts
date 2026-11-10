@@ -14,7 +14,7 @@ let current = { state: store.get(), composed: compose({}, store.get()), domains 
 async function refresh(state) {
   const mine = ++seq;
   const ids = Object.keys(state.sel);
-  if (ids.length) ids.push('photo'); // el acabado de calidad vive en «photo»
+  if (ids.length || state.custom?.trim()) ids.push('photo'); // el acabado de calidad vive en «photo»
   const missing = [...new Set(ids)].filter(id => !domains[id]);
   if (missing.length) {
     try { Object.assign(domains, await loadDomains(missing)); } catch (err) { console.error('[live] no se pudo cargar un dominio', err); }

@@ -6,7 +6,7 @@
 <title>Armas · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para armas fantásticas y realistas con IA. Personaliza tipo, estilo, material y contexto.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/armas/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Armas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para armas fantásticas y realistas con IA. Personaliza tipo, estilo, material y contexto.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/armas/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/armas.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Armas · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/armas.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,76 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-arma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de arma<span class="opt-section__count">51</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Espada recta</li><li class="opt opt--static">Espada curvada sable</li><li class="opt opt--static">Espada ancha cleaver</li><li class="opt opt--static">Espada larga montante</li><li class="opt opt--static">Espada bastarda</li><li class="opt opt--static">Espada rapier estoqueador</li><li class="opt opt--static">Espada katana oriental</li><li class="opt opt--static">Espada wakizashi corta</li><li class="opt opt--static">Espada nodachi gigante</li><li class="opt opt--static">Gladio romano</li><li class="opt opt--static opt--more">y 41 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño/longitud<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Minúscula 10 cm</li><li class="opt opt--static">Pequeña 30 cm</li><li class="opt opt--static">Mediana 50 cm</li><li class="opt opt--static">Normal 70 cm</li><li class="opt opt--static">Grande 100 cm</li><li class="opt opt--static">Muy grande 150 cm</li><li class="opt opt--static">Colosal 200+ cm</li><li class="opt opt--static">Gigante 300+ cm</li><li class="opt opt--static">Monumental 500+ cm</li><li class="opt opt--static">Arma de titán</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-material-primario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Material primario de hoja<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Acero carbono</li><li class="opt opt--static">Acero inoxidable</li><li class="opt opt--static">Acero de Damasco</li><li class="opt opt--static">Hierro forjado</li><li class="opt opt--static">Hierro puro</li><li class="opt opt--static">Hierro meteórico</li><li class="opt opt--static">Oro puro</li><li class="opt opt--static">Plata argéntea</li><li class="opt opt--static">Platino noble</li><li class="opt opt--static">Cobre oxidado</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-material-empunadura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Material empuñadura<span class="opt-section__count">31</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cuero envuelto</li><li class="opt opt--static">Piel de dragón</li><li class="opt opt--static">Madera de roble</li><li class="opt opt--static">Madera de ébano</li><li class="opt opt--static">Madera de bambú</li><li class="opt opt--static">Marfil tallado</li><li class="opt opt--static">Hueso forjado</li><li class="opt opt--static">Cobre enrollado</li><li class="opt opt--static">Oro envuelto</li><li class="opt opt--static">Plata pulida</li><li class="opt opt--static opt--more">y 21 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-material-vaina">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Material vaina/funda<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cuero revestido</li><li class="opt opt--static">Madera reforzada</li><li class="opt opt--static">Metal envolvente</li><li class="opt opt--static">Tela bordada</li><li class="opt opt--static">Funda de hierro</li><li class="opt opt--static">Funda de oro</li><li class="opt opt--static">Funda de plata</li><li class="opt opt--static">Funda de cristal</li><li class="opt opt--static">Funda de caparazón</li><li class="opt opt--static">Funda de hueso</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-brillo-acabado">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Brillo/acabado<span class="opt-section__count">21</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Espejo pulido</li><li class="opt opt--static">Mate opaco</li><li class="opt opt--static">Satinado suave</li><li class="opt opt--static">Oxidado oscuro</li><li class="opt opt--static">Patina verde</li><li class="opt opt--static">Herrumbre roja</li><li class="opt opt--static">Brillante radiante</li><li class="opt opt--static">Fluorescente neón</li><li class="opt opt--static">Iridiscente camaleón</li><li class="opt opt--static">Nacarado perlado</li><li class="opt opt--static opt--more">y 11 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-primario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color primario<span class="opt-section__count">35</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Plata pura</li><li class="opt opt--static">Gris metalizado</li><li class="opt opt--static">Acero azulado</li><li class="opt opt--static">Hierro oscuro</li><li class="opt opt--static">Oro brillante</li><li class="opt opt--static">Bronce antiguo</li><li class="opt opt--static">Cobre oxidado</li><li class="opt opt--static">Platino blanco</li><li class="opt opt--static">Rojo intenso</li><li class="opt opt--static">Rojo sangre</li><li class="opt opt--static opt--more">y 25 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-secundario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color secundario/patrones<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin color secundario</li><li class="opt opt--static">Vetas de grano</li><li class="opt opt--static">Líneas ondulantes</li><li class="opt opt--static">Patrón geométrico</li><li class="opt opt--static">Símbolos grabados</li><li class="opt opt--static">Degradado suave</li><li class="opt opt--static">Rayas alternas</li><li class="opt opt--static">Puntos dispersos</li><li class="opt opt--static">Mosaico fractal</li><li class="opt opt--static">Efecto mármol</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-decoracion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Decoración/ornamentación<span class="opt-section__count">31</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin adorno</li><li class="opt opt--static">Sutil elegante</li><li class="opt opt--static">Moderadamente adornada</li><li class="opt opt--static">Ricamente decorada</li><li class="opt opt--static">Exuberantemente elaborada</li><li class="opt opt--static">Grabados profundos</li><li class="opt opt--static">Relieves detallados</li><li class="opt opt--static">Filigrana delicada</li><li class="opt opt--static">Incrustaciones de gemas</li><li class="opt opt--static">Símbolos celtas</li><li class="opt opt--static opt--more">y 21 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-poder-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de poder mágico<span class="opt-section__count">32</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin poder</li><li class="opt opt--static">Muy leve</li><li class="opt opt--static">Poder elemental fuego</li><li class="opt opt--static">Poder elemental hielo</li><li class="opt opt--static">Poder elemental rayo</li><li class="opt opt--static">Poder elemental tierra</li><li class="opt opt--static">Poder elemental agua</li><li class="opt opt--static">Poder elemental aire</li><li class="opt opt--static">Poder de luz pura</li><li class="opt opt--static">Poder de sombra oscura</li><li class="opt opt--static opt--more">y 22 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-poder-nivel">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel de poder<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Trivial débil</li><li class="opt opt--static">Muy leve moderado</li><li class="opt opt--static">Potencia media</li><li class="opt opt--static">Potencia considerable</li><li class="opt opt--static">Potencia formidable</li><li class="opt opt--static">Potencia apocalíptica</li><li class="opt opt--static">Potencia cósmica</li><li class="opt opt--static">Potencia omnipotente</li><li class="opt opt--static">Potencia infinita</li><li class="opt opt--static">Potencia paradójica</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-dano-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de daño<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Daño cortante limpio</li><li class="opt opt--static">Daño penetrante profundo</li><li class="opt opt--static">Daño contundente aplastante</li><li class="opt opt--static">Daño quemante fuego</li><li class="opt opt--static">Daño congelante hielo</li><li class="opt opt--static">Daño eléctrico rayo</li><li class="opt opt--static">Daño venenoso tóxico</li><li class="opt opt--static">Daño de corrosión ácido</li><li class="opt opt--static">Daño de sangrado</li><li class="opt opt--static">Daño de maldición</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nivel-dano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel de daño<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Insignificante rasguño</li><li class="opt opt--static">Leve herida</li><li class="opt opt--static">Moderado daño</li><li class="opt opt--static">Severo grave</li><li class="opt opt--static">Catastrófico letal</li><li class="opt opt--static">Desmembramiento instantáneo</li><li class="opt opt--static">Incineración total</li><li class="opt opt--static">Disintegración molecular</li><li class="opt opt--static">Destrucción de dimensión</li><li class="opt opt--static">Aniquilación completa</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-aura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Aura/energía emanada<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin aura visible</li><li class="opt opt--static">Aura leve pálida</li><li class="opt opt--static">Aura moderada</li><li class="opt opt--static">Aura intensa fuerte</li><li class="opt opt--static">Aura cegadora radiante</li><li class="opt opt--static">Aura de fuego</li><li class="opt opt--static">Aura de hielo</li><li class="opt opt--static">Aura de rayo</li><li class="opt opt--static">Aura de sangre</li><li class="opt opt--static">Aura de muerte</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-comportamiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Comportamiento/temperamento<span class="opt-section__count">36</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pasivo obediente</li><li class="opt opt--static">Neutral indiferente</li><li class="opt opt--static">Activo agresivo</li><li class="opt opt--static">Sediento de sangre</li><li class="opt opt--static">Hambriento de almas</li><li class="opt opt--static">Protector defensivo</li><li class="opt opt--static">Destructivo caótico</li><li class="opt opt--static">Calmante pacífico</li><li class="opt opt--static">Energizante vigorizante</li><li class="opt opt--static">Drenador agotador</li><li class="opt opt--static opt--more">y 26 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-edad-antiguedad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Edad/antigüedad<span class="opt-section__count">22</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Recién creada</li><li class="opt opt--static">Pocas décadas</li><li class="opt opt--static">Siglos antigua</li><li class="opt opt--static">Milenios ancestral</li><li class="opt opt--static">Era glacial antigua</li><li class="opt opt--static">Dinosaurios existía</li><li class="opt opt--static">Primordial original</li><li class="opt opt--static">Desde la creación</li><li class="opt opt--static">Previa a la creación</li><li class="opt opt--static">Fuera del tiempo</li><li class="opt opt--static opt--more">y 12 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-condicion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Condición/estado<span class="opt-section__count">28</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pristina perfecta</li><li class="opt opt--static">Muy bien mantenida</li><li class="opt opt--static">Buen estado</li><li class="opt opt--static">Ligeramente desgastada</li><li class="opt opt--static">Moderadamente dañada</li><li class="opt opt--static">Muy dañada severamente</li><li class="opt opt--static">Casi destruida ruina</li><li class="opt opt--static">Rota fragmentada</li><li class="opt opt--static">Múltiples grietas</li><li class="opt opt--static">Desgastada erosionada</li><li class="opt opt--static opt--more">y 18 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +156,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

@@ -1,0 +1,30 @@
+/* TEXTO LIBRE Y DIÁLOGO «MIS PROMPTS» */
+.field__textarea { width: 100%; resize: vertical; min-height: 64px; max-height: 220px; padding: 12px 16px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--surface); color: var(--text); font-size: var(--fs-sm); line-height: 1.5; transition: border-color var(--dur), background var(--dur); }
+.field__textarea::placeholder { color: var(--text-3); }
+.field__textarea:hover { border-color: var(--text-3); }
+.field__textarea:focus-visible { outline: none; border-color: var(--accent); background: var(--surface-2); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+.prompt-panel__custom { display: grid; gap: var(--space-2); position: relative; }
+.prompt-panel__custom-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+.prompt-panel__count { position: absolute; right: 12px; bottom: 8px; font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-3); pointer-events: none; }
+
+dialog.lib { padding: 0; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-2); color: var(--text); width: min(820px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 40px); box-shadow: var(--shadow-pop); }
+dialog.lib::backdrop { background: rgba(8, 6, 4, 0.74); backdrop-filter: blur(5px); }
+.lib__panel { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-5); max-height: calc(100vh - 40px); }
+.lib__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); }
+.lib__title { font-size: 2.1rem; }
+.lib__lead { margin-top: var(--space-2); color: var(--text-2); font-size: var(--fs-sm); max-width: 38rem; }
+.lib__save { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.lib__name { flex: 1 1 220px; padding-left: 16px; }
+.lib__list { display: grid; gap: var(--space-3); overflow: auto; min-height: 120px; padding-right: 4px; align-content: start; }
+.lib__item { display: grid; gap: var(--space-2); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.lib__item-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); }
+.lib__item-name { flex: 1 1 200px; min-width: 0; padding: 4px 8px; margin-left: -8px; border: 1px solid transparent; border-radius: var(--radius-sm); background: transparent; color: var(--text); font-family: var(--font-display); font-size: 1.35rem; }
+.lib__item-name:hover { border-color: var(--line-2); }
+.lib__item-name:focus-visible { outline: none; border-color: var(--accent); background: var(--surface-2); }
+.lib__item-name--static { font-family: var(--font-ui); font-size: var(--fs-sm); color: var(--text-2); }
+.lib__meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); }
+.lib__preview { font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.65; color: var(--text-3); overflow-wrap: anywhere; }
+.lib__item-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-1); }
+.lib__clear { justify-self: start; }
+.lib__foot { display: flex; flex-wrap: wrap; gap: var(--space-2); padding-top: var(--space-3); border-top: 1px solid var(--line); }

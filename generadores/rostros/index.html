@@ -6,7 +6,7 @@
 <title>Rostros · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Crea prompts para rostros detallados y expresivos con IA. Define etnias, edad, expresión y características.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/rostros/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Rostros · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Crea prompts para rostros detallados y expresivos con IA. Define etnias, edad, expresión y características.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/rostros/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/rostros.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rostros · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/rostros.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,104 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-genero">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Género/tipo de rostro<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Femenino mujer</li><li class="opt opt--static">Masculino hombre</li><li class="opt opt--static">Andrógino neutral</li><li class="opt opt--static">No-binario fluido</li><li class="opt opt--static">Ambigu indeterminado</li><li class="opt opt--static">Femenino delicado</li><li class="opt opt--static">Masculino fuerte</li><li class="opt opt--static">Boyish joven varón</li><li class="opt opt--static">Girlish joven mujer</li><li class="opt opt--static">Trasfemenino</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-edad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Edad/rango etario<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bebé 0-2 años</li><li class="opt opt--static">Niño 3-7 años</li><li class="opt opt--static">Niño mayor 8-12 años</li><li class="opt opt--static">Adolescente 13-17 años</li><li class="opt opt--static">Joven adulto 18-25 años</li><li class="opt opt--static">Adulto joven 25-35 años</li><li class="opt opt--static">Adulto 35-45 años</li><li class="opt opt--static">Adulto maduro 45-55 años</li><li class="opt opt--static">Adulto mayor 55-65 años</li><li class="opt opt--static">Anciano 65-80 años</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-forma-cara">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Forma general del rostro<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ovalada clásica</li><li class="opt opt--static">Redonda redondeada</li><li class="opt opt--static">Cuadrada angular</li><li class="opt opt--static">Rectangular alargada</li><li class="opt opt--static">Corazón punta barbilla</li><li class="opt opt--static">Diamante ancho pómulos</li><li class="opt opt--static">Triangular barbilla afilada</li><li class="opt opt--static">Trapezoidal invertida</li><li class="opt opt--static">Alargada estrecha</li><li class="opt opt--static">Ancha corpulenta</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-pomulos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Pómulos/mejillas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Altos prominentes</li><li class="opt opt--static">Muy altos salientes</li><li class="opt opt--static">Moderadamente altos</li><li class="opt opt--static">Medianos normales</li><li class="opt opt--static">Bajos hundidos</li><li class="opt opt--static">Muy bajos aplastados</li><li class="opt opt--static">Llenos redondeados</li><li class="opt opt--static">Angulares definidos</li><li class="opt opt--static">Huesudos visibles</li><li class="opt opt--static">Suaves blandos</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-mandibula">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Mandíbula/quijada<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Fuerte cuadrada</li><li class="opt opt--static">Prominente saliente</li><li class="opt opt--static">Delicada fina</li><li class="opt opt--static">Redondeada suave</li><li class="opt opt--static">Angulosa afilada</li><li class="opt opt--static">Ancha robusta</li><li class="opt opt--static">Estrecha delgada</li><li class="opt opt--static">Definida contorneada</li><li class="opt opt--static">Débil hundida</li><li class="opt opt--static">Masculina fuerte</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-barbilla">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Barbilla/mentón<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Afilada puntiaguda</li><li class="opt opt--static">Redondeada suave</li><li class="opt opt--static">Cuadrada angular</li><li class="opt opt--static">Prominente saliente</li><li class="opt opt--static">Hundida retráctil</li><li class="opt opt--static">Fuerte musculosa</li><li class="opt opt--static">Delicada fina</li><li class="opt opt--static">Bífida dividida</li><li class="opt opt--static">Con hoyuelo</li><li class="opt opt--static">Lisa plana</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-frente">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Frente/frontal<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Alta y amplia</li><li class="opt opt--static">Baja y estrecha</li><li class="opt opt--static">Redonda convexa</li><li class="opt opt--static">Plana lisa</li><li class="opt opt--static">Prominente abultada</li><li class="opt opt--static">Hundida retráctil</li><li class="opt opt--static">Con arrugas profundas</li><li class="opt opt--static">Completamente lisa</li><li class="opt opt--static">Con líneas expresivas</li><li class="opt opt--static">Ceño fruncido</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos - color<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Azul claro cielo</li><li class="opt opt--static">Azul oscuro profundo</li><li class="opt opt--static">Azul grisáceo</li><li class="opt opt--static">Azul turquesa</li><li class="opt opt--static">Azul eléctrico</li><li class="opt opt--static">Verde esmeralda</li><li class="opt opt--static">Verde oscuro bosque</li><li class="opt opt--static">Verde claro pálido</li><li class="opt opt--static">Verde menta</li><li class="opt opt--static">Verde musgo</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos-forma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos - forma<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Redondos grandes</li><li class="opt opt--static">Almendrados clásicos</li><li class="opt opt--static">Rasgados asiáticos</li><li class="opt opt--static">Rasgados exóticos</li><li class="opt opt--static">Felinos felinos</li><li class="opt opt--static">Ofídicos reptilianos</li><li class="opt opt--static">Búhos grandes expresivos</li><li class="opt opt--static">Peces saltones</li><li class="opt opt--static">Hundidos profundos</li><li class="opt opt--static">Cerrados entrecerrados</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos - tamaño<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy pequeños diminutos</li><li class="opt opt--static">Pequeños compactos</li><li class="opt opt--static">Medianos normales</li><li class="opt opt--static">Grandes expresivos</li><li class="opt opt--static">Muy grandes abultados</li><li class="opt opt--static">Saltones prominentes</li><li class="opt opt--static">Proporcionados equilibrados</li><li class="opt opt--static">Desproporcionados</li><li class="opt opt--static">Asimétricamente diferentes</li><li class="opt opt--static">Uno mucho más grande</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ojos-expresion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ojos - expresión/mirada<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bondadosa compasiva</li><li class="opt opt--static">Severa penetrante</li><li class="opt opt--static">Triste melancólica</li><li class="opt opt--static">Alegre radiante</li><li class="opt opt--static">Furiosa enojada</li><li class="opt opt--static">Asustada temerosa</li><li class="opt opt--static">Sorprendida atónita</li><li class="opt opt--static">Confusa desconcertada</li><li class="opt opt--static">Inteligente perspicaz</li><li class="opt opt--static">Ingenua inocente</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cejas-forma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cejas - forma<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rectas horizontales</li><li class="opt opt--static">Arqueadas redondeadas</li><li class="opt opt--static">Angulosas puntiagudas</li><li class="opt opt--static">Alzadas sorpresa</li><li class="opt opt--static">Fruncidas ceño</li><li class="opt opt--static">Descendentes caídas</li><li class="opt opt--static">S curvada elegante</li><li class="opt opt--static">Grasa densas</li><li class="opt opt--static">Delgadas finas</li><li class="opt opt--static">Naturales despeinadas</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cejas-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cejas - color<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Negras oscuras</li><li class="opt opt--static">Marrones oscuras</li><li class="opt opt--static">Marrones claras</li><li class="opt opt--static">Rubias doradas</li><li class="opt opt--static">Rojas cobrizo</li><li class="opt opt--static">Blancas canas</li><li class="opt opt--static">Plateadas grises</li><li class="opt opt--static">Multicolor degradado</li><li class="opt opt--static">Púrpura violeta</li><li class="opt opt--static">Azul eléctrico</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nariz-forma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nariz - forma<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Recta clásica griega</li><li class="opt opt--static">Curvada gancho</li><li class="opt opt--static">Respingona bola</li><li class="opt opt--static">Bulbosa redondeada</li><li class="opt opt--static">Afilada puntiaguda</li><li class="opt opt--static">Ancha corpulenta</li><li class="opt opt--static">Estrecha delgada</li><li class="opt opt--static">Torcida desviada</li><li class="opt opt--static">Aplastada pegada</li><li class="opt opt--static">Con joroba puente</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-nariz-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nariz - tamaño<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy pequeña diminuta</li><li class="opt opt--static">Pequeña compacta</li><li class="opt opt--static">Mediana normal</li><li class="opt opt--static">Grande prominente</li><li class="opt opt--static">Muy grande corpulenta</li><li class="opt opt--static">Perfectamente proporcionada</li><li class="opt opt--static">Desproporcionadamente grande</li><li class="opt opt--static">Desproporcionadamente pequeña</li><li class="opt opt--static">Dominante rostro</li><li class="opt opt--static">Casi imperceptible</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-boca-forma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Boca - forma<span class="opt-section__count">24</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Lúpulo sonrisa</li><li class="opt opt--static">Amplia generosa</li><li class="opt opt--static">Pequeña delicada</li><li class="opt opt--static">Fruncida serio</li><li class="opt opt--static">Abierta sorpresa</li><li class="opt opt--static">Media sonrisa irónica</li><li class="opt opt--static">Sonrisa completa radiante</li><li class="opt opt--static">Mueca expresiva</li><li class="opt opt--static">Labios separados</li><li class="opt opt--static">Labios cerrados unidos</li><li class="opt opt--static opt--more">y 14 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-boca-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Boca - color labios<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rosada natural pálida</li><li class="opt opt--static">Rosa oscuro profundo</li><li class="opt opt--static">Roja sangre</li><li class="opt opt--static">Roja cereza</li><li class="opt opt--static">Roja scarlet</li><li class="opt opt--static">Rojo vino</li><li class="opt opt--static">Púrpura violeta</li><li class="opt opt--static">Magenta fucsia</li><li class="opt opt--static">Naranja coral</li><li class="opt opt--static">Naranja oscuro</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-boca-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Boca - tamaño<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy pequeña diminuta</li><li class="opt opt--static">Pequeña compacta</li><li class="opt opt--static">Mediana normal</li><li class="opt opt--static">Grande generosa</li><li class="opt opt--static">Muy grande exagerada</li><li class="opt opt--static">Perfectamente proporcionada</li><li class="opt opt--static">Desproporcionadamente grande</li><li class="opt opt--static">Desproporcionadamente pequeña</li><li class="opt opt--static">Dominante del rostro</li><li class="opt opt--static">Casi imperceptible</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-orejas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Orejas - forma y tamaño<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pequeñas redondeadas</li><li class="opt opt--static">Grandes prominentes</li><li class="opt opt--static">Alargadas verticales</li><li class="opt opt--static">Achatadas horizontales</li><li class="opt opt--static">Puntiagudas elfas</li><li class="opt opt--static">Redondeadas suaves</li><li class="opt opt--static">Angulosas afiladas</li><li class="opt opt--static">Pegadas cabeza</li><li class="opt opt--static">Salientes despegadas</li><li class="opt opt--static">Asimétricamente desiguales</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-piel-tono">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Piel - tono<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy pálida porcelana</li><li class="opt opt--static">Pálida clara</li><li class="opt opt--static">Blanca marfil</li><li class="opt opt--static">Beige cremoso</li><li class="opt opt--static">Oliva aceitunada</li><li class="opt opt--static">Dorada bronceada</li><li class="opt opt--static">Marrón claro medio</li><li class="opt opt--static">Marrón oscuro profundo</li><li class="opt opt--static">Marrón rojizo cobrizo</li><li class="opt opt--static">Negro azabache</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-piel-textura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Piel - textura<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfectamente lisa</li><li class="opt opt--static">Suave sedosa</li><li class="opt opt--static">Ligeramente texturizada</li><li class="opt opt--static">Poros visibles</li><li class="opt opt--static">Piel de naranja</li><li class="opt opt--static">Áspera rugosa</li><li class="opt opt--static">Craquelada grietas</li><li class="opt opt--static">Escamosa reptiliana</li><li class="opt opt--static">Espinosa puntiaguda</li><li class="opt opt--static">Arrugada envejecida</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-expresion-primaria">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Expresión emocional primaria<span class="opt-section__count">34</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Felicidad radiante</li><li class="opt opt--static">Tristeza profunda</li><li class="opt opt--static">Ira furiosa</li><li class="opt opt--static">Sorpresa atónita</li><li class="opt opt--static">Miedo aterrado</li><li class="opt opt--static">Asco repugnancia</li><li class="opt opt--static">Sorpresa mixta</li><li class="opt opt--static">Confusión perplejidad</li><li class="opt opt--static">Concentración enfocada</li><li class="opt opt--static">Relajación despreocupada</li><li class="opt opt--static opt--more">y 24 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-simetria">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Simetría facial<span class="opt-section__count">22</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfectamente simétrica</li><li class="opt opt--static">Casi simétrica</li><li class="opt opt--static">Ligeramente asimétrica</li><li class="opt opt--static">Moderadamente asimétrica</li><li class="opt opt--static">Muy asimétrica</li><li class="opt opt--static">Extremadamente asimétrica</li><li class="opt opt--static">Mitades completamente diferentes</li><li class="opt opt--static">Lado izquierdo más grande</li><li class="opt opt--static">Lado derecho más grande</li><li class="opt opt--static">Lado izquierdo más joven</li><li class="opt opt--static opt--more">y 12 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-rareza">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Rareza/peculiaridad<span class="opt-section__count">48</span></h2><p class="opt-section__note">Características únicas</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin rasgo especial</li><li class="opt opt--static">Cicatrices visibles</li><li class="opt opt--static">Parche ojo</li><li class="opt opt--static">Piercing facial</li><li class="opt opt--static">Tatuaje facial</li><li class="opt opt--static">Maquillaje elaborado</li><li class="opt opt--static">Maquillaje tribal</li><li class="opt opt--static">Lunar prominente</li><li class="opt opt--static">Pecas abundantes</li><li class="opt opt--static">Marca de nacimiento</li><li class="opt opt--static opt--more">y 38 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +184,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

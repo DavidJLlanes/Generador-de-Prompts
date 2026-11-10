@@ -5,12 +5,14 @@ import { catalogPage } from './catalog.mjs';
 import { constructorPage } from './constructor.mjs';
 import { domainPage } from './domain.mjs';
 import { legalPage, LEGAL_SLUGS } from './legal.mjs';
+import { guidesIndexPage, guidePage } from './guides.mjs';
+import { GUIDES } from './guides-content.mjs';
 
 export async function buildPages({ domains, totals, all, write }) {
   const urls = [];
   const page = (urlPath, html, { index = true } = {}) => {
     write(urlPath === '/' ? 'index.html' : `${urlPath.replace(/^\//, '')}index.html`, html);
-    if (index) urls.push({ path: urlPath, priority: urlPath === '/' ? '1.0' : urlPath.startsWith('/generadores/') && urlPath !== '/generadores/' ? '0.8' : '0.6' });
+    if (index) urls.push({ path: urlPath });
   };
 
   page('/', homePage({ domains, totals }));
@@ -20,6 +22,8 @@ export async function buildPages({ domains, totals, all, write }) {
     const d = domains.find(x => x.id === domain.id);
     page(`/generadores/${d.slug}/`, domainPage({ d, domain, domains }));
   }
+  page('/guias/', guidesIndexPage({ domains }));
+  for (const g of GUIDES) page(`/guias/${g.slug}/`, guidePage(g, { domains }));
   for (const slug of LEGAL_SLUGS) page(`/legal/${slug}/`, legalPage(slug, domains));
 
   // 404 (no indexable)
@@ -29,8 +33,8 @@ export async function buildPages({ domains, totals, all, write }) {
   }));
 
   // sitemap, robots y manifiesto
-  const today = new Date().toISOString().slice(0, 10);
-  write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE.origin}${u.path}</loc><lastmod>${today}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`);
+  // Sin <lastmod> ni <priority>: un valor inexacto es peor que ninguno (los buscadores ignoran la prioridad)
+  write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE.origin}${u.path}</loc></url>`).join('\n')}\n</urlset>\n`);
   write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
   write('manifest.webmanifest', JSON.stringify({
     name: 'Lumen Vitae · Generador de prompts', short_name: 'Lumen Vitae', description: 'Constructor modular de prompts para imágenes con IA.',

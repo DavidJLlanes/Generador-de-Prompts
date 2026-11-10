@@ -5,13 +5,15 @@
 import { h, clear } from './dom.js';
 import { icon } from './icons.js';
 import { live } from '../core/live.js';
-import { store } from '../core/store.js';
+import { store, CUSTOM_MAX } from '../core/store.js';
 import { FORMATS, FORMAT_BY_ID, renderFormat } from '../core/formats/index.js';
 import { ASPECTS } from '../../../data/aspects.js';
 import { SLOT_BY_ID } from '../../../data/taxonomy.js';
 import { shareUrl } from '../core/url-state.js';
-import { fmtNumber } from '../core/util.js';
+import { recordHistory } from '../core/library.js';
+import { fmtNumber, debounce } from '../core/util.js';
 import { copyText } from './clipboard.js';
+import { openLibrary } from './library-dialog.js';
 import { toast } from './toast.js';
 
 function aspectSelect() {
@@ -45,16 +47,24 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   const meta = h('p', { class: 'prompt-panel__meta' });
   const summary = h('div', { class: 'prompt-panel__summary' });
 
+  // Texto libre: se escribe aquí y se añade al final del prompt (mejor en inglés).
+  const customBox = h('textarea', { class: 'field__textarea', rows: '2', maxlength: String(CUSTOM_MAX), placeholder: 'Añade tus propios detalles, mejor en inglés: «a small red umbrella», «cinematic fog»…', 'aria-label': 'Texto libre para añadir al prompt' });
+  const customCount = h('span', { class: 'prompt-panel__count' });
+  customBox.addEventListener('input', debounce(() => store.set({ custom: customBox.value }), 250));
+  const customField = h('label', { class: 'prompt-panel__custom' }, h('span', { class: 'prompt-panel__custom-label' }, 'Texto libre'), customBox, customCount);
+
   let lastText = '';
-  const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => lastText && copyText(lastText, 'Prompt copiado') }, h('span', { html: icon('copy') }), 'Copiar prompt');
-  const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.countSelected() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
+  const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => { if (lastText) { copyText(lastText, 'Prompt copiado'); recordHistory(store.get()); } } }, h('span', { html: icon('copy') }), 'Copiar prompt');
+  const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.totalItems() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
+  const libBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => openLibrary() }, h('span', { html: icon('bookmark') }), 'Mis prompts');
   const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
 
   const el = h('section', { class: `prompt-panel prompt-panel--${variant}`, 'aria-label': 'Tu prompt' },
     tabs,
     h('div', { class: 'prompt-panel__controls' }, detail, boost, aspect),
+    customField,
     hint, out, meta, summary,
-    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, clearBtn));
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, clearBtn));
 
   function renderSummary(composed) {
     clear(summary);
@@ -65,7 +75,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       if (!manual.length && !auto) continue;
       const row = h('div', { class: 'summary-row' }, h('span', { class: 'summary-row__label' }, SLOT_BY_ID[s.slot].es));
       const chips = h('div', { class: 'summary-row__chips' });
-      manual.forEach(p => chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => store.removeOption(p.domain, p.section, p.option) }, h('span', { class: 'chip__text' }, p.es), h('span', { html: icon('x', 14) }))));
+      manual.forEach(p => chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => (p.custom ? store.set({ custom: '' }) : store.removeOption(p.domain, p.section, p.option)) }, h('span', { class: 'chip__text' }, p.es), h('span', { html: icon('x', 14) }))));
       if (auto) chips.append(h('span', { class: 'chip chip--auto', title: 'Se añade con «Calidad máxima» o por una regla automática' }, 'Automático'));
       row.append(chips);
       summary.append(row);
@@ -78,6 +88,8 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     detail.querySelectorAll('.segmented__btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.value === state.detail));
     boostInput.checked = state.boost;
     aspect.value = state.aspect;
+    if (document.activeElement !== customBox && customBox.value !== state.custom) customBox.value = state.custom;
+    customCount.textContent = state.custom ? `${state.custom.length}/${CUSTOM_MAX}` : '';
     hint.textContent = FORMAT_BY_ID[state.format].hint;
 
     clear(out);

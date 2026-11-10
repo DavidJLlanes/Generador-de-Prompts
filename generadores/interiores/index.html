@@ -6,7 +6,7 @@
 <title>Interiores · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para diseños de interiores con IA. Personaliza estilo, mobiliario, iluminación y atmósfera.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/interiores/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Interiores · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para diseños de interiores con IA. Personaliza estilo, mobiliario, iluminación y atmósfera.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/interiores/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/interiores.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Interiores · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/interiores.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,7 +55,7 @@
   <p class="domain-hero__intro">Construye una habitación, un castillo, una nave o una caverna desde cero: tipo de espacio, época, estilo, materiales y atmósfera.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 6 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
     <span class="domain-hero__facts">35 secciones · 528 opciones</span>
@@ -69,7 +74,148 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de espacio<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Dormitorio</li><li class="opt opt--static">Sala de estar</li><li class="opt opt--static">Cocina</li><li class="opt opt--static">Baño lujoso</li><li class="opt opt--static">Biblioteca</li><li class="opt opt--static">Estudio/despacho</li><li class="opt opt--static">Comedor</li><li class="opt opt--static">Vestidor</li><li class="opt opt--static">Pasillo</li><li class="opt opt--static">Escalera</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-epoca">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Época / período histórico<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Antiguo romano</li><li class="opt opt--static">Medieval</li><li class="opt opt--static">Renacimiento</li><li class="opt opt--static">Barroco</li><li class="opt opt--static">Rococó</li><li class="opt opt--static">Georgiano</li><li class="opt opt--static">Victoriano</li><li class="opt opt--static">Art Deco</li><li class="opt opt--static">Art Nouveau</li><li class="opt opt--static">1920s</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estilo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estilo arquitectónico<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Gótico</li><li class="opt opt--static">Barroco</li><li class="opt opt--static">Neoclásico</li><li class="opt opt--static">Minimalista moderno</li><li class="opt opt--static">Escandinavo</li><li class="opt opt--static">Japones minimalista</li><li class="opt opt--static">Industrial crudo</li><li class="opt opt--static">Steampunk</li><li class="opt opt--static">Cyberpunk</li><li class="opt opt--static">Rústico campestre</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tamaño y escala<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Claustrofóbico diminuto</li><li class="opt opt--static">Muy pequeño</li><li class="opt opt--static">Pequeño acogedor</li><li class="opt opt--static">Mediano confortable</li><li class="opt opt--static">Espacioso aireado</li><li class="opt opt--static">Muy grande amplio</li><li class="opt opt--static">Monumental catedral</li><li class="opt opt--static">Infinito sin límite</li><li class="opt opt--static">Doble altura patio</li><li class="opt opt--static">Verticalmente galopante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-iluminacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Iluminación principal<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Luz natural ventana</li><li class="opt opt--static">Luz solar dorada</li><li class="opt opt--static">Luz solar cruda</li><li class="opt opt--static">Luz natural difusa</li><li class="opt opt--static">Iluminación velas</li><li class="opt opt--static">Lámparas vintage</li><li class="opt opt--static">Lámparas modernas</li><li class="opt opt--static">Neón fluorescente</li><li class="opt opt--static">Luz neón coloreada</li><li class="opt opt--static">Bioluminiscente</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-paredes">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Material de paredes<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Piedra sin pulir</li><li class="opt opt--static">Piedra tallada</li><li class="opt opt--static">Ladrillo rojo</li><li class="opt opt--static">Ladrillo blanco</li><li class="opt opt--static">Madera clara</li><li class="opt opt--static">Madera oscura</li><li class="opt opt--static">Metal oxidado</li><li class="opt opt--static">Metal brillante</li><li class="opt opt--static">Vidrio transparente</li><li class="opt opt--static">Cristal frosted</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-piso">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Piso / suelo<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Madera noble</li><li class="opt opt--static">Madera desgastada</li><li class="opt opt--static">Parquet</li><li class="opt opt--static">Baldosa cerámica</li><li class="opt opt--static">Baldosa mármol</li><li class="opt opt--static">Granito pulido</li><li class="opt opt--static">Piedra lisa</li><li class="opt opt--static">Piedra áspera</li><li class="opt opt--static">Losa oscura</li><li class="opt opt--static">Hormigón pulido</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-techo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Techo<span class="opt-section__count">22</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Vigas expuestas madera</li><li class="opt opt--static">Vigas de hierro</li><li class="opt opt--static">Abovedado medieval</li><li class="opt opt--static">Abovedado barroco</li><li class="opt opt--static">Cúpula frescos</li><li class="opt opt--static">Cúpula vidrio</li><li class="opt opt--static">Plano blanco</li><li class="opt opt--static">Plano pintado</li><li class="opt opt--static">Estucos decorados</li><li class="opt opt--static">Molduras ornamentales</li><li class="opt opt--static opt--more">y 12 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ventanas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ventanas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna ventana</li><li class="opt opt--static">Ventana pequeña</li><li class="opt opt--static">Ventana grande</li><li class="opt opt--static">Ventanas múltiples</li><li class="opt opt--static">Pared de vidrio</li><li class="opt opt--static">Vitrales medievales</li><li class="opt opt--static">Vitrales góticos</li><li class="opt opt--static">Vidrio esmerilado</li><li class="opt opt--static">Vidrio roto</li><li class="opt opt--static">Ventanas selladas</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-puertas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Puertas<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna puerta</li><li class="opt opt--static">Una puerta simple</li><li class="opt opt--static">Puerta doble</li><li class="opt opt--static">Puertas múltiples</li><li class="opt opt--static">Puerta madera pesada</li><li class="opt opt--static">Puerta metal reforzada</li><li class="opt opt--static">Puerta cristal</li><li class="opt opt--static">Puerta blanca</li><li class="opt opt--static">Puerta oscura</li><li class="opt opt--static">Puerta tallada</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color dominante<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Blanco puro</li><li class="opt opt--static">Crema marfil</li><li class="opt opt--static">Gris neutral</li><li class="opt opt--static">Negro total</li><li class="opt opt--static">Marrón cálido</li><li class="opt opt--static">Rojo intenso</li><li class="opt opt--static">Rojo burdeos</li><li class="opt opt--static">Azul profundo</li><li class="opt opt--static">Azul claro</li><li class="opt opt--static">Verde bosque</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-limpieza">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Limpieza / estado<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pristino impecable</li><li class="opt opt--static">Muy limpio</li><li class="opt opt--static">Limpio normal</li><li class="opt opt--static">Polvoriento</li><li class="opt opt--static">Muy polvoriento</li><li class="opt opt--static">Abandonado desván</li><li class="opt opt--static">Ruina antigua</li><li class="opt opt--static">Destruido</li><li class="opt opt--static">Escombros total</li><li class="opt opt--static">Sucio destartalado</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-mobiliario-qty">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cantidad de mobiliario<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente vacío</li><li class="opt opt--static">Muy pocas piezas</li><li class="opt opt--static">Minimalista</li><li class="opt opt--static">Moderado funcional</li><li class="opt opt--static">Bien amueblado</li><li class="opt opt--static">Muy amueblado</li><li class="opt opt--static">Abarrotado</li><li class="opt opt--static">Caos abrumador</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-mobiliario-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de mobiliario<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Medieval primitivo</li><li class="opt opt--static">Victoriano pesado</li><li class="opt opt--static">Clásico ornamental</li><li class="opt opt--static">Moderno limpio</li><li class="opt opt--static">Minimalista nórdico</li><li class="opt opt--static">Industrial metal</li><li class="opt opt--static">Lujo contemporáneo</li><li class="opt opt--static">Destartalado viejo</li><li class="opt opt--static">Antigüedades mixtas</li><li class="opt opt--static">Futurista neon</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-decoracion-paredes">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Decoración de paredes<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Paredes desnudas</li><li class="opt opt--static">Pocos cuadros</li><li class="opt opt--static">Galerías arte</li><li class="opt opt--static">Tapices colgantes</li><li class="opt opt--static">Frescos pintados</li><li class="opt opt--static">Retratos antiguos</li><li class="opt opt--static">Símbolos ocultos</li><li class="opt opt--static">Runas arcanas</li><li class="opt opt--static">Escrituras</li><li class="opt opt--static">Relieves tallados</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-atmosfera">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Atmósfera / mood<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sereno pacífico</li><li class="opt opt--static">Cálido acogedor</li><li class="opt opt--static">Romántico sublime</li><li class="opt opt--static">Dramático épico</li><li class="opt opt--static">Misterioso enigmático</li><li class="opt opt--static">Aterrador inquietante</li><li class="opt opt--static">Lúgubre tétrico</li><li class="opt opt--static">Caótico frenético</li><li class="opt opt--static">Majestuoso imponente</li><li class="opt opt--static">Íntimo privado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-elementos">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Elementos especiales<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Chimenea con fuego</li><li class="opt opt--static">Chimenea apagada</li><li class="opt opt--static">Escalera caracol</li><li class="opt opt--static">Escalera monumental</li><li class="opt opt--static">Escalera rota</li><li class="opt opt--static">Columnas</li><li class="opt opt--static">Arcos abovedados</li><li class="opt opt--static">Vidrieras</li><li class="opt opt--static">Fuente interior</li><li class="opt opt--static">Pozo profundo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-agua">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Presencia de agua<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin agua</li><li class="opt opt--static">Fuente decorativa</li><li class="opt opt--static">Piscina interior</li><li class="opt opt--static">Baño agua</li><li class="opt opt--static">Río subterráneo</li><li class="opt opt--static">Cascada interior</li><li class="opt opt--static">Lago subterráneo</li><li class="opt opt--static">Encharcado húmedo</li><li class="opt opt--static">Goteo constante</li><li class="opt opt--static">Charcos espejo</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-vegetacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Vegetación interior<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin plantas</li><li class="opt opt--static">Pocas plantas</li><li class="opt opt--static">Plantas decorativas</li><li class="opt opt--static">Jardín vertical</li><li class="opt opt--static">Musgo paredes</li><li class="opt opt--static">Enredaderas tupidas</li><li class="opt opt--static">Bosque interior</li><li class="opt opt--static">Árboles gigantes</li><li class="opt opt--static">Hongos bioluminiscentes</li><li class="opt opt--static">Flores floración</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-personas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Personas presentes<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente vacío</li><li class="opt opt--static">Una figura solitaria</li><li class="opt opt--static">Dos personas</li><li class="opt opt--static">Pequeño grupo</li><li class="opt opt--static">Multitud</li><li class="opt opt--static">Fantasmas espectrales</li><li class="opt opt--static">Estatuas humanas</li><li class="opt opt--static">Cadáveres</li><li class="opt opt--static">Esqueletos</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-proposito">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Propósito/función<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Dormitorio</li><li class="opt opt--static">Sala trono</li><li class="opt opt--static">Biblioteca estudio</li><li class="opt opt--static">Laboratorio alquimista</li><li class="opt opt--static">Sala torturas</li><li class="opt opt--static">Cripta entierro</li><li class="opt opt--static">Templo ritual</li><li class="opt opt--static">Sala banquetes</li><li class="opt opt--static">Guardarropa</li><li class="opt opt--static">Tesorería</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-magia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Presencia mágica<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mundano normal</li><li class="opt opt--static">Levemente mágico</li><li class="opt opt--static">Mágico</li><li class="opt opt--static">Altamente mágico</li><li class="opt opt--static">Completamente místico</li><li class="opt opt--static">Sobrenatural alien</li><li class="opt opt--static">Dimensión otra</li><li class="opt opt--static">Caos mágico</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tecnologia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Nivel tecnológico<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Primitivo</li><li class="opt opt--static">Medieval</li><li class="opt opt--static">Renacentista</li><li class="opt opt--static">Industrial</li><li class="opt opt--static">Moderno contemporáneo</li><li class="opt opt--static">Futurista</li><li class="opt opt--static">Hiperfuturista</li><li class="opt opt--static">Cyberpunk</li><li class="opt opt--static">Steampunk</li><li class="opt opt--static">Mezcla anacrrónica</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-polvo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Polvo y telarañas<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Impecablemente limpio</li><li class="opt opt--static">Normal</li><li class="opt opt--static">Polvoriento</li><li class="opt opt--static">Muy polvoriento</li><li class="opt opt--static">Capas de polvo</li><li class="opt opt--static">Telarañas</li><li class="opt opt--static">Telarañas densas</li><li class="opt opt--static">Telarañas totales</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-salidas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Puertas/salidas visibles<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Una salida clara</li><li class="opt opt--static">Pocas salidas</li><li class="opt opt--static">Múltiples salidas</li><li class="opt opt--static">Muchas puertas</li><li class="opt opt--static">Sin salidas visibles</li><li class="opt opt--static">Puertas selladas</li><li class="opt opt--static">Salidas secretas</li><li class="opt opt--static">Laberinto entradas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ventilacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Aire y ventilación<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Aire fresco</li><li class="opt opt--static">Bien ventilado</li><li class="opt opt--static">Aire estancado</li><li class="opt opt--static">Sofocante viciado</li><li class="opt opt--static">Brisa visible</li><li class="opt opt--static">Humo neblinoso</li><li class="opt opt--static">Inhalable tóxico</li><li class="opt opt--static">Olor penetrante</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-dano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Daño estructural<span class="opt-section__count">9</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Intacto perfecto</li><li class="opt opt--static">Muy bien preservado</li><li class="opt opt--static">Algunas grietas</li><li class="opt opt--static">Grietas visibles</li><li class="opt opt--static">Grandes agujeros</li><li class="opt opt--static">Derrumbamiento parcial</li><li class="opt opt--static">Ruina grave</li><li class="opt opt--static">Colapso casi total</li><li class="opt opt--static">Escombros caos</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-armas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Armas/armamentos<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin armas</li><li class="opt opt--static">Pocas armas</li><li class="opt opt--static">Algunas armas visibles</li><li class="opt opt--static">Muchas armas</li><li class="opt opt--static">Paredes de armas</li><li class="opt opt--static">Arsenal completo</li><li class="opt opt--static">Armas antiguas</li><li class="opt opt--static">Armas futuristas</li><li class="opt opt--static">Armas mágicas</li><li class="opt opt--static">Armas ensangrentadas</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-libros">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Libros/conocimiento<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin libros</li><li class="opt opt--static">Pocos libros</li><li class="opt opt--static">Estantes moderados</li><li class="opt opt--static">Muchos libros</li><li class="opt opt--static">Biblioteca completa</li><li class="opt opt--static">Paredes libros</li><li class="opt opt--static">Libros antiguos</li><li class="opt opt--static">Libros rasgados</li><li class="opt opt--static">Grimarios místicos</li><li class="opt opt--static">Pergaminos</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-arte">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Arte y cuadros<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin arte</li><li class="opt opt--static">Pocos cuadros</li><li class="opt opt--static">Galerías moderadas</li><li class="opt opt--static">Muchos cuadros</li><li class="opt opt--static">Galería completa</li><li class="opt opt--static">Caos artístico</li><li class="opt opt--static">Arte antiguo maestros</li><li class="opt opt--static">Arte moderno abstracto</li><li class="opt opt--static">Arte obsceno</li><li class="opt opt--static">Retratos vigilancia</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-riqueza">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Oro y riqueza<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Pobre</li><li class="opt opt--static">Modesto</li><li class="opt opt--static">Clases media</li><li class="opt opt--static">Acomodado</li><li class="opt opt--static">Rico</li><li class="opt opt--static">Muy rico</li><li class="opt opt--static">Extravagante lujo</li><li class="opt opt--static">Tesoro</li><li class="opt opt--static">Oro expuesto</li><li class="opt opt--static">Joyas esparcidas</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-morbidez">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Morbidez/víctimas<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Ninguna</li><li class="opt opt--static">Sutil discreto</li><li class="opt opt--static">Evidente</li><li class="opt opt--static">Muy evidente</li><li class="opt opt--static">Morbid prominente</li><li class="opt opt--static">Abrumadoramente gráfico</li><li class="opt opt--static">Cuerpos desmembrados</li><li class="opt opt--static">Esqueletos apilas</li><li class="opt opt--static">Calaveras</li><li class="opt opt--static">Sangre paredes</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sonido">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sonido ambiental evocado<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Silencio completo</li><li class="opt opt--static">Silencio casi total</li><li class="opt opt--static">Goteo ocasional</li><li class="opt opt--static">Goteo constante</li><li class="opt opt--static">Viento suave</li><li class="opt opt--static">Viento fuerte</li><li class="opt opt--static">Música distante</li><li class="opt opt--static">Ronroneo maquinas</li><li class="opt opt--static">Whispers inaudibles</li><li class="opt opt--static">Ecos extraños</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-olor">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Olor evocado<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin olor particular</li><li class="opt opt--static">Amaderado cálido</li><li class="opt opt--static">Viejo polvoriento</li><li class="opt opt--static">Húmedo moho</li><li class="opt opt--static">Incienso aromático</li><li class="opt opt--static">Sangre metálica</li><li class="opt opt--static">Quemado chamuscado</li><li class="opt opt--static">Perfume florido</li><li class="opt opt--static">Metal oxidado</li><li class="opt opt--static">Cadáver putrefacción</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-tactil">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sensación táctil<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Seco templado</li><li class="opt opt--static">Frío glacial</li><li class="opt opt--static">Cálido abrasador</li><li class="opt opt--static">Húmedo pegajoso</li><li class="opt opt--static">Polvo fino</li><li class="opt opt--static">Áspero rugoso</li><li class="opt opt--static">Suave sedoso</li><li class="opt opt--static">Resbaladizo mojado</li><li class="opt opt--static">Pegajoso viscoso</li><li class="opt opt--static">Espinoso pinchazo</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +228,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

@@ -14,7 +14,7 @@ export function domainCard(d) {
   <h3 class="card__title">${esc(d.title)}</h3>
   <p class="card__kicker">${esc(d.kicker)}</p>
   <p class="card__summary">${esc(d.summary)}</p>
-  <div class="card__foot"><span>${d.sections} secciones</span><span>${fmt(d.options)} opciones</span>${d.presets ? `<span>${fmt(d.presets)} ideas</span>` : ''}<span class="card__sel" data-sel hidden></span></div>
+  <div class="card__foot"><span>${d.sections} secciones</span><span>${fmt(d.options)} opciones</span>${d.presets ? `<span>${fmt(d.presets)} ${d.presetsLabel}</span>` : ''}<span class="card__sel" data-sel hidden></span></div>
 </a>`;
 }
 

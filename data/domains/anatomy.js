@@ -11,7 +11,7 @@ export default {
     {
       "id": "tipo-cuerpo",
       "title": "Tipo de cuerpo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fully-humanoid","es":"Humanoide totalmente","en":"fully humanoid"},
         {"id":"humanoid-with-animal-traits","es":"Humanoide con rasgos animales","en":"humanoid with animal traits"},
@@ -55,7 +55,7 @@ export default {
     {
       "id": "tamano",
       "title": "Tamaño/escala",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"tiny-dwarf","es":"Enano diminuto","en":"tiny dwarf"},
         {"id":"very-small","es":"Muy pequeño","en":"very small"},
@@ -82,7 +82,7 @@ export default {
     {
       "id": "proporcion",
       "title": "Proporción general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-proportioned","es":"Proporcionada perfecta","en":"perfectly proportioned"},
         {"id":"elongated-slender","es":"Alargada esbelta","en":"elongated slender"},
@@ -113,7 +113,7 @@ export default {
     {
       "id": "esqueleto",
       "title": "Esqueleto/estructura ósea",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"standard-human-skeleton","es":"Esqueleto humano estándar","en":"standard human skeleton"},
         {"id":"quadruped-skeleton","es":"Esqueleto animal cuadrúpedo","en":"quadruped skeleton"},
@@ -140,7 +140,7 @@ export default {
     {
       "id": "densidad",
       "title": "Densidad ósea",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fragile-brittle","es":"Huesos frágiles quebradizos","en":"fragile brittle"},
         {"id":"normal-bones","es":"Huesos normales","en":"normal bones"},
@@ -163,7 +163,7 @@ export default {
     {
       "id": "musculatura",
       "title": "Musculatura general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"very-muscular","es":"Muy musculoso hipertrofiado","en":"very muscular"},
         {"id":"muscular-defined","es":"Musculoso definido","en":"muscular defined"},
@@ -190,7 +190,7 @@ export default {
     {
       "id": "pecho",
       "title": "Pecho/tórax/abdomen",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"flat-stomach","es":"Abdomen plano","en":"flat stomach"},
         {"id":"muscular-six-pack","es":"Abdomen musculoso six-pack","en":"muscular six-pack"},
@@ -217,7 +217,7 @@ export default {
     {
       "id": "brazos",
       "title": "Brazos/extremidades superiores",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"thin-wiry-arms","es":"Brazos delgados enjutos","en":"thin wiry arms"},
         {"id":"muscular-arms","es":"Brazos musculosos","en":"muscular arms"},
@@ -245,7 +245,7 @@ export default {
     {
       "id": "piernas",
       "title": "Piernas/extremidades inferiores",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"thin-legs","es":"Piernas delgadas enjutas","en":"thin legs"},
         {"id":"muscular-legs","es":"Piernas musculosas","en":"muscular legs"},
@@ -273,7 +273,7 @@ export default {
     {
       "id": "manos",
       "title": "Manos/dedos",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"normal-human-hands","es":"Manos humanas normales","en":"normal human hands"},
         {"id":"six-fingered","es":"6 dedos polidáctilo","en":"six-fingered"},
@@ -301,7 +301,7 @@ export default {
     {
       "id": "pies",
       "title": "Pies",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"human-feet","es":"Pies humanos","en":"human feet"},
         {"id":"long-feet","es":"Pies largos","en":"long feet"},
@@ -329,7 +329,7 @@ export default {
     {
       "id": "cabeza",
       "title": "Cabeza/proporción facial",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"proportional-head","es":"Cabeza proporcionada","en":"proportional head"},
         {"id":"oversized-head","es":"Cabeza grande","en":"oversized head"},
@@ -360,7 +360,7 @@ export default {
     {
       "id": "cuello",
       "title": "Cuello",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"long-elegant","es":"Cuello largo elegante","en":"long elegant"},
         {"id":"short-robust","es":"Cuello corto robusto","en":"short robust"},
@@ -387,7 +387,7 @@ export default {
     {
       "id": "hombros",
       "title": "Hombros",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"broad-shoulders","es":"Hombros anchos","en":"broad shoulders"},
         {"id":"narrow-shoulders","es":"Hombros estrechos","en":"narrow shoulders"},
@@ -414,7 +414,7 @@ export default {
     {
       "id": "complexion",
       "title": "Complexión general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"extremely-thin","es":"Extremadamente delgado","en":"extremely thin"},
         {"id":"thin-athletic","es":"Delgado atlético","en":"thin athletic"},
@@ -441,7 +441,7 @@ export default {
     {
       "id": "grasa",
       "title": "Grasa corporal %",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"very-low-5-10","es":"Muy baja 5-10%","en":"very low 5-10%"},
         {"id":"low-10-15","es":"Baja 10-15%","en":"low 10-15%"},
@@ -468,7 +468,7 @@ export default {
     {
       "id": "piel-tono",
       "title": "Tono de piel",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"very-pale","es":"Muy pálida","en":"very pale"},
         {"id":"fair-skin","es":"Clara","en":"fair skin"},
@@ -498,7 +498,7 @@ export default {
     {
       "id": "piel-textura",
       "title": "Textura de piel",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-smooth","es":"Completamente lisa","en":"perfectly smooth"},
         {"id":"slightly-textured","es":"Ligeramente texturada","en":"slightly textured"},
@@ -529,7 +529,7 @@ export default {
     {
       "id": "alas",
       "title": "Alas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-wings","es":"Sin alas","en":"no wings"},
         {"id":"angel-wings","es":"Alas de ángel","en":"angel wings"},
@@ -561,7 +561,7 @@ export default {
     {
       "id": "cuernos",
       "title": "Cuernos/protuberancias",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-horns","es":"Sin cuernos","en":"no horns"},
         {"id":"single-horn","es":"Un cuerno","en":"single horn"},
@@ -593,7 +593,7 @@ export default {
     {
       "id": "cola",
       "title": "Cola",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-tail","es":"Sin cola","en":"no tail"},
         {"id":"short-tail","es":"Cola corta","en":"short tail"},
@@ -625,7 +625,7 @@ export default {
     {
       "id": "simetria",
       "title": "Simetría corporal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-symmetrical","es":"Perfectamente simétrica","en":"perfectly symmetrical"},
         {"id":"nearly-symmetrical","es":"Casi simétrica","en":"nearly symmetrical"},
@@ -810,7 +810,7 @@ export default {
     {
       "id": "vello",
       "title": "Vello corporal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-hairless","es":"Glabro completamente","en":"completely hairless"},
         {"id":"lightly-furred","es":"Ligeramente peludo","en":"lightly furred"},
@@ -842,7 +842,7 @@ export default {
     {
       "id": "cavidad",
       "title": "Órganos/cavidad visible",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fully-covered","es":"Completamente ocultos","en":"fully covered"},
         {"id":"partially-visible","es":"Parcialmente visible","en":"partially visible"},
@@ -874,7 +874,7 @@ export default {
     {
       "id": "edad",
       "title": "Edad física aparente",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"infant","es":"Bebé","en":"infant"},
         {"id":"toddler","es":"Infante","en":"toddler"},
@@ -938,7 +938,7 @@ export default {
     {
       "id": "composicion",
       "title": "Composición corporal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-human","es":"Humanidad total","en":"completely human"},
         {"id":"mostly-human","es":"Mayoría humana","en":"mostly human"},
@@ -970,7 +970,7 @@ export default {
     {
       "id": "perspectiva",
       "title": "Perspectiva/contexto",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"full-body-shot","es":"Toma completa de cuerpo","en":"full body shot"},
         {"id":"medium-shot","es":"Toma media","en":"medium shot"},
@@ -1002,7 +1002,7 @@ export default {
     {
       "id": "fotografia",
       "title": "Fotografía/estilo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"photorealistic","es":"Realismo fotográfico","en":"photorealistic"},
         {"id":"hyperrealistic","es":"Hiperrealismo","en":"hyperrealistic"},
@@ -1034,7 +1034,7 @@ export default {
     {
       "id": "iluminacion",
       "title": "Iluminación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"natural-daylight","es":"Luz natural diurna","en":"natural daylight"},
         {"id":"golden-hour","es":"Luz golden hour","en":"golden hour"},
@@ -1066,7 +1066,7 @@ export default {
     {
       "id": "color",
       "title": "Color grading",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"natural-colors","es":"Colores naturales","en":"natural colors"},
         {"id":"high-saturation","es":"Saturación alta","en":"high saturation"},
@@ -1098,7 +1098,7 @@ export default {
     {
       "id": "atmosfera",
       "title": "Atmósfera/ambiente",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"bright-atmosphere","es":"Ambiente luminoso","en":"bright atmosphere"},
         {"id":"dark-atmosphere","es":"Ambiente oscuro","en":"dark atmosphere"},
@@ -1130,7 +1130,7 @@ export default {
     {
       "id": "bokeh",
       "title": "Efecto bokeh/profundidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-bokeh","es":"Sin bokeh","en":"no bokeh"},
         {"id":"soft-bokeh","es":"Bokeh suave","en":"soft bokeh"},
@@ -1162,7 +1162,7 @@ export default {
     {
       "id": "velocidad",
       "title": "Velocidad cinematográfica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"real-time","es":"Tiempo real","en":"real time"},
         {"id":"normal-motion","es":"Movimiento normal","en":"normal motion"},
@@ -1194,7 +1194,7 @@ export default {
     {
       "id": "objetivo",
       "title": "Objetivo/focal length",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ultra-wide-8mm","es":"Ultra gran angular 8mm","en":"ultra wide 8mm"},
         {"id":"wide-16mm","es":"Gran angular 16mm","en":"wide 16mm"},
@@ -1226,7 +1226,7 @@ export default {
     {
       "id": "bokeh-final",
       "title": "Contexto final",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"empty-context","es":"Contexto vacío","en":"empty context"},
         {"id":"environmental-context","es":"Contexto ambiental","en":"environmental context"},

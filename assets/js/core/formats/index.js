@@ -2,6 +2,7 @@ import { formatText } from './text.js';
 import { formatNatural } from './natural.js';
 import { formatSD } from './stable-diffusion.js';
 import { formatIdeogram } from './ideogram.js';
+import { formatMidjourney } from './midjourney.js';
 
 /**
  * Catálogo de formatos de salida. Añadir uno nuevo = crear su módulo y registrarlo aquí:
@@ -12,6 +13,7 @@ export const FORMATS = [
   { id: 'natural', label: 'ChatGPT / Gemini', hint: 'Redacción en lenguaje natural, por bloques.', run: formatNatural },
   { id: 'sd', label: 'Stable Diffusion / Flux', hint: 'Prompt positivo y negativo por separado, con tamaño sugerido.', run: formatSD },
   { id: 'ideogram', label: 'Ideogram (JSON)', hint: 'JSON estructurado con descripción, estilo y composición.', run: formatIdeogram },
+  { id: 'midjourney', label: 'Midjourney', hint: 'Descripción corta con los parámetros --ar y --no al final.', run: formatMidjourney },
 ];
 
 export const FORMAT_BY_ID = Object.fromEntries(FORMATS.map(f => [f.id, f]));

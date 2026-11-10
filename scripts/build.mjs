@@ -31,6 +31,7 @@ for (const { domain: d } of all) {
     sections: d.sections.length,
     options: d.sections.reduce((n, s) => n + s.options.length, 0),
     presets: presets ? presets.length : 0,
+    presetsLabel: d.meta.presetsLabel || 'ideas',
   });
 }
 const totals = {
@@ -40,7 +41,7 @@ const totals = {
   presets: presetCount,
 };
 write('data/catalog.js', `// GENERADO por scripts/build.mjs a partir de data/domains/*.js — no editar a mano.\nexport default ${JSON.stringify({ totals, domains }, null, 2)};\n`);
-console.log(`catálogo: ${totals.domains} dominios · ${totals.sections} secciones · ${totals.options} opciones · ${totals.presets} ideas`);
+console.log(`catálogo: ${totals.domains} dominios · ${totals.sections} secciones · ${totals.options} opciones · ${totals.presets} ideas y recetas`);
 
 /* ---------- páginas, sitemap, robots y manifiesto ---------- */
 await buildPages({ domains, totals, all, write });

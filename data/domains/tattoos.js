@@ -11,7 +11,7 @@ export default {
     {
       "id": "tipo-marca",
       "title": "Tipo de marca/tatuaje",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"permanent-tattoo","es":"Tatuaje permanente","en":"permanent tattoo"},
         {"id":"temporary-tattoo","es":"Tatuaje temporal","en":"temporary tattoo"},
@@ -38,7 +38,7 @@ export default {
     {
       "id": "estilo-tribal",
       "title": "Estilo tribal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"polynesian-tribal","es":"Tribal polinésio","en":"polynesian tribal"},
         {"id":"maori-tribal","es":"Tribal maorí","en":"maori tribal"},
@@ -65,7 +65,7 @@ export default {
     {
       "id": "estilo-japones",
       "title": "Estilo japonés",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"yakuza-tattoo","es":"Tatuaje Yakuza","en":"yakuza tattoo"},
         {"id":"irezumi-tattoo","es":"Tatuaje Irezumi","en":"irezumi tattoo"},
@@ -92,7 +92,7 @@ export default {
     {
       "id": "estilo-celta",
       "title": "Estilo celta",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"celtic-knot","es":"Nudo celta","en":"celtic knot"},
         {"id":"interlaced-pattern","es":"Patrón entrelazado","en":"interlaced pattern"},
@@ -119,7 +119,7 @@ export default {
     {
       "id": "estilo-moderno",
       "title": "Estilo moderno",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"minimalist-fine-line","es":"Minimalista línea fina","en":"minimalist fine line"},
         {"id":"geometric-abstract","es":"Geométrico abstracto","en":"geometric abstract"},
@@ -146,7 +146,7 @@ export default {
     {
       "id": "estilo-magico",
       "title": "Estilo mágico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ancient-runes","es":"Runas antiguas","en":"ancient runes"},
         {"id":"power-symbols","es":"Símbolos de poder","en":"power symbols"},
@@ -173,7 +173,7 @@ export default {
     {
       "id": "ubicacion-cabeza",
       "title": "Ubicación - cabeza/cara",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"forehead-center","es":"Frente centro","en":"forehead center"},
         {"id":"forehead-side","es":"Frente lateral","en":"forehead side"},
@@ -200,7 +200,7 @@ export default {
     {
       "id": "ubicacion-torso",
       "title": "Ubicación - torso",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"chest-center","es":"Pecho centro","en":"chest center"},
         {"id":"right-chest","es":"Pecho derecho","en":"right chest"},
@@ -227,7 +227,7 @@ export default {
     {
       "id": "ubicacion-brazos",
       "title": "Ubicación - brazos",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"right-bicep","es":"Bíceps derecho","en":"right bicep"},
         {"id":"left-bicep","es":"Bíceps izquierdo","en":"left bicep"},
@@ -254,7 +254,7 @@ export default {
     {
       "id": "ubicacion-piernas",
       "title": "Ubicación - piernas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"right-thigh","es":"Muslo derecho","en":"right thigh"},
         {"id":"left-thigh","es":"Muslo izquierdo","en":"left thigh"},
@@ -281,7 +281,7 @@ export default {
     {
       "id": "ubicacion-cuello",
       "title": "Ubicación - cuello",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"neck-front","es":"Cuello frente","en":"neck front"},
         {"id":"back-of-neck","es":"Cuello atrás","en":"back of neck"},
@@ -308,7 +308,7 @@ export default {
     {
       "id": "tamano",
       "title": "Tamaño del tatuaje",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"tiny-millimeters","es":"Diminuto milímetros","en":"tiny millimeters"},
         {"id":"very-small-centimeter","es":"Muy pequeño centímetro","en":"very small centimeter"},
@@ -335,7 +335,7 @@ export default {
     {
       "id": "forma-contorno",
       "title": "Forma/contorno",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfect-circle","es":"Círculo perfecto","en":"perfect circle"},
         {"id":"smooth-oval","es":"Óvalo suave","en":"smooth oval"},
@@ -362,7 +362,7 @@ export default {
     {
       "id": "color-primario",
       "title": "Color primario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"deep-black","es":"Negro profundo","en":"deep black"},
         {"id":"pure-black","es":"Negro puro","en":"pure black"},
@@ -389,7 +389,7 @@ export default {
     {
       "id": "color-secundario",
       "title": "Color secundario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-secondary-color","es":"Sin color secundario","en":"no secondary color"},
         {"id":"black-with-details","es":"Negro con detalles","en":"black with details"},
@@ -416,7 +416,7 @@ export default {
     {
       "id": "simbolo-primario",
       "title": "Símbolo primario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mythological-dragon","es":"Dragón mitológico","en":"mythological dragon"},
         {"id":"fire-phoenix","es":"Fénix fuego","en":"fire phoenix"},
@@ -443,7 +443,7 @@ export default {
     {
       "id": "tema-categoria",
       "title": "Tema/categoría",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mythology","es":"Mitología","en":"mythology"},
         {"id":"nature-fauna","es":"Naturaleza fauna","en":"nature fauna"},
@@ -470,7 +470,7 @@ export default {
     {
       "id": "significado",
       "title": "Significado/interpretación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-particular-meaning","es":"Sin significado particular","en":"no particular meaning"},
         {"id":"personal-protection","es":"Protección personal","en":"personal protection"},
@@ -497,7 +497,7 @@ export default {
     {
       "id": "complejidad",
       "title": "Complejidad de diseño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ultra-simple","es":"Ultra simple","en":"ultra simple"},
         {"id":"very-simple","es":"Muy simple","en":"very simple"},
@@ -524,7 +524,7 @@ export default {
     {
       "id": "lineas-estilo",
       "title": "Líneas - estilo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fine-delicate-line","es":"Línea fina delicada","en":"fine delicate line"},
         {"id":"medium-line","es":"Línea media","en":"medium line"},
@@ -551,7 +551,7 @@ export default {
     {
       "id": "sombreado",
       "title": "Sombreado/profundidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-shading","es":"Sin sombreado","en":"no shading"},
         {"id":"very-soft-shading","es":"Sombreado muy suave","en":"very soft shading"},
@@ -578,7 +578,7 @@ export default {
     {
       "id": "detalle-nivel",
       "title": "Nivel de detalle",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ultra-minimalist","es":"Ultra minimalista","en":"ultra minimalist"},
         {"id":"minimalist","es":"Minimalista","en":"minimalist"},
@@ -605,7 +605,7 @@ export default {
     {
       "id": "textura-visual",
       "title": "Textura visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"smooth-texture","es":"Textura lisa","en":"smooth texture"},
         {"id":"dotwork-texture","es":"Textura puntillista","en":"dotwork texture"},
@@ -632,7 +632,7 @@ export default {
     {
       "id": "brillo-resplandor",
       "title": "Brillo/resplandor",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-shine-matte","es":"Sin brillo mate","en":"no shine matte"},
         {"id":"very-soft-shine","es":"Brillo muy suave","en":"very soft shine"},
@@ -659,7 +659,7 @@ export default {
     {
       "id": "efecto-visual",
       "title": "Efecto visual especial",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-effect","es":"Sin efecto especial","en":"no special effect"},
         {"id":"movement-effect","es":"Efecto de movimiento","en":"movement effect"},
@@ -686,7 +686,7 @@ export default {
     {
       "id": "animacion",
       "title": "Animación/movimiento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-movement-static","es":"Sin movimiento estático","en":"no movement static"},
         {"id":"subtle-smooth-animation","es":"Animación suave leve","en":"subtle smooth animation"},
@@ -713,7 +713,7 @@ export default {
     {
       "id": "maldicion-bendicion",
       "title": "Maldición/bendición",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"neutral-no-magic","es":"Neutral sin magia","en":"neutral no magic"},
         {"id":"gentle-blessing","es":"Bendición suave","en":"gentle blessing"},
@@ -740,7 +740,7 @@ export default {
     {
       "id": "origen-historia",
       "title": "Origen/historia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"unknown-origin","es":"Origen desconocido","en":"unknown origin"},
         {"id":"ancient-ancestral","es":"Antiguo ancestral","en":"ancient ancestral"},
@@ -767,7 +767,7 @@ export default {
     {
       "id": "cultura-tradicion",
       "title": "Cultura/tradición",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"polynesian-culture","es":"Cultura polinésio","en":"polynesian culture"},
         {"id":"maori-culture","es":"Cultura maorí","en":"maori culture"},
@@ -794,7 +794,7 @@ export default {
     {
       "id": "localizacion-especifica",
       "title": "Localización específica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"exact-center","es":"Centro exacto","en":"exact center"},
         {"id":"right-side","es":"Lado derecho","en":"right side"},
@@ -821,7 +821,7 @@ export default {
     {
       "id": "numero-elementos",
       "title": "Número de elementos",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"single-element","es":"Un solo elemento","en":"single element"},
         {"id":"two-paired-elements","es":"Dos elementos pares","en":"two paired elements"},
@@ -848,7 +848,7 @@ export default {
     {
       "id": "densidad-cobertura",
       "title": "Densidad/cobertura",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"minimalist-very-little","es":"Minimalista muy poco","en":"minimalist very little"},
         {"id":"sparsely-covered","es":"Poco cubierto","en":"sparsely covered"},
@@ -875,7 +875,7 @@ export default {
     {
       "id": "duracion-permanencia",
       "title": "Duración/permanencia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"temporary-hours","es":"Temporal horas","en":"temporary hours"},
         {"id":"temporary-days","es":"Temporal días","en":"temporary days"},
@@ -902,7 +902,7 @@ export default {
     {
       "id": "interaccion-cuerpo",
       "title": "Interacción con el cuerpo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-static","es":"Completamente estático","en":"completely static"},
         {"id":"vibrates-with-pulse","es":"Vibra con pulso","en":"vibrates with pulse"},
@@ -929,7 +929,7 @@ export default {
     {
       "id": "visibilidad",
       "title": "Visibilidad/opacidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-visible","es":"Completamente visible","en":"completely visible"},
         {"id":"very-visible-noticeable","es":"Muy visible notorio","en":"very visible noticeable"},
@@ -956,7 +956,7 @@ export default {
     {
       "id": "reaccion-emociones",
       "title": "Reacción a emociones",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-emotional-reaction","es":"Sin reacción emocional","en":"no emotional reaction"},
         {"id":"glows-with-joy","es":"Brilla con alegría","en":"glows with joy"},
@@ -983,7 +983,7 @@ export default {
     {
       "id": "poder-especial",
       "title": "Poder especial otorgado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-power","es":"Sin poder especial","en":"no special power"},
         {"id":"grants-protection","es":"Otorga protección","en":"grants protection"},
@@ -1010,7 +1010,7 @@ export default {
     {
       "id": "cambio-tiempo",
       "title": "Cambio con el tiempo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-change-permanent","es":"Sin cambio permanente","en":"no change permanent"},
         {"id":"changes-slowly","es":"Cambia lentamente","en":"changes slowly"},
@@ -1037,7 +1037,7 @@ export default {
     {
       "id": "reaccion-luz",
       "title": "Reacción a luz",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-light-reaction","es":"Sin reacción luz","en":"no light reaction"},
         {"id":"glows-in-sunlight","es":"Brilla bajo luz solar","en":"glows in sunlight"},
@@ -1064,7 +1064,7 @@ export default {
     {
       "id": "composicion-final",
       "title": "Composición final",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"simple-composition","es":"Composición simple","en":"simple composition"},
         {"id":"balanced-composition","es":"Composición equilibrada","en":"balanced composition"},

@@ -1,5 +1,5 @@
 # Lumen Vitae — configuración de ejemplo para nginx (sitio estático).
-# Copiar a /etc/nginx/sites-available/lumenvitae y adaptar la ruta `root`.
+# Copiar a /etc/nginx/sites-available/lumenvitae.es y adaptar la ruta `root`.
 # Los certificados los gestiona certbot (`certbot --nginx`), que completa los bloques TLS.
 
 # www → dominio principal
@@ -15,7 +15,7 @@ server {
     listen [::]:80;
     server_name lumenvitae.es;
 
-    root /var/www/lumenvitae;
+    root /var/www/lumenvitae.es;
     index index.html;
 
     # --- URLs limpias y 404 propio ---

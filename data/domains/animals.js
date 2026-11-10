@@ -7,7 +7,7 @@ export default {
   "role": "subject",
   "order": 13,
   "lead": "an animal",
-  "meta": {"title":"Animales","short":"Animales","kicker":"Diseñador de Animales · Cuki, Feroz o Diabólico · Fauna Real y Fantástica","summary":"Generador de prompts de animales con IA: elige especie (o escribe la tuya), edad, proporciones cuki o diabolicas, personalidad y estilo fotografico. Muchisimas opciones.","intro":"Diseña cualquier animal: elige especie, edad, proporciones y una personalidad que va de lo adorable a lo diabólico. Cruza con un escenario, el clima y la fotografía."},
+  "meta": {"title":"Animales","short":"Animales","kicker":"Diseñador de Animales · Cuki, Feroz o Diabólico · Fauna Real y Fantástica","summary":"Generador de prompts de animales con IA: elige especie (o escribe la tuya), edad, proporciones cuki o diabolicas, personalidad y estilo fotografico. Muchisimas opciones.","intro":"Diseña cualquier animal: elige especie, edad, proporciones y una personalidad que va de lo adorable a lo diabólico. Cruza con un escenario, el clima y la fotografía.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo-animal",

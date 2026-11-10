@@ -7,7 +7,7 @@ export default {
   "role": "subject",
   "order": 21,
   "lead": "a woman",
-  "meta": {"title":"Personaje avanzado · épocas y culturas","short":"Personaje avanzado","kicker":"Épocas · Culturas · Moda · Maquillaje · Poses · Escenarios","summary":"Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.","intro":"Un generador de personajes femeninos adultos (de 18 a 80 años) con épocas, culturas y moda: elige una década para vestirla con su estilo, parte de una receta o ajusta cada rasgo, cada tejido y cada color."},
+  "meta": {"title":"Personaje avanzado · épocas y culturas","short":"Personaje avanzado","kicker":"Épocas · Culturas · Moda · Maquillaje · Poses · Escenarios","summary":"Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.","intro":"Un generador de personajes femeninos adultos (de 18 a 80 años) con épocas, culturas y moda: elige una década para vestirla con su estilo, parte de una receta o ajusta cada rasgo, cada tejido y cada color.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "era",

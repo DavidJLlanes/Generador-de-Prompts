@@ -94,7 +94,7 @@ export function homePage({ domains, totals }) {
       <div class="stat"><span class="stat__n">${totals.domains}</span><span class="stat__l">generadores</span></div>
       <div class="stat"><span class="stat__n">${fmt(totals.sections)}</span><span class="stat__l">secciones</span></div>
       <div class="stat"><span class="stat__n">${fmt(totals.options)}</span><span class="stat__l">opciones</span></div>
-      <div class="stat"><span class="stat__n">${fmt(totals.presets)}</span><span class="stat__l">ideas de escenas</span></div>
+      <div class="stat"><span class="stat__n">${fmt(totals.presets)}</span><span class="stat__l">ideas y recetas</span></div>
     </div>
   </div>
 </section>
@@ -113,7 +113,7 @@ export function homePage({ domains, totals }) {
 
 <section class="section">
   <div class="container">
-    <div class="cta-band"><h2>Empieza con una <em>idea</em></h2><p>Explora ${fmt(totals.presets)} escenas listas para usar o construye la tuya desde cero.</p>
+    <div class="cta-band"><h2>Empieza con una <em>idea</em></h2><p>Explora ${fmt(totals.presets)} ideas y recetas listas para usar o construye la tuya desde cero.</p>
       <div class="hero__cta" style="justify-content:center;margin-top:0"><a class="btn btn--primary btn--lg" href="/constructor/">Abrir el constructor</a><a class="btn btn--outline btn--lg" href="/generadores/escenarios/">Ver la galería de ideas</a></div></div>
   </div>
 </section>`;
@@ -122,7 +122,7 @@ export function homePage({ domains, totals }) {
     path: '/',
     title: 'Lumen Vitae · Generador de prompts para imágenes con IA',
     description: `Construye prompts de máxima calidad para imágenes con IA: ${totals.domains} generadores, más de ${fmt(Math.floor(totals.options / 1000) * 1000)} opciones y un constructor que cruza personajes, escenarios, clima y fotografía. Interfaz en español, prompts en inglés.`,
-    main, script: 'home', domains,
+    main, script: 'home', domains, og: 'home',
     jsonld: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: 'https://lumenvitae.es/', inLanguage: 'es' }],
   });
 }

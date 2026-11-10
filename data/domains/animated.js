@@ -7,7 +7,7 @@ export default {
   "role": "subject",
   "order": 12,
   "lead": "an animated character",
-  "meta": {"title":"Personajes animados","short":"Animados","kicker":"Disney · Pixar · Anime · Dibujos animados","summary":"Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.","intro":"Elige un personaje animado (Disney, Pixar, anime y más): su aspecto canónico queda fijado y tú cambias vestuario, expresión y versión. Cruza con una pose, un escenario o un estilo fotográfico."},
+  "meta": {"title":"Personajes animados","short":"Animados","kicker":"Disney · Pixar · Anime · Dibujos animados","summary":"Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.","intro":"Elige un personaje animado (Disney, Pixar, anime y más): su aspecto canónico queda fijado y tú cambias vestuario, expresión y versión. Cruza con una pose, un escenario o un estilo fotográfico.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "personaje",
@@ -312,7 +312,6 @@ export default {
         {"id":"sophitia-from-soul-calibur-blonde-hair-blue-eyes-greek-w","es":"Sophitia (Soul Calibur)","en":"Sophitia from Soul Calibur, blonde hair, blue eyes, Greek warrior outfit","group":"videojuegos-gaming"},
         {"id":"ivy-valentine-from-soul-calibur-platinum-white-hair-purp","es":"Ivy (Soul Calibur)","en":"Ivy Valentine from Soul Calibur, platinum-white hair, purple revealing armor","group":"videojuegos-gaming"},
         {"id":"taki-from-soul-calibur-black-hair-red-ninja-bodysuit","es":"Taki (Soul Calibur)","en":"Taki from Soul Calibur, black hair, red ninja bodysuit","group":"videojuegos-gaming"},
-        {"id":"ann-takamaki-from-persona-5-blonde-twin-tails-blue-eyes","es":"Ann (Persona 5)","en":"Ann Takamaki from Persona 5, blonde twin tails, blue eyes, red latex phantom-thief catsuit","group":"videojuegos-gaming"},
         {"id":"makoto-niijima-from-persona-5-short-brown-hair-red-eyes","es":"Makoto (Persona 5)","en":"Makoto Niijima from Persona 5, short brown hair, red eyes, biker phantom-thief outfit","group":"videojuegos-gaming"},
         {"id":"lilith-from-borderlands-red-hair-fiery-siren-tattoos-pos","es":"Lilith (Borderlands)","en":"Lilith from Borderlands, red hair, fiery siren tattoos, post-apocalyptic outfit","group":"videojuegos-gaming"},
         {"id":"mad-moxxi-from-borderlands-dark-hair-with-red-streaks-gl","es":"Moxxi (Borderlands)","en":"Mad Moxxi from Borderlands, dark hair with red streaks, glamorous bartender outfit and hat","group":"videojuegos-gaming"},
@@ -372,10 +371,7 @@ export default {
         {"id":"wearing-neon-athletic-wear","es":"Ropa deportiva de neón","en":"wearing neon athletic wear"},
         {"id":"wearing-compression-leggings-and-a-crop-top","es":"Mallas de compresión y crop top","en":"wearing compression leggings and a crop top"},
         {"id":"wearing-a-sheer-lace-bodysuit-elegant","es":"Body de encaje semitransparente","en":"wearing a sheer lace bodysuit, elegant"},
-        {"id":"wearing-a-classic-corset-with-garters-and-stockings","es":"Corsé clásico con liguero","en":"wearing a classic corset with garters and stockings"},
         {"id":"wearing-an-ornate-gothic-corset-with-lace-details","es":"Corsé gótico ornamentado","en":"wearing an ornate gothic corset with lace details"},
-        {"id":"wearing-a-sheer-flowing-babydoll-elegant","es":"Babydoll vaporoso","en":"wearing a sheer flowing babydoll, elegant"},
-        {"id":"wearing-a-refined-lace-set-with-fishnet-stockings","es":"Conjunto de encaje con medias de rejilla","en":"wearing a refined lace set with fishnet stockings"},
         {"id":"wearing-an-elegant-bikini","es":"Bikini elegante","en":"wearing an elegant bikini"},
         {"id":"wearing-a-classic-black-bikini","es":"Bikini negro clásico","en":"wearing a classic black bikini"},
         {"id":"wearing-a-luxurious-gold-bikini","es":"Bikini dorado de lujo","en":"wearing a luxurious gold bikini"},

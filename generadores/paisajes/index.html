@@ -6,7 +6,7 @@
 <title>Paisajes · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/paisajes/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Paisajes · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/paisajes/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/paisajes.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paisajes · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/paisajes.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -50,7 +55,7 @@
   <p class="domain-hero__intro">Construye un mundo natural o sobrenatural pieza a pieza: tipo de paisaje y sus características (clima, vegetación, hora). Cruza con un personaje, el clima y la fotografía.</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="13" height="13" rx="3"/><circle cx="7.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="12.5" cy="12.5" r=".8" fill="currentColor"/><circle cx="10" cy="10" r=".8" fill="currentColor"/></svg> Aleatorio</button>
-    
+    <button type="button" class="btn btn--outline" data-act="ideas"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2.5 11.7 8.3 17.5 10l-5.8 1.7L10 17.5l-1.7-5.8L2.5 10l5.8-1.7L10 2.5Z"/></svg> Ver 6 recetas</button>
     <button type="button" class="btn btn--ghost" data-act="clear-domain"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 .7 10h6.6L14 6"/></svg> Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor <svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
     <span class="domain-hero__facts">21 secciones · 316 opciones</span>
@@ -69,7 +74,92 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de paisaje<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Montaña imponente</li><li class="opt opt--static">Playa y océano</li><li class="opt opt--static">Bosque denso</li><li class="opt opt--static">Desierto árido</li><li class="opt opt--static">Llanura infinita</li><li class="opt opt--static">Río y cascadas</li><li class="opt opt--static">Lago sereno</li><li class="opt opt--static">Cañón profundo</li><li class="opt opt--static">Acantilado costero</li><li class="opt opt--static">Volcán activo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-hora">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Hora del día<span class="opt-section__count">13</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Amanecer dorado</li><li class="opt opt--static">Mañana clara</li><li class="opt opt--static">Mediodía despiadado</li><li class="opt opt--static">Tarde con sombras</li><li class="opt opt--static">Atardecer ardiente</li><li class="opt opt--static">Anochecer crepuscular</li><li class="opt opt--static">Noche estrellada</li><li class="opt opt--static">Medianoche lunar</li><li class="opt opt--static">Madrugada oscura</li><li class="opt opt--static">Hora mágica dorada</li><li class="opt opt--static opt--more">y 3 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-clima">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Clima y condiciones<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Despejado perfecto</li><li class="opt opt--static">Nublado dramático</li><li class="opt opt--static">Lluvia torrencial</li><li class="opt opt--static">Lluvia fina suave</li><li class="opt opt--static">Nieve cálida</li><li class="opt opt--static">Tormenta eléctrica</li><li class="opt opt--static">Niebla densa</li><li class="opt opt--static">Aurora boreal</li><li class="opt opt--static">Arco iris completo</li><li class="opt opt--static">Polvo y viento</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-estacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Estación / época<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Primavera florecida</li><li class="opt opt--static">Verano radiante</li><li class="opt opt--static">Otoño dorado</li><li class="opt opt--static">Invierno nevado</li><li class="opt opt--static">Primavera mágica</li><li class="opt opt--static">Verano eterno</li><li class="opt opt--static">Otoño carmesí</li><li class="opt opt--static">Invierno de cristal</li><li class="opt opt--static">Temporada de floración</li><li class="opt opt--static">Época de sequía</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-terreno">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Terreno y topografía<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Colinas ondulantes</li><li class="opt opt--static">Montañas nevadas</li><li class="opt opt--static">Llanura perfectamente plana</li><li class="opt opt--static">Barranco profundo</li><li class="opt opt--static">Acantilado vertical</li><li class="opt opt--static">Meseta elevada</li><li class="opt opt--static">Volcán cónico</li><li class="opt opt--static">Depresión subterránea</li><li class="opt opt--static">Rocas fluidas</li><li class="opt opt--static">Peñascales afilados</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-vegetacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Vegetación y flora<span class="opt-section__count">16</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Bosque denso antiguo</li><li class="opt opt--static">Bosque caducifolio</li><li class="opt opt--static">Bosque de coníferas</li><li class="opt opt--static">Selva tropical exuberante</li><li class="opt opt--static">Bambú gigante</li><li class="opt opt--static">Flores silvestres</li><li class="opt opt--static">Árboles retorcidos</li><li class="opt opt--static">Árbol colosal único</li><li class="opt opt--static">Cactus y arbustos</li><li class="opt opt--static">Musgo y líquenes</li><li class="opt opt--static opt--more">y 6 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-agua">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Masas de agua<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Océano agitado</li><li class="opt opt--static">Agua tranquila cristalina</li><li class="opt opt--static">Río caudaloso</li><li class="opt opt--static">Cascada majestuosa</li><li class="opt opt--static">Lago espejado</li><li class="opt opt--static">Laguna tropical</li><li class="opt opt--static">Pantano neblinoso</li><li class="opt opt--static">Fuente termal</li><li class="opt opt--static">Geyser intermitente</li><li class="opt opt--static">Hielo flotante</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-cielo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Cielo y atmósfera celestial<span class="opt-section__count">14</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cielo azul cristalino</li><li class="opt opt--static">Atardecer naranja</li><li class="opt opt--static">Cielo púrpura oscuro</li><li class="opt opt--static">Estrellas infinitas</li><li class="opt opt--static">Luna llena enorme</li><li class="opt opt--static">Lunas múltiples</li><li class="opt opt--static">Galaxia visible</li><li class="opt opt--static">Aurora boreal bailante</li><li class="opt opt--static">Cometa brillante</li><li class="opt opt--static">Planeta cercano</li><li class="opt opt--static opt--more">y 4 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-ilum-natural">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Iluminación natural<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Luz dorada cálida</li><li class="opt opt--static">Luz blanca neutra</li><li class="opt opt--static">Luz azul fría</li><li class="opt opt--static">Luz morada mágica</li><li class="opt opt--static">Luz verde boscosa</li><li class="opt opt--static">Luz roja volcánica</li><li class="opt opt--static">Luz verde subacuática</li><li class="opt opt--static">Luz luna plateada</li><li class="opt opt--static">Luz espectral etérea</li><li class="opt opt--static">Contraste extremo</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-fauna">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Fauna y vida silvestre<span class="opt-section__count">52</span></h2><p class="opt-section__note">Multiselección: combina varios animales.</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rebaño de venados</li><li class="opt opt--static">Lobos cazando</li><li class="opt opt--static">Águilas volando</li><li class="opt opt--static">Búfalos masivos</li><li class="opt opt--static">Osos solitarios</li><li class="opt opt--static">Pájaros exóticos</li><li class="opt opt--static">Insectos gigantes</li><li class="opt opt--static">Criaturas mitológicas</li><li class="opt opt--static">Dragones antiguos</li><li class="opt opt--static">Fauna submarina bioluminiscente</li><li class="opt opt--static opt--more">y 42 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-civilizacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Grado de civilización<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente virgen</li><li class="opt opt--static">Escasos signos humanos</li><li class="opt opt--static">Pueblo abandonado</li><li class="opt opt--static">Ruinas antiguas</li><li class="opt opt--static">Templo monumental</li><li class="opt opt--static">Castillo medieval</li><li class="opt opt--static">Ciudad histórica</li><li class="opt opt--static">Metrópolis futurista</li><li class="opt opt--static">Colonia espacial</li><li class="opt opt--static">Arquitectura biónica</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-primo-plano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Primer plano / detalle<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rocas texturadas</li><li class="opt opt--static">Flores silvestres macro</li><li class="opt opt--static">Musgo y hongos</li><li class="opt opt--static">Raíces retorcidas</li><li class="opt opt--static">Cristales brillantes</li><li class="opt opt--static">Hoja mojada</li><li class="opt opt--static">Tierra fértil</li><li class="opt opt--static">Arena dorada</li><li class="opt opt--static">Nieve cristalina</li><li class="opt opt--static">Espuma marina</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-densidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Densidad visual / complejidad<span class="opt-section__count">8</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Minimalista vacío</li><li class="opt opt--static">Aire y espacio</li><li class="opt opt--static">Moderadamente poblado</li><li class="opt opt--static">Abundante detallado</li><li class="opt opt--static">Densa enmaraña</li><li class="opt opt--static">Caótica abrumadora</li><li class="opt opt--static">Hiperfocal nítido</li><li class="opt opt--static">Desenfoque artístico</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-escala">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Escala / grandiosidad<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Íntima cercana</li><li class="opt opt--static">Humana accesible</li><li class="opt opt--static">Monumental épica</li><li class="opt opt--static">Cósmica infinita</li><li class="opt opt--static">Contraste de escalas</li><li class="opt opt--static">Gigantismo eterno</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-composicion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Composición visual<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Simetría perfecta</li><li class="opt opt--static">Regla de tercios</li><li class="opt opt--static">Horizonte central</li><li class="opt opt--static">Horizonte bajo</li><li class="opt opt--static">Horizonte alto</li><li class="opt opt--static">Diagonal dinámica</li><li class="opt opt--static">Marco natural</li><li class="opt opt--static">Patrón repetitivo</li><li class="opt opt--static">Espiral hipnótica</li><li class="opt opt--static">Caos balanceado</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-perspectiva">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Perspectiva y ángulo<span class="opt-section__count">15</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nivel del suelo</li><li class="opt opt--static">Altura normal</li><li class="opt opt--static">Plano picado</li><li class="opt opt--static">Contrapicado dramático</li><li class="opt opt--static">Distancia extrema</li><li class="opt opt--static">Macro acercado</li><li class="opt opt--static">Vista aérea dron</li><li class="opt opt--static">Perspectiva invertida</li><li class="opt opt--static">Ángulo holandés</li><li class="opt opt--static">Periscopio subacuático</li><li class="opt opt--static opt--more">y 5 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-contexto">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Contexto ambiental<span class="opt-section__count">12</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Día soleado claro</li><li class="opt opt--static">Clima tormentoso</li><li class="opt opt--static">Niebla crepuscular</li><li class="opt opt--static">Ventoso agitado</li><li class="opt opt--static">Tranquilo sin viento</li><li class="opt opt--static">Helado glacial</li><li class="opt opt--static">Cálido tropical</li><li class="opt opt--static">Seco árido desértico</li><li class="opt opt--static">Húmedo pantanoso</li><li class="opt opt--static">Contaminación neón</li><li class="opt opt--static opt--more">y 2 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-locs">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Localizaciones de paisaje<span class="opt-section__count">35</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Picos nevados</li><li class="opt opt--static">Cordillera infinita</li><li class="opt opt--static">Cima solitaria</li><li class="opt opt--static">Paso montañoso</li><li class="opt opt--static">Ladera escarpada</li><li class="opt opt--static">Bahía tranquila</li><li class="opt opt--static">Acantilado de olas</li><li class="opt opt--static">Río de montaña</li><li class="opt opt--static">Delta fluvial</li><li class="opt opt--static">Arrecife coralino</li><li class="opt opt--static opt--more">y 25 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-1-plano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Plano de visión<span class="opt-section__count">10</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Plano general paisaje</li><li class="opt opt--static">Plano muy amplio</li><li class="opt opt--static">Plano medio</li><li class="opt opt--static">Detalle medio</li><li class="opt opt--static">Primerísimo primer plano</li><li class="opt opt--static">Panorama horizontal</li><li class="opt opt--static">Panorama vertical</li><li class="opt opt--static">Vista aérea dron</li><li class="opt opt--static">Profundidad de campo</li><li class="opt opt--static">Macro del suelo</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-2-angulo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Ángulo de cámara<span class="opt-section__count">11</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Nivel horizontal</li><li class="opt opt--static">Picado 30 grados</li><li class="opt opt--static">Picado 60 grados</li><li class="opt opt--static">Contrapicado 30 grados</li><li class="opt opt--static">Contrapicado 60 grados</li><li class="opt opt--static">Ángulo holandés 15 grados</li><li class="opt opt--static">Ángulo holandés 45 grados</li><li class="opt opt--static">Rol lateral</li><li class="opt opt--static">Inversión completa</li><li class="opt opt--static">Simétrico perfecto</li><li class="opt opt--static opt--more">y 1 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-3-distancia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Distancia focal<span class="opt-section__count">6</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Extremadamente lejano</li><li class="opt opt--static">Muy lejano</li><li class="opt opt--static">Distancia media</li><li class="opt opt--static">Cercano íntimo</li><li class="opt opt--static">Macro acercado</li><li class="opt opt--static">Contrastes de escala</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +172,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

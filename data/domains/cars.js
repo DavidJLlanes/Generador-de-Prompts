@@ -8,6 +8,7 @@ export default {
   "order": 20,
   "lead": "a car",
   "meta": {"title":"Coches míticos y actuales","short":"Coches","kicker":"Coches míticos · Coches actuales · Escenas fotográficas e ilustradas","summary":"Elige entre 1.000 coches reales (500 míticos de la historia y 500 actuales) y colócalos en una de 183 escenas fotográficas o de ilustración, con la versión y el color que quieras.","intro":"Elige un coche de la historia o uno actual, su versión y su color, y ponlo en una escena fotográfica o de ilustración. Cruza con el clima, la fotografía o un escenario para ir más lejos."},
+  "conflicts": [{"id":"foto-vs-ilustracion","a":["escena-foto"],"b":["escena-ilustracion"]}],
   "sections": [
     {
       "id": "car",

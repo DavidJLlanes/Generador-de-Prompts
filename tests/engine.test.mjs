@@ -133,7 +133,7 @@ test('aspectNote da nota para proporciones conocidas y nada para «sin definir»
 test('estado compartible: codificar y decodificar es reversible', () => {
   const s = base({ woman: { edad: ['a'] }, weather: { x: ['b', 'c'] } }, { detail: 'short', boost: true, aspect: '16:9' });
   const back = decodeState(encodeState(s));
-  assert.deepEqual(back, { sel: s.sel, detail: 'short', boost: true, aspect: '16:9' });
+  assert.deepEqual(back, { sel: s.sel, detail: 'short', boost: true, aspect: '16:9', custom: '' });
   assert.equal(decodeState('%%%no-valido'), null);
 });
 

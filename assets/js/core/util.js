@@ -43,13 +43,21 @@ export function toSentences(texts, opener = '') {
   let buf = opener ? [opener] : [];
   const flush = () => { if (buf.length) { out.push(endSentence(capFirst(buf.join(', ')))); buf = []; } };
   for (const raw of texts) {
-    const t = String(raw || '').trim();
+    // Cada pieza puede ser texto o {t, phrase}: `phrase` fuerza a unirla con comas aunque sea larga
+    // (descripciones de ropa, peinado o expresión del sujeto, que son frases nominales, no oraciones).
+    const t = String(typeof raw === 'object' && raw ? raw.t : raw || '').trim();
+    const phrase = typeof raw === 'object' && raw ? !!raw.phrase : false;
     if (!t) continue;
-    if (isLong(t)) { flush(); out.push(endSentence(capFirst(t))); } else buf.push(t);
+    if (!phrase && isLong(t)) { flush(); out.push(endSentence(capFirst(t))); } else buf.push(t);
   }
   flush();
   return out;
 }
+
+/** Ranuras cuyas piezas describen al sujeto como frases nominales (se unen con comas). */
+const PHRASE_SLOTS = new Set(['subject', 'attribute', 'action']);
+/** Prepara una pieza compuesta para `toSentences`: las frases largas del sujeto no se parten en oraciones. */
+export const sentenceItem = p => ({ t: p.text, phrase: PHRASE_SLOTS.has(p.slot) && !/[.!?](\s|$)/.test(p.text) });
 
 const NF = new Intl.NumberFormat('es-ES', { useGrouping: 'always' });
 export const fmtNumber = n => NF.format(n);

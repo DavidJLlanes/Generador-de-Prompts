@@ -6,7 +6,7 @@
 <title>Peinados · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Generador de prompts para peinados realistas y creativos con IA. Personaliza estilo, largo, color y textura.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/peinados/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Peinados · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Generador de prompts para peinados realistas y creativos con IA. Personaliza estilo, largo, color y textura.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/peinados/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/peinados.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Peinados · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/peinados.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,100 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-peinado">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo/estilo de peinado<span class="opt-section__count">50</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Liso natural</li><li class="opt opt--static">Ondas suaves</li><li class="opt opt--static">Rizos medianos</li><li class="opt opt--static">Rizos apretados</li><li class="opt opt--static">Rizado voluminoso</li><li class="opt opt--static">Ondulado asimétrico</li><li class="opt opt--static">Trenzado</li><li class="opt opt--static">Boxer braids</li><li class="opt opt--static">Cornrows líneas</li><li class="opt opt--static">Rastas</li><li class="opt opt--static opt--more">y 40 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-largo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Largo del cabello<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rasado cero</li><li class="opt opt--static">Muy corto 1-2 cm</li><li class="opt opt--static">Corto 3-5 cm</li><li class="opt opt--static">Corto medio 5-8 cm</li><li class="opt opt--static">Corto largo 8-12 cm</li><li class="opt opt--static">Cuello 12-15 cm</li><li class="opt opt--static">Hombro 15-20 cm</li><li class="opt opt--static">Espalda media 20-30 cm</li><li class="opt opt--static">Cintura 30-40 cm</li><li class="opt opt--static">Cadera 40-50 cm</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-volumen">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Volumen/densidad<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy fino fino</li><li class="opt opt--static">Fino</li><li class="opt opt--static">Ligero moderado</li><li class="opt opt--static">Medio normal</li><li class="opt opt--static">Grueso denso</li><li class="opt opt--static">Muy grueso</li><li class="opt opt--static">Abundante masivo</li><li class="opt opt--static">Escaso ralo</li><li class="opt opt--static">Medio escaso</li><li class="opt opt--static">Calvo parcial</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-textura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Textura del cabello<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfectamente liso</li><li class="opt opt--static">Liso suave</li><li class="opt opt--static">Liso brillante</li><li class="opt opt--static">Liso mate</li><li class="opt opt--static">Ligeramente ondulado</li><li class="opt opt--static">Ondulado moderado</li><li class="opt opt--static">Ondulado profundo</li><li class="opt opt--static">Rizado suave</li><li class="opt opt--static">Rizado medio</li><li class="opt opt--static">Rizado apretado</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-brillo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Brillo/acabado<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mate apagado</li><li class="opt opt--static">Semibrillante</li><li class="opt opt--static">Brillante satinado</li><li class="opt opt--static">Alto brillo espejo</li><li class="opt opt--static">Hiperbrilante</li><li class="opt opt--static">Opaco mate</li><li class="opt opt--static">Vidrioso translúcido</li><li class="opt opt--static">Mojado húmedo</li><li class="opt opt--static">Secado aire</li><li class="opt opt--static">Secado blow-dry</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-principal">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color principal<span class="opt-section__count">48</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Negro azabache puro</li><li class="opt opt--static">Negro carbón</li><li class="opt opt--static">Marrón muy oscuro</li><li class="opt opt--static">Marrón chocolate oscuro</li><li class="opt opt--static">Marrón medio</li><li class="opt opt--static">Marrón claro</li><li class="opt opt--static">Castaño</li><li class="opt opt--static">Castaño oscuro</li><li class="opt opt--static">Castaño claro</li><li class="opt opt--static">Rojo caoba</li><li class="opt opt--static opt--more">y 38 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-secundario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color secundario/highlights<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin color secundario</li><li class="opt opt--static">Mecha rubia</li><li class="opt opt--static">Mecha blanca</li><li class="opt opt--static">Mecha plateada</li><li class="opt opt--static">Mecha dorada</li><li class="opt opt--static">Mecha roja</li><li class="opt opt--static">Mecha azul</li><li class="opt opt--static">Mecha púrpura</li><li class="opt opt--static">Mecha verde</li><li class="opt opt--static">Mecha rosa</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-flequillo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Flequillo/franja<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin flequillo</li><li class="opt opt--static">Flequillo cortina</li><li class="opt opt--static">Flequillo recto</li><li class="opt opt--static">Flequillo largo</li><li class="opt opt--static">Flequillo corto</li><li class="opt opt--static">Flequillo asimétrico</li><li class="opt opt--static">Flequillo ondulado</li><li class="opt opt--static">Flequillo rizado</li><li class="opt opt--static">Flequillo dividido</li><li class="opt opt--static">Flequillo pómulo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-mechones-laterales">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Mechones/enmarcado facial<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin mechones</li><li class="opt opt--static">Mechones sueltos</li><li class="opt opt--static">Mechones cortos</li><li class="opt opt--static">Mechones largos</li><li class="opt opt--static">Mechones rizados</li><li class="opt opt--static">Mechones ondulados</li><li class="opt opt--static">Mechones lisos</li><li class="opt opt--static">Mechones asimétricos</li><li class="opt opt--static">Mechones pegados</li><li class="opt opt--static">Mechones sueltos naturales</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-trenzas-updo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Trenzas/peinados recogidos<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin trenza</li><li class="opt opt--static">Trenza francesa</li><li class="opt opt--static">Trenza holandesa</li><li class="opt opt--static">Trenza de espiga</li><li class="opt opt--static">Trenza simple</li><li class="opt opt--static">Trenza múltiple</li><li class="opt opt--static">Trenza corona</li><li class="opt opt--static">Trenza halo</li><li class="opt opt--static">Trenza lado</li><li class="opt opt--static">Trenza sueca</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-accesorios">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Accesorios de cabello<span class="opt-section__count">30</span></h2><p class="opt-section__note">Multi-select: adornos</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin accesorios</li><li class="opt opt--static">Diadema simple</li><li class="opt opt--static">Diadema joyada</li><li class="opt opt--static">Diadema de flores</li><li class="opt opt--static">Diadema medieval</li><li class="opt opt--static">Tiara</li><li class="opt opt--static">Corona real</li><li class="opt opt--static">Banda cabello</li><li class="opt opt--static">Cinta</li><li class="opt opt--static">Lazo</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-decoracion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Decoración/ornamentación<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin decoración</li><li class="opt opt--static">Ornamentación sutil</li><li class="opt opt--static">Ornamentación moderada</li><li class="opt opt--static">Ornamentación elaborada</li><li class="opt opt--static">Ornamentación exuberante</li><li class="opt opt--static">Estilo gótico</li><li class="opt opt--static">Estilo steampunk</li><li class="opt opt--static">Estilo victoriano</li><li class="opt opt--static">Estilo regencia</li><li class="opt opt--static">Estilo medieval</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-movimiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Movimiento/dinamismo<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente estático</li><li class="opt opt--static">Ligeramente movido</li><li class="opt opt--static">Movimiento suave</li><li class="opt opt--static">Movimiento moderado</li><li class="opt opt--static">Movimiento dramático</li><li class="opt opt--static">Movimiento salvaje</li><li class="opt opt--static">Ondulante como agua</li><li class="opt opt--static">Flotante en aire</li><li class="opt opt--static">Volador aerodinámico</li><li class="opt opt--static">Erizado erizamiento</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-asimetria">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Asimetría<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfectamente simétrico</li><li class="opt opt--static">Ligeramente asimétrico</li><li class="opt opt--static">Moderadamente asimétrico</li><li class="opt opt--static">Muy asimétrico</li><li class="opt opt--static">Extremadamente asimétrico</li><li class="opt opt--static">Lado largo otro corto</li><li class="opt opt--static">Lado voluminoso otro liso</li><li class="opt opt--static">Lado color diferente</li><li class="opt opt--static">Lado trenzado otro suelto</li><li class="opt opt--static">Lado rapado otro largo</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-peculiaridades">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Peculiaridades/rarezas<span class="opt-section__count">30</span></h2><p class="opt-section__note">Características únicas</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin peculiaridades</li><li class="opt opt--static">Rastas</li><li class="opt opt--static">Undercut rapado</li><li class="opt opt--static">Parte rapada</li><li class="opt opt--static">Secciones desaparecidas</li><li class="opt opt--static">Cabello quemado</li><li class="opt opt--static">Cabello congelado</li><li class="opt opt--static">Cabello de fuego</li><li class="opt opt--static">Cabello de hielo</li><li class="opt opt--static">Cabello de metal</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-condicion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Condición/estado<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Impecablemente perfecta</li><li class="opt opt--static">Muy bien mantenida</li><li class="opt opt--static">Bien cuidada</li><li class="opt opt--static">Moderadamente cuidada</li><li class="opt opt--static">Descuidada</li><li class="opt opt--static">Muy descuidada</li><li class="opt opt--static">Enredada anudada</li><li class="opt opt--static">Cabello seco quebradizo</li><li class="opt opt--static">Cabello graso</li><li class="opt opt--static">Dañado por calor</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-densidad-mecanismo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Grosor de mechones<span class="opt-section__count">20</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Mechones ultrafinos</li><li class="opt opt--static">Mechones muy finos</li><li class="opt opt--static">Mechones finos</li><li class="opt opt--static">Mechones medianos</li><li class="opt opt--static">Mechones gruesos</li><li class="opt opt--static">Mechones muy gruesos</li><li class="opt opt--static">Mechones gigantes cableados</li><li class="opt opt--static">Mechones desiguales</li><li class="opt opt--static">Mechas visible cada una</li><li class="opt opt--static">Mechas fusionadas</li><li class="opt opt--static opt--more">y 10 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-caida-peso">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Caída/flujo natural<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cae perfectamente</li><li class="opt opt--static">Cae con gracia</li><li class="opt opt--static">Cae suavemente</li><li class="opt opt--static">Cae con peso</li><li class="opt opt--static">Cae pesadamente</li><li class="opt opt--static">Cae rígidamente</li><li class="opt opt--static">Cae flotando</li><li class="opt opt--static">Se eleva levante</li><li class="opt opt--static">Se erizota</li><li class="opt opt--static">Se enrosca</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-esponjosidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Esponjosidad/relleno<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Muy compactado plano</li><li class="opt opt--static">Compactado</li><li class="opt opt--static">Moderadamente compactado</li><li class="opt opt--static">Moderadamente esponjoso</li><li class="opt opt--static">Esponjoso voluminoso</li><li class="opt opt--static">Muy esponjoso explosión</li><li class="opt opt--static">Hiper-esponjoso</li><li class="opt opt--static">Densidad variable</li><li class="opt opt--static">Raíces esponjosas</li><li class="opt opt--static">Puntas esponjosas</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-edad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Edad/madurez capilar<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Cabello de bebé</li><li class="opt opt--static">Cabello de niño</li><li class="opt opt--static">Cabello adolescente</li><li class="opt opt--static">Cabello joven adulto</li><li class="opt opt--static">Cabello adulto maduro</li><li class="opt opt--static">Cabello mayor edad</li><li class="opt opt--static">Cabello muy envejecido</li><li class="opt opt--static">Cabello ancestral antiguo</li><li class="opt opt--static">Cabello primordial</li><li class="opt opt--static">Cabello eterno</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-origen-cultural">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Origen/inspiración cultural<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Estilo moderno occidental</li><li class="opt opt--static">Estilo medieval europeo</li><li class="opt opt--static">Estilo renacimiento</li><li class="opt opt--static">Estilo víkingo nórdico</li><li class="opt opt--static">Estilo celta antiguo</li><li class="opt opt--static">Estilo greco-romano</li><li class="opt opt--static">Estilo oriental asiático</li><li class="opt opt--static">Estilo chino antiguo</li><li class="opt opt--static">Estilo japonés tradicional</li><li class="opt opt--static">Estilo coreano</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-aura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Aura/energía capilar<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin aura visible</li><li class="opt opt--static">Aura leve pálida</li><li class="opt opt--static">Aura suave brillo</li><li class="opt opt--static">Aura dorada pulsante</li><li class="opt opt--static">Aura plateada metálica</li><li class="opt opt--static">Aura de fuego</li><li class="opt opt--static">Aura de hielo</li><li class="opt opt--static">Aura de luz</li><li class="opt opt--static">Aura de sombra</li><li class="opt opt--static">Aura de sangre roja</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-efectos-visuales">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Efectos visuales especiales<span class="opt-section__count">30</span></h2><p class="opt-section__note">Efectos mágicos/especiales</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin efecto especial</li><li class="opt opt--static">Humo sutil</li><li class="opt opt--static">Humo denso</li><li class="opt opt--static">Partículas flotantes</li><li class="opt opt--static">Brillo de polvo</li><li class="opt opt--static">Lluvia de estrellas</li><li class="opt opt--static">Destello de luces</li><li class="opt opt--static">Rastro de movimiento</li><li class="opt opt--static">Efecto de fuego</li><li class="opt opt--static">Efecto de hielo</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +180,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

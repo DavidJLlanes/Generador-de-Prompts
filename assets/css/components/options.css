@@ -104,3 +104,11 @@
   .sec-nav__link.is-active { border-color: var(--accent); }
   .domain-hero__facts { width: 100%; margin-left: 0; }
 }
+
+/* Versión pre-renderizada (SEO y sin JavaScript): se ve igual que la interactiva, pero no se puede pulsar. */
+.opt-list--static { margin: 0; padding: 0; list-style: none; }
+.opt--static { cursor: default; pointer-events: none; }
+.opt--more { color: var(--text-3); border-style: dashed; }
+
+/* Objetivo táctil mínimo de 24 px en el «Ver detalle» de las tarjetas (WCAG 2.2) */
+.opt-card__more summary { display: inline-flex; align-items: center; min-height: 28px; }

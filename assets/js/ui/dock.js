@@ -9,6 +9,7 @@ import { store } from '../core/store.js';
 import { renderFormat } from '../core/formats/index.js';
 import { createPromptPanel } from './prompt-panel.js';
 import { copyText } from './clipboard.js';
+import { recordHistory } from '../core/library.js';
 
 let api = null;
 
@@ -26,7 +27,7 @@ export function mountDock() {
   const preview = h('p', { class: 'dock__preview', 'aria-hidden': 'true' });
   const toggle = h('button', { type: 'button', class: 'dock__toggle', 'aria-expanded': 'false', 'aria-controls': 'dock-sheet', onClick: () => (isOpen() ? close() : open()) },
     h('span', { class: 'dock__chev', html: icon('up') }), count);
-  const copy = h('button', { type: 'button', class: 'btn btn--primary btn--sm', onClick: () => { const { composed, state } = live.get(); if (!composed.empty) copyText(renderFormat(state.format, composed, state).text, 'Prompt copiado'); } }, h('span', { html: icon('copy', 16) }), 'Copiar');
+  const copy = h('button', { type: 'button', class: 'btn btn--primary btn--sm', onClick: () => { const { composed, state } = live.get(); if (!composed.empty) { copyText(renderFormat(state.format, composed, state).text, 'Prompt copiado'); recordHistory(state); } } }, h('span', { html: icon('copy', 16) }), 'Copiar');
   const bar = h('div', { class: 'dock__bar' }, h('div', { class: 'container dock__bar-inner' }, toggle, preview, copy));
 
   const root = h('div', { class: 'dock is-empty', id: 'dock' }, sheet, bar);
@@ -36,8 +37,7 @@ export function mountDock() {
   function open() { sheet.hidden = false; toggle.setAttribute('aria-expanded', 'true'); root.classList.add('is-open'); document.body.classList.add('dock-open'); sync(); }
   function close() { sheet.hidden = true; toggle.setAttribute('aria-expanded', 'false'); root.classList.remove('is-open'); document.body.classList.remove('dock-open'); sync(); }
   function sync() {
-    const n = store.countSelected();
-    const visible = n > 0 || isOpen();
+    const visible = store.totalItems() > 0 || isOpen();
     root.classList.toggle('is-empty', !visible);
     document.body.classList.toggle('has-dock', visible);
   }
@@ -45,13 +45,15 @@ export function mountDock() {
   live.subscribe(({ state, composed }) => {
     const n = store.countSelected();
     const d = store.selectedDomainIds().length;
-    count.textContent = n ? `${n} ${n === 1 ? 'opción' : 'opciones'} · ${d} ${d === 1 ? 'generador' : 'generadores'}` : 'Mi prompt';
+    const hasText = state.custom.trim().length > 0;
+    count.textContent = n ? `${n} ${n === 1 ? 'opción' : 'opciones'} · ${d} ${d === 1 ? 'generador' : 'generadores'}${hasText ? ' + texto libre' : ''}` : hasText ? 'Solo texto libre' : 'Mi prompt';
     preview.textContent = composed.empty ? '' : renderFormat('text', composed, { ...state, detail: 'short', aspect: '' }).text.slice(0, 220);
     copy.disabled = composed.empty;
     sync();
   });
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) close(); });
+  // Escape cierra el panel, salvo que haya un diálogo abierto (ideas, mis prompts): ese se cierra solo.
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen() && !document.querySelector('dialog[open]')) close(); });
   api = { open, close, isOpen };
   return api;
 }

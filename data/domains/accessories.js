@@ -11,7 +11,7 @@ export default {
     {
       "id": "tipo-accesorio",
       "title": "Tipo de accesorio principal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"complete-jewelry-set","es":"Joyería completa","en":"complete jewelry set"},
         {"id":"rings","es":"Anillos","en":"rings"},
@@ -44,7 +44,7 @@ export default {
     {
       "id": "joyas-tipo",
       "title": "Joyas - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"solitaire-ring","es":"Anillo solitario","en":"solitaire ring"},
         {"id":"gemstone-ring","es":"Anillo con gema","en":"gemstone ring"},
@@ -79,7 +79,7 @@ export default {
     {
       "id": "joyas-material",
       "title": "Joyas - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pure-gold-24k","es":"Oro puro 24k","en":"pure gold 24k"},
         {"id":"white-gold-18k","es":"Oro blanco 18k","en":"white gold 18k"},
@@ -114,7 +114,7 @@ export default {
     {
       "id": "joyas-color",
       "title": "Joyas - color",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"bright-gold","es":"Dorado brillante","en":"bright gold"},
         {"id":"dark-gold","es":"Dorado oscuro","en":"dark gold"},
@@ -141,7 +141,7 @@ export default {
     {
       "id": "joyas-brillo",
       "title": "Joyas - brillo/acabado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mirror-polish","es":"Pulido espejo","en":"mirror polish"},
         {"id":"high-shine","es":"Brillo extremo","en":"high shine"},
@@ -168,7 +168,7 @@ export default {
     {
       "id": "joyas-tamano",
       "title": "Joyas - tamaño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"tiny-delicate","es":"Diminuto delicado","en":"tiny delicate"},
         {"id":"very-small","es":"Muy pequeño","en":"very small"},
@@ -195,7 +195,7 @@ export default {
     {
       "id": "joyas-diseno",
       "title": "Joyas - diseño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"geometric-minimalist","es":"Geométrico minimalista","en":"geometric minimalist"},
         {"id":"organic-natural","es":"Orgánico natural","en":"organic natural"},
@@ -222,7 +222,7 @@ export default {
     {
       "id": "joyas-enchantment",
       "title": "Joyas - enchantment",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-enchantment","es":"Sin enchantment","en":"no enchantment"},
         {"id":"luminous-bright","es":"Brillante luminoso","en":"luminous bright"},
@@ -249,7 +249,7 @@ export default {
     {
       "id": "bolsos-tipo",
       "title": "Bolsos - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"small-hand-bag","es":"Bolso de mano pequeño","en":"small hand bag"},
         {"id":"large-tote","es":"Bolso tote grande","en":"large tote"},
@@ -276,7 +276,7 @@ export default {
     {
       "id": "bolsos-material",
       "title": "Bolsos - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"genuine-leather","es":"Cuero auténtico","en":"genuine leather"},
         {"id":"synthetic-leather","es":"Cuero sintético","en":"synthetic leather"},
@@ -303,7 +303,7 @@ export default {
     {
       "id": "bolsos-tamano",
       "title": "Bolsos - tamaño",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pocket-size","es":"Miniatura bolsillo","en":"pocket size"},
         {"id":"very-small","es":"Muy pequeño","en":"very small"},
@@ -330,7 +330,7 @@ export default {
     {
       "id": "bolsos-color",
       "title": "Bolsos - color",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"classic-black","es":"Negro clásico","en":"classic black"},
         {"id":"ivory-white","es":"Blanco marfil","en":"ivory white"},
@@ -357,7 +357,7 @@ export default {
     {
       "id": "cinturones-tipo",
       "title": "Cinturones - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"classic-leather-belt","es":"Cinturón de cuero clásico","en":"classic leather belt"},
         {"id":"chain-belt","es":"Cinturón de cadena","en":"chain belt"},
@@ -384,7 +384,7 @@ export default {
     {
       "id": "cinturones-material",
       "title": "Cinturones - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"genuine-leather","es":"Cuero genuino","en":"genuine leather"},
         {"id":"synthetic-leather","es":"Cuero sintético","en":"synthetic leather"},
@@ -411,7 +411,7 @@ export default {
     {
       "id": "cinturones-hebilla",
       "title": "Cinturones - hebilla/cierre",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"rectangular-buckle","es":"Hebilla rectangular","en":"rectangular buckle"},
         {"id":"oval-buckle","es":"Hebilla ovalada","en":"oval buckle"},
@@ -438,7 +438,7 @@ export default {
     {
       "id": "gafas-tipo",
       "title": "Gafas - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"classic-sunglasses","es":"Gafas de sol clásicas","en":"classic sunglasses"},
         {"id":"aviator-sunglasses","es":"Gafas de sol aviador","en":"aviator sunglasses"},
@@ -465,7 +465,7 @@ export default {
     {
       "id": "gafas-material",
       "title": "Gafas - material de marco",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"gold-metal","es":"Metal dorado","en":"gold metal"},
         {"id":"silver-metal","es":"Metal plateado","en":"silver metal"},
@@ -492,7 +492,7 @@ export default {
     {
       "id": "gafas-lentes",
       "title": "Gafas - color de lentes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"clear-lens","es":"Cristal transparente","en":"clear lens"},
         {"id":"dark-black","es":"Negro oscuro","en":"dark black"},
@@ -519,7 +519,7 @@ export default {
     {
       "id": "sombreros-tipo",
       "title": "Sombreros - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"top-hat","es":"Sombrero de copa","en":"top hat"},
         {"id":"fedora-hat","es":"Sombrero fedora","en":"fedora hat"},
@@ -546,7 +546,7 @@ export default {
     {
       "id": "sombreros-material",
       "title": "Sombreros - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"wool-fabric","es":"Tela de lana","en":"wool fabric"},
         {"id":"cotton-fabric","es":"Tela de algodón","en":"cotton fabric"},
@@ -573,7 +573,7 @@ export default {
     {
       "id": "mascaras-tipo",
       "title": "Máscaras - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"half-face-mask","es":"Máscara de media cara","en":"half-face mask"},
         {"id":"full-face-mask","es":"Máscara completa","en":"full face mask"},
@@ -600,7 +600,7 @@ export default {
     {
       "id": "mascaras-material",
       "title": "Máscaras - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"genuine-leather","es":"Cuero auténtico","en":"genuine leather"},
         {"id":"synthetic-leather","es":"Cuero sintético","en":"synthetic leather"},
@@ -627,7 +627,7 @@ export default {
     {
       "id": "vendas-tipo",
       "title": "Vendas - tipo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"eye-wrap","es":"Venda de ojos","en":"eye wrap"},
         {"id":"head-wrap","es":"Venda de cabeza","en":"head wrap"},
@@ -654,7 +654,7 @@ export default {
     {
       "id": "vendas-material",
       "title": "Vendas - material",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"white-cotton","es":"Algodón blanco","en":"white cotton"},
         {"id":"dyed-cotton","es":"Algodón teñido","en":"dyed cotton"},
@@ -681,7 +681,7 @@ export default {
     {
       "id": "enchantment-tipo",
       "title": "Enchantment - tipo general",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-enchantment","es":"Sin encantamiento","en":"no enchantment"},
         {"id":"light-enchantment","es":"Encantamiento de luz","en":"light enchantment"},
@@ -708,7 +708,7 @@ export default {
     {
       "id": "enchantment-poder",
       "title": "Enchantment - poder del encantamiento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mild-enchantment","es":"Encantamiento leve","en":"mild enchantment"},
         {"id":"moderate-enchantment","es":"Encantamiento moderado","en":"moderate enchantment"},
@@ -735,7 +735,7 @@ export default {
     {
       "id": "condicion-estado",
       "title": "Condición/estado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"brand-new","es":"Nuevo perfecto","en":"brand new"},
         {"id":"excellent-condition","es":"Excelente condición","en":"excellent condition"},
@@ -789,7 +789,7 @@ export default {
     {
       "id": "brillo-resplandor",
       "title": "Brillo/resplandor",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-shine-matte","es":"Sin brillo mate","en":"no shine matte"},
         {"id":"very-soft-shine","es":"Brillo muy suave","en":"very soft shine"},
@@ -816,7 +816,7 @@ export default {
     {
       "id": "origen-procedencia",
       "title": "Origen/procedencia",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"local-crafted","es":"Artesanía local","en":"local crafted"},
         {"id":"famous-designer","es":"Diseñador famoso","en":"famous designer"},
@@ -843,7 +843,7 @@ export default {
     {
       "id": "significado-simbolismo",
       "title": "Significado/simbolismo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-meaning","es":"Sin significado","en":"no meaning"},
         {"id":"symbol-of-power","es":"Símbolo de poder","en":"symbol of power"},
@@ -870,7 +870,7 @@ export default {
     {
       "id": "escala-proporcion",
       "title": "Escala/proporción",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"body-proportional","es":"Proporcional al cuerpo","en":"body proportional"},
         {"id":"slightly-large","es":"Ligeramente grande","en":"slightly large"},
@@ -897,7 +897,7 @@ export default {
     {
       "id": "estilo-visual",
       "title": "Estilo visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"classic-timeless","es":"Clásico atemporal","en":"classic timeless"},
         {"id":"modern-contemporary","es":"Moderno contemporáneo","en":"modern contemporary"},
@@ -924,7 +924,7 @@ export default {
     {
       "id": "material-color",
       "title": "Material - color principal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pure-gold","es":"Oro puro","en":"pure gold"},
         {"id":"bright-silver","es":"Plata brillante","en":"bright silver"},
@@ -951,7 +951,7 @@ export default {
     {
       "id": "durabilidad",
       "title": "Durabilidad",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"very-fragile","es":"Muy frágil","en":"very fragile"},
         {"id":"fragile-delicate","es":"Frágil delicado","en":"fragile delicate"},
@@ -978,7 +978,7 @@ export default {
     {
       "id": "peso-sensacion",
       "title": "Peso/sensación al portar",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"extremely-light","es":"Extremadamente ligero","en":"extremely light"},
         {"id":"very-light","es":"Muy ligero","en":"very light"},
@@ -1005,7 +1005,7 @@ export default {
     {
       "id": "aura-energia",
       "title": "Aura/energía emitida",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-visible-aura","es":"Sin aura visible","en":"no visible aura"},
         {"id":"weak-aura","es":"Aura débil","en":"weak aura"},
@@ -1032,7 +1032,7 @@ export default {
     {
       "id": "temperatura-contacto",
       "title": "Temperatura al contacto",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ambient-temperature","es":"Temperatura ambiente","en":"ambient temperature"},
         {"id":"slightly-warm","es":"Ligeramente cálido","en":"slightly warm"},
@@ -1059,7 +1059,7 @@ export default {
     {
       "id": "sensacion-tacto",
       "title": "Sensación al tacto",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"soft-silky","es":"Suave sedoso","en":"soft silky"},
         {"id":"smooth-polished","es":"Liso pulido","en":"smooth polished"},
@@ -1086,7 +1086,7 @@ export default {
     {
       "id": "compatibilidad-usuario",
       "title": "Compatibilidad con usuario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"compatible-with-anyone","es":"Compatible con cualquiera","en":"compatible with anyone"},
         {"id":"requires-specific-gender","es":"Requiere género específico","en":"requires specific gender"},
@@ -1113,7 +1113,7 @@ export default {
     {
       "id": "cuidados-mantenimiento",
       "title": "Cuidados/mantenimiento",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-maintenance","es":"Sin mantenimiento","en":"no maintenance"},
         {"id":"occasional-cleaning","es":"Limpieza ocasional","en":"occasional cleaning"},
@@ -1140,7 +1140,7 @@ export default {
     {
       "id": "evento-activacion",
       "title": "Evento de activación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"always-active","es":"Siempre activo","en":"always active"},
         {"id":"requires-skin-contact","es":"Requiere contacto piel","en":"requires skin contact"},
@@ -1167,7 +1167,7 @@ export default {
     {
       "id": "efecto-emocional",
       "title": "Efecto emocional en el usuario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-emotional-effect","es":"Sin efecto emocional","en":"no emotional effect"},
         {"id":"calming-effect","es":"Efecto tranquilizante","en":"calming effect"},
@@ -1194,7 +1194,7 @@ export default {
     {
       "id": "poder-especial",
       "title": "Poder especial otorgado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-special-power","es":"Sin poder especial","en":"no special power"},
         {"id":"grants-invisibility","es":"Otorga invisibilidad","en":"grants invisibility"},
@@ -1221,7 +1221,7 @@ export default {
     {
       "id": "historia-leyenda",
       "title": "Historia/leyenda",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"unknown-history","es":"Historia desconocida","en":"unknown history"},
         {"id":"ancient-history","es":"Historia antigua","en":"ancient history"},
@@ -1248,7 +1248,7 @@ export default {
     {
       "id": "rareza-valor",
       "title": "Rareza/valor",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"common-abundant","es":"Común abundante","en":"common abundant"},
         {"id":"uncommon","es":"Poco común","en":"uncommon"},
@@ -1275,7 +1275,7 @@ export default {
     {
       "id": "interaccion-otros",
       "title": "Interacción con otros accesorios",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"works-independently","es":"Funciona independientemente","en":"works independently"},
         {"id":"works-better-together","es":"Funciona mejor con otros","en":"works better together"},
@@ -1302,7 +1302,7 @@ export default {
     {
       "id": "composicion-visual-final",
       "title": "Composición visual",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"simple-composition","es":"Composición simple","en":"simple composition"},
         {"id":"balanced-composition","es":"Composición equilibrada","en":"balanced composition"},
@@ -1329,7 +1329,7 @@ export default {
     {
       "id": "perspectiva-display",
       "title": "Perspectiva de exhibición",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"direct-front-view","es":"Vista frontal directa","en":"direct front view"},
         {"id":"side-view","es":"Vista lateral","en":"side view"},
@@ -1356,7 +1356,7 @@ export default {
     {
       "id": "contexto-ambiental",
       "title": "Contexto ambiental",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-context-isolated","es":"Sin contexto aislado","en":"no context isolated"},
         {"id":"held-in-hand","es":"En mano sostenido","en":"held in hand"},

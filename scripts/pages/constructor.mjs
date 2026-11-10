@@ -25,7 +25,7 @@ export function constructorPage({ domains }) {
     path: '/constructor/',
     title: 'Constructor de prompts cruzados para imágenes con IA | Lumen Vitae',
     description: 'Combina personajes, poses, escenarios, clima y fotografía en un único prompt en inglés. Cada ranura es opcional: elige solo lo que necesites.',
-    main, script: 'constructor', bodyData: { dock: 'off' }, domains,
+    main, script: 'constructor', bodyData: { dock: 'off' }, domains, og: 'constructor',
     jsonld: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Constructor de prompts de Lumen Vitae', url: 'https://lumenvitae.es/constructor/', applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true }],
   });
 }

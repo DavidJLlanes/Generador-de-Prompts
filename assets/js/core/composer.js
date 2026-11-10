@@ -58,6 +58,10 @@ export function compose(domains, state) {
     }
   }
 
+  // Texto libre del usuario: va al final de la ranura técnica y no se reordena ni se deduplica con las opciones.
+  const custom = (state.custom || '').trim();
+  if (custom) parts.push({ slot: 'technical', domain: '_custom', section: '_custom', option: 'custom', text: custom, short: custom, es: 'Texto libre', custom: true, key: [SLOT_INDEX.technical, 1e6, 0, 0] });
+
   // Acabado de máxima calidad (interruptor «Calidad máxima»): solo si no se ha elegido nada a mano.
   const photo = domains.photo;
   if (state.boost && photo && parts.length) {

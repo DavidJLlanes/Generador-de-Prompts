@@ -6,7 +6,7 @@
 <title>Efectos Visuales · Generador de prompts para imágenes con IA | Lumen Vitae</title>
 <meta name="description" content="Crea prompts para efectos visuales impactantes con IA. Controla tipo, intensidad, color y composición.">
 <meta name="theme-color" content="#12100e">
-
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/generadores/efectos-visuales/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lumen Vitae">
@@ -14,8 +14,12 @@
 <meta property="og:title" content="Efectos Visuales · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta property="og:description" content="Crea prompts para efectos visuales impactantes con IA. Controla tipo, intensidad, color y composición.">
 <meta property="og:url" content="https://lumenvitae.es/generadores/efectos-visuales/">
-<meta property="og:image" content="https://lumenvitae.es/assets/img/og-image.webp">
+<meta property="og:image" content="https://lumenvitae.es/assets/img/og/efectos-visuales.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Efectos Visuales · Generador de prompts para imágenes con IA | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/efectos-visuales.webp">
 <link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
 <link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
 <link rel="apple-touch-icon" href="/assets/img/180.webp">
@@ -35,6 +39,7 @@
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
+      <a href="/guias/">Guías</a>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
@@ -69,7 +74,96 @@
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+<section class="opt-section opt-section--static" id="sec-tipo-base">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de efecto base<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Fuego llama</li><li class="opt opt--static">Explosión</li><li class="opt opt--static">Humo niebla</li><li class="opt opt--static">Hielo congelación</li><li class="opt opt--static">Agua líquida</li><li class="opt opt--static">Electricidad rayo</li><li class="opt opt--static">Plasma incandescente</li><li class="opt opt--static">Luz brillante</li><li class="opt opt--static">Sombra oscuridad</li><li class="opt opt--static">Viento aire</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-energia">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Tipo de energía<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Térmica calor</li><li class="opt opt--static">Cinética movimiento</li><li class="opt opt--static">Potencial almacenada</li><li class="opt opt--static">Química reacción</li><li class="opt opt--static">Nuclear fusión</li><li class="opt opt--static">Radiactiva decaimiento</li><li class="opt opt--static">Electromagnética onda</li><li class="opt opt--static">Gravitacional curva</li><li class="opt opt--static">Magnética campo</li><li class="opt opt--static">Estática carga</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-intensidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Intensidad/escala<span class="opt-section__count">25</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Imperceptible mínimo</li><li class="opt opt--static">Muy sutil</li><li class="opt opt--static">Moderadamente suave</li><li class="opt opt--static">Normal medio</li><li class="opt opt--static">Potente intenso</li><li class="opt opt--static">Muy potente</li><li class="opt opt--static">Devastador destructor</li><li class="opt opt--static">Cataclísmico apocalíptico</li><li class="opt opt--static">Cosmic universal</li><li class="opt opt--static">Omnipotente infinito</li><li class="opt opt--static opt--more">y 15 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-movimiento">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Patrón de movimiento<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Estático inmóvil</li><li class="opt opt--static">Oscilación suave</li><li class="opt opt--static">Pulsación rítmica</li><li class="opt opt--static">Ondulación ondulatoria</li><li class="opt opt--static">Espiral envolvente</li><li class="opt opt--static">Vórtice girador</li><li class="opt opt--static">Caída gravitacional</li><li class="opt opt--static">Ascensión flotación</li><li class="opt opt--static">Expansión radial</li><li class="opt opt--static">Contracción implosiva</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-dispersion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Patrón de dispersión<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin dispersión</li><li class="opt opt--static">Dispersión radial simétrica</li><li class="opt opt--static">Dispersión asimétrica</li><li class="opt opt--static">Dispersión cónica</li><li class="opt opt--static">Dispersión cilíndrica</li><li class="opt opt--static">Dispersión esférica</li><li class="opt opt--static">Dispersión lineal</li><li class="opt opt--static">Dispersión puntiaguda</li><li class="opt opt--static">Dispersión difusa suave</li><li class="opt opt--static">Dispersión controlada</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-color-primario">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Color primario<span class="opt-section__count">40</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Rojo puro sangre</li><li class="opt opt--static">Rojo oscuro carmesí</li><li class="opt opt--static">Rojo brillante fuego</li><li class="opt opt--static">Naranja ardiente</li><li class="opt opt--static">Amarillo dorado</li><li class="opt opt--static">Verde oscuro bosque</li><li class="opt opt--static">Verde brillante neón</li><li class="opt opt--static">Verde agua turquesa</li><li class="opt opt--static">Azul profundo océano</li><li class="opt opt--static">Azul cielo brillante</li><li class="opt opt--static opt--more">y 30 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-brillo">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Brillo/luminiscencia<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin luz matee apagado</li><li class="opt opt--static">Muy débil pálido</li><li class="opt opt--static">Débil suave</li><li class="opt opt--static">Moderado normal</li><li class="opt opt--static">Brillante resplandeciente</li><li class="opt opt--static">Muy brillante cegador</li><li class="opt opt--static">Hiperbrilante luminoso</li><li class="opt opt--static">Incandescente</li><li class="opt opt--static">Fluorescente</li><li class="opt opt--static">Fosforescente nocturno</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-densidad">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Densidad/opacidad<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Transparente invisible</li><li class="opt opt--static">Muy transparente</li><li class="opt opt--static">Semitransparente</li><li class="opt opt--static">Moderadamente opaco</li><li class="opt opt--static">Opaco sólido</li><li class="opt opt--static">Muy opaco denso</li><li class="opt opt--static">Impenetrable absoluto</li><li class="opt opt--static">Variable fluctuante</li><li class="opt opt--static">Gradiente degradado</li><li class="opt opt--static">Bordes difusos</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-particulas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sistema de partículas<span class="opt-section__count">27</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin partículas</li><li class="opt opt--static">Partículas grandes gruesas</li><li class="opt opt--static">Partículas medianas</li><li class="opt opt--static">Partículas finas polvo</li><li class="opt opt--static">Partículas ultrafinas</li><li class="opt opt--static">Partículas invisibles</li><li class="opt opt--static">Cantidad escasa</li><li class="opt opt--static">Cantidad moderada</li><li class="opt opt--static">Cantidad densa</li><li class="opt opt--static">Cantidad muy densa</li><li class="opt opt--static opt--more">y 17 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-textura">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Textura/estructura superficial<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Perfectamente lisa</li><li class="opt opt--static">Suave aterciopelada</li><li class="opt opt--static">Levemente granular</li><li class="opt opt--static">Granular visible</li><li class="opt opt--static">Muy rugosa áspera</li><li class="opt opt--static">Cristalina angular</li><li class="opt opt--static">Amboídica redondeada</li><li class="opt opt--static">Fracturada grietas</li><li class="opt opt--static">Fibrosa vetas</li><li class="opt opt--static">Escamosa plumas</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-velocidad-animacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Velocidad de animación<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Completamente congelado</li><li class="opt opt--static">Extremadamente lentísimo</li><li class="opt opt--static">Muy lento</li><li class="opt opt--static">Lento moderado</li><li class="opt opt--static">Velocidad normal</li><li class="opt opt--static">Rápido acelerado</li><li class="opt opt--static">Muy rápido</li><li class="opt opt--static">Hipersónico</li><li class="opt opt--static">Instantáneo</li><li class="opt opt--static">Más rápido que luz</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-duracion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Duración temporal<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Instantáneo flash</li><li class="opt opt--static">Muy breve milisegundos</li><li class="opt opt--static">Breve segundos</li><li class="opt opt--static">Corto algunos segundos</li><li class="opt opt--static">Moderado minutos</li><li class="opt opt--static">Largo horas</li><li class="opt opt--static">Muy largo días</li><li class="opt opt--static">Extremadamente largo semanas</li><li class="opt opt--static">Permanente eterno</li><li class="opt opt--static">Efímero desvanece rápido</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-forma">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Forma/silueta<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Esférica redondeada</li><li class="opt opt--static">Cúbica angular</li><li class="opt opt--static">Cilíndrica alargada</li><li class="opt opt--static">Cónica puntiaguda</li><li class="opt opt--static">Piramidal triangular</li><li class="opt opt--static">Toro donut</li><li class="opt opt--static">Estrella radiante</li><li class="opt opt--static">Corazón</li><li class="opt opt--static">Diamante facetado</li><li class="opt opt--static">Gota de agua</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-capas">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Capas/profundidad<span class="opt-section__count">26</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Una sola capa</li><li class="opt opt--static">Dos capas</li><li class="opt opt--static">Tres capas</li><li class="opt opt--static">Cuatro capas</li><li class="opt opt--static">Cinco capas</li><li class="opt opt--static">Múltiples capas</li><li class="opt opt--static">Muchas capas densas</li><li class="opt opt--static">Infinitas capas</li><li class="opt opt--static">Capas superpuestas</li><li class="opt opt--static">Capas alternadas</li><li class="opt opt--static opt--more">y 16 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-interaccion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Interacción con entorno<span class="opt-section__count">27</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin interacción aislado</li><li class="opt opt--static">Interacción pasiva leve</li><li class="opt opt--static">Interacción moderada</li><li class="opt opt--static">Interacción activa fuerte</li><li class="opt opt--static">Rebote refractancia</li><li class="opt opt--static">Absorción consumo</li><li class="opt opt--static">Reflexión especular</li><li class="opt opt--static">Refracción óptica</li><li class="opt opt--static">Difracción ondulatoria</li><li class="opt opt--static">Dispersión fotones</li><li class="opt opt--static opt--more">y 17 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-sonido">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Sonido asociado<span class="opt-section__count">30</span></h2><p class="opt-section__note">Audios evocados</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Silencio absoluto</li><li class="opt opt--static">Silencio sepulcral</li><li class="opt opt--static">Zumbido bajo suave</li><li class="opt opt--static">Vibración profunda</li><li class="opt opt--static">Campana resonante</li><li class="opt opt--static">Crepitar fuego</li><li class="opt opt--static">Soplido viento</li><li class="opt opt--static">Trueno retumbante</li><li class="opt opt--static">Rayo chasquido</li><li class="opt opt--static">Grito espectral</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-olor">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Olor evocado<span class="opt-section__count">35</span></h2><p class="opt-section__note">Aromas percibidos</p></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin olor inodoro</li><li class="opt opt--static">Olor a quemado</li><li class="opt opt--static">Olor a azufre</li><li class="opt opt--static">Olor a ozono</li><li class="opt opt--static">Aroma a flores</li><li class="opt opt--static">Aroma a especias</li><li class="opt opt--static">Aroma a metal</li><li class="opt opt--static">Olor a vidrio</li><li class="opt opt--static">Olor a cristal</li><li class="opt opt--static">Aroma a incienso</li><li class="opt opt--static opt--more">y 25 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-distorsion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Distorsión/deformación<span class="opt-section__count">27</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin distorsión perfecta</li><li class="opt opt--static">Distorsión muy leve</li><li class="opt opt--static">Distorsión moderada</li><li class="opt opt--static">Distorsión clara visible</li><li class="opt opt--static">Distorsión extrema severa</li><li class="opt opt--static">Distorsión óptica ilusión</li><li class="opt opt--static">Distorsión de perspectiva</li><li class="opt opt--static">Distorsión de forma</li><li class="opt opt--static">Distorsión de escala</li><li class="opt opt--static">Distorsión de tiempo</li><li class="opt opt--static opt--more">y 17 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-escala-tamano">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Escala/tamaño absoluto<span class="opt-section__count">27</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Subatómico infinitesimal</li><li class="opt opt--static">Microscópico invisible</li><li class="opt opt--static">Milímetros diminuto</li><li class="opt opt--static">Centímetros pequeño</li><li class="opt opt--static">Decímetros medio</li><li class="opt opt--static">Metro humano</li><li class="opt opt--static">Decámetros grande</li><li class="opt opt--static">Hectámetros muy grande</li><li class="opt opt--static">Kilómetro gigante</li><li class="opt opt--static">Decenas de kilómetros</li><li class="opt opt--static opt--more">y 17 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-radiacion">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Radiación/emanación<span class="opt-section__count">27</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Sin radiación</li><li class="opt opt--static">Radiación muy débil</li><li class="opt opt--static">Radiación moderada</li><li class="opt opt--static">Radiación intensa</li><li class="opt opt--static">Radiación extrema</li><li class="opt opt--static">Radiación letal mortal</li><li class="opt opt--static">Radiación ionizante</li><li class="opt opt--static">Radiación térmica</li><li class="opt opt--static">Radiación lumínica</li><li class="opt opt--static">Radiación de microondas</li><li class="opt opt--static opt--more">y 17 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-escena-contexto">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Contexto de escena<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Vacío absoluto sin fondo</li><li class="opt opt--static">Fondo negro profundo</li><li class="opt opt--static">Fondo blanco puro</li><li class="opt opt--static">Fondo neutro gris</li><li class="opt opt--static">Paisaje natural</li><li class="opt opt--static">Paisaje urbano ciudad</li><li class="opt opt--static">Interior arquitectónico</li><li class="opt opt--static">Entorno apocalíptico</li><li class="opt opt--static">Entorno futurista</li><li class="opt opt--static">Entorno onírico</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+<section class="opt-section opt-section--static" id="sec-render-final">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">Parámetro de render final<span class="opt-section__count">30</span></h2></div></header>
+      <ul class="opt-list opt-list--static"><li class="opt opt--static">Resolución 1080p HD</li><li class="opt opt--static">Resolución 4K UHD</li><li class="opt opt--static">Resolución 8K SHD</li><li class="opt opt--static">Resolución ultrahigh</li><li class="opt opt--static">Muestreo simple básico</li><li class="opt opt--static">Muestreo múltiple antialiasing</li><li class="opt opt--static">Trazado de rayos simple</li><li class="opt opt--static">Trazado de rayos complejo</li><li class="opt opt--static">Path tracing realista</li><li class="opt opt--static">Global illumination</li><li class="opt opt--static opt--more">y 20 más</li></ul>
+    </section>
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -82,7 +176,7 @@
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul><li><a href="/generadores/mujer/">Mujer</a></li><li><a href="/generadores/hombre/">Hombre</a></li><li><a href="/generadores/criaturas/">Criaturas</a></li><li><a href="/generadores/paisajes/">Paisajes</a></li><li><a href="/generadores/escenarios/">Escenarios</a></li><li><a href="/generadores/clima/">Clima</a></li><li><a href="/generadores/fotografia-y-estilo/">Fotografía</a></li><li><a href="/generadores/">Ver todos</a></li></ul></div>
-    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li></ul></div>
+    <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>

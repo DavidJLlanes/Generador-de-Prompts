@@ -5,6 +5,26 @@ import { icon } from '../../assets/js/ui/icons.js';
 import { layout } from './layout.mjs';
 import { fmt, relatedFor } from './shared.mjs';
 
+/** Límites del contenido pre-renderizado: suficiente para SEO sin inflar las páginas de los generadores grandes. */
+const STATIC = { optionsPerSection: 10, maxSections: 60 };
+
+/**
+ * Secciones y una muestra de sus opciones ya escritas en el HTML (para buscadores y sin JavaScript).
+ * Al cargar, pages/domain.js sustituye todo esto por la versión interactiva.
+ */
+function staticSections(domain) {
+  const shown = domain.sections.slice(0, STATIC.maxSections);
+  const html = shown.map(s => {
+    const rest = s.options.length - STATIC.optionsPerSection;
+    return `<section class="opt-section opt-section--static" id="sec-${s.id}">
+      <header class="opt-section__head"><div class="opt-section__titles"><h2 class="opt-section__title">${esc(s.title)}<span class="opt-section__count">${fmt(s.options.length)}</span></h2>${s.note ? `<p class="opt-section__note">${esc(s.note)}</p>` : ''}</div></header>
+      <ul class="opt-list opt-list--static">${s.options.slice(0, STATIC.optionsPerSection).map(o => `<li class="opt opt--static">${esc(o.es)}</li>`).join('')}${rest > 0 ? `<li class="opt opt--static opt--more">y ${fmt(rest)} más</li>` : ''}</ul>
+    </section>`;
+  }).join('\n');
+  const more = domain.sections.length - shown.length;
+  return html + (more > 0 ? `\n<p class="notice">Y ${more} secciones más, disponibles al cargar el generador.</p>` : '');
+}
+
 export function domainPage({ d, domain, domains }) {
   const meta = domain.meta;
   const rel = relatedFor(d, domains);
@@ -18,7 +38,7 @@ export function domainPage({ d, domain, domains }) {
   <p class="domain-hero__intro">${esc(intro)}</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random">${icon('dice', 18)} Aleatorio</button>
-    ${d.presets ? `<button type="button" class="btn btn--outline" data-act="ideas">${icon('spark', 18)} Galería de ${fmt(d.presets)} ideas</button>` : ''}
+    ${d.presets ? `<button type="button" class="btn btn--outline" data-act="ideas">${icon('spark', 18)} ${d.presetsLabel === 'recetas' ? `Ver ${fmt(d.presets)} recetas` : `Galería de ${fmt(d.presets)} ideas`}</button>` : ''}
     <button type="button" class="btn btn--ghost" data-act="clear-domain">${icon('trash', 18)} Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor ${icon('arrow', 16)}</a>
     <span class="domain-hero__facts">${d.sections} secciones · ${fmt(d.options)} opciones</span>
@@ -37,7 +57,9 @@ export function domainPage({ d, domain, domains }) {
         <span class="search-status" data-status role="status"></span>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-all data-state="closed" aria-label="Desplegar todas las secciones" hidden>Desplegar todo</button>
       </div>
-      <div data-sections aria-busy="true"><p class="notice">Cargando las opciones…</p></div>
+      <div data-sections aria-busy="true">
+${staticSections(domain)}
+      </div>
       <noscript><p class="notice">Este generador necesita JavaScript para funcionar.</p></noscript>
     </div>
   </div>
@@ -45,7 +67,7 @@ export function domainPage({ d, domain, domains }) {
 
   const title = `${meta.title} · Generador de prompts para imágenes con IA | Lumen Vitae`;
   return layout({
-    path, title, description: meta.summary, main, script: 'domain', bodyData: { 'domain-id': d.id, 'domain-slug': d.slug }, domains,
+    path, title, description: meta.summary, main, script: 'domain', bodyData: { 'domain-id': d.id, 'domain-slug': d.slug }, domains, og: d.slug,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${meta.title} · Lumen Vitae`, url: `https://lumenvitae.es${path}`, applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true, description: meta.summary },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [

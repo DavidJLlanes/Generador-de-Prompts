@@ -6,7 +6,7 @@ export default {
   "slug": "espacio",
   "role": "setting",
   "order": 53,
-  "meta": {"title":"Espacio","short":"Espacio","kicker":"Astrofotografía · Nebulosas · Galaxias · Planetas · Cosmos","summary":"Generador de prompts para fotos del espacio con IA: nebulosas, galaxias, planetas, lunas, estrellas y mas. Muchisimas opciones y estilos.","intro":"Crea imágenes del cosmos: nebulosas, galaxias, planetas, lunas, estrellas y fenómenos imposibles, con sus colores y sus escenas."},
+  "meta": {"title":"Espacio","short":"Espacio","kicker":"Astrofotografía · Nebulosas · Galaxias · Planetas · Cosmos","summary":"Generador de prompts para fotos del espacio con IA: nebulosas, galaxias, planetas, lunas, estrellas y mas. Muchisimas opciones y estilos.","intro":"Crea imágenes del cosmos: nebulosas, galaxias, planetas, lunas, estrellas y fenómenos imposibles, con sus colores y sus escenas.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo-escena",

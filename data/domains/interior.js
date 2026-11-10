@@ -6,12 +6,12 @@ export default {
   "slug": "interiores",
   "role": "setting",
   "order": 51,
-  "meta": {"title":"Interiores","short":"Interiores","kicker":"Creador de Mundos · Arquitectura Interior · Ambientes · Set Design","summary":"Generador de prompts para diseños de interiores con IA. Personaliza estilo, mobiliario, iluminación y atmósfera.","intro":"Construye una habitación, un castillo, una nave o una caverna desde cero: tipo de espacio, época, estilo, materiales y atmósfera."},
+  "meta": {"title":"Interiores","short":"Interiores","kicker":"Creador de Mundos · Arquitectura Interior · Ambientes · Set Design","summary":"Generador de prompts para diseños de interiores con IA. Personaliza estilo, mobiliario, iluminación y atmósfera.","intro":"Construye una habitación, un castillo, una nave o una caverna desde cero: tipo de espacio, época, estilo, materiales y atmósfera.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo",
       "title": "Tipo de espacio",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"bedroom-interior","es":"Dormitorio","en":"bedroom interior"},
         {"id":"living-room-interior","es":"Sala de estar","en":"living room interior"},
@@ -48,7 +48,7 @@ export default {
     {
       "id": "epoca",
       "title": "Época / período histórico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"ancient-roman-period","es":"Antiguo romano","en":"ancient roman period"},
         {"id":"medieval-period","es":"Medieval","en":"medieval period"},
@@ -75,7 +75,7 @@ export default {
     {
       "id": "estilo",
       "title": "Estilo arquitectónico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"gothic-architecture","es":"Gótico","en":"gothic architecture"},
         {"id":"baroque-ornate","es":"Barroco","en":"baroque ornate"},
@@ -102,7 +102,7 @@ export default {
     {
       "id": "tamano",
       "title": "Tamaño y escala",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"claustrophobic-tiny-space","es":"Claustrofóbico diminuto","en":"claustrophobic tiny space"},
         {"id":"very-small-cramped","es":"Muy pequeño","en":"very small cramped"},
@@ -119,7 +119,7 @@ export default {
     {
       "id": "iluminacion",
       "title": "Iluminación principal",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"natural-window-light","es":"Luz natural ventana","en":"natural window light"},
         {"id":"golden-sunlight","es":"Luz solar dorada","en":"golden sunlight"},
@@ -146,7 +146,7 @@ export default {
     {
       "id": "paredes",
       "title": "Material de paredes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"rough-stone-walls","es":"Piedra sin pulir","en":"rough stone walls"},
         {"id":"carved-stone-blocks","es":"Piedra tallada","en":"carved stone blocks"},
@@ -178,7 +178,7 @@ export default {
     {
       "id": "piso",
       "title": "Piso / suelo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"hardwood-flooring","es":"Madera noble","en":"hardwood flooring"},
         {"id":"weathered-wood-floors","es":"Madera desgastada","en":"weathered wood floors"},
@@ -210,7 +210,7 @@ export default {
     {
       "id": "techo",
       "title": "Techo",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"exposed-wood-beams","es":"Vigas expuestas madera","en":"exposed wood beams"},
         {"id":"exposed-iron-beams","es":"Vigas de hierro","en":"exposed iron beams"},
@@ -239,7 +239,7 @@ export default {
     {
       "id": "ventanas",
       "title": "Ventanas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-windows","es":"Ninguna ventana","en":"no windows"},
         {"id":"small-single-window","es":"Ventana pequeña","en":"small single window"},
@@ -266,7 +266,7 @@ export default {
     {
       "id": "puertas",
       "title": "Puertas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-doors","es":"Ninguna puerta","en":"no doors"},
         {"id":"single-wooden-door","es":"Una puerta simple","en":"single wooden door"},
@@ -293,7 +293,7 @@ export default {
     {
       "id": "color",
       "title": "Color dominante",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pure-white-palette","es":"Blanco puro","en":"pure white palette"},
         {"id":"cream-ivory-palette","es":"Crema marfil","en":"cream ivory palette"},
@@ -320,7 +320,7 @@ export default {
     {
       "id": "limpieza",
       "title": "Limpieza / estado",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"pristine-immaculate","es":"Pristino impecable","en":"pristine immaculate"},
         {"id":"very-clean","es":"Muy limpio","en":"very clean"},
@@ -338,7 +338,7 @@ export default {
     {
       "id": "mobiliario-qty",
       "title": "Cantidad de mobiliario",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-empty","es":"Completamente vacío","en":"completely empty"},
         {"id":"minimal-sparse-pieces","es":"Muy pocas piezas","en":"minimal sparse pieces"},
@@ -401,7 +401,7 @@ export default {
     {
       "id": "atmosfera",
       "title": "Atmósfera / mood",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"serene-peaceful","es":"Sereno pacífico","en":"serene peaceful"},
         {"id":"warm-welcoming","es":"Cálido acogedor","en":"warm welcoming"},
@@ -455,7 +455,7 @@ export default {
     {
       "id": "agua",
       "title": "Presencia de agua",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-water","es":"Sin agua","en":"no water"},
         {"id":"decorative-fountain","es":"Fuente decorativa","en":"decorative fountain"},
@@ -474,7 +474,7 @@ export default {
     {
       "id": "vegetacion",
       "title": "Vegetación interior",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"no-vegetation","es":"Sin plantas","en":"no vegetation"},
         {"id":"minimal-potted-plants","es":"Pocas plantas","en":"minimal potted plants"},
@@ -493,7 +493,7 @@ export default {
     {
       "id": "personas",
       "title": "Personas presentes",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"completely-empty","es":"Completamente vacío","en":"completely empty"},
         {"id":"single-solitary-figure","es":"Una figura solitaria","en":"single solitary figure"},
@@ -509,7 +509,7 @@ export default {
     {
       "id": "proposito",
       "title": "Propósito/función",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"sleeping-quarters","es":"Dormitorio","en":"sleeping quarters"},
         {"id":"throne-room","es":"Sala trono","en":"throne room"},
@@ -536,7 +536,7 @@ export default {
     {
       "id": "magia",
       "title": "Presencia mágica",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"mundane-ordinary","es":"Mundano normal","en":"mundane ordinary"},
         {"id":"slightly-magical","es":"Levemente mágico","en":"slightly magical"},
@@ -551,7 +551,7 @@ export default {
     {
       "id": "tecnologia",
       "title": "Nivel tecnológico",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"primitive","es":"Primitivo","en":"primitive"},
         {"id":"medieval-era","es":"Medieval","en":"medieval era"},
@@ -568,7 +568,7 @@ export default {
     {
       "id": "polvo",
       "title": "Polvo y telarañas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"spotlessly-clean","es":"Impecablemente limpio","en":"spotlessly clean"},
         {"id":"normal-dust","es":"Normal","en":"normal dust"},
@@ -583,7 +583,7 @@ export default {
     {
       "id": "salidas",
       "title": "Puertas/salidas visibles",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"single-clear-exit","es":"Una salida clara","en":"single clear exit"},
         {"id":"few-exits","es":"Pocas salidas","en":"few exits"},
@@ -598,7 +598,7 @@ export default {
     {
       "id": "ventilacion",
       "title": "Aire y ventilación",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"fresh-air","es":"Aire fresco","en":"fresh air"},
         {"id":"well-ventilated","es":"Bien ventilado","en":"well ventilated"},
@@ -613,7 +613,7 @@ export default {
     {
       "id": "dano",
       "title": "Daño estructural",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"perfectly-intact","es":"Intacto perfecto","en":"perfectly intact"},
         {"id":"well-preserved","es":"Muy bien preservado","en":"well preserved"},
@@ -682,7 +682,7 @@ export default {
     {
       "id": "riqueza",
       "title": "Oro y riqueza",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"poverty","es":"Pobre","en":"poverty"},
         {"id":"modest-simple","es":"Modesto","en":"modest simple"},
@@ -701,7 +701,7 @@ export default {
     {
       "id": "morbidez",
       "title": "Morbidez/víctimas",
-      "mode": "multi",
+      "mode": "single",
       "options": [
         {"id":"none","es":"Ninguna","en":"none"},
         {"id":"subtle-hints","es":"Sutil discreto","en":"subtle hints"},
@@ -718,7 +718,7 @@ export default {
     {
       "id": "sonido",
       "title": "Sonido ambiental evocado",
-      "mode": "multi",
+      "mode": "single",
       "slot": "technical",
       "options": [
         {"id":"complete-silence","es":"Silencio completo","en":"complete silence"},
@@ -741,7 +741,7 @@ export default {
     {
       "id": "olor",
       "title": "Olor evocado",
-      "mode": "multi",
+      "mode": "single",
       "slot": "technical",
       "options": [
         {"id":"neutral-scent","es":"Sin olor particular","en":"neutral scent"},
@@ -764,7 +764,7 @@ export default {
     {
       "id": "tactil",
       "title": "Sensación táctil",
-      "mode": "multi",
+      "mode": "single",
       "slot": "technical",
       "options": [
         {"id":"dry-warm","es":"Seco templado","en":"dry warm"},

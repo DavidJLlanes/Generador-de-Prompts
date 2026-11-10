@@ -6,7 +6,7 @@ export default {
   "slug": "paisajes",
   "role": "setting",
   "order": 50,
-  "meta": {"title":"Paisajes","short":"Paisajes","kicker":"Paisajes · Mundos · Naturaleza · Escenarios","summary":"Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.","intro":"Construye un mundo natural o sobrenatural pieza a pieza: tipo de paisaje y sus características (clima, vegetación, hora). Cruza con un personaje, el clima y la fotografía."},
+  "meta": {"title":"Paisajes","short":"Paisajes","kicker":"Paisajes · Mundos · Naturaleza · Escenarios","summary":"Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.","intro":"Construye un mundo natural o sobrenatural pieza a pieza: tipo de paisaje y sus características (clima, vegetación, hora). Cruza con un personaje, el clima y la fotografía.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo",

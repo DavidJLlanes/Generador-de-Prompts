@@ -12,6 +12,7 @@ import { $, h } from './dom.js';
 import { icon } from './icons.js';
 import { store } from '../core/store.js';
 import { loadJSON, saveJSON } from '../core/storage.js';
+import { toast } from './toast.js';
 import { esc, fold, debounce, fmtNumber, matchesAll } from '../core/util.js';
 
 const MODE_LABEL = { single: 'Elige una', multi: 'Selección múltiple' };
@@ -146,7 +147,14 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     if (!secNode) return;
     const sec = domain._secById.get(secNode.dataset.section);
     const opt = e.target.closest('button[data-opt]');
-    if (opt) { store.toggleOption(domain.id, sec, opt.dataset.opt); return; }
+    if (opt) {
+      const cleared = store.toggleOption(domain.id, sec, opt.dataset.opt, domain);
+      if (cleared.length) {
+        const names = cleared.map(id => `«${domain._secById.get(id)?.title || id}»`).join(', ');
+        toast(`Se quitó ${names}: no combina con «${sec.title}»`);
+      }
+      return;
+    }
     const act = e.target.closest('[data-act]');
     if (!act) return;
     if (act.dataset.act === 'toggle') setOpen(sec.id, !isOpen(sec.id));

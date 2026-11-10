@@ -3,8 +3,8 @@ export default {
   "totals": {
     "domains": 28,
     "sections": 744,
-    "options": 18751,
-    "presets": 1011
+    "options": 18743,
+    "presets": 1071
   },
   "domains": [
     {
@@ -17,8 +17,9 @@ export default {
       "kicker": "Mujeres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts detallados para crear personajes femeninos con IA. Controla rasgos, vestuario, expresión y pose. Compatible con Midjourney, DALL·E y más.",
       "sections": 27,
-      "options": 728,
-      "presets": 0
+      "options": 724,
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "man",
@@ -31,7 +32,8 @@ export default {
       "summary": "Genera prompts para crear personajes masculinos realistas con IA. Define rasgos, vestuario, expresión y pose.",
       "sections": 17,
       "options": 287,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "animated",
@@ -43,8 +45,9 @@ export default {
       "kicker": "Disney · Pixar · Anime · Dibujos animados",
       "summary": "Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.",
       "sections": 12,
-      "options": 530,
-      "presets": 0
+      "options": 526,
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "animals",
@@ -57,7 +60,8 @@ export default {
       "summary": "Generador de prompts de animales con IA: elige especie (o escribe la tuya), edad, proporciones cuki o diabolicas, personalidad y estilo fotografico. Muchisimas opciones.",
       "sections": 20,
       "options": 302,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "creatures",
@@ -70,7 +74,8 @@ export default {
       "summary": "Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.",
       "sections": 31,
       "options": 597,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "chimeras",
@@ -83,7 +88,8 @@ export default {
       "summary": "Generador de prompts para criaturas y objetos surrealistas con IA: mezcla cabezas, colas, alas, materiales y rasgos imposibles para crear engendros únicos. Muchísimas opciones.",
       "sections": 18,
       "options": 1051,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "vehicles",
@@ -96,7 +102,8 @@ export default {
       "summary": "Generador de prompts para vehículos futuristas y realistas con IA. Define tipo, estilo, contexto y detalles.",
       "sections": 28,
       "options": 845,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "rockets",
@@ -109,7 +116,8 @@ export default {
       "summary": "Generador de prompts para cohetes y naves espaciales con IA. Elige tipo, estilo de imagen, colores, escenario y mucho mas.",
       "sections": 28,
       "options": 378,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "objects",
@@ -122,7 +130,8 @@ export default {
       "summary": "Crea prompts para objetos detallados y realistas con IA. Personaliza forma, material, estilo y contexto.",
       "sections": 35,
       "options": 788,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "weapons",
@@ -135,7 +144,8 @@ export default {
       "summary": "Generador de prompts para armas fantásticas y realistas con IA. Personaliza tipo, estilo, material y contexto.",
       "sections": 17,
       "options": 509,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "cars",
@@ -148,7 +158,8 @@ export default {
       "summary": "Elige entre 1.000 coches reales (500 míticos de la historia y 500 actuales) y colócalos en una de 183 escenas fotográficas o de ilustración, con la versión y el color que quieras.",
       "sections": 5,
       "options": 1397,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "girl",
@@ -161,7 +172,8 @@ export default {
       "summary": "Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.",
       "sections": 79,
       "options": 1654,
-      "presets": 11
+      "presets": 11,
+      "presetsLabel": "recetas"
     },
     {
       "id": "faces",
@@ -174,7 +186,8 @@ export default {
       "summary": "Crea prompts para rostros detallados y expresivos con IA. Define etnias, edad, expresión y características.",
       "sections": 24,
       "options": 598,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "hairstyles",
@@ -187,7 +200,8 @@ export default {
       "summary": "Generador de prompts para peinados realistas y creativos con IA. Personaliza estilo, largo, color y textura.",
       "sections": 23,
       "options": 608,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "tattoos",
@@ -200,7 +214,8 @@ export default {
       "summary": "Generador de prompts para diseños de tatuajes únicos con IA. Controla estilo, tamaño, motivo y detalle.",
       "sections": 40,
       "options": 800,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "accessories",
@@ -213,7 +228,8 @@ export default {
       "summary": "Crea prompts para accesorios detallados y realistas con IA. Personaliza joyería, bolsas, sombreros y más.",
       "sections": 50,
       "options": 1022,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "anatomy",
@@ -226,7 +242,8 @@ export default {
       "summary": "Crea prompts para anatomía humana y animal precisa con IA. Controla estructura, musculatura y movimiento.",
       "sections": 41,
       "options": 955,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "poses",
@@ -239,7 +256,8 @@ export default {
       "summary": "Biblioteca de 144 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.",
       "sections": 1,
       "options": 140,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "landscape",
@@ -252,7 +270,8 @@ export default {
       "summary": "Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.",
       "sections": 21,
       "options": 316,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "interior",
@@ -265,7 +284,8 @@ export default {
       "summary": "Generador de prompts para diseños de interiores con IA. Personaliza estilo, mobiliario, iluminación y atmósfera.",
       "sections": 35,
       "options": 528,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "scenes",
@@ -278,7 +298,8 @@ export default {
       "summary": "Generador de prompts para escenas cinematográficas con IA. Controla ambiente, iluminación, personajes y acción.",
       "sections": 34,
       "options": 523,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "space",
@@ -291,7 +312,8 @@ export default {
       "summary": "Generador de prompts para fotos del espacio con IA: nebulosas, galaxias, planetas, lunas, estrellas y mas. Muchisimas opciones y estilos.",
       "sections": 28,
       "options": 326,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "locations",
@@ -304,7 +326,8 @@ export default {
       "summary": "Biblioteca de 190 localizaciones fotográficas con luz, ambiente, elementos, color y encuadre ya definidos.",
       "sections": 1,
       "options": 189,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "scenarios",
@@ -317,7 +340,8 @@ export default {
       "summary": "Más de 100 escenas escritas a mano y 45 motivos combinables con 20 ambientes, 10 detalles, 10 estilos y 5 paletas: cientos de miles de fondos y wallpapers distintos.",
       "sections": 6,
       "options": 190,
-      "presets": 1000
+      "presets": 1000,
+      "presetsLabel": "ideas"
     },
     {
       "id": "weather",
@@ -330,7 +354,8 @@ export default {
       "summary": "Crea prompts para efectos de clima y atmósfera con IA. Define condiciones, luz, nubosidad y ambiente.",
       "sections": 33,
       "options": 660,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "effects",
@@ -343,7 +368,8 @@ export default {
       "summary": "Crea prompts para efectos visuales impactantes con IA. Controla tipo, intensidad, color y composición.",
       "sections": 22,
       "options": 633,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     },
     {
       "id": "magic",
@@ -356,7 +382,8 @@ export default {
       "summary": "Generador de prompts para efectos mágicos y hechicería con IA. Define tipo, color, intensidad y atmósfera.",
       "sections": 55,
       "options": 1333,
-      "presets": 0
+      "presets": 6,
+      "presetsLabel": "recetas"
     },
     {
       "id": "photo",
@@ -369,7 +396,8 @@ export default {
       "summary": "Cámara, luz, composición, color y acabado de máxima calidad, compartidos por todos los generadores.",
       "sections": 13,
       "options": 864,
-      "presets": 0
+      "presets": 0,
+      "presetsLabel": "ideas"
     }
   ]
 };

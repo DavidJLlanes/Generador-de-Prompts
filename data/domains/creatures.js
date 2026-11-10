@@ -7,7 +7,7 @@ export default {
   "role": "subject",
   "order": 14,
   "lead": "a creature",
-  "meta": {"title":"Criaturas","short":"Criaturas","kicker":"Diseñador de Criaturas · Bestias Mitológicas · Aliens · Monstruos · Fantasía","summary":"Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.","intro":"Diseña la criatura definitiva: tipo de especie, anatomía, piel, alas, cuernos, extremidades, propósito y expresión. Cruza con un escenario y un estilo fotográfico."},
+  "meta": {"title":"Criaturas","short":"Criaturas","kicker":"Diseñador de Criaturas · Bestias Mitológicas · Aliens · Monstruos · Fantasía","summary":"Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.","intro":"Diseña la criatura definitiva: tipo de especie, anatomía, piel, alas, cuernos, extremidades, propósito y expresión. Cruza con un escenario y un estilo fotográfico.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo",

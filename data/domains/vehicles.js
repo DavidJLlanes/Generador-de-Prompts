@@ -7,7 +7,7 @@ export default {
   "role": "subject",
   "order": 16,
   "lead": "a vehicle",
-  "meta": {"title":"Vehículos","short":"Vehículos","kicker":"Diseñador de Vehículos · Naves Mágicas · Máquinas de Combate · Transportes Legendarios","summary":"Generador de prompts para vehículos futuristas y realistas con IA. Define tipo, estilo, contexto y detalles.","intro":"Diseña un medio de transporte completo: tipo y época, propulsión, velocidad, tamaño, forma, materiales y color. Cruza con un escenario, el clima y la fotografía."},
+  "meta": {"title":"Vehículos","short":"Vehículos","kicker":"Diseñador de Vehículos · Naves Mágicas · Máquinas de Combate · Transportes Legendarios","summary":"Generador de prompts para vehículos futuristas y realistas con IA. Define tipo, estilo, contexto y detalles.","intro":"Diseña un medio de transporte completo: tipo y época, propulsión, velocidad, tamaño, forma, materiales y color. Cruza con un escenario, el clima y la fotografía.","presetsLabel":"recetas"},
   "sections": [
     {
       "id": "tipo",

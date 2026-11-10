@@ -13,7 +13,7 @@ export function initChrome() {
   const shared = readSharedFromLocation();
   if (shared) {
     store.replaceSelection(shared.sel);
-    store.set({ detail: shared.detail, boost: shared.boost, aspect: shared.aspect });
+    store.set({ detail: shared.detail, boost: shared.boost, aspect: shared.aspect, custom: shared.custom });
     queueMicrotask(() => toast('Prompt compartido cargado'));
   }
 
@@ -44,7 +44,7 @@ export function initChrome() {
   // Botón «Mi prompt» de la cabecera + contador
   const badge = $('[data-count]');
   const refreshBadge = () => {
-    const n = store.countSelected();
+    const n = store.totalItems();
     if (badge) { badge.textContent = n; badge.hidden = n === 0; }
   };
   refreshBadge();

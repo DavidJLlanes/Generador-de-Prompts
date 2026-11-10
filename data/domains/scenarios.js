@@ -8,6 +8,7 @@ export default {
   "order": 55,
   "meta": {"title":"Escenarios y mundos","short":"Escenarios","kicker":"Motivos · Ambientes · Detalles · Estilos · Paletas","summary":"Más de 100 escenas escritas a mano y 45 motivos combinables con 20 ambientes, 10 detalles, 10 estilos y 5 paletas: cientos de miles de fondos y wallpapers distintos.","intro":"Elige una idea destacada o construye tu propia escena combinando motivo, ambiente, detalle, estilo y paleta. Cada pieza trae una descripción larga pensada para imágenes de máxima calidad."},
   "rules": [{"id":"miniature-world","when":{"section":"motivo","tag":"miniature"},"add":{"slot":"setting","en":"because the subject is a small object or miniature, the described environment is integrated as a small world visible inside and around it (sky, light and weather reflected in its surfaces and materials), with believable scale and coherent reflections"}}],
+  "conflicts": [{"id":"idea-vs-piezas","a":["ideas"],"b":["motivo","ambiente","detalle"]}],
   "sections": [
     {
       "id": "ideas",
