@@ -1,4 +1,4 @@
-/** Generadores grandes: «Coches» (1.000 opciones en una sección) y «Personaje avanzado» (79 secciones, recetas, épocas). */
+/** Generadores grandes: «Coches» (1.000 opciones en una sección) y «Personaje avanzado» (80 secciones, recetas, épocas). */
 const input = (sel, value) => `const s=document.querySelector(${JSON.stringify(sel)}); s.value=${JSON.stringify(value)}; s.dispatchEvent(new Event('input',{bubbles:true}))`;
 const visible = sel => `return [...document.querySelectorAll(${JSON.stringify(sel)})].filter(x=>!x.closest('[hidden]') && !x.hidden).length`;
 
@@ -37,8 +37,8 @@ export async function run({ b, base, ok, step }) {
   step('[C] Personaje avanzado');
   await b.goto(base + '/generadores/personaje-avanzado/'); await b.eval('localStorage.clear()'); await b.goto(base + '/generadores/personaje-avanzado/');
   await b.waitFor(`document.querySelectorAll('.opt-section').length > 50`, 10000, 'secciones');
-  ok((await b.eval(`return document.querySelectorAll('.opt-section').length`)) === 79, 'renderiza 79 secciones');
-  ok(await b.eval(`return !document.querySelector('#sec-body-bust') && ![...document.querySelectorAll('[data-s]')].some(e=>/bralette|negligee|babydoll|open-cup|body harness|large bust|small bust|latex/.test(e.dataset.s))`), 'las tallas de busto, la lencería y el látex NO están en la página');
+  ok((await b.eval(`return document.querySelectorAll('.opt-section').length`)) === 80, 'renderiza 80 secciones');
+  ok(await b.eval(`return !!document.querySelector('#sec-body-bust') && [...document.querySelectorAll('[data-s]')].some(e=>/large bust/.test(e.dataset.s)) && ![...document.querySelectorAll('[data-s]')].some(e=>/topless|naked|nipple|explicit|nsfw/.test(e.dataset.s))`), 'el generador de adultos incluye la sección de busto y lencería, sin contenido explícito');
   ok(/Ver 6 recetas|Ver 11 recetas/.test(await b.eval(`return document.querySelector('[data-act="ideas"]').textContent`)), 'el botón habla de «recetas», no de «ideas»');
   await b.eval(`document.querySelector('[data-act="ideas"]').click()`);
   await b.waitFor(`document.querySelector('dialog.ideas[open]')`, 6000);

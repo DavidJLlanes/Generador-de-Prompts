@@ -369,6 +369,37 @@ export default {
       ]
     },
     {
+      "id": "body-bust",
+      "title": "Cuerpo · Busto",
+      "note": "Solo para personajes adultos (18 a 80 años).",
+      "mode": "single",
+      "options": [
+        {"id":"small-bust","es":"pecho pequeño","en":"small bust"},
+        {"id":"moderate-bust","es":"pecho moderado","en":"moderate bust"},
+        {"id":"medium-bust","es":"pecho medio","en":"medium bust"},
+        {"id":"large-bust","es":"pecho grande","en":"large bust"},
+        {"id":"abundant-curves","es":"curvas abundantes","en":"abundant curves"},
+        {"id":"natural-curves","es":"curvas naturales","en":"natural curves"},
+        {"id":"athletic-chest","es":"pecho atlético","en":"athletic chest"},
+        {"id":"voluptuous-full-bust","es":"pecho voluptuoso y lleno","en":"voluptuous full bust"},
+        {"id":"natural-looking-bust","es":"pecho de aspecto natural","en":"natural-looking bust"},
+        {"id":"firm-perky-bust","es":"pecho firme y respingón","en":"firm perky bust"},
+        {"id":"a-cup-bust","es":"pecho copa A","en":"A-cup bust"},
+        {"id":"b-cup-bust","es":"pecho copa B","en":"B-cup bust"},
+        {"id":"c-cup-bust","es":"pecho copa C","en":"C-cup bust"},
+        {"id":"d-cup-bust","es":"pecho copa D","en":"D-cup bust"},
+        {"id":"full-dd-cup-bust","es":"pecho copa DD lleno","en":"full DD-cup bust"},
+        {"id":"small-athletic-chest","es":"pecho atlético pequeño","en":"small athletic chest"},
+        {"id":"e-cup-bust","es":"pecho copa E","en":"E-cup bust"},
+        {"id":"full-f-cup-bust","es":"pecho copa F lleno","en":"full F-cup bust"},
+        {"id":"small-perky-bust","es":"pecho pequeño y respingón","en":"small perky bust"},
+        {"id":"natural-asymmetric-bust","es":"pecho natural asimétrico","en":"natural asymmetric bust"},
+        {"id":"natural-soft-bust","es":"pecho natural y suave","en":"natural soft bust"},
+        {"id":"wide-set-bust","es":"pecho separado","en":"wide-set bust"},
+        {"id":"prominent-cleavage","es":"escote prominente","en":"prominent cleavage"}
+      ]
+    },
+    {
       "id": "body-muscle-tone",
       "title": "Cuerpo · Tono muscular",
       "mode": "single",
@@ -824,7 +855,8 @@ export default {
         {"id":"shimmering-gold-lids","es":"párpados dorados brillantes","en":"shimmering gold lids"},
         {"id":"graphic-eyeliner","es":"eyeliner gráfico","en":"graphic eyeliner"},
         {"id":"glittery-eyelids","es":"párpados con purpurina","en":"glittery eyelids"},
-        {"id":"bare-lids-with-mascara","es":"párpados desnudos con máscara","en":"bare lids with mascara"}
+        {"id":"bare-lids-with-mascara","es":"párpados desnudos con máscara","en":"bare lids with mascara"},
+        {"id":"cleavage-framing","es":"recorte del surco","en":"cleavage framing"}
       ]
     },
     {
@@ -914,7 +946,25 @@ export default {
         {"id":"sequin-top","es":"top de lentejuelas","en":"sequin top"},
         {"id":"shiny-top","es":"top brillante","en":"shiny top"},
         {"id":"pearl-embellished-top","es":"top adornado con perlas","en":"pearl-embellished top"},
-        {"id":"metallic-top","es":"top metálico","en":"metallic top"}
+        {"id":"metallic-top","es":"top metálico","en":"metallic top"},
+        {"id":"basic-bra","es":"sujetador básico","en":"basic bra"},
+        {"id":"bralette","es":"top de sujetador sin aros","en":"bralette"},
+        {"id":"slip","es":"combinación","en":"slip"},
+        {"id":"teddy","es":"body de encaje","en":"teddy"},
+        {"id":"body","es":"body","en":"body"},
+        {"id":"chemise","es":"camisón corto","en":"chemise"},
+        {"id":"babydoll","es":"camisón corto (picardías)","en":"babydoll"},
+        {"id":"negligee","es":"negligé","en":"negligee"},
+        {"id":"lace-bodysuit","es":"body de encaje","en":"lace bodysuit"},
+        {"id":"open-bodysuit","es":"body abierto","en":"open bodysuit"},
+        {"id":"open-cup-lace-bra","es":"sujetador de encaje de copa abierta","en":"open-cup lace bra"},
+        {"id":"transparent-mesh-top","es":"top de malla transparente","en":"transparent mesh top"},
+        {"id":"fishnet-top","es":"top de red","en":"fishnet top"},
+        {"id":"strappy-lace-set","es":"conjunto de encaje con tiras","en":"strappy lace set"},
+        {"id":"body-harness","es":"arnés corporal","en":"body harness"},
+        {"id":"latex-top","es":"top de látex","en":"latex top"},
+        {"id":"vinyl-top","es":"top de vinilo","en":"vinyl top"},
+        {"id":"fishnet-bodysuit","es":"body de red","en":"fishnet bodysuit"}
       ]
     },
     {
@@ -991,7 +1041,8 @@ export default {
         {"id":"sequined","es":"con lentejuelas","en":"sequined"},
         {"id":"rubber","es":"goma","en":"rubber"},
         {"id":"canvas","es":"lona","en":"canvas"},
-        {"id":"crochet","es":"ganchillo","en":"crochet"}
+        {"id":"crochet","es":"ganchillo","en":"crochet"},
+        {"id":"latex","es":"látex","en":"latex"}
       ]
     },
     {
@@ -1178,7 +1229,8 @@ export default {
         {"id":"sequined","es":"con lentejuelas","en":"sequined"},
         {"id":"rubber","es":"goma","en":"rubber"},
         {"id":"canvas","es":"lona","en":"canvas"},
-        {"id":"crochet","es":"ganchillo","en":"crochet"}
+        {"id":"crochet","es":"ganchillo","en":"crochet"},
+        {"id":"latex","es":"látex","en":"latex"}
       ]
     },
     {
@@ -1342,7 +1394,8 @@ export default {
         {"id":"sequined","es":"con lentejuelas","en":"sequined"},
         {"id":"rubber","es":"goma","en":"rubber"},
         {"id":"canvas","es":"lona","en":"canvas"},
-        {"id":"crochet","es":"ganchillo","en":"crochet"}
+        {"id":"crochet","es":"ganchillo","en":"crochet"},
+        {"id":"latex","es":"látex","en":"latex"}
       ]
     },
     {
@@ -1702,7 +1755,8 @@ export default {
         {"id":"shy-blushing-gaze","es":"mirada tímida y sonrojada","en":"shy blushing gaze"},
         {"id":"thoughtful-and-reflective","es":"pensativa y reflexiva","en":"thoughtful and reflective"},
         {"id":"delighted-surprise","es":"sorpresa encantada","en":"delighted surprise"},
-        {"id":"calm-and-composed","es":"calma y compostura","en":"calm and composed"}
+        {"id":"calm-and-composed","es":"calma y compostura","en":"calm and composed"},
+        {"id":"seductive-gaze","es":"mirada seductora","en":"seductive gaze"}
       ]
     },
     {
@@ -2165,7 +2219,8 @@ export default {
         {"id":"fantasy-book-cover-art","es":"arte de portada de libro de fantasía","en":"fantasy book cover art"},
         {"id":"video-game-splash-art","es":"splash art de videojuego","en":"video game splash art"},
         {"id":"trading-card-game-art","es":"arte de juego de cartas coleccionables","en":"trading card game art"},
-        {"id":"tarot-card-illustration","es":"ilustración de carta de tarot","en":"tarot card illustration"}
+        {"id":"tarot-card-illustration","es":"ilustración de carta de tarot","en":"tarot card illustration"},
+        {"id":"boudoir-photography","es":"fotografía boudoir","en":"boudoir photography"}
       ]
     },
     {

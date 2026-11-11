@@ -200,8 +200,10 @@ test('el dominio «cars» separa el coche de la escena: ninguna escena trae marc
   assert.equal(sec('cars', 'car').options.length, 1000);
 });
 
-test('política de contenido de «girl»: sin tallas de busto ni lencería', () => {
-  assert.equal(sec('girl', 'body-bust'), undefined);
+test('«girl» es un generador de adultos: edades de 18 a 80 y sin términos explícitos', () => {
+  const ages = sec('girl', 'identity-age').options.map(o => o.en).join(' | ');
+  assert.doesNotMatch(ages, /(1[0-7]-year|teen\w*|child\w*|girl)/i);
+  assert.ok(sec('girl', 'identity-age').options.some(o => o.en.startsWith('18-year-old')));
   const all = domains.girl.sections.flatMap(s => s.options.map(o => o.en)).join(' | ');
-  assert.doesNotMatch(all, /\b(bralette|babydoll|negligee|chemise|teddy|open-cup|body harness|fishnet|latex|bust)\b/i);
+  assert.doesNotMatch(all, /(topless|naked|nude|nipples?|explicit|nsfw|porn\w*)/i);
 });

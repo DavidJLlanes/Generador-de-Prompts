@@ -95,6 +95,33 @@ export default {
       ]
     },
     {
+      "id": "pecho",
+      "title": "Busto",
+      "note": "Solo para personajes adultos.",
+      "mode": "single",
+      "options": [
+        {"id":"small-bust","es":"Pequeño","en":"small bust"},
+        {"id":"medium-bust","es":"Mediano","en":"medium bust"},
+        {"id":"large-bust","es":"Grande","en":"large bust"},
+        {"id":"voluptuous-full-bust","es":"Busto generoso","en":"voluptuous full bust"},
+        {"id":"natural-looking-bust","es":"Natural","en":"natural-looking bust"},
+        {"id":"firm-perky-bust","es":"Firme y elevado","en":"firm perky bust"},
+        {"id":"a-cup-bust","es":"Copa A","en":"A-cup bust"},
+        {"id":"b-cup-bust","es":"Copa B","en":"B-cup bust"},
+        {"id":"c-cup-bust","es":"Copa C","en":"C-cup bust"},
+        {"id":"d-cup-bust","es":"Copa D","en":"D-cup bust"},
+        {"id":"full-dd-cup-bust","es":"Copa DD","en":"full DD-cup bust"},
+        {"id":"small-athletic-chest","es":"Atlético plano","en":"small athletic chest"},
+        {"id":"e-cup-bust","es":"Copa E","en":"E-cup bust"},
+        {"id":"full-f-cup-bust","es":"Copa F","en":"full F-cup bust"},
+        {"id":"small-perky-bust","es":"Pequeño y respingón","en":"small perky bust"},
+        {"id":"natural-asymmetric-bust","es":"Asimétrico natural","en":"natural asymmetric bust"},
+        {"id":"natural-soft-bust","es":"Suave natural","en":"natural soft bust"},
+        {"id":"wide-set-bust","es":"Separado","en":"wide-set bust"},
+        {"id":"prominent-cleavage","es":"Escote marcado","en":"prominent cleavage"}
+      ]
+    },
+    {
       "id": "piel",
       "title": "Tono y textura de piel",
       "mode": "single",
@@ -463,7 +490,8 @@ export default {
         {"id":"confident-assured-expression","es":"Confiada segura","en":"confident assured expression","rich":"a confident assured face with a level chin lift, steady eyes meeting the viewer directly, relaxed brows and a slight self-assured smile that radiates calm poise"},
         {"id":"shy-bashful-expression","es":"Tímida","en":"shy bashful expression","rich":"a shy bashful face with eyes glancing downward or sideways, a small hesitant smile, slightly raised brows and a gently tucked chin, sweet and modest in mood"},
         {"id":"thoughtful-pensive-expression","es":"Pensativa","en":"thoughtful pensive expression","rich":"a thoughtful pensive face with a slightly furrowed brow, eyes gazing off to one side in contemplation and lips softly closed, absorbed in quiet reflection"},
-        {"id":"blowing-a-kiss-expression","es":"Lanzando un beso","en":"blowing a kiss expression","rich":"a sweet blown-kiss gesture with lips gently puckered, one hand raised near the mouth, soft smiling eyes and slightly lifted brows, affectionate, warm and playful"}
+        {"id":"blowing-a-kiss-expression","es":"Lanzando un beso","en":"blowing a kiss expression","rich":"a sweet blown-kiss gesture with lips gently puckered, one hand raised near the mouth, soft smiling eyes and slightly lifted brows, affectionate, warm and playful"},
+        {"id":"sultry-seductive-expression","es":"Seductora","en":"sultry seductive expression"}
       ]
     },
     {
@@ -624,7 +652,34 @@ export default {
         {"id":"wearing-tribal-war-paint-with-bone-and-leather-armor","es":"Guerrera tribal","en":"wearing tribal war paint with bone and leather armor","group":"guerrera-y-armadura","rich":"wearing tribal warrior attire with bold war paint streaks, a leather chest harness decorated with carved bone pieces, wrapped arm guards and a short hide skirt in a primal style"},
         {"id":"wearing-rugged-post-apocalyptic-scavenger-armor","es":"Post-apocalíptica","en":"wearing rugged post-apocalyptic scavenger armor","group":"guerrera-y-armadura","rich":"wearing rugged post-apocalyptic scavenger armor pieced together from salvaged plates, patched layers and worn straps, with mismatched shoulder guards, a utility belt and a hooded, weathered silhouette"},
         {"id":"wearing-a-regal-armored-warrior-queen-gown","es":"Reina guerrera","en":"wearing a regal armored warrior-queen gown","group":"guerrera-y-armadura","rich":"wearing a regal armored warrior-queen gown blending a fitted plated bodice and sculpted shoulder guards with a long flowing floor-length skirt and a sweeping cape, commanding and majestic"},
-        {"id":"wearing-layered-monster-hunter-armor-with-pelts","es":"Cazadora de monstruos","en":"wearing layered monster-hunter armor with pelts","group":"guerrera-y-armadura","rich":"wearing layered monster-hunter armor of a fitted leather jerkin, buckled plates, bandolier straps and a heavy pelt draped across the shoulders, with sturdy gauntlets and rugged tall boots"}
+        {"id":"wearing-layered-monster-hunter-armor-with-pelts","es":"Cazadora de monstruos","en":"wearing layered monster-hunter armor with pelts","group":"guerrera-y-armadura","rich":"wearing layered monster-hunter armor of a fitted leather jerkin, buckled plates, bandolier straps and a heavy pelt draped across the shoulders, with sturdy gauntlets and rugged tall boots"},
+        {"id":"wearing-a-lace-trim-lingerie-style-slip-dress","es":"Slip dress con encaje","en":"wearing a lace-trim lingerie-style slip dress","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-an-elegant-black-lace-lingerie-set-boudoir-fashi","es":"Conjunto de encaje negro","en":"wearing an elegant black lace lingerie set, boudoir fashion photography style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-delicate-white-lace-lingerie-set-tasteful-boud","es":"Conjunto de encaje blanco","en":"wearing a delicate white lace lingerie set, tasteful boudoir style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-lace-bodysuit-elegant-boudoir-style","es":"Body de encaje","en":"wearing a lace bodysuit, elegant boudoir style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-structured-corset-vintage-boudoir-elegance","es":"Corsé clásico","en":"wearing a structured corset, vintage boudoir elegance","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-satin-lingerie-set-soft-elegant-boudoir","es":"Lencería de satén","en":"wearing a satin lingerie set, soft elegant boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-flowy-chiffon-babydoll-tasteful-boudoir","es":"Babydoll vaporoso","en":"wearing a flowy chiffon babydoll, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-garter-belt-with-stockings-classic-boudoir-fas","es":"Liguero y medias","en":"wearing a garter belt with stockings, classic boudoir fashion","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-lace-teddy-one-piece-elegant-boudoir","es":"Teddy de encaje","en":"wearing a lace teddy one-piece, elegant boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-soft-bralette-and-high-waist-briefs-set","es":"Bralette y culotte","en":"wearing a soft bralette and high-waist briefs set","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-sporty-cotton-bralette-set","es":"Conjunto deportivo íntimo","en":"wearing a sporty cotton bralette set","group":"sexy-elegante"},
+        {"id":"wearing-an-embroidered-tulle-lingerie-set-tasteful-boudo","es":"Conjunto de tul bordado","en":"wearing an embroidered tulle lingerie set, tasteful boudoir style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-an-elegant-fishnet-bodysuit-tasteful-boudoir","es":"Body de rejilla elegante","en":"wearing an elegant fishnet bodysuit, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-balconette-bra-and-lace-briefs-set-tasteful-bo","es":"Balconette y braguita de encaje","en":"wearing a balconette bra and lace briefs set, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-red-lace-lingerie-set-tasteful-boudoir-style","es":"Encaje rojo","en":"wearing a red lace lingerie set, tasteful boudoir style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-strappy-lace-bodysuit-elegant-boudoir","es":"Body de encaje con tirantes cruzados","en":"wearing a strappy lace bodysuit, elegant boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-bustier-with-a-garter-belt-classic-boudoir-ele","es":"Bustier con liguero","en":"wearing a bustier with a garter belt, classic boudoir elegance","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-loosely-draped-silk-kimono-tasteful-boudoir","es":"Kimono de seda entreabierto","en":"wearing a loosely draped silk kimono, tasteful boudoir","group":"sexy-elegante"},
+        {"id":"wearing-a-floral-embroidered-tulle-lingerie-set-tasteful","es":"Tul con bordado floral","en":"wearing a floral-embroidered tulle lingerie set, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-sheer-mesh-bodysuit-tasteful-boudoir","es":"Body de malla transparente","en":"wearing a sheer mesh bodysuit, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-an-underwired-bra-and-high-waist-briefs-set-boud","es":"Sujetador de aros y culotte alto","en":"wearing an underwired bra and high-waist briefs set, boudoir style","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-velvet-bralette-and-brief-set-elegant-boudoir","es":"Bralette de terciopelo","en":"wearing a velvet bralette and brief set, elegant boudoir","group":"sexy-elegante"},
+        {"id":"wearing-a-long-sleeve-lace-bodysuit-tasteful-boudoir","es":"Body de encaje manga larga","en":"wearing a long-sleeve lace bodysuit, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-delicate-pearl-strap-lingerie-set-tasteful-bou","es":"Conjunto de lencería con perlas","en":"wearing a delicate pearl-strap lingerie set, tasteful boudoir","group":"lenceria-y-ropa-interior-elegante"},
+        {"id":"wearing-a-glossy-latex-dress","es":"Vestido de látex","en":"wearing a glossy latex dress","group":"sexy-elegante"},
+        {"id":"wearing-a-glossy-latex-dress-with-a-front-zipper","es":"Vestido de látex con cremallera","en":"wearing a glossy latex dress with a front zipper","group":"sexy-elegante"},
+        {"id":"wearing-a-short-satin-chemise-with-lace-trim","es":"Camisón corto de satén","en":"wearing a short satin chemise with lace trim","group":"lenceria-y-ropa-interior-elegante"}
       ]
     },
     {
@@ -697,7 +752,8 @@ export default {
         {"id":"neoprene","es":"Neopreno","en":"neoprene"},
         {"id":"brocade","es":"Brocado","en":"brocade"},
         {"id":"feather-trim","es":"Plumas","en":"feather trim"},
-        {"id":"vinyl","es":"Vinilo","en":"vinyl"}
+        {"id":"vinyl","es":"Vinilo","en":"vinyl"},
+        {"id":"glossy-latex","es":"Látex brillante","en":"glossy latex"}
       ]
     },
     {

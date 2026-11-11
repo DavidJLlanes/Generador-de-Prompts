@@ -2,8 +2,8 @@
 export default {
   "totals": {
     "domains": 28,
-    "sections": 744,
-    "options": 18743,
+    "sections": 746,
+    "options": 18842,
     "presets": 1071
   },
   "domains": [
@@ -16,8 +16,8 @@ export default {
       "short": "Mujer",
       "kicker": "Mujeres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts detallados para crear personajes femeninos con IA. Controla rasgos, vestuario, expresión y pose. Compatible con Midjourney, DALL·E y más.",
-      "sections": 27,
-      "options": 724,
+      "sections": 28,
+      "options": 772,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -170,8 +170,8 @@ export default {
       "short": "Personaje avanzado",
       "kicker": "Épocas · Culturas · Moda · Maquillaje · Poses · Escenarios",
       "summary": "Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.",
-      "sections": 79,
-      "options": 1654,
+      "sections": 80,
+      "options": 1701,
       "presets": 11,
       "presetsLabel": "recetas"
     },
@@ -255,7 +255,7 @@ export default {
       "kicker": "Posturas · Gestos · Lenguaje corporal",
       "summary": "Biblioteca de 144 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.",
       "sections": 1,
-      "options": 140,
+      "options": 144,
       "presets": 0,
       "presetsLabel": "ideas"
     },
@@ -297,7 +297,7 @@ export default {
       "kicker": "Narrativa Visual · Cinematografía · Storytelling · Moment Design",
       "summary": "Generador de prompts para escenas cinematográficas con IA. Controla ambiente, iluminación, personajes y acción.",
       "sections": 34,
-      "options": 523,
+      "options": 522,
       "presets": 0,
       "presetsLabel": "ideas"
     },
@@ -325,7 +325,7 @@ export default {
       "kicker": "Calles · Naturaleza · Interiores · Arquitectura · Estudio",
       "summary": "Biblioteca de 190 localizaciones fotográficas con luz, ambiente, elementos, color y encuadre ya definidos.",
       "sections": 1,
-      "options": 189,
+      "options": 190,
       "presets": 0,
       "presetsLabel": "ideas"
     },

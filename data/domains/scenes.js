@@ -634,7 +634,6 @@ export default {
         {"id":"subtly-romantic","es":"Sutilmente romántico","en":"subtly romantic"},
         {"id":"obvious-romance","es":"Romántico obvio","en":"obvious romance"},
         {"id":"burning-passion","es":"Pasión ardiente","en":"burning passion"},
-        {"id":"unresolved-tension","es":"Tensión sexual no resuelta","en":"unresolved tension"},
         {"id":"passionate-kiss","es":"Beso apasionado","en":"passionate kiss"},
         {"id":"manipulative-seduction","es":"Seducción manipuladora","en":"manipulative seduction"}
       ]

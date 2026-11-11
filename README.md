@@ -2,7 +2,7 @@
 
 Constructor modular de **prompts para imágenes con IA**. La interfaz está en español; los prompts salen siempre en inglés.
 
-- **28 generadores** (personajes, coches, criaturas, vehículos, paisajes, escenarios, clima, efectos, fotografía…), **744 secciones** y **18.751 opciones**.
+- **28 generadores** (personajes, coches, criaturas, vehículos, paisajes, escenarios, clima, efectos, fotografía…), **746 secciones** y **18.842 opciones**.
 - **Cruce de generadores:** pon una mujer en un escenario, añade clima y una cámara. Cada ranura es opcional: una mujer sin escenario genera igualmente un prompt completo.
 - **1.000 ideas de escenas** (galería buscable), **1.000 coches** (500 míticos y 500 actuales) con 183 escenas fotográficas e ilustradas, y cientos de miles de combinaciones propias.
 - **4 formatos de salida:** texto, ChatGPT/Gemini, Stable Diffusion/Flux (positivo + negativo) e Ideogram (JSON).
