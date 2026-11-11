@@ -475,7 +475,8 @@ export default {
         {"id":"closed-mysterious","es":"Cerrada misteriosa","en":"closed mysterious"},
         {"id":"with-visible-fangs","es":"Con colmillos visibles","en":"with visible fangs"},
         {"id":"shark-teeth","es":"Dientes de tiburón","en":"shark teeth"},
-        {"id":"impossible-structure","es":"Estructura imposible","en":"impossible structure"}
+        {"id":"impossible-structure","es":"Estructura imposible","en":"impossible structure"},
+        {"id":"sensual-seductive","es":"Sensual seductora","en":"sensual seductive","tags":["adult-only"]}
       ]
     },
     {
@@ -687,7 +688,8 @@ export default {
         {"id":"multiple-expressions","es":"Expresión múltiple","en":"multiple expressions"},
         {"id":"contradictory-expression","es":"Expresión contradictoria","en":"contradictory expression"},
         {"id":"alien-expression","es":"Expresión alienígena","en":"alien expression"},
-        {"id":"supernatural-expression","es":"Expresión sobrenatural","en":"supernatural expression"}
+        {"id":"supernatural-expression","es":"Expresión sobrenatural","en":"supernatural expression"},
+        {"id":"pleasurable-sensual","es":"Placer sensual","en":"pleasurable sensual","tags":["adult-only"]}
       ]
     },
     {

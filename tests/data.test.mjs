@@ -6,6 +6,7 @@ import { ROOT, loadAllDomains, loadPresetsFor } from '../scripts/lib/domains.mjs
 import { validateDomain, validatePresets } from '../assets/js/core/schema.js';
 import catalog from '../data/catalog.js';
 import { SLOT_IDS } from '../data/taxonomy.js';
+import { effectiveTags } from '../scripts/lib/tags.mjs';
 
 const all = await loadAllDomains();
 
@@ -46,43 +47,53 @@ test('los roles de los dominios son ranuras válidas y hay al menos un dominio p
 });
 
 /* ---------- Política de contenido (ver docs/CONTENT-POLICY.md) ---------- */
-// 1) Nunca, en ningún generador: contenido explícito, desnudez, pornografía o autolesión.
-const BLOCKED_PROMPT = /(thong|g-string|panties|boobs?|busty|nipples?|topless|naked|nudity|explicit|sensual|erotic|sexy|porn\w*|nsfw|suicid\w*)/i;
+const TAGS = effectiveTags(all);
+const tagsOf = (d, s, o) => TAGS.get(`${d.id}/${s.id}/${o.id}`) || new Set();
+// 1) Nunca, en ningún generador ni con ninguna etiqueta: contenido explícito, desnudez, pornografía o autolesión.
+const HARD_BLOCKED = /\b(boobs?|busty|nipples?|topless|naked|nudity|explicit|porn\w*|nsfw|suicid\w*)\b/i;
+const HARD_BLOCKED_LABEL = /(expl[ií]cit|porn|nsfw|suicid)/i;
 // «desnudo/desnuda» se omite a propósito: en español significa también «sobrio/vacío» (paredes desnudas);
 // la desnudez se vigila en los prompts en inglés (naked, nudity, topless…).
-const BLOCKED_LABEL = /(expl[ií]cit|er[oó]tic|porn|nsfw|suicid)/i;
-// 2) Moda íntima, busto y látex: solo en los generadores de personajes ADULTOS (mujer y personaje avanzado, 18+).
-//    Fuera de ellos (animados, rostros, fotografía, escenas…) el sujeto podría ser joven o ambiguo.
-const ADULT_ONLY_PROMPT = /(lingerie|boudoir|garters?|bralette|balconette|bustier|cleavage|bust|latex|chemise|babydoll|negligee|teddy|lace set|body harness|open-cup)/i;
-const ADULT_ONLY_LABEL = /(lencer[ií]a|busto|pecho|boudoir)/i;
-const ADULT_DOMAINS = new Set(['woman', 'girl']);
+// 2) Moda íntima, busto, látex y tono sensual: solo en opciones con la etiqueta «adult-only», que las reglas de
+//    data/exclusions.js bloquean ante menores y personajes de aspecto joven.
+const ADULT_ONLY_PROMPT = /\b(lingerie|boudoir|garters?|bralette|balconette|bustier|cleavage|bust(?! shot)|latex|chemise|babydoll|negligee|teddy|lace set|body harness|open-cup|thong|g-string|panties|sensual|erotic|sexy)\b/i;
+const ADULT_ONLY_LABEL = /(lencer[ií]a|er[oó]tic|boudoir|sensual)/i;
 
 test('política de contenido: ningún prompt contiene términos explícitos', () => {
   const bad = [];
   for (const { domain: d } of all) for (const s of d.sections) for (const o of s.options) {
-    if (BLOCKED_PROMPT.test([o.en, o.rich || '', o.name || ''].join(' '))) bad.push(`${d.id}/${s.id}/${o.id}`);
-    if (BLOCKED_LABEL.test(o.es)) bad.push(`${d.id}/${s.id}/${o.id} [es]`);
+    if (HARD_BLOCKED.test([o.en, o.rich || '', o.name || ''].join(' '))) bad.push(`${d.id}/${s.id}/${o.id}`);
+    if (HARD_BLOCKED_LABEL.test(o.es)) bad.push(`${d.id}/${s.id}/${o.id} [es]`);
   }
   assert.deepEqual(bad, [], 'contenido que no debe publicarse; revisa docs/CONTENT-POLICY.md');
 });
 
-test('política de contenido: la moda íntima y el busto solo existen en los generadores de adultos', () => {
+test('política de contenido: la moda íntima, el busto y lo sensual llevan la etiqueta «adult-only»', () => {
   const bad = [];
-  for (const { domain: d } of all) {
-    if (ADULT_DOMAINS.has(d.id)) continue;
-    for (const s of d.sections) for (const o of s.options) {
-      if (ADULT_ONLY_PROMPT.test([o.en, o.rich || '', o.name || ''].join(' '))) bad.push(`${d.id}/${s.id}/${o.id}`);
-      if (/^(lencer[ií]a|boudoir)/i.test(o.es)) bad.push(`${d.id}/${s.id}/${o.id} [es]`);
-    }
+  for (const { domain: d } of all) for (const s of d.sections) for (const o of s.options) {
+    const hit = ADULT_ONLY_PROMPT.test([o.en, o.rich || '', o.name || ''].join(' ')) || ADULT_ONLY_LABEL.test(o.es);
+    if (hit && !tagsOf(d, s, o).has('adult-only')) bad.push(`${d.id}/${s.id}/${o.id}`);
   }
-  assert.deepEqual(bad, [], 'solo woman y girl (personajes adultos) admiten este contenido');
+  assert.deepEqual(bad, [], 'falta la etiqueta adult-only (en tags o en TAGGING de data/exclusions.js)');
+});
+
+test('el contenido «adult-only» se bloquea ante cualquier menor o personaje de aspecto joven', () => {
+  const adult = [], young = [];
+  for (const { domain: d } of all) for (const s of d.sections) for (const o of s.options) {
+    const t = tagsOf(d, s, o);
+    if (t.has('adult-only')) adult.push(`${d.id}/${s.id}/${o.id}`);
+    if (t.has('minor') || t.has('youthful')) young.push(`${d.id}/${s.id}/${o.id}`);
+  }
+  assert.ok(adult.length > 100, 'debe haber contenido adult-only: ' + adult.length);
+  assert.ok(young.length > 200, 'debe haber menores / aspecto joven (incluye personajes animados no verificados): ' + young.length);
+  assert.ok(young.some(k => k.startsWith('faces/edad/child')) && young.some(k => k.startsWith('animated/version/')), 'cubre rostros y versiones animadas');
 });
 
 test('los generadores de adultos declaran la edad mínima de 18 años', () => {
   const youngest = d => d.sections.find(s => /edad|age/i.test(s.id)).options.map(o => o.en).join(' | ');
-  for (const id of ADULT_DOMAINS) {
+  for (const id of ['woman', 'girl']) {
     const d = all.find(x => x.domain.id === id).domain;
-    assert.doesNotMatch(youngest(d), /(1[0-7]|teen\w*|child\w*|girl|minor)/i, `${id}: edades no adultas`);
+    assert.doesNotMatch(youngest(d), /\b(1[0-7]|teen\w*|child\w*|girl|minor)\b/i, `${id}: edades no adultas`);
   }
 });
 

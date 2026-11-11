@@ -109,3 +109,16 @@ Guardado en `localStorage["lv:v1:workspace"]`:
 - `en` corto y reutilizable; el detalle largo va en `rich`.
 - Nada de texto que deba aparecer *dentro* de la imagen: usa «sin texto legible».
 - Respeta la [política de contenido](CONTENT-POLICY.md).
+
+## Exclusiones entre opciones (`data/exclusions.js`)
+
+Para cosas que **no pueden convivir aunque estén en generadores o secciones distintas**. Es distinto de `conflicts` (que vacía secciones de un mismo dominio al elegir): aquí la opción se **bloquea**.
+
+```js
+// 1) Etiquetas: en la propia opción ("tags": ["adult-only"]) o en TAGGING (por sección, grupo, ids, nombre…)
+{ tag: 'minor', domain: 'faces', section: 'edad', ids: ['child-3-7-years'] }
+// 2) Reglas: un lado bloquea al otro mientras haya algo elegido en otra sección
+{ id: 'dia-vs-noche', a: { tags: ['night'] }, b: { tags: ['day'] }, drop: 'b', whyA: '…', whyB: '…' }
+```
+
+Cada lado es `{ tags: [...] }` o `{ domains: [...] }` (hay algo elegido en ese generador). `drop` dice qué lado se descarta si una selección llega ya hecha con ambos. `npm run build` genera `data/tag-index.js`, y falla si `TAGGING` apunta a algo que ya no existe. Política y etiquetas de seguridad: `docs/CONTENT-POLICY.md`.

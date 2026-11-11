@@ -14,6 +14,7 @@ import { icon } from './icons.js';
 import { store } from '../core/store.js';
 import { loadJSON, saveJSON } from '../core/storage.js';
 import { toast } from './toast.js';
+import { blockedChecker } from '../core/exclusions.js';
 import { esc, fold, debounce, fmtNumber, matchesAll } from '../core/util.js';
 
 const MODE_LABEL = { single: 'Elige una', multi: 'Selección múltiple' };
@@ -62,6 +63,7 @@ function sectionHTML(domain, sec) {
     </header>
     <div class="opt-section__panel" id="panel-${sec.id}" role="region" aria-label="${esc(sec.title)}" hidden>
       <div class="opt-section__meta">${neg ? '' : tag}${sec.note ? `<p class="opt-section__note">${esc(sec.note)}</p>` : ''}</div>
+      <p class="opt-section__block" data-block role="status" hidden></p>
       ${body}
     </div>
   </section>`;
@@ -91,6 +93,7 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
       toggle: $('[data-act="toggle"]', el),
       panel: $('.opt-section__panel', el),
       summary: $('[data-summary]', el),
+      block: $('[data-block]', el),
       selCount: $('[data-sel-count]', el),
       lock: $('[data-act="lock"]', el),
       badge: $('[data-nav-count]', navLink.get(s.id)),
@@ -153,6 +156,7 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     if (!secNode) return;
     const sec = domain._secById.get(secNode.dataset.section);
     const opt = e.target.closest('button[data-opt]');
+    if (opt && opt.getAttribute('aria-disabled') === 'true') { toast(opt.dataset.why || 'Esta opción no se puede combinar con lo que ya elegiste.', { tone: 'warn' }); return; }
     if (opt) {
       const cleared = store.toggleOption(domain.id, sec, opt.dataset.opt, domain);
       if (cleared.length) {
@@ -180,8 +184,32 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     requestAnimationFrame(() => secEl.get(hashId).scrollIntoView());
   }
 
+  /* --- exclusiones: deshabilita lo que no se puede combinar con lo ya elegido (data/exclusions.js) --- */
+  let blockSig = '';
+  function paintBlocks(state) {
+    const sig = JSON.stringify(state.sel);
+    if (sig === blockSig) return;
+    blockSig = sig;
+    const check = blockedChecker(state.sel);
+    for (const sec of domain.sections) {
+      const r = refs.get(sec.id);
+      let n = 0;
+      const reasons = new Set();
+      r.el.querySelectorAll('button[data-opt]').forEach(b => {
+        const why = check(domain.id, sec.id, b.dataset.opt);
+        b.classList.toggle('is-blocked', !!why);
+        if (why) { b.setAttribute('aria-disabled', 'true'); b.dataset.why = why; n++; reasons.add(why); }
+        else { b.removeAttribute('aria-disabled'); delete b.dataset.why; }
+      });
+      r.el.classList.toggle('is-blocked', n > 0 && n === sec.options.length);
+      r.block.hidden = n === 0;
+      if (n) r.block.textContent = `${n === sec.options.length ? 'Sección bloqueada' : `${n} ${n === 1 ? 'opción bloqueada' : 'opciones bloqueadas'}`}: ${[...reasons].slice(0, 2).join(' ')}`;
+    }
+  }
+
   /* --- sincroniza la interfaz con el estado --- */
   function paint(state) {
+    paintBlocks(state);
     for (const sec of domain.sections) {
       const ids = state.sel[domain.id]?.[sec.id] || [];
       const locked = !!state.locks[domain.id]?.[sec.id];

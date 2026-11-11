@@ -18,6 +18,7 @@
 import { loadJSON, saveJSON } from './storage.js';
 import { FORMATS as FORMAT_LIST } from './formats/index.js';
 import { conflictsOf } from './conflicts.js';
+import { enforce, reasonBlocked } from './exclusions.js';
 
 const KEY = 'lv:v1:workspace';
 const FORMATS = FORMAT_LIST.map(f => f.id);
@@ -44,7 +45,7 @@ function normalize(raw) {
   if (!raw || raw.v !== 1) return base;
   return {
     ...base,
-    sel: sanitizeSel(raw.sel),
+    sel: enforce(sanitizeSel(raw.sel)).sel,
     locks: raw.locks && typeof raw.locks === 'object' ? raw.locks : {},
     detail: raw.detail === 'short' ? 'short' : 'rich',
     boost: raw.boost !== false,
@@ -59,7 +60,9 @@ const subs = new Set();
 let queued = false;
 
 function commit(next) {
-  state = next;
+  // Última barrera: ninguna vía (enlace, aleatorio, guardado, receta) puede dejar un par incompatible.
+  const safe = enforce(next.sel);
+  state = safe.removed.length ? { ...next, sel: safe.sel } : next;
   saveJSON(KEY, state);
   if (queued) return;
   queued = true;
@@ -81,6 +84,7 @@ export const store = {
   toggleOption(domainId, section, optionId, domain) {
     const cur = state.sel[domainId]?.[section.id] || [];
     const adding = !cur.includes(optionId);
+    if (adding && reasonBlocked(state.sel, domainId, section.id, optionId)) return []; // bloqueada: la interfaz ya la deshabilita
     const next = !adding
       ? cur.filter(x => x !== optionId)
       : section.mode === 'single' ? [optionId] : [...cur, optionId];

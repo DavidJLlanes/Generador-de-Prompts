@@ -3,6 +3,7 @@
  * `chance` de cada sección (por defecto 0,6; ponla a 0 para excluir una sección del azar).
  */
 import { resolveConflicts } from './conflicts.js';
+import { enforce } from './exclusions.js';
 
 const DEFAULT_CHANCE = 0.6;
 
@@ -42,7 +43,11 @@ export function randomSelection(domains, state, rng = Math.random, maxSections =
     resolveConflicts(dom, selection, { locked: state.locks[dom.id] || {}, rng }); // p. ej. idea destacada vs. motivo
     if (Object.keys(selection).length) out[dom.id] = selection;
   }
-  return out;
+  // Exclusiones entre generadores (menores/adultos, día/noche, frío/calor…): se descarta lo que choque con el resto del prompt.
+  const { sel: safe } = enforce({ ...state.sel, ...out });
+  const result = {};
+  for (const id of Object.keys(out)) if (safe[id]) result[id] = safe[id];
+  return result;
 }
 
 export { pick };

@@ -492,7 +492,8 @@ export default {
         {"id":"chaotic-frantic","es":"Caótico frenético","en":"chaotic frantic"},
         {"id":"intimate-cozy","es":"Íntimo acogedor","en":"intimate cozy"},
         {"id":"alien-otherworldly","es":"Ajeno alienígena","en":"alien otherworldly"},
-        {"id":"romantic-sublime","es":"Romántico sublime","en":"romantic sublime"}
+        {"id":"romantic-sublime","es":"Romántico sublime","en":"romantic sublime"},
+        {"id":"sensual-erotic","es":"Sensual erótico","en":"sensual erotic","tags":["adult-only"]}
       ]
     },
     {
@@ -882,7 +883,8 @@ export default {
         {"id":"solarpunk","es":"Solarpunk","en":"solarpunk","group":"generos"},
         {"id":"dieselpunk","es":"Dieselpunk","en":"dieselpunk","group":"generos"},
         {"id":"cottagecore","es":"Cottagecore","en":"cottagecore","group":"generos"},
-        {"id":"dark-academia","es":"Dark academia","en":"dark academia","group":"generos"}
+        {"id":"dark-academia","es":"Dark academia","en":"dark academia","group":"generos"},
+        {"id":"tasteful-boudoir-photography","es":"Boudoir elegante","en":"tasteful boudoir photography","group":"generos-de-belleza","tags":["adult-only"]}
       ]
     },
     {

@@ -9,6 +9,7 @@
  * simplemente no aporta nada: una «Mujer» sin escenario genera igualmente un prompt completo.
  */
 import { SLOT_IDS } from '../../../data/taxonomy.js';
+import { enforce } from './exclusions.js';
 
 const SLOT_INDEX = Object.fromEntries(SLOT_IDS.map((id, i) => [id, i]));
 
@@ -26,6 +27,7 @@ function ruleMatches(rule, domain, bySection) {
  * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, empty: boolean, slots: object[]}}
  */
 export function compose(domains, state) {
+  state = { ...state, sel: enforce(state.sel).sel }; // el prompt nunca lleva pares incompatibles (data/exclusions.js)
   const rich = state.detail !== 'short';
   const textOf = o => (rich && o.rich ? o.rich : o.en);
   const parts = [];

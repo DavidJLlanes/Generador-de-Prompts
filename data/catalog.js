@@ -3,7 +3,7 @@ export default {
   "totals": {
     "domains": 28,
     "sections": 746,
-    "options": 18842,
+    "options": 18859,
     "presets": 1071
   },
   "domains": [
@@ -45,7 +45,7 @@ export default {
       "kicker": "Disney · Pixar · Anime · Dibujos animados",
       "summary": "Generador de prompts para personajes femeninos de Disney y dibujos animados con IA. Elige el personaje y varía escenario, pose, vestuario y estilo.",
       "sections": 12,
-      "options": 526,
+      "options": 539,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -185,7 +185,7 @@ export default {
       "kicker": "Diseñador de Rostros · Expresiones Faciales · Emociones · Caracteres",
       "summary": "Crea prompts para rostros detallados y expresivos con IA. Define etnias, edad, expresión y características.",
       "sections": 24,
-      "options": 598,
+      "options": 600,
       "presets": 0,
       "presetsLabel": "ideas"
     },
@@ -395,7 +395,7 @@ export default {
       "kicker": "Cámara · Iluminación · Composición · Color · Acabado",
       "summary": "Cámara, luz, composición, color y acabado de máxima calidad, compartidos por todos los generadores.",
       "sections": 13,
-      "options": 864,
+      "options": 866,
       "presets": 0,
       "presetsLabel": "ideas"
     }

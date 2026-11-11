@@ -39,7 +39,7 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 
 | Tema | Qué hay que decidir |
 |---|---|
-| **Contenido que sigue retenido** | Se reincorporó lo de `woman`, `girl` y unas poses; quedan fuera lo de animados, rostros, fotografía, escenas y magia (ver `docs/CONTENT-POLICY.md`). |
+| **Contenido que sigue retenido** | Sexo implícito/explícito, desnudez, autolesión y Ann (Persona 5). Ver `docs/CONTENT-POLICY.md`. |
 | **Páginas legales** | Se actualizaron (licencia no comercial, datos guardados en el navegador), pero conviene que las revise un profesional antes de publicar. |
 | **nginx** | `deploy/nginx.conf.example` no se ha probado en un servidor real. Primer `nginx -t` en el VPS. |
 
@@ -48,3 +48,5 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 ## Para activar cuando toque
 
 - **Despliegue automático:** el flujo `.github/workflows/check.yml` ya está; falta crear los 4 secretos (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_KNOWN_HOSTS`) siguiendo `docs/DEPLOY.md` §6. Hasta entonces solo valida; no despliega.
+- **Lista de personajes adultos:** `ADULT_CHARACTERS` en `data/exclusions.js` es prudente (unas 110 de 305). Ampliarla personaje a personaje, comprobando la edad en su obra, da más opciones de lencería en Personajes animados.
+- **Aviso de contenido adulto / verificación de edad** en Mujer, Personaje avanzado y los demás generadores con contenido `adult-only` (decisión pendiente; los textos legales no lo mencionan).

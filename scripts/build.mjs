@@ -11,6 +11,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { ROOT, loadAllDomains, loadPresetsFor } from './lib/domains.mjs';
 import { buildPages } from './pages/index.mjs';
+import { tagIndexSource } from './lib/tags.mjs';
 
 const all = await loadAllDomains();
 const write = (rel, content) => {
@@ -42,6 +43,9 @@ const totals = {
 };
 write('data/catalog.js', `// GENERADO por scripts/build.mjs a partir de data/domains/*.js — no editar a mano.\nexport default ${JSON.stringify({ totals, domains }, null, 2)};\n`);
 console.log(`catálogo: ${totals.domains} dominios · ${totals.sections} secciones · ${totals.options} opciones · ${totals.presets} ideas y recetas`);
+
+/* ---------- índice de etiquetas para las exclusiones (data/exclusions.js) ---------- */
+write('data/tag-index.js', tagIndexSource(all));
 
 /* ---------- índice del buscador global (se carga bajo demanda desde /generadores/) ---------- */
 // { d: [[slug, nombre corto]], o: [[dominio, id de sección, título de sección, [etiquetas…]]] }
