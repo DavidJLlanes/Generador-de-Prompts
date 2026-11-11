@@ -12,6 +12,7 @@ export default {
       "id": "poses",
       "title": "Poses",
       "mode": "single",
+      "foldGroups": true,
       "groups": [{"id":"pro","title":"Profesionales y serias"},{"id":"cas","title":"Casuales y relajadas"},{"id":"edi","title":"Editorial y alta moda"},{"id":"sen","title":"Sentadas"},{"id":"din","title":"Dinámicas y movimiento"},{"id":"gla","title":"Elegantes y glamour"},{"id":"ret","title":"Retrato y primer plano"},{"id":"fit","title":"Deportivas y fitness"},{"id":"urb","title":"Urbanas y street style"},{"id":"sex","title":"Sensuales y sexys · elegante"},{"id":"rec","title":"Recostadas y de suelo"},{"id":"art","title":"Artísticas y conceptuales"},{"id":"gue","title":"Guerreras y combate"}],
       "options": [
         {"id":"executive-arms-crossed-stance","es":"Ejecutiva de brazos cruzados","en":"standing upright, feet shoulder-width apart, weight evenly distributed, arms firmly crossed over chest, hands tucked under forearms, shoulders squared and pulled back, chin slightly raised, direct confident gaze at camera, neutral serious expression","name":"Executive Arms-Crossed Stance","group":"pro","info":[["Pies","Pies separados al ancho de hombros, peso repartido, rodillas rectas sin bloquear."],["Torso","Columna recta, hombros cuadrados hacia atrás, pecho abierto."],["Brazos","Cruzados con firmeza sobre el pecho, codos a la altura del esternón."],["Manos","Ocultas bajo los antebrazos o una visible sujetando el bíceps contrario."],["Cabeza","Barbilla ligeramente elevada, mirada directa, expresión seria y segura."]]},

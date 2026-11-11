@@ -21,9 +21,13 @@ export function catalogPage({ domains, totals }) {
     <p>${totals.domains} generadores y ${fmt(totals.options)} opciones. Entra en cualquiera, elige lo que te interese y combínalo con los demás desde el constructor.</p>
   </div>
   <div class="toolbar">
-    <div class="field"><span class="field__icon">${icon('search')}</span><input class="field__input" type="search" data-search placeholder="Buscar un generador…  (pulsa /)" aria-label="Buscar un generador" autocomplete="off"></div>
+    <div class="field"><span class="field__icon">${icon('search')}</span><input class="field__input" type="search" data-search placeholder="Buscar un generador u opción…  (pulsa /)" aria-label="Buscar un generador u opción" autocomplete="off"></div>
     <div class="filters" role="group" aria-label="Filtrar por tipo">${filters}</div>
   </div>
+  <section class="hits" data-hits hidden aria-live="polite">
+    <h2 class="hits__title">Opciones que coinciden <span data-hits-count></span></h2>
+    <ul class="hits__list" data-hits-list></ul>
+  </section>
   ${groups}
   <p class="notice" data-empty hidden>Ningún generador coincide con tu búsqueda.</p>
 </div>`;

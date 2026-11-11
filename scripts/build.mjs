@@ -43,5 +43,14 @@ const totals = {
 write('data/catalog.js', `// GENERADO por scripts/build.mjs a partir de data/domains/*.js — no editar a mano.\nexport default ${JSON.stringify({ totals, domains }, null, 2)};\n`);
 console.log(`catálogo: ${totals.domains} dominios · ${totals.sections} secciones · ${totals.options} opciones · ${totals.presets} ideas y recetas`);
 
+/* ---------- índice del buscador global (se carga bajo demanda desde /generadores/) ---------- */
+// { d: [[slug, nombre corto]], o: [[dominio, id de sección, título de sección, [etiquetas…]]] }
+const searchIndex = {
+  d: all.map(({ domain: d }) => [d.slug, d.meta.short || d.meta.title]),
+  o: all.flatMap(({ domain: d }, i) => d.sections.map(s => [i, s.id, s.title, s.options.map(o => o.es)])),
+};
+write('data/search-index.json', JSON.stringify(searchIndex));
+console.log(`buscador: ${searchIndex.o.reduce((n, s) => n + s[3].length, 0)} etiquetas indexadas`);
+
 /* ---------- páginas, sitemap, robots y manifiesto ---------- */
 await buildPages({ domains, totals, all, write });

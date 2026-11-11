@@ -32,6 +32,10 @@ export function homePage({ domains, totals }) {
       <a class="btn btn--primary btn--lg" href="/constructor/">Abrir el constructor ${icon('arrow', 18)}</a>
       <a class="btn btn--outline btn--lg" href="/generadores/">Explorar generadores</a>
     </div>
+    <form class="hero__search field" action="/generadores/" method="get" role="search">
+      <span class="field__icon">${icon('search')}</span>
+      <input class="field__input" type="search" name="q" placeholder="Busca una opción: Ferrari, dragón, lluvia…" aria-label="Buscar una opción en todos los generadores" autocomplete="off">
+    </form>
     </div>
     <div class="hero__visual" aria-hidden="true">
       <div class="mock">

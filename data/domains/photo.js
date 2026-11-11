@@ -575,6 +575,7 @@ export default {
       "id": "style",
       "title": "Estilo visual",
       "mode": "single",
+      "foldGroups": true,
       "groups": [{"id":"fotografia","title":"Fotografía"},{"id":"pintura-tradicional","title":"Pintura tradicional"},{"id":"ilustracion-y-digital","title":"Ilustración y digital"},{"id":"3d-y-animacion","title":"3D y animación"},{"id":"generos-y-estetica","title":"Géneros y estética"},{"id":"arte-digital-3d","title":"Arte digital 3D"},{"id":"pintura-y-dibujo","title":"Pintura y dibujo"},{"id":"generos-epicos","title":"Géneros épicos"},{"id":"animacion-y-pelicula","title":"Animación y película"},{"id":"generos-cinematograficos","title":"Géneros cinematográficos"},{"id":"generos-artisticos","title":"Géneros artísticos"},{"id":"generos-de-belleza","title":"Géneros de belleza"},{"id":"generos-cineticos","title":"Géneros cinéticos"},{"id":"estilos-de-animacion","title":"Estilos de animación"},{"id":"arte-digital-y-3d","title":"Arte digital y 3D"},{"id":"generos-y-movimientos","title":"Géneros y movimientos"},{"id":"arte-digital","title":"Arte digital"},{"id":"pintura","title":"Pintura"},{"id":"generos","title":"Géneros"}],
       "options": [
         {"id":"photorealistic-photography","es":"Fotorrealista","en":"photorealistic photography","group":"fotografia"},

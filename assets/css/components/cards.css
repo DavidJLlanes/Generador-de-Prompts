@@ -31,3 +31,14 @@ a.card:hover .card__arrow { color: var(--accent); transform: translateX(3px); }
 .filter { padding: 8px 15px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); background: transparent; color: var(--text-2); font-size: var(--fs-sm); transition: all var(--dur) var(--ease); }
 .filter:hover { color: var(--text); border-color: var(--text-3); }
 .filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+
+/* Buscador global de opciones (/generadores/) */
+.hits { margin-bottom: var(--space-8); }
+.hits__title { font-size: var(--fs-lg); margin-bottom: var(--space-3); }
+.hits__title span { color: var(--text-3); font-size: var(--fs-sm); font-weight: 400; }
+.hits__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.hits__list a { display: grid; gap: 2px; padding: 10px 14px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface); }
+.hits__list a:hover { border-color: var(--accent); }
+.hits__list b { font-weight: 500; color: var(--text); }
+.hits__list span { font-size: var(--fs-xs); color: var(--text-3); }
+.hero__search { max-width: 420px; margin-top: var(--space-5); }

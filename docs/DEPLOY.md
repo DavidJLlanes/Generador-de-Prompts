@@ -76,3 +76,34 @@ No hay paso de compilación en el servidor: los archivos generados (catálogo, p
 - El sitio funciona con **rutas absolutas** (`/assets/…`): debe servirse en la raíz de un dominio, no en un subdirectorio.
 - Si cambias una fuente o una imagen conservando el nombre, la caché de un año puede servir la antigua: usa un nombre nuevo.
 - Copias de seguridad: todo está en git; no hay datos de usuario en el servidor.
+
+## 6. Despliegue automático (GitHub Actions)
+
+El flujo `.github/workflows/check.yml` hace dos cosas:
+
+1. **En cada push y pull request** ejecuta `npm run check` (valida datos, regenera páginas, tests) y falla si `npm run build` cambia algún archivo, es decir, si se subieron páginas generadas desactualizadas.
+2. **Solo en `main` y solo si lo anterior pasa**, entra por SSH en el VPS y ejecuta `git pull --ff-only`. Si faltan los secretos, este paso se omite sin error.
+
+### Configurarlo (una vez)
+
+En el **VPS**, crea una clave dedicada y restringida a ese único comando:
+
+```bash
+# en tu equipo
+ssh-keygen -t ed25519 -f deploy_key -C "github-actions-lumenvitae" -N ""
+# en el VPS, en ~/.ssh/authorized_keys del usuario que posee /var/www/lumenvitae.es (una sola línea):
+command="cd /var/www/lumenvitae.es && git pull --ff-only",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAA… github-actions-lumenvitae
+```
+
+Con `command=` la clave **solo** puede hacer ese `git pull`, aunque alguien la robe. El repositorio es público, así que el `git pull` del VPS no necesita credenciales.
+
+En GitHub, **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Secreto | Valor |
+|---|---|
+| `VPS_HOST` | IP o dominio del VPS |
+| `VPS_USER` | usuario SSH propietario de la carpeta |
+| `VPS_SSH_KEY` | contenido del archivo privado `deploy_key` |
+| `VPS_KNOWN_HOSTS` | salida de `ssh-keyscan -t ed25519 TU_HOST` (para verificar el servidor) |
+
+Después borra `deploy_key` de tu equipo.

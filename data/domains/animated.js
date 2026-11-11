@@ -14,6 +14,7 @@ export default {
       "title": "Personaje",
       "note": "Despliega una categoría y elige una. Su aspecto canónico queda fijado.",
       "mode": "single",
+      "foldGroups": true,
       "groups": [{"id":"disney","title":"Disney"},{"id":"pixar","title":"Pixar"},{"id":"anime-y-manga","title":"Anime y manga"},{"id":"dibujos-y-otros-estudios","title":"Dibujos y otros estudios"},{"id":"videojuegos-gaming","title":"Videojuegos / Gaming"}],
       "options": [
         {"id":"elsa-from-frozen-long-platinum-blonde-side-braid-pale-sk","es":"Elsa (Frozen)","en":"Elsa from Frozen, long platinum-blonde side braid, pale skin, blue eyes, sparkling icy-blue gown","group":"disney"},

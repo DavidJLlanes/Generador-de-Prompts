@@ -471,6 +471,7 @@ export default {
       "title": "Vestuario",
       "note": "Todas las subcategorías de ropa son excluyentes entre sí: el conjunto elegido sustituye al anterior. Estilos sensuales siempre en clave elegante de catálogo de moda.",
       "mode": "single",
+      "foldGroups": true,
       "groups": [{"id":"casual","title":"Casual"},{"id":"elegante-y-formal","title":"Elegante y formal"},{"id":"sexy-elegante","title":"Sexy elegante"},{"id":"lenceria-y-ropa-interior-elegante","title":"Lencería y ropa interior (elegante)"},{"id":"bano","title":"Baño"},{"id":"urbana-y-street","title":"Urbana y street"},{"id":"fantasia-y-tematica","title":"Fantasía y temática"},{"id":"guerrera-y-armadura","title":"Guerrera y armadura"}],
       "options": [
         {"id":"wearing-fitted-jeans-and-a-white-t-shirt","es":"Vaqueros y camiseta blanca","en":"wearing fitted jeans and a white t-shirt","group":"casual","rich":"wearing slim-fitting jeans with a mid rise and straight tapered legs, paired with a plain crew-neck white t-shirt in a relaxed short-sleeved cut that skims the hips"},

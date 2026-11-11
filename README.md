@@ -6,6 +6,8 @@ Constructor modular de **prompts para imágenes con IA**. La interfaz está en e
 - **Cruce de generadores:** pon una mujer en un escenario, añade clima y una cámara. Cada ranura es opcional: una mujer sin escenario genera igualmente un prompt completo.
 - **1.000 ideas de escenas** (galería buscable), **1.000 coches** (500 míticos y 500 actuales) con 183 escenas fotográficas e ilustradas, y cientos de miles de combinaciones propias.
 - **4 formatos de salida:** texto, ChatGPT/Gemini, Stable Diffusion/Flux (positivo + negativo) e Ideogram (JSON).
+- **Buscador global:** busca una opción (un coche, una criatura, un clima…) en los 28 generadores desde el inicio o desde `/generadores/` y salta directo a su sección.
+- **Listados largos plegables:** cada sección es un acordeón y los grupos grandes (coches por década y año, estilos, poses, localizaciones, vestuario…) tienen sus propios subdesplegables.
 - Compartir el prompt por enlace, bloquear secciones ante «Aleatorio», nivel de detalle y «Calidad máxima».
 - Sitio **estático**: sin servidor de aplicación, sin base de datos, sin cuentas ni cookies.
 
@@ -78,7 +80,10 @@ No se migró la sección NSFW. Lo que quedó fuera por la [política de contenid
 3. Haz commit **incluyendo los archivos generados** (catálogo, páginas, sitemap).
 4. En el servidor basta con `git pull`: no se compila nada allí.
 
+## Licencia
+
+Uso **no comercial**: el código va bajo [PolyForm Noncommercial 1.0.0](LICENSE) y los textos y datos bajo [CC BY-NC 4.0](LICENSE-CONTENT.md). Se puede usar, copiar y adaptar citando la fuente, pero no para obtener un beneficio económico; el uso comercial requiere autorización expresa. Los prompts que generas con la herramienta son tuyos.
+
 ## Pendiente de decidir
 
-- **Licencia.** No se ha añadido ninguna; mientras tanto el código queda con todos los derechos reservados.
 - **Revisión legal** de las páginas de `/legal/` antes de publicar (el texto es el del sitio anterior, con ajustes técnicos).

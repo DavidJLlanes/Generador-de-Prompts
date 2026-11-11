@@ -20,34 +20,7 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 
 ---
 
-## 3. Despliegue automático con GitHub Actions
-
-**Por qué:** hoy cada publicación exige `git pull` a mano en el VPS y no hay nada que impida subir un cambio que rompa los tests.
-
-**Plan**
-- Un flujo `.github/workflows/check.yml` que en cada push y pull request ejecute `npm run check` (validar datos, regenerar páginas, tests).
-- Un segundo paso, solo en `main` y solo si el anterior pasa, que entre por SSH al VPS y ejecute `cd /var/www/lumenvitae.es && git pull --ff-only`.
-- Guardar la clave SSH de despliegue como *secret* del repositorio (clave dedicada, sin acceso a nada más, con `command=` restringido en `authorized_keys`).
-- Comprobar que los archivos generados (catálogo, páginas, sitemap) están al día: si `npm run build` cambia algo, el flujo debe fallar.
-
-**Esbozo**
-```yaml
-name: check
-on: [push, pull_request]
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm run check
-      - run: git diff --exit-code   # los generados deben estar versionados
-```
-
----
-
-## 5. Miniaturas y galería de resultados
+## 2. Miniaturas y galería de resultados
 
 **Por qué:** es lo que más cambiaría la experiencia: ver cómo queda cada estilo, escena, época o pose *antes* de elegirlo, y que la portada enseñe resultados reales.
 
@@ -68,7 +41,11 @@ jobs:
 |---|---|
 | **Contenido retenido** | 119 elementos apartados por la política de contenido (están en `new-held-content.json`, **fuera del repositorio**). Decidir si se recupera alguno o si se endurece la política. |
 | **«Tensión sexual no resuelta»** | Etiqueta dudosa que se dejó (su prompt en inglés es «unresolved tension»). |
-| **«Suki»** | Las ideas 81, 82 y 94 asumen que es un gato. Confirmarlo o corregirlo en `data/domains/scenarios.js`. |
-| **Licencia** | No hay ninguna: el código queda con todos los derechos reservados. Elegir una (p. ej. MIT para el código y CC BY para el contenido) y añadir `LICENSE`. |
-| **Páginas legales** | El texto es el del titular de la web anterior con ajustes técnicos. Conviene una revisión legal antes de publicar. |
+| **Páginas legales** | Se actualizaron (licencia no comercial, datos guardados en el navegador), pero conviene que las revise un profesional antes de publicar. |
 | **nginx** | `deploy/nginx.conf.example` no se ha probado en un servidor real. Primer `nginx -t` en el VPS. |
+
+---
+
+## Para activar cuando toque
+
+- **Despliegue automático:** el flujo `.github/workflows/check.yml` ya está; falta crear los 4 secretos (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_KNOWN_HOSTS`) siguiendo `docs/DEPLOY.md` §6. Hasta entonces solo valida; no despliega.

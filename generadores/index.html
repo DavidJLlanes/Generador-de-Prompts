@@ -54,9 +54,13 @@
     <p>28 generadores y 18.743 opciones. Entra en cualquiera, elige lo que te interese y combínalo con los demás desde el constructor.</p>
   </div>
   <div class="toolbar">
-    <div class="field"><span class="field__icon"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="5"/><path d="m13 13 3.5 3.5"/></svg></span><input class="field__input" type="search" data-search placeholder="Buscar un generador…  (pulsa /)" aria-label="Buscar un generador" autocomplete="off"></div>
+    <div class="field"><span class="field__icon"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="5"/><path d="m13 13 3.5 3.5"/></svg></span><input class="field__input" type="search" data-search placeholder="Buscar un generador u opción…  (pulsa /)" aria-label="Buscar un generador u opción" autocomplete="off"></div>
     <div class="filters" role="group" aria-label="Filtrar por tipo"><button type="button" class="filter" data-filter="" aria-pressed="true">Todos</button><button type="button" class="filter" data-filter="subject" aria-pressed="false">Sujetos</button><button type="button" class="filter" data-filter="attribute" aria-pressed="false">Atributos</button><button type="button" class="filter" data-filter="action" aria-pressed="false">Poses</button><button type="button" class="filter" data-filter="setting" aria-pressed="false">Escenarios</button><button type="button" class="filter" data-filter="atmosphere" aria-pressed="false">Atmósferas</button><button type="button" class="filter" data-filter="technical" aria-pressed="false">Técnica</button></div>
   </div>
+  <section class="hits" data-hits hidden aria-live="polite">
+    <h2 class="hits__title">Opciones que coinciden <span data-hits-count></span></h2>
+    <ul class="hits__list" data-hits-list></ul>
+  </section>
   <section class="group" data-group="subject"><header class="group__head"><h2 class="group__title">Sujetos</h2><p class="group__hint">Quién o qué protagoniza la imagen.</p></header><div class="grid"><a class="card card--domain" href="/generadores/mujer/" data-id="woman" data-role="subject" data-s="personajes femeninos mujer mujeres · rostro · cuerpo · vestuario · expresion genera prompts detallados para crear personajes femeninos con ia. controla rasgos, vestuario, expresion y pose. compatible con midjourney, dall·e y mas.">
   <span class="card__role">Sujeto</span>
   <span class="card__arrow"><svg class="icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span>

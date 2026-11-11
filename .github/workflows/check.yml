@@ -1,0 +1,48 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validar datos, regenerar páginas y pasar los tests
+        run: npm run check
+      - name: Los archivos generados deben estar versionados y al día
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::npm run build cambió archivos. Ejecuta «npm run check» en local y haz commit de lo generado."
+            git status --short
+            git diff --stat
+            exit 1
+          fi
+
+  deploy:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency: deploy-vps
+    steps:
+      - name: Actualizar el VPS (git pull)
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          if [ -z "$VPS_HOST" ] || [ -z "$VPS_USER" ] || [ -z "$VPS_SSH_KEY" ] || [ -z "$VPS_KNOWN_HOSTS" ]; then
+            echo "Despliegue omitido: faltan los secretos VPS_HOST, VPS_USER, VPS_SSH_KEY y VPS_KNOWN_HOSTS (ver docs/DEPLOY.md)."
+            exit 0
+          fi
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes "$VPS_USER@$VPS_HOST" "cd /var/www/lumenvitae.es && git pull --ff-only"

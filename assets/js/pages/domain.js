@@ -17,7 +17,11 @@ try {
   const domain = await loadDomain(id);
   root.removeAttribute('aria-busy');
   const toggleAll = $('[data-toggle-all]');
-  mountOptionBrowser({ domain, root, nav: $('[data-nav]'), search: $('[data-search]'), status: $('[data-status]'), toggleAll });
+  const search = $('[data-search]');
+  const { filter } = mountOptionBrowser({ domain, root, nav: $('[data-nav]'), search, status: $('[data-status]'), toggleAll });
+  /* Llegada desde el buscador global: ?q=… rellena la búsqueda y abre lo que coincide */
+  const q = new URLSearchParams(location.search).get('q');
+  if (q) { search.value = q.slice(0, 80); filter(search.value); }
   toggleAll.hidden = false;
 
   $('[data-act="random"]').addEventListener('click', () => {
