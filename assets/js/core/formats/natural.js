@@ -14,6 +14,7 @@ export function formatNatural(c, state) {
   if (custom) lines.push(`Additional details: ${endSentence(custom.text)}`);
   const note = state.detail !== 'short' ? aspectNote(state.aspect) : '';
   if (note) lines.push(`Format: ${note}`);
+  if ((c.refs || []).length) lines.push(`Reference images: ${c.refs.join(' ')}`);
   if (c.negative.length) lines.push(`Avoid: ${c.negative.map(n => n.text).join(', ')}.`);
   if (state.aspect) lines.push(`Aspect ratio: ${state.aspect}.`);
   const text = lines.join('\n');

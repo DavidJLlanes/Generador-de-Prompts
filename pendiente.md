@@ -49,4 +49,4 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 
 - **Despliegue automático:** el flujo `.github/workflows/check.yml` ya está; falta crear los 4 secretos (`VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_KNOWN_HOSTS`) siguiendo `docs/DEPLOY.md` §6. Hasta entonces solo valida; no despliega.
 - **Lista de personajes adultos:** `ADULT_CHARACTERS` en `data/exclusions.js` es prudente (unas 110 de 305). Ampliarla personaje a personaje, comprobando la edad en su obra, da más opciones de lencería en Personajes animados.
-- **Aviso de contenido adulto / verificación de edad** en Mujer, Personaje avanzado y los demás generadores con contenido `adult-only` (decisión pendiente; los textos legales no lo mencionan).
+- **Verificación de edad real:** hoy es una confirmación declarativa («Soy mayor de 18 años»). Una verificación de verdad exigiría un servicio externo.

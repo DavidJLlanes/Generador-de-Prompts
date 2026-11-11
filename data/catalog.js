@@ -3,7 +3,7 @@ export default {
   "totals": {
     "domains": 28,
     "sections": 746,
-    "options": 18859,
+    "options": 18928,
     "presets": 1071
   },
   "domains": [
@@ -17,7 +17,7 @@ export default {
       "kicker": "Mujeres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts detallados para crear personajes femeninos con IA. Controla rasgos, vestuario, expresión y pose. Compatible con Midjourney, DALL·E y más.",
       "sections": 28,
-      "options": 772,
+      "options": 802,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -255,7 +255,7 @@ export default {
       "kicker": "Posturas · Gestos · Lenguaje corporal",
       "summary": "Biblioteca de 144 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.",
       "sections": 1,
-      "options": 144,
+      "options": 183,
       "presets": 0,
       "presetsLabel": "ideas"
     },

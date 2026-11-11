@@ -14,6 +14,7 @@ export function formatText(c, state) {
     : [opener + '.', ...toSentences(parts.map(sentenceItem))];
   const note = state.detail !== 'short' ? aspectNote(state.aspect) : '';
   if (note) sentences.push(note);
+  for (const r of c.refs || []) sentences.push(r);
   if (c.negative.length) sentences.push(`Avoid: ${c.negative.map(n => n.text).join(', ')}.`);
   if (state.aspect) sentences.push(`Aspect ratio "${state.aspect}".`);
   const text = sentences.join(' ');

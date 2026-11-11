@@ -5,6 +5,9 @@
  *  · blockedChecker(sel)          → versión rápida para comprobar muchas opciones de una vez (la usa la interfaz).
  *  · enforce(sel)                 → selección sin los pares incompatibles (enlaces compartidos, aleatorio, guardados).
  *
+ * PUERTA DE EDAD: el contenido `adult-only` solo está disponible tras confirmar ser mayor de 18 años
+ * (`adult: true`, preferencia del usuario). Sin confirmar, queda bloqueado y se descarta de cualquier selección.
+ *
  * Una opción bloqueada no es una opción que «falla»: es una opción que no se puede elegir mientras haya algo
  * incompatible elegido en OTRA sección (elegir de nuevo dentro de la misma sección sigue sustituyendo).
  */
@@ -14,6 +17,10 @@ import TAG_INDEX from '../../../data/tag-index.js';
 const TAGS = new Map(Object.entries(TAG_INDEX).map(([t, keys]) => [t, new Set(keys)]));
 const kOf = (d, s, o) => `${d}/${s}/${o}`;
 export const hasTag = (d, s, o, tag) => !!TAGS.get(tag)?.has(kOf(d, s, o));
+
+export const GATE_WHY = 'Contenido para mayores de 18 años: confirma tu edad en el aviso de esta página para verlo.';
+/** Generadores que tienen alguna opción para adultos (para mostrar el aviso). */
+export const ADULT_DOMAINS = new Set([...(TAGS.get('adult-only') || [])].map(k => k.split('/')[0]));
 
 function sideMatches(side, d, s, o) {
   if (side.domains && side.domains.includes(d)) return true;
@@ -32,9 +39,10 @@ function presence(sel) {
 }
 
 /** Devuelve una función (d, s, o) → motivo | null para la selección dada. */
-export function blockedChecker(sel) {
+export function blockedChecker(sel, { adult = true } = {}) {
   const pres = presence(sel);
   return (d, s, o) => {
+    if (!adult && hasTag(d, s, o, 'adult-only')) return GATE_WHY;
     for (let i = 0; i < RULES.length; i++) {
       const r = RULES[i];
       // lado A: se bloquea si hay algo de B elegido en otra sección
@@ -45,15 +53,24 @@ export function blockedChecker(sel) {
   };
 }
 
-export const reasonBlocked = (sel, d, s, o) => blockedChecker(sel)(d, s, o);
+export const reasonBlocked = (sel, d, s, o, opts) => blockedChecker(sel, opts)(d, s, o);
 
 /**
  * Quita de la selección lo que choca según las reglas. Devuelve { sel, removed } sin modificar la original.
  * Las reglas se aplican en orden y cada una descarta el lado que indica `drop` (en las de seguridad, el contenido adulto).
  */
-export function enforce(sel) {
+export function enforce(sel, { adult = true } = {}) {
   const removed = [];
   let cur = sel;
+  if (!adult) { // sin confirmar la mayoría de edad no entra nada `adult-only`
+    const next = {};
+    for (const [d, secs] of Object.entries(cur)) for (const [s, ids] of Object.entries(secs)) {
+      const keep = ids.filter(o => !hasTag(d, s, o, 'adult-only'));
+      ids.filter(o => hasTag(d, s, o, 'adult-only')).forEach(o => removed.push({ domain: d, section: s, option: o, rule: 'puerta-de-edad' }));
+      if (keep.length) (next[d] ||= {})[s] = keep;
+    }
+    cur = next;
+  }
   for (const r of RULES) {
     const list = [...selected(cur)];
     const A = list.filter(([d, s, o]) => sideMatches(r.a, d, s, o));

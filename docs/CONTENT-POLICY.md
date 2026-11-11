@@ -22,6 +22,12 @@ Las opciones de moda íntima y tono sensual llevan la etiqueta **`adult-only`**:
 | **Fotografía** | Atmósfera «Sensual erótico», estilo «Boudoir elegante» |
 | **Poses / Localizaciones** | Grupo «Sensuales y sexys · elegante» y la ducha de lluvia tropical |
 
+## Aviso y puerta de edad
+
+Los generadores con opciones `adult-only` (Mujer, Personaje avanzado, Personajes animados, Rostros, Fotografía, Poses y Localizaciones) muestran un **aviso de contenido para mayores de 18 años** arriba. Mientras no se confirme con «Soy mayor de 18 años: mostrar», esas opciones están **bloqueadas** (atenuadas, con el motivo) y **no entran en ningún prompt**: ni elegidas a mano, ni por enlace compartido, receta, guardado o «Aleatorio». La confirmación se guarda solo en el navegador (`adult` en `lv:v1:workspace`) y se puede retirar con «Ocultar contenido para adultos», que también quita lo ya elegido. Un enlace compartido no transmite la confirmación: quien lo abre debe confirmarla.
+
+Es una confirmación declarativa, no una verificación de edad. Los Términos de uso prohíben activarlo siendo menor.
+
 ## Exclusiones: cómo se bloquea la combinación con menores
 
 Todo vive en `data/exclusions.js` (reglas y etiquetas) y se aplica en `assets/js/core/exclusions.js`.
@@ -36,7 +42,7 @@ Reglas de seguridad:
 
 Qué significa «bloqueado»: la opción se ve atenuada y con borde discontinuo, no se puede elegir y al pulsarla un aviso explica el motivo; la sección muestra un aviso («Sección bloqueada: …»).
 
-**Cuatro barreras**, para que ninguna vía lo salte:
+**Cuatro barreras** (que además aplican la puerta de edad), para que ninguna vía lo salte:
 1. La interfaz deshabilita las opciones.
 2. El almacén (`store`) rechaza elegir una opción bloqueada y **descarta** el contenido adulto de cualquier selección que llegue ya hecha (enlace compartido, receta, guardado, `localStorage`).
 3. «Aleatorio» nunca deja un par incompatible.
@@ -60,6 +66,10 @@ Fuera del contenido adulto, las mismas reglas bloquean también incompatibilidad
 4. Una opción que represente a un menor debe llevar `minor` (en `TAGGING`).
 5. Ejecuta `npm run check`.
 6. No incluyas texto que deba aparecer dentro de la imagen, nombres de personas reales ni marcas registradas que no sean de dominio público cultural.
+
+## Galerías de referencia de terceros
+
+Se estudiaron dos galerías gratuitas de imágenes de referencia (vestuario y poses de ギア, @giaaibusi). **No se incorporan sus imágenes ni su catálogo**: su autor prohíbe redistribuir las imágenes (también las procesadas), y la galería de poses incluye posturas sexuales explícitas, que esta web no admite. De ellas solo se tomó la idea de organizar el vestuario por estaciones y las poses por tipo; **todas las opciones se redactaron desde cero** (grupos «Primavera», «Verano», «Otoño», «Invierno» y «Fiesta y cóctel» en Mujer; «Estándar de estudio» y «Retrato: gestos y manos» en Poses). Para usar sus imágenes, el panel «Mi prompt» tiene los interruptores «Adjuntaré una pose / un vestuario», que añaden al prompt la orden de seguir la imagen que la persona adjunte en su herramienta de IA.
 
 ### Contenido que no se pudo trasladar
 

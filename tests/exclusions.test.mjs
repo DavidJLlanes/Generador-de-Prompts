@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { loadAllDomains, loadPresetsFor, ROOT } from '../scripts/lib/domains.mjs';
 import { effectiveTags, tagIndexSource } from '../scripts/lib/tags.mjs';
-import { reasonBlocked, enforce, blockedChecker } from '../assets/js/core/exclusions.js';
+import { reasonBlocked, enforce, blockedChecker, GATE_WHY } from '../assets/js/core/exclusions.js';
 import { compose } from '../assets/js/core/composer.js';
 import { renderFormat } from '../assets/js/core/formats/index.js';
 import { randomSelection } from '../assets/js/core/random.js';
@@ -70,6 +70,7 @@ test('el prompt nunca compone un par incompatible aunque la selección ya llegue
 
 test('el almacén descarta la selección incompatible al cargar o aplicar (enlace, receta, guardado)', () => {
   store.clearAll();
+  store.set({ adult: true });
   store.replaceSelection(sel(child, lingerie));
   assert.deepEqual(store.selectedIds('woman', 'ropa'), [], 'la lencería no entra');
   assert.deepEqual(store.selectedIds('faces', 'edad'), ['child-3-7-years']);
@@ -79,6 +80,40 @@ test('el almacén descarta la selección incompatible al cargar o aplicar (enlac
   store.toggleOption('faces', section, 'child-3-7-years', domains.faces); // bloqueada
   assert.deepEqual(store.selectedIds('faces', 'edad'), [], 'elegir un niño con lencería elegida no hace nada');
   store.clearAll();
+  store.set({ adult: false });
+});
+
+test('puerta de edad: sin confirmar los 18 años, el contenido adult-only está bloqueado y no entra en ningún prompt', () => {
+  assert.equal(reasonBlocked({}, ...lingerie, { adult: false }), GATE_WHY);
+  assert.equal(reasonBlocked({}, ...lingerie, { adult: true }), null);
+  assert.equal(reasonBlocked({}, 'woman', 'edad', domains.woman.sections[0].options[0].id, { adult: false }), null, 'lo demás no cambia');
+  const withLingerie = sel(lingerie);
+  assert.equal(enforce(withLingerie, { adult: false }).removed[0].rule, 'puerta-de-edad');
+  assert.equal(enforce(withLingerie, { adult: true }).removed.length, 0);
+  assert.doesNotMatch(textOf(withLingerie), /satin lingerie/i, 'compose sin confirmar no incluye la lencería');
+  const confirmed = base(withLingerie); confirmed.adult = true;
+  assert.match(renderFormat('text', compose(domains, confirmed), confirmed).text, /satin lingerie/i);
+  store.clearAll();
+  store.replaceSelection(withLingerie);
+  assert.deepEqual(store.selectedIds('woman', 'ropa'), [], 'ni el almacén ni los enlaces compartidos la admiten sin confirmar');
+  store.set({ adult: true });
+  store.replaceSelection(withLingerie);
+  assert.equal(store.selectedIds('woman', 'ropa').length, 1);
+  store.set({ adult: false });
+  assert.deepEqual(store.selectedIds('woman', 'ropa'), [], 'al desactivar el contenido adulto se retira lo ya elegido');
+  store.clearAll();
+});
+
+test('imágenes de referencia de pose y vestuario: el prompt de texto pide usar las adjuntas', () => {
+  const s = sel(['woman', 'edad', domains.woman.sections[0].options[0].id]);
+  const none = renderFormat('text', compose(domains, base(s)), base(s)).text;
+  assert.doesNotMatch(none, /reference image/i);
+  const st = { ...base(s), refPose: true, refCostume: true };
+  const text = renderFormat('text', compose(domains, st), st).text;
+  assert.match(text, /attached pose reference image/);
+  assert.match(text, /attached costume reference image/);
+  assert.match(renderFormat('natural', compose(domains, st), st).text, /^Reference images: .+attached pose/m);
+  assert.deepEqual(compose(domains, { ...base({}), refPose: true }).refs, [], 'sin prompt no se añade nada');
 });
 
 test('día contra noche, frío contra calor y género del rostro', () => {
@@ -104,6 +139,8 @@ test('«Aleatorio» (todos los generadores a la vez) nunca deja un par incompati
   for (let i = 0; i < 300; i++) {
     const out = randomSelection(list, base(), rng, 9);
     assert.equal(enforce(out).removed.length, 0, 'iteración ' + i);
+    const closed = randomSelection(list, base(), rng, 9); // la puerta de edad está cerrada por defecto
+    assert.equal(enforce(closed, { adult: false }).removed.length, 0, 'sin contenido adulto sin confirmar: ' + i);
   }
 });
 

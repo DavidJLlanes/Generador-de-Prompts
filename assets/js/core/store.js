@@ -13,6 +13,8 @@
  *     aspect: string,                                            // id de proporción ('' = sin definir)
  *     format: 'text' | 'natural' | 'sd' | 'ideogram' | 'midjourney'   // formato de salida activo
  *     custom: string                                             // texto libre del usuario (máx. 800)
+ *     adult: boolean                                             // ha confirmado ser mayor de 18 años (muestra el contenido para adultos)
+ *     refPose, refCostume: boolean                               // añadirá una imagen de referencia de pose / vestuario
  *   }
  */
 import { loadJSON, saveJSON } from './storage.js';
@@ -24,7 +26,7 @@ const KEY = 'lv:v1:workspace';
 const FORMATS = FORMAT_LIST.map(f => f.id);
 export const CUSTOM_MAX = 800;
 
-const fresh = () => ({ v: 1, sel: {}, locks: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '' });
+const fresh = () => ({ v: 1, sel: {}, locks: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '', adult: false, refPose: false, refCostume: false });
 
 export function sanitizeSel(sel) {
   const out = {};
@@ -45,7 +47,10 @@ function normalize(raw) {
   if (!raw || raw.v !== 1) return base;
   return {
     ...base,
-    sel: enforce(sanitizeSel(raw.sel)).sel,
+    adult: raw.adult === true,
+    refPose: raw.refPose === true,
+    refCostume: raw.refCostume === true,
+    sel: enforce(sanitizeSel(raw.sel), { adult: raw.adult === true }).sel,
     locks: raw.locks && typeof raw.locks === 'object' ? raw.locks : {},
     detail: raw.detail === 'short' ? 'short' : 'rich',
     boost: raw.boost !== false,
@@ -61,7 +66,7 @@ let queued = false;
 
 function commit(next) {
   // Última barrera: ninguna vía (enlace, aleatorio, guardado, receta) puede dejar un par incompatible.
-  const safe = enforce(next.sel);
+  const safe = enforce(next.sel, { adult: next.adult === true });
   state = safe.removed.length ? { ...next, sel: safe.sel } : next;
   saveJSON(KEY, state);
   if (queued) return;
@@ -84,7 +89,7 @@ export const store = {
   toggleOption(domainId, section, optionId, domain) {
     const cur = state.sel[domainId]?.[section.id] || [];
     const adding = !cur.includes(optionId);
-    if (adding && reasonBlocked(state.sel, domainId, section.id, optionId)) return []; // bloqueada: la interfaz ya la deshabilita
+    if (adding && reasonBlocked(state.sel, domainId, section.id, optionId, { adult: state.adult })) return []; // bloqueada: la interfaz ya la deshabilita
     const next = !adding
       ? cur.filter(x => x !== optionId)
       : section.mode === 'single' ? [optionId] : [...cur, optionId];
@@ -118,11 +123,11 @@ export const store = {
   },
 
   /** Vacía selección y texto libre; conserva las preferencias (detalle, calidad, proporción, formato, bloqueos). */
-  clearAll() { commit({ ...fresh(), detail: state.detail, boost: state.boost, aspect: state.aspect, format: state.format, locks: state.locks }); },
+  clearAll() { commit({ ...fresh(), detail: state.detail, boost: state.boost, aspect: state.aspect, format: state.format, locks: state.locks, adult: state.adult, refPose: state.refPose, refCostume: state.refCostume }); },
 
   /** Carga un prompt guardado: sustituye selección y ajustes del prompt, y conserva formato y bloqueos. */
   loadSnapshot(snap) {
-    const n = normalize({ v: 1, ...snap, format: state.format, locks: state.locks });
+    const n = normalize({ v: 1, ...snap, format: state.format, locks: state.locks, adult: state.adult });
     commit({ ...state, sel: n.sel, detail: n.detail, boost: n.boost, aspect: n.aspect, custom: n.custom });
   },
 
@@ -144,6 +149,9 @@ export const store = {
     if ('aspect' in partial) next.aspect = String(partial.aspect || '');
     if ('format' in partial && FORMATS.includes(partial.format)) next.format = partial.format;
     if ('custom' in partial) next.custom = String(partial.custom || '').slice(0, CUSTOM_MAX);
+    if ('adult' in partial) next.adult = partial.adult === true;
+    if ('refPose' in partial) next.refPose = !!partial.refPose;
+    if ('refCostume' in partial) next.refCostume = !!partial.refCostume;
     commit(next);
   },
 

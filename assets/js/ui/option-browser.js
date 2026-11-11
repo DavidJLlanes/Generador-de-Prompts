@@ -187,10 +187,10 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
   /* --- exclusiones: deshabilita lo que no se puede combinar con lo ya elegido (data/exclusions.js) --- */
   let blockSig = '';
   function paintBlocks(state) {
-    const sig = JSON.stringify(state.sel);
+    const sig = JSON.stringify([state.sel, state.adult === true]);
     if (sig === blockSig) return;
     blockSig = sig;
-    const check = blockedChecker(state.sel);
+    const check = blockedChecker(state.sel, { adult: state.adult === true });
     for (const sec of domain.sections) {
       const r = refs.get(sec.id);
       let n = 0;

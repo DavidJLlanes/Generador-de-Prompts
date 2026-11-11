@@ -8,6 +8,7 @@ Constructor modular de **prompts para imágenes con IA**. La interfaz está en e
 - **4 formatos de salida:** texto, ChatGPT/Gemini, Stable Diffusion/Flux (positivo + negativo) e Ideogram (JSON).
 - **Buscador global:** busca una opción (un coche, una criatura, un clima…) en los 28 generadores desde el inicio o desde `/generadores/` y salta directo a su sección.
 - **Listados largos plegables:** cada sección es un acordeón y los grupos grandes (coches por década y año, estilos, poses, localizaciones, vestuario…) tienen sus propios subdesplegables.
+- **Contenido para adultos con aviso y bloqueos:** lo sensual está tras una confirmación de mayoría de edad y se bloquea ante menores y personajes de aspecto joven (ver `docs/CONTENT-POLICY.md`); también se bloquean incompatibilidades como día/noche o frío/calor.
 - Compartir el prompt por enlace, bloquear secciones ante «Aleatorio», nivel de detalle y «Calidad máxima».
 - Sitio **estático**: sin servidor de aplicación, sin base de datos, sin cuentas ni cookies.
 

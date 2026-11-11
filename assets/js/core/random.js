@@ -44,7 +44,7 @@ export function randomSelection(domains, state, rng = Math.random, maxSections =
     if (Object.keys(selection).length) out[dom.id] = selection;
   }
   // Exclusiones entre generadores (menores/adultos, día/noche, frío/calor…): se descarta lo que choque con el resto del prompt.
-  const { sel: safe } = enforce({ ...state.sel, ...out });
+  const { sel: safe } = enforce({ ...state.sel, ...out }, { adult: state.adult === true });
   const result = {};
   for (const id of Object.keys(out)) if (safe[id]) result[id] = safe[id];
   return result;

@@ -26,8 +26,11 @@ function ruleMatches(rule, domain, bySection) {
  * @param {object} state                     estado del store
  * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, empty: boolean, slots: object[]}}
  */
+export const REF_POSE = 'Match the body pose of the attached pose reference image exactly (it is a faceless mannequin line drawing: take only the posture and proportions, not its grey color or line style).';
+export const REF_COSTUME = 'Dress the character in the outfit shown in the attached costume reference image (garments only, no person in it) and keep every other detail as described.';
+
 export function compose(domains, state) {
-  state = { ...state, sel: enforce(state.sel).sel }; // el prompt nunca lleva pares incompatibles (data/exclusions.js)
+  state = { ...state, sel: enforce(state.sel, { adult: state.adult === true }).sel }; // el prompt nunca lleva pares incompatibles (data/exclusions.js)
   const rich = state.detail !== 'short';
   const textOf = o => (rich && o.rich ? o.rich : o.en);
   const parts = [];
@@ -97,5 +100,10 @@ export function compose(domains, state) {
   }
 
   const slots = SLOT_IDS.map(id => ({ slot: id, parts: unique.filter(p => p.slot === id) })).filter(s => s.parts.length);
-  return { parts: unique, negative, lead, merged, empty: unique.length === 0, slots };
+  // Imágenes de referencia que la persona adjuntará en su herramienta de IA (solo las usan los formatos de texto).
+  const refs = [];
+  if (unique.length && state.refPose) refs.push(REF_POSE);
+  if (unique.length && state.refCostume) refs.push(REF_COSTUME);
+
+  return { parts: unique, negative, lead, merged, empty: unique.length === 0, slots, refs };
 }

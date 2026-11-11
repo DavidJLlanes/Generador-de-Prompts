@@ -53,6 +53,18 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   customBox.addEventListener('input', debounce(() => store.set({ custom: customBox.value }), 250));
   const customField = h('label', { class: 'prompt-panel__custom' }, h('span', { class: 'prompt-panel__custom-label' }, 'Texto libre'), customBox, customCount);
 
+  // Imágenes de referencia: si las vas a adjuntar en tu herramienta de IA, el prompt le pide usarlas.
+  const refPoseInput = h('input', { type: 'checkbox', class: 'switch__input', onChange: e => store.set({ refPose: e.target.checked }) });
+  const refCostumeInput = h('input', { type: 'checkbox', class: 'switch__input', onChange: e => store.set({ refCostume: e.target.checked }) });
+  const refSwitch = (input, label, title) => h('label', { class: 'switch', title }, input, h('span', { class: 'switch__track', 'aria-hidden': 'true' }), h('span', { class: 'switch__label' }, label));
+  const refNote = h('p', { class: 'prompt-panel__ref-note' });
+  const refs = h('div', { class: 'prompt-panel__refs' },
+    h('span', { class: 'prompt-panel__custom-label' }, 'Imágenes de referencia'),
+    h('div', { class: 'prompt-panel__ref-switches' },
+      refSwitch(refPoseInput, 'Adjuntaré una pose', 'Añade al prompt la orden de seguir la pose de la imagen adjunta (un maniquí o dibujo de pose)'),
+      refSwitch(refCostumeInput, 'Adjuntaré un vestuario', 'Añade al prompt la orden de vestir al personaje como en la imagen adjunta')),
+    refNote);
+
   let lastText = '';
   const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => { if (lastText) { copyText(lastText, 'Prompt copiado'); recordHistory(store.get()); } } }, h('span', { html: icon('copy') }), 'Copiar prompt');
   const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.totalItems() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
@@ -63,6 +75,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     tabs,
     h('div', { class: 'prompt-panel__controls' }, detail, boost, aspect),
     customField,
+    refs,
     hint, out, meta, summary,
     h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, clearBtn));
 
@@ -87,6 +100,10 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     el.querySelectorAll('.tab').forEach(t => { const on = t.dataset.format === state.format; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on); });
     detail.querySelectorAll('.segmented__btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.value === state.detail));
     boostInput.checked = state.boost;
+    refPoseInput.checked = state.refPose === true;
+    refCostumeInput.checked = state.refCostume === true;
+    const refOk = state.format === 'text' || state.format === 'natural';
+    refNote.textContent = refOk ? 'Adjunta tú la imagen en ChatGPT, Gemini u otra herramienta que admita referencias.' : 'Solo se añade en los formatos Texto y ChatGPT / Gemini.';
     aspect.value = state.aspect;
     if (document.activeElement !== customBox && customBox.value !== state.custom) customBox.value = state.custom;
     customCount.textContent = state.custom ? `${state.custom.length}/${CUSTOM_MAX}` : '';

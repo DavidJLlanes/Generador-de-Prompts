@@ -7,6 +7,7 @@ import { randomSelection } from '../core/random.js';
 import { mountOptionBrowser } from '../ui/option-browser.js';
 import { openPresets } from '../ui/presets-drawer.js';
 import { toast } from '../ui/toast.js';
+import { mountAdultNotice, hasAdultContent } from '../ui/adult-notice.js';
 
 initChrome();
 
@@ -16,6 +17,7 @@ const root = $('[data-sections]');
 try {
   const domain = await loadDomain(id);
   root.removeAttribute('aria-busy');
+  if (hasAdultContent(id)) mountAdultNotice({ anchor: root });
   const toggleAll = $('[data-toggle-all]');
   const search = $('[data-search]');
   const { filter } = mountOptionBrowser({ domain, root, nav: $('[data-nav]'), search, status: $('[data-status]'), toggleAll });
