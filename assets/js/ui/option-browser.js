@@ -269,9 +269,25 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
   /* --- sección activa en la navegación lateral --- */
   const links = new Map();
   navLink.forEach((a, id) => links.set(id, a));
+  const strip = () => nav.scrollWidth > nav.clientWidth + 2 && getComputedStyle(nav).display === 'flex'; // tira horizontal (pantallas estrechas)
   const io = new IntersectionObserver(entries => {
-    entries.forEach(en => { if (en.isIntersecting) { navLink.forEach(a => a.classList.remove('is-active')); links.get(en.target.dataset.section)?.classList.add('is-active'); } });
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      navLink.forEach(a => a.classList.remove('is-active'));
+      const a = links.get(en.target.dataset.section);
+      if (!a) return;
+      a.classList.add('is-active');
+      if (strip()) nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' }); // la pastilla activa siempre a la vista
+    });
   }, { rootMargin: '-25% 0px -65% 0px' });
+  /* Con ratón, la rueda desplaza la tira horizontal (salvo en los extremos, donde sigue moviendo la página). */
+  nav.addEventListener('wheel', e => {
+    if (!strip() || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    const max = nav.scrollWidth - nav.clientWidth;
+    if ((e.deltaY < 0 && nav.scrollLeft <= 0) || (e.deltaY > 0 && nav.scrollLeft >= max - 1)) return;
+    nav.scrollLeft += e.deltaY;
+    e.preventDefault();
+  }, { passive: false });
   secEl.forEach(el => io.observe(el));
 
   return { filter, setAll };

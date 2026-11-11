@@ -41,4 +41,17 @@ export async function run({ b, base, ok, step }) {
   step('[C] Inicio');
   await b.goto(base + '/');
   ok((await b.eval(`return !!document.querySelector('form.hero__search input[name="q"]')`)), 'el inicio tiene el buscador de opciones');
+
+  step('[D] Navegación por secciones: lista lateral en escritorio (también con zoom) y tira con rueda en pantallas estrechas');
+  await b.viewport(850, 900);
+  await b.goto(base + '/generadores/mujer/');
+  await b.waitFor(`document.querySelectorAll('.opt-section').length > 5`, 8000);
+  ok(await b.eval(`return getComputedStyle(document.querySelector('[data-nav]')).display === 'grid'`), 'a 850 px sigue la lista lateral de secciones');
+  ok(await b.eval(`const n=document.querySelector('[data-nav]'); return n.scrollHeight > 0 && getComputedStyle(n.parentElement).position === 'sticky'`), 'la lista lateral queda fija al desplazar');
+  await b.viewport(700, 900);
+  await b.sleep(300);
+  ok(await b.eval(`const n=document.querySelector('[data-nav]'); return getComputedStyle(n).display === 'flex' && n.scrollWidth > n.clientWidth`), 'a 700 px es una tira horizontal con desbordamiento');
+  await b.eval(`const n=document.querySelector('[data-nav]'); n.dispatchEvent(new WheelEvent('wheel', { deltaY: 300, bubbles: true, cancelable: true }))`); await b.sleep(200);
+  ok((await b.eval(`return document.querySelector('[data-nav]').scrollLeft`)) > 100, 'la rueda del ratón la desplaza en horizontal');
+  await b.viewport(1280, 900);
 }
