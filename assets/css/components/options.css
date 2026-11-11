@@ -112,3 +112,16 @@
 
 /* Objetivo táctil mínimo de 24 px en el «Ver detalle» de las tarjetas (WCAG 2.2) */
 .opt-card__more summary { display: inline-flex; align-items: center; min-height: 28px; }
+
+/* Subgrupos plegables dentro de una sección (p. ej. coches por década/año) */
+.opt-group--fold { margin-top: var(--space-2); border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface); }
+.opt-section__meta + .opt-group--fold { margin-top: 0; }
+.opt-group__summary { display: flex; align-items: center; gap: var(--space-2); padding: 9px 12px; cursor: pointer; list-style: none; user-select: none; }
+.opt-group__summary::-webkit-details-marker { display: none; }
+.opt-group__summary:hover .opt-group__title { color: var(--accent-2); }
+.opt-group--fold .opt-group__title { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-2); }
+.opt-group__chev { display: inline-flex; color: var(--text-3); transition: transform var(--dur); transform: rotate(-90deg); }
+.opt-group--fold[open] > .opt-group__summary .opt-group__chev { transform: rotate(0); }
+.opt-group__count { font-size: var(--fs-xs); color: var(--text-3); }
+.opt-group__sel { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-size: 0.66rem; font-weight: 600; }
+.opt-group--fold > .opt-list { padding: 0 12px 12px; }

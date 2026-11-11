@@ -45,6 +45,7 @@ export default {
   "mode": "multi",              // "single" (elige una) o "multi" (varias)
   "slot": "technical",          // opcional: sale de la ranura del dominio
   "polarity": "negative",       // opcional: sus opciones van al prompt negativo («Evitar»)
+  "foldGroups": true,           // opcional: cada grupo (`groups`) se pinta como subdesplegable
   "chance": 0.6,                // opcional (0–1): probabilidad en «Aleatorio»; 0 = nunca
   "joiner": ", con ",           // opcional: conector al componer el título de una idea guardada
   "groups": [ { "id": "disney", "title": "Disney" } ],   // opcional: subgrupos visuales

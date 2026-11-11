@@ -6,6 +6,7 @@
  * Estado de plegado:
  *  - Se recuerda por generador en localStorage (`lv:v1:open:<dominio>`); sin nada guardado,
  *    solo la primera sección empieza abierta.
+ *  - Las secciones con `foldGroups` pintan cada subgrupo como <details> (cerrado por defecto).
  *  - Mientras hay una búsqueda activa se abren las secciones con resultados (sin tocar lo guardado).
  */
 import { $, h } from './dom.js';
@@ -33,7 +34,12 @@ function optionHTML(o) {
 function sectionHTML(domain, sec) {
   const groups = sec.groups || [];
   const body = groups.length
-    ? groups.map(g => `<div class="opt-group" data-group="${g.id}"><h3 class="opt-group__title">${esc(g.title)}</h3><div class="opt-list">${sec.options.filter(o => o.group === g.id).map(optionHTML).join('')}</div></div>`).join('')
+    ? groups.map(g => {
+      const list = sec.options.filter(o => o.group === g.id);
+      const items = `<div class="opt-list">${list.map(optionHTML).join('')}</div>`;
+      if (!sec.foldGroups) return `<div class="opt-group" data-group="${g.id}"><h3 class="opt-group__title">${esc(g.title)}</h3>${items}</div>`;
+      return `<details class="opt-group opt-group--fold" data-group="${g.id}"><summary class="opt-group__summary"><span class="opt-group__chev" aria-hidden="true">${icon('down', 14)}</span><span class="opt-group__title">${esc(g.title)}</span><span class="opt-group__count" data-count-group>${fmtNumber(list.length)}</span><b class="opt-group__sel" data-group-sel hidden></b></summary>${items}</details>`;
+    }).join('')
     : `<div class="opt-list">${sec.options.map(optionHTML).join('')}</div>`;
   const cards = sec.options.some(o => o.info) ? ' opt-section--cards' : '';
   const neg = sec.polarity === 'negative';
@@ -185,6 +191,11 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
       const set = new Set(ids);
       const r = refs.get(sec.id);
       r.el.querySelectorAll('button[data-opt]').forEach(b => { const on = set.has(b.dataset.opt); b.setAttribute('aria-pressed', on); b.classList.toggle('is-on', on); });
+      r.el.querySelectorAll('.opt-group--fold').forEach(g => {
+        const n = g.querySelectorAll('button[data-opt].is-on').length;
+        const b = $('[data-group-sel]', g);
+        b.textContent = n; b.hidden = n === 0;
+      });
       r.el.classList.toggle('has-selection', ids.length > 0);
       r.lock.setAttribute('aria-pressed', locked);
       r.lock.classList.toggle('is-on', locked);
@@ -205,6 +216,9 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
   function filter(raw) {
     const q = fold(raw).trim();
     if (q !== query) override.clear();
+    /* Subgrupos plegables: al buscar se abren los que tienen resultados; al limpiar se restaura lo que había */
+    const folds = root.querySelectorAll('.opt-group--fold');
+    if (q && !query) folds.forEach(g => { g.dataset.was = g.open ? '1' : ''; });
     query = q;
     let shown = 0;
     for (const sec of domain.sections) {
@@ -217,6 +231,7 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
       matches.set(sec.id, secShown);
       shown += secShown;
     }
+    folds.forEach(g => { g.open = q ? !g.hidden : !!g.dataset.was; if (!q) delete g.dataset.was; });
     renderAll();
     status.textContent = q ? (shown ? `${fmtNumber(shown)} ${shown === 1 ? 'resultado' : 'resultados'}` : 'Sin resultados') : '';
     status.classList.toggle('is-empty', !!q && !shown);
