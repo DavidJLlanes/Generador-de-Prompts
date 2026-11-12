@@ -88,6 +88,24 @@
 .opt-section--thumbs .opt-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 10px; }
 .opt--thumb { display: flex; flex-direction: column; padding: 0; border-radius: var(--radius); background: var(--surface); overflow: hidden; }
 .opt--thumb .opt__img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: var(--bg-2); }
+.opt-section[data-section="ojosforma"] .opt--thumb .opt__img,
+.opt-section[data-section="ojos"] .opt--thumb .opt__img,
+.opt-section[data-section="cejas"] .opt--thumb .opt__img,
+.opt-section[data-section="nariz"] .opt--thumb .opt__img,
+.opt-section[data-section="labios"] .opt--thumb .opt__img,
+.opt-section[data-section="cara"] .opt--thumb .opt__img,
+.opt-section[data-section="edad"] .opt--thumb .opt__img,
+.opt-section[data-section="etnia"] .opt--thumb .opt__img,
+.opt-section[data-section="piel"] .opt--thumb .opt__img,
+.opt-section[data-section="cuerpo"] .opt--thumb .opt__img,
+.opt-section[data-section="largo"] .opt--thumb .opt__img,
+.opt-section[data-section="textura"] .opt--thumb .opt__img,
+.opt-section[data-section="flequillo"] .opt--thumb .opt__img,
+.opt-section[data-section="raya"] .opt--thumb .opt__img,
+.opt-section[data-section="colorpelo"] .opt--thumb .opt__img,
+.opt-section[data-section="maquillaje"] .opt--thumb .opt__img,
+.opt-section[data-section="colorlabios"] .opt--thumb .opt__img,
+.opt-section[data-section="expresion"] .opt--thumb .opt__img { aspect-ratio: 1 / 1; }
 .opt--thumb .opt__label { display: grid; gap: 2px; min-width: 0; padding: 8px 10px 10px; }
 .opt--thumb .opt__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; font-size: var(--fs-sm); line-height: 1.25; }
 .opt--thumb .opt__sub { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }

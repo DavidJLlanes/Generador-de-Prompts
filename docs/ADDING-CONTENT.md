@@ -69,6 +69,8 @@ Las opciones pueden llevar `"thumb"` con la ruta a una imagen; la tarjeta se pin
 
 **Convención para todas las nuevas miniaturas del proyecto:** WebP de **300 × 400 píxeles**, calidad **70**, sin texto incrustado y con el sujeto completo dentro del encuadre. Guardar en `/imagenes/<categoria>/<grupo>/<opcion>.webp`, usando nombres descriptivos en español, minúsculas, sin tildes ni espacios y separados por guiones. Ejemplo: `/imagenes/peinados/suelto/suelto-natural.webp`. La ruta se asigna explícitamente en `thumb`: no cambiar los identificadores existentes ni los textos del prompt. Reutilizar el mismo archivo cuando varias elecciones representen la misma muestra. Las imágenes se cargan bajo demanda con `loading="lazy"`.
 
+Las miniaturas cuadradas de **300 × 300 píxeles**, calidad **70**, también se usan en los selectores de rostro, apariencia, complexión, longitud y textura de pelo, flequillo, raya, color de pelo, maquillaje, color/acabado de labios y expresión/emoción de `data/domains/woman.js`. Las imágenes de forma de labios ya se encuentran en `/imagenes/rostro/labios/`.
+
 Para preparar una nueva miniatura desde una imagen individual: `python scripts/images/miniatura.py origen.png imagenes/categoria/grupo/opcion.webp` (requiere Pillow). El script mantiene la proporción sin recortar el sujeto y exporta siempre el mismo tamaño y calidad.
 
 La primera colección con esta estructura son los 54 peinados de Mujer, en `imagenes/peinados/`. Los catálogos anteriores conservan sus rutas y archivos hasta que se solicite su migración:
