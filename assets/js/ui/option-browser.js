@@ -23,6 +23,11 @@ const OPEN_KEY = id => `lv:v1:open:${id}`;
 function optionHTML(o) {
   const s = esc(fold(`${o.es} ${o.en} ${o.name || ''}`));
   const tip = esc((o.name ? `${o.name} — ` : '') + o.en.slice(0, 180));
+  if (o.thumb) {
+    return `<button type="button" class="opt opt--thumb" data-opt="${o.id}" data-s="${s}" aria-pressed="false" title="${tip}">
+      <img class="opt__img" src="${o.thumb}" alt="" loading="lazy" decoding="async">
+      <span class="opt__label"><span class="opt__title">${esc(o.es)}</span>${o.name ? `<span class="opt__sub">${esc(o.name)}</span>` : ''}</span></button>`;
+  }
   if (o.info && o.info.length) {
     return `<div class="opt-card" data-s="${s}">
       <button type="button" class="opt opt--card" data-opt="${o.id}" aria-pressed="false" title="${tip}">
@@ -43,9 +48,10 @@ function sectionHTML(domain, sec) {
     }).join('')
     : `<div class="opt-list">${sec.options.map(optionHTML).join('')}</div>`;
   const cards = sec.options.some(o => o.info) ? ' opt-section--cards' : '';
+  const thumbs = sec.options.some(o => o.thumb) ? ' opt-section--thumbs' : '';
   const neg = sec.polarity === 'negative';
   const tag = `<span class="tag${neg ? ' tag--neg' : ''}">${neg ? 'Evitar' : MODE_LABEL[sec.mode]}</span>`;
-  return `<section class="opt-section${cards}" id="sec-${sec.id}" data-section="${sec.id}">
+  return `<section class="opt-section${cards}${thumbs}" id="sec-${sec.id}" data-section="${sec.id}">
     <header class="opt-section__head">
       <h2 class="opt-section__heading">
         <button type="button" class="opt-section__toggle" data-act="toggle" aria-expanded="false" aria-controls="panel-${sec.id}">

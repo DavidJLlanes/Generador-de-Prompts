@@ -1,6 +1,10 @@
-// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
+﻿// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
 // Esquema y reglas: docs/DATA-SCHEMA.md · Validar con: npm run validate · Reconstruir índices: npm run build
-export default {
+// Catálogo de poses y de conjuntos: datos compartidos con «Personaje avanzado».
+import poseSections from '../catalogs/poses.js';
+import outfitSections from '../catalogs/vestuario.js';
+
+const domain = {
   "schema": 1,
   "id": "woman",
   "slug": "mujer",
@@ -1014,5 +1018,14 @@ export default {
         {"id":"golden-dust-on-shoulders","es":"Polvo dorado en hombros","en":"golden dust on shoulders"}
       ]
     }
+  ],
+  "conflicts": [
+    { "id": "conjunto-o-prendas", "a": ["conjunto-galeria"], "b": ["ropa", "colorropa", "tejido", "estampado", "calzado", "medias"] }
   ]
 };
+
+// Los dos catálogos se muestran junto a «ropa», no al final de la página.
+const insertAt = domain.sections.findIndex(s => s.id === 'ropa');
+domain.sections.splice(insertAt < 0 ? domain.sections.length : insertAt, 0, ...outfitSections, ...poseSections);
+
+export default domain;

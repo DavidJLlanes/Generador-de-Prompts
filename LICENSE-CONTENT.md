@@ -25,3 +25,7 @@ La licencia anterior regula la **copia y reutilización del sitio, su código y 
 ## Marcas y personajes
 
 Los nombres de personajes animados, marcas de coches y otras referencias son marcas o propiedad de sus titulares y se mencionan solo como referencia descriptiva. Esta licencia no concede ningún derecho sobre ellas.
+
+## Miniaturas de las galerías de referencia
+
+Las imágenes de `assets/img/catalogo/` (poses y conjuntos) **no** están cubiertas por la licencia anterior: proceden de las galerías POSE-DB-01 y COSTUME-DB-01 de ギア (@giaaibusi), que prohíben su redistribución, y sus derechos son de su autor. Se incluyen como referencia visual dentro del sitio; cualquier reutilización de esas imágenes requiere la autorización de su autor. Los textos en inglés de las poses y las etiquetas en español compuestas para el catálogo sí son contenido de Lumen Vitae.

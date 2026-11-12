@@ -1,4 +1,4 @@
-// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
+﻿// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
 // Esquema y reglas: docs/DATA-SCHEMA.md · Validar con: npm run validate · Reconstruir índices: npm run build
 export default {
   "schema": 1,
@@ -6,7 +6,7 @@ export default {
   "slug": "poses",
   "role": "action",
   "order": 40,
-  "meta": {"title":"Poses","short":"Poses","kicker":"Posturas · Gestos · Lenguaje corporal","summary":"Biblioteca de 144 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.","intro":"Elige una pose y combínala con una mujer, un hombre, un personaje animado o cualquier otro sujeto."},
+  "meta": {"title":"Poses","short":"Poses","kicker":"Posturas · Gestos · Lenguaje corporal","summary":"Biblioteca de 183 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.","intro":"Elige una pose y combínala con una mujer, un hombre, un personaje animado o cualquier otro sujeto."},
   "sections": [
     {
       "id": "poses",

@@ -46,6 +46,18 @@ test('los roles de los dominios son ranuras válidas y hay al menos un dominio p
   for (const slot of SLOT_IDS) assert.ok(all.some(x => x.domain.role === slot), `ninguna ranura «${slot}»`);
 });
 
+test('las opciones con miniatura apuntan a un archivo que existe', () => {
+  const missing = [];
+  let total = 0;
+  for (const { domain } of all) for (const s of domain.sections) for (const o of s.options) {
+    if (!o.thumb) continue;
+    total++;
+    if (!existsSync(path.join(ROOT, o.thumb))) missing.push(`${domain.id}/${s.id}/${o.id}`);
+  }
+  assert.ok(total > 1000, `se esperaban miniaturas en el catálogo (${total})`);
+  assert.deepEqual(missing, [], 'miniaturas que faltan (ejecuta los importadores de scripts/catalogs/)');
+});
+
 /* ---------- Política de contenido (ver docs/CONTENT-POLICY.md) ---------- */
 const TAGS = effectiveTags(all);
 const tagsOf = (d, s, o) => TAGS.get(`${d.id}/${s.id}/${o.id}`) || new Set();

@@ -1,6 +1,10 @@
-// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
+﻿// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
 // Esquema y reglas: docs/DATA-SCHEMA.md · Validar con: npm run validate · Reconstruir índices: npm run build
-export default {
+// Catálogo de poses y de conjuntos: datos compartidos con «Mujer».
+import poseSections from '../catalogs/poses.js';
+import outfitSections from '../catalogs/vestuario.js';
+
+const domain = {
   "schema": 1,
   "id": "girl",
   "slug": "personaje-avanzado",
@@ -2295,5 +2299,15 @@ export default {
         {"id":"trending-on-artstation","es":"trending en ArtStation","en":"trending on ArtStation"}
       ]
     }
+  ],
+  "conflicts": [
+    { "id": "conjunto-o-prendas", "a": ["conjunto-galeria"], "b": ["top-type","top-neckline","top-sleeves","top-fit","top-fabric","top-pattern","top-color","bottom-type","bottom-length","bottom-fit","bottom-fabric","bottom-pattern","bottom-color","outerwear-type","outerwear-length","outerwear-fabric","outerwear-color","footwear-type","footwear-heel-height","footwear-color"] },
+    { "id": "pose-galeria-o-pose-suelta", "a": ["pose-galeria"], "b": ["pose-body-pose", "pose-hand-placement", "pose-head-tilt"] }
   ]
 };
+
+// Los dos catálogos se muestran junto a «top-type», no al final de la página.
+const insertAt = domain.sections.findIndex(s => s.id === 'top-type');
+domain.sections.splice(insertAt < 0 ? domain.sections.length : insertAt, 0, ...outfitSections, ...poseSections);
+
+export default domain;

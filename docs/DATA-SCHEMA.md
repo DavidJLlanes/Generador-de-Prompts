@@ -68,6 +68,7 @@ export default {
 | `group` | no | Id de un grupo de la sección |
 | `tags` | no | Lista de etiquetas; las usan las reglas (p. ej. `["miniature"]`) |
 | `name` | no | Nombre corto en inglés (bibliotecas: poses y localizaciones) |
+| `thumb` | no | Ruta a una miniatura dentro de `/assets/` (p. ej. `/assets/img/catalogo/poses/sexy-p001.jpg`). Si la lleva, la opción se pinta como tarjeta con imagen; el archivo debe existir (lo comprueban `npm run validate` y los tests) |
 | `info` | no | Lista de pares `[etiqueta, texto]` en español que se muestra como detalle de la tarjeta |
 
 ## Reglas

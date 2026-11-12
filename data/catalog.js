@@ -2,8 +2,8 @@
 export default {
   "totals": {
     "domains": 28,
-    "sections": 746,
-    "options": 18928,
+    "sections": 750,
+    "options": 21804,
     "presets": 1071
   },
   "domains": [
@@ -16,8 +16,8 @@ export default {
       "short": "Mujer",
       "kicker": "Mujeres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts detallados para crear personajes femeninos con IA. Controla rasgos, vestuario, expresión y pose. Compatible con Midjourney, DALL·E y más.",
-      "sections": 28,
-      "options": 802,
+      "sections": 30,
+      "options": 2240,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -170,8 +170,8 @@ export default {
       "short": "Personaje avanzado",
       "kicker": "Épocas · Culturas · Moda · Maquillaje · Poses · Escenarios",
       "summary": "Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.",
-      "sections": 80,
-      "options": 1701,
+      "sections": 82,
+      "options": 3139,
       "presets": 11,
       "presetsLabel": "recetas"
     },
@@ -253,7 +253,7 @@ export default {
       "title": "Poses",
       "short": "Poses",
       "kicker": "Posturas · Gestos · Lenguaje corporal",
-      "summary": "Biblioteca de 144 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.",
+      "summary": "Biblioteca de 183 poses descritas al detalle (pies, torso, brazos, manos y cabeza), lista para combinar con cualquier personaje.",
       "sections": 1,
       "options": 183,
       "presets": 0,

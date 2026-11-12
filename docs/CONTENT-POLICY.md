@@ -15,8 +15,8 @@ Las opciones de moda íntima y tono sensual llevan la etiqueta **`adult-only`**:
 
 | Dónde | Qué |
 |---|---|
-| **Mujer** (`woman`) | Sección «Busto», lencería y ropa interior, estilos «sexy elegante», látex, «Seductora», ojos «sensuales» |
-| **Personaje avanzado** (`girl`, 18 a 80 años) | «Cuerpo · Busto», prendas íntimas, látex, mirada seductora, «fotografía boudoir» |
+| **Mujer** (`woman`) | Sección «Busto», lencería y ropa interior, estilos «sexy elegante», látex, «Seductora», ojos «sensuales»; grupos «Cuerpo entero · Sensual» y «Medio cuerpo · Torso y escote» de la galería de poses; grupos «Lencería» y «Sexy» del catálogo de conjuntos |
+| **Personaje avanzado** (`girl`, 18 a 80 años) | «Cuerpo · Busto», prendas íntimas, látex, mirada seductora, «fotografía boudoir»; los mismos grupos de la galería de poses y del catálogo de conjuntos |
 | **Personajes animados** | Lencería y corsés de vestuario; EVA (Metal Gear) |
 | **Rostros** | Boca «Sensual seductora», expresión «Placer sensual» |
 | **Fotografía** | Atmósfera «Sensual erótico», estilo «Boudoir elegante» |
@@ -69,7 +69,11 @@ Fuera del contenido adulto, las mismas reglas bloquean también incompatibilidad
 
 ## Galerías de referencia de terceros
 
-Se estudiaron dos galerías gratuitas de imágenes de referencia (vestuario y poses de ギア, @giaaibusi). **No se incorporan sus imágenes ni su catálogo**: su autor prohíbe redistribuir las imágenes (también las procesadas), y la galería de poses incluye posturas sexuales explícitas, que esta web no admite. De ellas solo se tomó la idea de organizar el vestuario por estaciones y las poses por tipo; **todas las opciones se redactaron desde cero** (grupos «Primavera», «Verano», «Otoño», «Invierno» y «Fiesta y cóctel» en Mujer; «Estándar de estudio» y «Retrato: gestos y manos» en Poses). Para usar sus imágenes, el panel «Mi prompt» tiene los interruptores «Adjuntaré una pose / un vestuario», que añaden al prompt la orden de seguir la imagen que la persona adjunte en su herramienta de IA.
+El catálogo de poses y de vestuario viene de **POSE-DB-01** y **COSTUME-DB-01**, de ギア (@giaaibusi), que las publica como referencia para IA: maniquíes grises sin rostro en el caso de las poses, y prendas sin persona en el del vestuario.
+
+- **Qué se ha incorporado:** las miniaturas (no las imágenes grandes) y la organización por tipos; 203 poses y 1.235 conjuntos. Los nombres en español salen del catálogo original; los **prompts en inglés de las poses están redactados de nuevo**, uno por pose, y los de los conjuntos se componen con los términos del propio catálogo.
+- **Condiciones del autor:** su web prohíbe la descarga masiva, la redistribución, la re-publicación y la venta de las imágenes. El titular del sitio decidió incorporarlas igualmente; quedan fuera de la licencia CC BY-NC del contenido (ver `LICENSE-CONTENT.md`) y se citan aquí y en la nota de cada sección. Si el autor lo requiere, basta con borrar `assets/img/catalogo/` y las secciones «Pose (galería)» y «Conjunto completo (galería)» sin tocar nada más.
+- **Qué se ha dejado fuera:** la serie de pareja del catálogo de poses (posturas sexuales explícitas) y el grupo «Sexy / Seductor» de medio cuerpo (gestos sobre el pecho desnudo). Las posturas sensuales de una persona que se han conservado van etiquetadas `adult-only` y no describen desnudez.
 
 ### Contenido que no se pudo trasladar
 

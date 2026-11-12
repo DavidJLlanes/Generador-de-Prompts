@@ -2,7 +2,9 @@
  * Valida todos los dominios y presets de data/. Sale con código 1 si hay errores.
  * Uso: npm run validate
  */
-import { loadAllDomains, loadPresetsFor } from './lib/domains.mjs';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { ROOT, loadAllDomains, loadPresetsFor } from './lib/domains.mjs';
 import { validateDomain, validatePresets } from '../assets/js/core/schema.js';
 
 const all = await loadAllDomains();
@@ -18,6 +20,9 @@ for (const { file, domain: d } of all) {
   const r = validateDomain(d);
   errors.push(...r.errors);
   warnings.push(...r.warnings);
+  for (const s of d.sections) for (const o of s.options) {
+    if (o.thumb && !existsSync(path.join(ROOT, o.thumb))) errors.push(`${d.id}/${s.id}/${o.id}: falta la imagen ${o.thumb}`);
+  }
   const presets = await loadPresetsFor(d.id);
   if (presets) errors.push(...validatePresets(presets, d));
 }

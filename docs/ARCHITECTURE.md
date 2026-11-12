@@ -61,10 +61,16 @@ Cada opción tiene un texto corto `en` y, opcionalmente, uno largo `rich`. «Det
 
 ## Dominios compartidos
 
-Los generadores originales repetían las mismas secciones de cámara y estilo (en 9-12 variantes distintas) y las mismas 144 poses y 190 localizaciones. Se unificaron en tres dominios reutilizables:
+Los generadores originales repetían las mismas secciones de cámara y estilo (en 9-12 variantes distintas) y las mismas poses y localizaciones repetidas. Se unificaron en tres dominios reutilizables:
 
 - **`photo`** (técnica): composición, perspectiva, objetivo, profundidad de campo, cámara, iluminación, atmósfera, etalonaje, estilo, calidad, acabado de calidad y negativos.
 - **`poses`** (acción) y **`locations`** (escenario): bibliotecas con descripción detallada de cada elemento.
+
+### Catálogos con miniatura
+
+`data/catalogs/poses.js` y `data/catalogs/vestuario.js` exportan **secciones completas** que `woman` y `girl` añaden a las suyas con `.concat(...)`. Así el mismo contenido sirve a los dos generadores sin duplicar datos, y cada uno declara sus `conflicts` (elegir un conjunto completo vacía las prendas sueltas; elegir una pose de la galería vacía la pose por piezas).
+
+Las secciones llevan `slot` propio (`action` para las poses, `attribute` para el conjunto), de modo que el compositor las ordena en su sitio aunque vivan en un dominio de sujeto. Las opciones con `thumb` se pintan como tarjetas con imagen (`assets/js/ui/option-browser.js`), con `loading="lazy"` y dentro de subgrupos plegados: las 1.438 miniaturas no se descargan hasta que se abre el grupo.
 
 ## Páginas y SEO
 

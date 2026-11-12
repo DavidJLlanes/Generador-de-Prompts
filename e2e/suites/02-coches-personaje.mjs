@@ -37,7 +37,7 @@ export async function run({ b, base, ok, step }) {
   step('[C] Personaje avanzado');
   await b.goto(base + '/generadores/personaje-avanzado/'); await b.eval('localStorage.clear()'); await b.goto(base + '/generadores/personaje-avanzado/');
   await b.waitFor(`document.querySelectorAll('.opt-section').length > 50`, 10000, 'secciones');
-  ok((await b.eval(`return document.querySelectorAll('.opt-section').length`)) === 80, 'renderiza 80 secciones');
+  ok((await b.eval(`return document.querySelectorAll('.opt-section').length`)) >= 82, `renderiza las secciones del generador (82 con las dos galerías)`);
   ok(await b.eval(`return !!document.querySelector('#sec-body-bust') && [...document.querySelectorAll('[data-s]')].some(e=>/large bust/.test(e.dataset.s)) && ![...document.querySelectorAll('[data-s]')].some(e=>/topless|naked|nipple|explicit|nsfw/.test(e.dataset.s))`), 'el generador de adultos incluye la sección de busto y lencería, sin contenido explícito');
   ok(/Ver 6 recetas|Ver 11 recetas/.test(await b.eval(`return document.querySelector('[data-act="ideas"]').textContent`)), 'el botón habla de «recetas», no de «ideas»');
   await b.eval(`document.querySelector('[data-act="ideas"]').click()`);

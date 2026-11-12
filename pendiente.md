@@ -24,14 +24,15 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 
 **Por qué:** es lo que más cambiaría la experiencia: ver cómo queda cada estilo, escena, época o pose *antes* de elegirlo, y que la portada enseñe resultados reales.
 
+**Estado:** hecho a medias. Las opciones ya admiten `"thumb"` y el navegador las pinta como tarjetas con imagen (ver `docs/ADDING-CONTENT.md` §7 bis); lo usan la galería de poses y la de conjuntos de Mujer y Personaje avanzado. Falta el resto de generadores.
+
 **Plan**
-- Generar una imagen por opción relevante (empezando por `photo/style`, `scenarios`, `girl/era`, coches y poses) con un modelo local; el sitio anterior ya tenía scripts para ComfyUI que sirven de base.
+- Generar una imagen por opción relevante (empezando por `photo/style`, `scenarios`, `girl/era` y poses) con un modelo local; el sitio anterior ya tenía scripts para ComfyUI que sirven de base.
 - **Solo contenido apto para todos los públicos**, coherente con `docs/CONTENT-POLICY.md`.
-- Formato WebP, ~400 px, cargadas bajo demanda (`loading="lazy"`) y servidas desde `assets/img/thumbs/`.
-- Datos: un campo opcional `thumb` en cada opción (documentarlo en `docs/DATA-SCHEMA.md`), de modo que las secciones sin imagen sigan funcionando.
+- Formato WebP, ~400 px, cargadas bajo demanda (`loading="lazy"`) y servidas desde `assets/img/`.
 - Una galería de resultados en la portada, con el prompt que generó cada imagen.
 
-**Ojo con el peso:** miles de miniaturas inflan el repositorio. Empezar por unas cientos y valorar Git LFS o un directorio aparte servido por nginx.
+**Ojo con el peso:** miles de miniaturas inflan el repositorio. Empezar por unas cientos y valorar Git LFS o un directorio aparte servido por nginx. Las 1.438 actuales (poses y conjuntos) ocupan unos 13 MB.
 
 ---
 
