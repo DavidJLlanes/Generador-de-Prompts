@@ -41,7 +41,7 @@ Lo que **no se ha hecho todavía**, para retomarlo cuando toque. Se actualiza a 
 | Tema | Qué hay que decidir |
 |---|---|
 | **Contenido que sigue retenido** | Sexo implícito/explícito, desnudez, autolesión y Ann (Persona 5). Ver `docs/CONTENT-POLICY.md`. |
-| **Páginas legales** | Se actualizaron (licencia no comercial, datos guardados en el navegador), pero conviene que las revise un profesional antes de publicar. |
+| **Páginas legales** | Se actualizaron (sin licencia de reutilización, datos guardados en el navegador), pero conviene que las revise un profesional antes de publicar. |
 | **nginx** | `deploy/nginx.conf.example` no se ha probado en un servidor real. Primer `nginx -t` en el VPS. |
 
 ---
