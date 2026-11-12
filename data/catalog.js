@@ -2,8 +2,8 @@
 export default {
   "totals": {
     "domains": 28,
-    "sections": 750,
-    "options": 21804,
+    "sections": 752,
+    "options": 21844,
     "presets": 1071
   },
   "domains": [
@@ -16,8 +16,8 @@ export default {
       "short": "Mujer",
       "kicker": "Mujeres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts detallados para crear personajes femeninos con IA. Controla rasgos, vestuario, expresión y pose. Compatible con Midjourney, DALL·E y más.",
-      "sections": 30,
-      "options": 2240,
+      "sections": 32,
+      "options": 2280,
       "presets": 6,
       "presetsLabel": "recetas"
     },

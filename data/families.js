@@ -39,6 +39,7 @@ export const FAMILIES = [
   { id: 'pelo-largo', label: 'largo del pelo', sections: ['woman/largo', 'girl/hair-length', 'hairstyles/largo'] },
   { id: 'pelo-textura', label: 'textura del pelo', sections: ['woman/textura', 'girl/hair-texture', 'hairstyles/textura'] },
   { id: 'pelo-estilo', label: 'peinado', sections: ['woman/peinado', 'man/pelo', 'girl/hair-style', 'hairstyles/tipo-peinado'] },
+  { id: 'pelo-flequillo', label: 'flequillo', sections: ['woman/flequillo', 'hairstyles/flequillo'] },
   { id: 'pelo-color', label: 'color del pelo', sections: ['woman/colorpelo', 'man/colorpelo', 'girl/hair-color', 'hairstyles/color-principal'] },
 
   /* ---------- Vestuario ---------- */
