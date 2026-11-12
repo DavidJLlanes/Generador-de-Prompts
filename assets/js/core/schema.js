@@ -65,7 +65,7 @@ export function validateDomain(d) {
       if (o.rich !== undefined && !isStr(o.rich)) at(op, '«rich» debe ser texto');
       if (o.group !== undefined && !groupIds.has(o.group)) at(op, `grupo inexistente «${o.group}»`);
       if (o.tags !== undefined && !(Array.isArray(o.tags) && o.tags.every(isStr))) at(op, '«tags» debe ser una lista de textos');
-      if (o.thumb !== undefined && !(isStr(o.thumb) && /^\/assets\/[\w./-]+\.(webp|jpe?g|png|avif)$/.test(o.thumb))) at(op, '«thumb» debe ser la ruta de una imagen dentro de /assets/ (p. ej. /assets/img/catalogo/poses/sexy-p001.jpg)');
+      if (o.thumb !== undefined && !(isStr(o.thumb) && (/^\/assets\/[\w./-]+\.(webp|jpe?g|png|avif)$/.test(o.thumb) || /^\/imagenes\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\/){2}[a-z0-9]+(?:-[a-z0-9]+)*\.webp$/.test(o.thumb)))) at(op, '«thumb» debe ser /imagenes/categoria/grupo/opcion.webp o una imagen existente de /assets/');
       if (o.info !== undefined && !(Array.isArray(o.info) && o.info.every(p => Array.isArray(p) && p.length === 2 && isStr(p[0]) && isStr(p[1])))) at(op, '«info» debe ser una lista de pares [etiqueta, texto]');
       if (isStr(o.en)) {
         const k = o.en.toLowerCase().trim();
