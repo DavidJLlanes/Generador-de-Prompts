@@ -72,6 +72,18 @@ Los generadores originales repetían las mismas secciones de cámara y estilo (e
 
 Las secciones llevan `slot` propio (`action` para las poses, `attribute` para el conjunto), de modo que el compositor las ordena en su sitio aunque vivan en un dominio de sujeto. Las opciones con `thumb` se pintan como tarjetas con imagen (`assets/js/ui/option-browser.js`), con `loading="lazy"` y dentro de subgrupos plegados: las 1.438 miniaturas no se descargan hasta que se abre el grupo.
 
+### Familias de secciones
+
+Varios generadores describen el mismo rasgo: Mujer trae pelo, rostro y vestuario; Peinados, Rostros, Anatomía y Accesorios los desarrollan aparte. Al cruzarlos se podía acabar con dos colores de pelo o dos conjuntos en el mismo prompt.
+
+`data/families.js` agrupa las secciones que son **el mismo concepto** y `assets/js/core/families.js` lo aplica en tres sitios:
+
+- **Al elegir** (`store.toggleOption`): se vacían las secciones hermanas de la familia, estén en el generador que estén, y la interfaz avisa de qué se quitó y por qué.
+- **Al entrar una selección ya hecha** (`enforce`, usado por enlaces compartidos, guardados, recetas y `localStorage`): se queda la primera sección de cada familia y se descartan las demás.
+- **En «Aleatorio»**: como pasa por `enforce`, nunca deja dos secciones del mismo concepto.
+
+La sección lo anuncia en su cabecera («Mismo concepto (color del pelo) que Peinados…»). Una sección solo puede estar en una familia y `npm run validate` falla si alguna no existe o está repetida. No se meten en la misma familia dos secciones complementarias (tipo de prenda y color de esa prenda), solo las que compiten por el mismo eje.
+
 ## Páginas y SEO
 
 Las páginas son HTML generado (`scripts/pages/*.mjs`) con `<title>`, descripción, canonical, Open Graph y JSON-LD propios; el contenido interactivo lo monta el JavaScript. Cada generador tiene su URL en español (`/generadores/mujer/`). Cabecera y pie salen de una única plantilla (`scripts/pages/layout.mjs`).

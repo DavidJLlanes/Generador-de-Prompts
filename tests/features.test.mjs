@@ -57,7 +57,8 @@ test('conflictos: elegir una idea vacía motivo/ambiente/detalle y se avisa de q
   store.toggleOption('scenarios', sec('scenarios', 'motivo'), opt('scenarios', 'motivo').id, sc);
   store.toggleOption('scenarios', sec('scenarios', 'estilo'), opt('scenarios', 'estilo').id, sc);
   const cleared = store.toggleOption('scenarios', sec('scenarios', 'ideas'), opt('scenarios', 'ideas').id, sc);
-  assert.deepEqual(cleared, ['motivo']);
+  assert.deepEqual(cleared.map(x => x.section), ['motivo']);
+  assert.ok(cleared.every(x => x.kind === 'conflict'));
   assert.deepEqual(store.selectedIds('scenarios', 'motivo'), []);
   assert.equal(store.selectedIds('scenarios', 'estilo').length, 1, 'lo que no choca se conserva');
   assert.equal(store.selectedIds('scenarios', 'ideas').length, 1);

@@ -52,6 +52,8 @@
 .opt-section__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: var(--space-4) 0; }
 .opt-section__meta:empty { display: none; }
 .opt-section__note { max-width: 42rem; color: var(--text-3); font-size: var(--fs-sm); }
+.opt-section__family { max-width: 46rem; color: var(--text-3); font-size: var(--fs-xs); }
+.opt-section__family::before { content: "⇄ "; color: var(--accent); }
 .opt-section.has-selection .opt-section__title { color: var(--accent-2); }
 
 .opt-group { margin-top: var(--space-5); }

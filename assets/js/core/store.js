@@ -20,6 +20,7 @@
 import { loadJSON, saveJSON } from './storage.js';
 import { FORMATS as FORMAT_LIST } from './formats/index.js';
 import { conflictsOf } from './conflicts.js';
+import { clearFamily } from './families.js';
 import { enforce, reasonBlocked } from './exclusions.js';
 
 const KEY = 'lv:v1:workspace';
@@ -81,10 +82,11 @@ export const store = {
   subscribe(fn) { subs.add(fn); return () => subs.delete(fn); },
 
   /**
-   * Cambia (o quita) una opción respetando el modo de la sección (single / multi) y los conflictos del
-   * dominio. Devuelve los ids de las secciones que se vaciaron por ser incompatibles (para avisar al usuario).
-   * @param {object} [domain]  dominio cargado; si se pasa, se aplican sus `conflicts`
-   * @returns {string[]}
+   * Cambia (o quita) una opción respetando el modo de la sección (single / multi), los conflictos del
+   * dominio y las familias de secciones (data/families.js).
+   * @param {object} [domain]  dominio cargado; si se pasa, se aplican sus `conflicts` y sus títulos
+   * @returns {{domain: string, section: string, label: string|null, kind: 'family'|'conflict', title: string|null}[]}
+   *          secciones que se vaciaron, para avisar al usuario
    */
   toggleOption(domainId, section, optionId, domain) {
     const cur = state.sel[domainId]?.[section.id] || [];
@@ -93,14 +95,27 @@ export const store = {
     const next = !adding
       ? cur.filter(x => x !== optionId)
       : section.mode === 'single' ? [optionId] : [...cur, optionId];
-    const cleared = adding ? conflictsOf(domain, section.id).filter(id => state.sel[domainId]?.[id]?.length) : [];
-    const sel = { ...state.sel };
+
+    // Lo que deja de tener sentido al añadir: secciones en conflicto y hermanas de la misma familia.
+    const clashes = adding ? conflictsOf(domain, section.id).filter(id => state.sel[domainId]?.[id]?.length) : [];
+    const fam = adding ? clearFamily(state.sel, domainId, section.id) : { sel: state.sel, removed: [] };
+    const cleared = [
+      ...fam.removed.map(x => ({ ...x, kind: 'family' })),
+      ...clashes.map(id => ({ domain: domainId, section: id, label: null, kind: 'conflict' })),
+    ].filter((x, i, all) => all.findIndex(y => y.domain === x.domain && y.section === x.section) === i);
+
+    const sel = { ...fam.sel };
     const dom = { ...(sel[domainId] || {}) };
     if (next.length) dom[section.id] = next; else delete dom[section.id];
-    cleared.forEach(id => delete dom[id]);
+    clashes.forEach(id => delete dom[id]);
     if (Object.keys(dom).length) sel[domainId] = dom; else delete sel[domainId];
     commit({ ...state, sel });
-    return cleared;
+
+    // El título solo se conoce para las secciones del generador abierto; el resto, por el nombre del generador.
+    return cleared.map(x => ({
+      ...x,
+      title: x.domain === domainId ? (domain?._secById?.get(x.section)?.title || null) : null,
+    }));
   },
 
   removeOption(domainId, sectionId, optionId) {

@@ -76,7 +76,22 @@ No hay que tocar esos archivos a mano para corregir textos sueltos: el de vestua
 
 Si una opción con miniatura no encuentra su archivo, fallan `npm run validate` y los tests.
 
-## 8. Renombrar o borrar
+## 8. Añadir una familia (secciones que describen lo mismo)
+
+Si dos secciones de generadores distintos compiten por el mismo rasgo —dos colores de pelo, dos conjuntos, dos tipos de plano—, agrúpalas en `data/families.js`:
+
+```js
+{ id: 'pelo-color', label: 'color del pelo', sections: ['woman/colorpelo', 'man/colorpelo', 'girl/hair-color', 'hairstyles/color-principal'] },
+```
+
+Con eso, elegir en una quita lo de las demás y el aviso lo explica. Reglas:
+
+- `sections` va como `generador/sección`; una sección solo puede estar en **una** familia.
+- Solo lo que es **el mismo eje**. «Tipo de prenda» y «color de la prenda» son complementarios: no van juntos.
+- Añadir una sección nueva a una familia no rompe selecciones guardadas.
+- `npm run check` valida que las secciones existen y que no están repetidas.
+
+## 9. Renombrar o borrar
 
 - **Nunca cambies el `id` de una opción o sección publicada**: rompería enlaces compartidos y selecciones guardadas (los ids desconocidos se ignoran sin error, pero se pierde la selección).
 - Para retirar una opción, bórrala. Para corregir su texto, edita `es`, `en` o `rich`.

@@ -12,9 +12,11 @@
 import { $, h } from './dom.js';
 import { icon } from './icons.js';
 import { store } from '../core/store.js';
+import { domainMeta } from '../core/registry.js';
 import { loadJSON, saveJSON } from '../core/storage.js';
 import { toast } from './toast.js';
 import { blockedChecker } from '../core/exclusions.js';
+import { familyOf, familySiblings } from '../core/families.js';
 import { esc, fold, debounce, fmtNumber, matchesAll } from '../core/util.js';
 
 const MODE_LABEL = { single: 'Elige una', multi: 'Selección múltiple' };
@@ -51,6 +53,14 @@ function sectionHTML(domain, sec) {
   const thumbs = sec.options.some(o => o.thumb) ? ' opt-section--thumbs' : '';
   const neg = sec.polarity === 'negative';
   const tag = `<span class="tag${neg ? ' tag--neg' : ''}">${neg ? 'Evitar' : MODE_LABEL[sec.mode]}</span>`;
+  /* La sección comparte concepto con otras: aviso de que elegir aquí sustituye a lo de allí (data/families.js) */
+  const family = familyOf(domain.id, sec.id);
+  const others = family
+    ? [...new Set(familySiblings(domain.id, sec.id).filter(x => x.domain !== domain.id).map(x => domainMeta(x.domain)?.short || x.domain))]
+    : [];
+  const familyNote = others.length
+    ? `<p class="opt-section__family">Mismo concepto (${esc(family.label)}) que ${esc(others.join(', '))}: lo que elijas aquí sustituye a lo elegido allí.</p>`
+    : '';
   return `<section class="opt-section${cards}${thumbs}" id="sec-${sec.id}" data-section="${sec.id}">
     <header class="opt-section__head">
       <h2 class="opt-section__heading">
@@ -68,7 +78,7 @@ function sectionHTML(domain, sec) {
       </div>
     </header>
     <div class="opt-section__panel" id="panel-${sec.id}" role="region" aria-label="${esc(sec.title)}" hidden>
-      <div class="opt-section__meta">${neg ? '' : tag}${sec.note ? `<p class="opt-section__note">${esc(sec.note)}</p>` : ''}</div>
+      <div class="opt-section__meta">${neg ? '' : tag}${familyNote}${sec.note ? `<p class="opt-section__note">${esc(sec.note)}</p>` : ''}</div>
       <p class="opt-section__block" data-block role="status" hidden></p>
       ${body}
     </div>
@@ -166,8 +176,15 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     if (opt) {
       const cleared = store.toggleOption(domain.id, sec, opt.dataset.opt, domain);
       if (cleared.length) {
-        const names = cleared.map(id => `«${domain._secById.get(id)?.title || id}»`).join(', ');
-        toast(`Se quitó ${names}: no combina con «${sec.title}»`);
+        const name = x => `«${x.title || domainMeta(x.domain)?.short || x.domain}»${x.label && !x.title ? ` (${x.label})` : ''}`;
+        const fam = cleared.filter(x => x.kind === 'family');
+        const con = cleared.filter(x => x.kind === 'conflict');
+        const list = arr => arr.map(name).join(', ');
+        toast(fam.length && !con.length
+          ? `Se quitó ${list(fam)}: describe lo mismo que «${sec.title}»`
+          : con.length && !fam.length
+            ? `Se quitó ${list(con)}: no combina con «${sec.title}»`
+            : `Se quitó ${list(cleared)}: no puede convivir con «${sec.title}»`);
       }
       return;
     }

@@ -1,4 +1,4 @@
-﻿// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
+// FUENTE DE DATOS de este generador. Edítala a mano para añadir o cambiar opciones.
 // Esquema y reglas: docs/DATA-SCHEMA.md · Validar con: npm run validate · Reconstruir índices: npm run build
 export default {
   "schema": 1,

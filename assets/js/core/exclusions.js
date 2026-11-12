@@ -13,6 +13,7 @@
  */
 import { RULES } from '../../../data/exclusions.js';
 import TAG_INDEX from '../../../data/tag-index.js';
+import { pruneFamilies } from './families.js';
 
 const TAGS = new Map(Object.entries(TAG_INDEX).map(([t, keys]) => [t, new Set(keys)]));
 const kOf = (d, s, o) => `${d}/${s}/${o}`;
@@ -88,6 +89,10 @@ export function enforce(sel, { adult = true } = {}) {
     drop.forEach(([d, s, o]) => removed.push({ domain: d, section: s, option: o, rule: r.id }));
     cur = next;
   }
+  // Un concepto, una elección: de cada familia de secciones (data/families.js) sobrevive la primera.
+  const fam = pruneFamilies(cur);
+  cur = fam.sel;
+  removed.push(...fam.removed);
   return { sel: cur, removed };
 }
 
