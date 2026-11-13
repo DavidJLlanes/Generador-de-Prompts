@@ -10,6 +10,7 @@
 - Equivalencias para expresiones habituales en español, como «sonriendo», «está lloviendo» o «melena», acotadas a sus secciones correspondientes.
 - Resultados del asistente sin preselección: la persona marca solo las coincidencias que quiere añadir.
 - Revisión del prompt con aviso de texto libre que repite literalmente una opción ya seleccionada.
+- Aviso de acumulación con recuento por ranura para que se puedan revisar selecciones redundantes.
 - Modo rápido compacto para pantallas pequeñas.
 - Revisión visual del modo rápido en móvil y escritorio.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
