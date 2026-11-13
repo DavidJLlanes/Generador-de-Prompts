@@ -155,11 +155,11 @@ export function openIdeaInterpreter() {
       if (!matches.length) { status.textContent = 'No encontré opciones claras. Prueba con palabras más concretas o abre el catálogo.'; return; }
       status.textContent = `He encontrado ${matches.length} coincidencias${terms.length > original.length ? ' con equivalencias' : ''}${corrected ? ' y una posible corrección ortográfica' : ''}. Marca las que encajan; el texto original no se añade al prompt.`;
       matches.forEach((m, i) => {
-        const checkbox = h('input', { type: 'checkbox', checked: i < 8, dataset: { match: String(i) } });
+        const checkbox = h('input', { type: 'checkbox', dataset: { match: String(i) }, onChange: () => { apply.disabled = !results.querySelector('input:checked'); } });
         const label = h('label', { class: 'idea-match' }, checkbox, h('span', {}, h('b', {}, m.label), h('small', {}, `${m.short} · ${m.title}`)));
         results.append(label);
       });
-      apply.disabled = !matches.length;
+      apply.disabled = true;
     } catch (err) {
       status.textContent = 'No se pudo consultar el catálogo. Puedes abrirlo directamente.';
     } finally { find.disabled = false; }
