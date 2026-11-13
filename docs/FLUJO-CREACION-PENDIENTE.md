@@ -7,6 +7,7 @@
 - Perfiles de salida y revisión estructural del prompt.
 - Deshacer cambios recientes.
 - Búsqueda del catálogo con sinónimos frecuentes.
+- Revisión del prompt con aviso de texto libre que repite literalmente una opción ya seleccionada.
 - Modo rápido compacto para pantallas pequeñas.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
 
@@ -19,4 +20,4 @@
 - Si se quiere comprensión abierta, diseñar y conectar un servicio de IA con consentimiento explícito y gestión segura de claves. No incluir claves privadas en el JavaScript público.
 - Ampliar las equivalencias a partir de consultas reales y revisar casos ambiguos de corrección ortográfica.
 - Revisar visualmente el modo rápido en móvil y escritorio.
-- Considerar sugerencias para incompatibilidades y redundancias del prompt además de las comprobaciones estructurales actuales.
+- Ampliar la revisión con avisos de redundancia semántica solo cuando se puedan detectar con suficiente precisión.
