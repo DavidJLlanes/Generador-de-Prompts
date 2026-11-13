@@ -7,6 +7,7 @@
 - Perfiles de salida y revisión estructural del prompt.
 - Deshacer cambios recientes.
 - Búsqueda del catálogo con sinónimos frecuentes.
+- Resultados del asistente sin preselección: la persona marca solo las coincidencias que quiere añadir.
 - Revisión del prompt con aviso de texto libre que repite literalmente una opción ya seleccionada.
 - Modo rápido compacto para pantallas pequeñas.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
