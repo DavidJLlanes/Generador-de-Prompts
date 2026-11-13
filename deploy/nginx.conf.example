@@ -1,5 +1,7 @@
 # Añadir dentro del bloque HTTPS existente de djl.com.es.
 location = /prompt {
+    auth_basic "Lumen Vitae";
+    auth_basic_user_file /etc/nginx/.htpasswd-lumen-prompt;
     return 301 /prompt/$is_args$args;
 }
 
@@ -8,6 +10,13 @@ location ^~ /prompt/ {
     index index.html;
     try_files $uri $uri/ =404;
     error_page 404 /prompt/404.html;
+
+    # Un único acceso protege HTML, scripts, imágenes y el manifiesto.
+    auth_basic "Lumen Vitae";
+    auth_basic_user_file /etc/nginx/.htpasswd-lumen-prompt;
+
+    # Evita que navegadores o proxies reutilicen páginas protegidas sin validar el acceso.
+    add_header Cache-Control "private, no-store, no-cache, must-revalidate" always;
 
     # Protege el repositorio y los archivos de desarrollo bajo la raíz pública.
     location ~ /\. { deny all; }

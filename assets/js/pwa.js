@@ -15,11 +15,23 @@ if (window.matchMedia('(pointer: coarse)').matches) {
   }
 }
 
-if ('serviceWorker' in navigator && window.isSecureContext) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register(sitePath('/service-worker.js'), { scope: sitePath('/') }).catch(error => {
-      console.error('No se pudo registrar el service worker de Lumen Vitae:', error);
-    });
+// Esta instalación requiere autenticación de servidor. El service worker anterior
+// podía servir páginas en caché sin volver a validar la contraseña en Nginx.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations
+        .filter(registration => registration.scope.startsWith(new URL(sitePath('/'), location.origin).href))
+        .map(registration => registration.unregister()));
+
+      const cacheNames = await caches.keys();
+      await Promise.all(cacheNames
+        .filter(name => name.startsWith('lumen-vitae:'))
+        .map(name => caches.delete(name)));
+    } catch (error) {
+      console.error('No se pudo limpiar la caché de la app:', error);
+    }
   }, { once: true });
 }
 
