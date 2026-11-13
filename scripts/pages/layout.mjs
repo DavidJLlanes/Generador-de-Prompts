@@ -26,6 +26,7 @@ function header() {
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open>${icon('layers', 16)}<span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
+      <button type="button" class="btn btn--outline btn--sm install-button" data-install-app hidden aria-label="Instalar Lumen Vitae" title="Instalar Lumen Vitae">${icon('download', 16)}<span class="btn__label">Instalar</span></button>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir el menú">${icon('menu', 20)}</button>
     </div>
   </div>
@@ -73,6 +74,11 @@ export function layout({ path, title, description, main, script, bodyData = {}, 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="application-name" content="${SITE.name}">
+<meta name="apple-mobile-web-app-title" content="Lumen Vitae">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="${SITE.themeColor}">
 <meta name="robots" content="${noindex ? 'noindex' : 'index, follow, max-image-preview:large'}">
 <link rel="canonical" href="${url}">
@@ -88,9 +94,11 @@ ${ogFile ? `<meta property="og:image:width" content="1200">
 ` : ''}<meta property="og:image:alt" content="${esc(title)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${image}">
-<link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
-<link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
-<link rel="apple-touch-icon" href="/assets/img/180.webp">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/icon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -103,6 +111,16 @@ ${header()}
 ${main}
 </main>
 ${footer(domains)}
+<dialog class="install-help" data-install-help aria-labelledby="install-help-title">
+  <div class="install-help__inner">
+    <button type="button" class="install-help__close" data-install-close aria-label="Cerrar">${icon('x', 20)}</button>
+    <img class="install-help__icon" src="/assets/img/icon-192.png" width="64" height="64" alt="">
+    <h2 id="install-help-title">Instala Lumen Vitae</h2>
+    <p data-install-instructions></p>
+    <button type="button" class="btn btn--primary" data-install-close>Entendido</button>
+  </div>
+</dialog>
+<script type="module" src="/assets/js/pwa.js"></script>
 ${script ? `<script type="module" src="/assets/js/pages/${script}.js"></script>` : ''}
 </body>
 </html>

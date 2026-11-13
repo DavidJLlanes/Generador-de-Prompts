@@ -127,6 +127,14 @@ export function homePage({ domains, totals }) {
     title: 'Lumen Vitae · Generador de prompts para imágenes con IA',
     description: `Construye prompts de máxima calidad para imágenes con IA: ${totals.domains} generadores, más de ${fmt(Math.floor(totals.options / 1000) * 1000)} opciones y un constructor que cruza personajes, escenarios, clima y fotografía. Interfaz en español, prompts en inglés.`,
     main, script: 'home', domains, og: 'home',
-    jsonld: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: 'https://lumenvitae.es/', inLanguage: 'es' }],
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: 'https://lumenvitae.es/', inLanguage: 'es' },
+      {
+        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Lumen Vitae', url: 'https://lumenvitae.es/',
+        applicationCategory: 'DesignApplication', operatingSystem: 'Web, iOS, Android', inLanguage: 'es', isAccessibleForFree: true,
+        description: 'Constructor modular de prompts para imágenes con IA, con generadores de personajes, escenas, fotografía y estilo.',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, image: 'https://lumenvitae.es/assets/img/og/home.webp',
+      },
+    ],
   });
 }

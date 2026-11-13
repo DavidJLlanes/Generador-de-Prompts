@@ -38,8 +38,12 @@ export async function buildPages({ domains, totals, all, write }) {
   write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE.origin}/sitemap.xml\n`);
   write('manifest.webmanifest', JSON.stringify({
     name: 'Lumen Vitae · Generador de prompts', short_name: 'Lumen Vitae', description: 'Constructor modular de prompts para imágenes con IA.',
-    lang: 'es', start_url: '/', scope: '/', display: 'standalone', background_color: SITE.themeColor, theme_color: SITE.themeColor,
-    icons: [{ src: '/assets/img/192.webp', sizes: '192x192', type: 'image/webp', purpose: 'any' }, { src: '/assets/img/512.webp', sizes: '512x512', type: 'image/webp', purpose: 'any maskable' }],
+    id: '/', lang: 'es', start_url: '/', scope: '/', display: 'standalone', background_color: SITE.themeColor, theme_color: SITE.themeColor,
+    icons: [
+      { src: '/assets/img/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: '/assets/img/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+    ],
   }, null, 2) + '\n');
   console.log(`páginas: ${urls.length} indexables + 404 · sitemap, robots y manifiesto`);
 }

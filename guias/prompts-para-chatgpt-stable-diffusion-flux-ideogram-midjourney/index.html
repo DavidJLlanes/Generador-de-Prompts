@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia | Lumen Vitae</title>
 <meta name="description" content="Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Lumen Vitae usar en cada caso.">
+<meta name="application-name" content="Lumen Vitae">
+<meta name="apple-mobile-web-app-title" content="Lumen Vitae">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#12100e">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://lumenvitae.es/guias/prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney/">
@@ -20,9 +25,11 @@
 <meta property="og:image:alt" content="Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia | Lumen Vitae">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lumenvitae.es/assets/img/og/guia-prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney.webp">
-<link rel="icon" type="image/webp" sizes="32x32" href="/assets/img/32.webp">
-<link rel="icon" type="image/webp" sizes="64x64" href="/assets/img/64.webp">
-<link rel="apple-touch-icon" href="/assets/img/180.webp">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/icon-64.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preload" href="/assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,6 +50,7 @@
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 3 7 4-7 4-7-4 7-4Z"/><path d="m3 10.5 7 4 7-4"/><path d="m3 13.5 7 4 7-4"/></svg><span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
+      <button type="button" class="btn btn--outline btn--sm install-button" data-install-app hidden aria-label="Instalar Lumen Vitae" title="Instalar Lumen Vitae"><svg class="icon" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 3.5v9m-3.5-3.5 3.5 3.5 3.5-3.5M4 16.5h12"/></svg><span class="btn__label">Instalar</span></button>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir el menú"><svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 6h13M3.5 10h13M3.5 14h13"/></svg></button>
     </div>
   </div>
@@ -105,6 +113,16 @@
   </div>
   <div class="container footer-base"><span>© 2026 Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
 </footer>
+<dialog class="install-help" data-install-help aria-labelledby="install-help-title">
+  <div class="install-help__inner">
+    <button type="button" class="install-help__close" data-install-close aria-label="Cerrar"><svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5.5 5.5 9 9m0-9-9 9"/></svg></button>
+    <img class="install-help__icon" src="/assets/img/icon-192.png" width="64" height="64" alt="">
+    <h2 id="install-help-title">Instala Lumen Vitae</h2>
+    <p data-install-instructions></p>
+    <button type="button" class="btn btn--primary" data-install-close>Entendido</button>
+  </div>
+</dialog>
+<script type="module" src="/assets/js/pwa.js"></script>
 <script type="module" src="/assets/js/pages/static.js"></script>
 </body>
 </html>
