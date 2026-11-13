@@ -5,7 +5,7 @@ import { store } from '../core/store.js';
 import { reasonBlocked } from '../core/exclusions.js';
 import { fold } from '../core/util.js';
 import { toast } from './toast.js';
-import { getAIConfig, getAIProvider, hasAIAccessToken, refineIdeaWithAI, setAIProvider } from '../core/ai-service.js';
+import { getAIConfig, getAIProvider, refineIdeaWithAI, setAIProvider } from '../core/ai-service.js';
 import { openAISettings } from './ai-settings.js';
 
 const STOP = new Set('una uno un el la las los de del en con y o que para por quiero crear imagen foto fotografía retrato escena estilo aspecto como'.split(' '));
@@ -183,9 +183,8 @@ export function openIdeaInterpreter() {
         try {
           const config = await getAIConfig();
           const providerId = config.providers.some(p => p.id === getAIProvider()) ? getAIProvider() : config.providers[0]?.id;
-          if (!providerId) throw new Error('El servidor no tiene proveedores de IA configurados.');
+          if (!providerId) throw new Error('Configura tu proveedor y clave API en «Conectar una IA».');
           if (getAIProvider() !== providerId) setAIProvider(providerId);
-          if (!hasAIAccessToken()) throw new Error('Abre «Configurar conexión IA» e introduce el token de acceso del proxy.');
           const candidates = ranked.slice(0, 40).map(m => ({ id: m.matchKey, label: m.label, section: m.title, domain: m.short }));
           const ai = await refineIdeaWithAI(query, candidates);
           const byKey = new Map(ranked.map(m => [m.matchKey, m]));

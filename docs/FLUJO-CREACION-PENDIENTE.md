@@ -24,5 +24,5 @@
 - Las equivalencias del asistente se limitan a sus secciones de intención y se respeta el género indicado, para evitar resultados cruzados como sugerencias masculinas en una idea de mujer.
 - La corrección de erratas exige una coincidencia única y limita la distancia permitida según la longitud de la palabra; también descarta opciones de rostro cuyo rótulo indique explícitamente el género contrario.
 - Las sugerencias incompatibles se omiten o ajustan al aplicarlas, con aviso; la revisión del prompt avisa si se acumulan demasiadas opciones en una ranura.
-- Las equivalencias locales siguen ampliándose a partir de consultas reales. El modo IA aporta interpretación contextual cuando se configura el proxy.
-- Configurar en el VPS el token de acceso y las claves/modelos de los proveedores que se vayan a usar; véase `docs/DEPLOY.md`.
+- Las equivalencias locales siguen ampliándose a partir de consultas reales. El modo IA aporta interpretación contextual cuando se configura una clave desde la web.
+- Conectar el proveedor y modelo desde «Configurar conexión IA» en el navegador donde se vaya a utilizar.

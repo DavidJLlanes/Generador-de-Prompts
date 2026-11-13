@@ -1,6 +1,6 @@
 # Despliegue en un VPS (nginx)
 
-La web base es estática y no necesita un servidor de aplicación. La integración IA es opcional y añade un pequeño servicio Node protegido, que mantiene las claves de proveedor fuera del navegador.
+La web es estática y no necesita un servidor de aplicación. La integración IA es opcional y se conecta desde los ajustes de la propia web.
 
 ## 1. Preparar el servidor (una vez)
 
@@ -17,7 +17,7 @@ Crea el archivo de cabeceras de seguridad que incluye la configuración (**sin �
 ```bash
 sudo mkdir -p /etc/nginx/snippets
 sudo tee /etc/nginx/snippets/lumenvitae-security.conf > /dev/null <<'EOF'
-add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://openrouter.ai https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
 add_header X-Content-Type-Options "nosniff" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
@@ -38,39 +38,13 @@ HTTPS (Let's Encrypt):
 sudo certbot --nginx -d lumenvitae.es -d www.lumenvitae.es
 ```
 
-## Configurar IA (opcional)
+## Conectar una IA (opcional)
 
-La IA se puede configurar con OpenRouter, OpenAI, Anthropic Claude o Google Gemini. Usa solo los proveedores que quieras: cada uno necesita su clave y un ID de modelo válido en tu cuenta. Las claves se guardan en `/etc/lumenvitae-ai.env`, nunca en Git ni en el navegador.
+No requiere instalar nada en el VPS. Abre la web, pulsa «Configurar conexión IA», elige OpenRouter, OpenAI, Anthropic Claude o Google Gemini, pega tu clave, carga los modelos disponibles y guarda la configuración. También puedes escribir manualmente el ID del modelo.
 
-1. Comprueba que hay Node.js 20 o superior (`node --version`). Ajusta `ExecStart` de la unidad si `command -v node` no devuelve `/usr/bin/node`.
-2. Crea el archivo de entorno y un token aleatorio para que la web pueda autenticarse con su propio servicio:
+La clave queda guardada en el almacenamiento local del navegador que uses y las solicitudes van directamente al proveedor. Si limpias los datos del navegador o cambias de dispositivo, tendrás que configurarla otra vez. Usa un dispositivo de confianza y limita el gasto de la clave desde la cuenta del proveedor. No guardes claves en Git ni las compartas.
 
-```bash
-sudo install -m 600 -o root -g root /var/www/lumenvitae.es/deploy/lumenvitae-ai.env.example /etc/lumenvitae-ai.env
-openssl rand -hex 32
-sudo nano /etc/lumenvitae-ai.env
-```
-
-Pega el resultado de `openssl rand -hex 32` como `AI_ACCESS_TOKEN`. Completa solo los proveedores que vayas a usar, por ejemplo `OPENROUTER_API_KEY` y `OPENROUTER_MODEL`. Mantén `AI_ALLOWED_ORIGIN=https://lumenvitae.es`.
-
-3. Instala y arranca el servicio:
-
-```bash
-sudo cp /var/www/lumenvitae.es/deploy/lumenvitae-ai.service /etc/systemd/system/lumenvitae-ai.service
-sudo systemctl daemon-reload
-sudo systemctl enable --now lumenvitae-ai
-sudo systemctl status lumenvitae-ai --no-pager
-```
-
-4. Añade el bloque `location ^~ /api/ai/` de `deploy/nginx.conf.example` al bloque HTTPS de `lumenvitae.es`. No reemplaces la configuración que Certbot ya modificó. Después:
-
-```bash
-sudo nginx -t && sudo systemctl reload nginx
-```
-
-La web mostrará los proveedores/modelos configurados. Introduce el `AI_ACCESS_TOKEN` en «Configurar conexión IA»; se mantiene solo en la memoria de la pestaña y tendrás que volver a introducirlo tras recargar.
-
-El backend limita tamaño y frecuencia, valida el origen y las respuestas del modelo, y no escribe claves ni textos de prompt en sus logs. El proveedor elegido recibe la descripción o selección que se envía y puede cobrarla o tratarla según sus condiciones. En el código de ejemplo el proxy atiende solo en `127.0.0.1`.
+Si la web ya está publicada con una Content Security Policy antigua que solo permite `connect-src 'self'`, actualiza esa línea una sola vez con la allowlist incluida en `deploy/nginx.conf.example` y recarga nginx. No hace falta crear un `.env`, instalar un proceso Node ni configurar las claves en el servidor.
 
 ## 2. Publicar cambios
 
@@ -87,7 +61,7 @@ En el servidor:
 cd /var/www/lumenvitae.es && git pull
 ```
 
-No hay paso de compilación en el servidor: los archivos generados (catálogo, páginas, sitemap) ya van en el repositorio. Si cambia el proxy IA, reinícialo con `sudo systemctl restart lumenvitae-ai`.
+No hay paso de compilación en el servidor: los archivos generados (catálogo, páginas, sitemap) ya van en el repositorio.
 
 ## 3. Qué hace la configuración de nginx
 
@@ -97,7 +71,7 @@ No hay paso de compilación en el servidor: los archivos generados (catálogo, p
 - Caché: HTML y datos se revalidan siempre; fuentes e imágenes se cachean un año.
 - Cabeceras de seguridad (`Content-Security-Policy` estricta, `X-Content-Type-Options`, `Referrer-Policy`). Son las mismas que envía `npm run dev`, así que cualquier incumplimiento aparece en desarrollo.
 - Redirección de `www` y de HTTP a HTTPS.
-- Proxy same-origin a `lumenvitae-ai.service`; el servicio solo hace falta si activas IA.
+- La Content Security Policy permite conexiones directas a los proveedores IA compatibles.
 
 ## 4. Comprobaciones tras publicar
 

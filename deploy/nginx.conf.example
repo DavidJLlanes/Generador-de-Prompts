@@ -18,21 +18,6 @@ server {
     root /var/www/lumenvitae.es;
     index index.html;
 
-    # --- Proxy del servicio IA (actívalo después de instalar lumenvitae-ai.service) ---
-    # El backend escucha solo en loopback; las claves de proveedor nunca llegan al navegador.
-    location ^~ /api/ai/ {
-        client_max_body_size 96k;
-        proxy_pass http://127.0.0.1:8787;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_connect_timeout 5s;
-        proxy_read_timeout 55s;
-        proxy_send_timeout 55s;
-    }
-
     # --- URLs limpias y 404 propio ---
     location / {
         try_files $uri $uri/ =404;
@@ -75,7 +60,7 @@ server {
 # /etc/nginx/snippets/lumenvitae-security.conf  (crear este archivo con el contenido siguiente)
 # Son las mismas cabeceras que envía `npm run dev`, así que cualquier incumplimiento aparece en desarrollo.
 #
-#   add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
+#   add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://openrouter.ai https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com; base-uri 'self'; form-action 'self'; frame-ancestors 'self'" always;
 #   add_header X-Content-Type-Options "nosniff" always;
 #   add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 #   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;

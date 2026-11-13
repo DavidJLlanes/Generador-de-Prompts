@@ -15,7 +15,7 @@ import { fmtNumber, debounce } from '../core/util.js';
 import { copyText } from './clipboard.js';
 import { openLibrary } from './library-dialog.js';
 import { toast } from './toast.js';
-import { getAIConfig, getAIProvider, hasAIAccessToken, reviewSelectionWithAI, setAIProvider } from '../core/ai-service.js';
+import { getAIConfig, getAIProvider, reviewSelectionWithAI, setAIProvider } from '../core/ai-service.js';
 import { openAISettings } from './ai-settings.js';
 
 function aspectSelect() {
@@ -68,9 +68,8 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       label: p.es || 'Texto libre', meaning: (p.custom ? p.text : p.short || p.text || '').slice(0, 240), section: p.section, domain: p.domain,
     }));
     if (selected.length < 2) return;
-    if (!hasAIAccessToken()) { openAISettings(); return; }
     const providerId = aiProviders.some(p => p.id === getAIProvider()) ? getAIProvider() : aiProviders[0]?.id;
-    if (!providerId) { aiReviewStatus.textContent = 'Configura un proveedor de IA en el servidor.'; return; }
+    if (!providerId) { openAISettings(); return; }
     if (getAIProvider() !== providerId) setAIProvider(providerId);
     aiReviewButton.disabled = true;
     aiReviewStatus.textContent = `Revisando ${selected.length} selecciones con ${aiProviders.find(p => p.id === providerId)?.label || 'IA'}…`;
@@ -216,7 +215,9 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     aiReviewButton.hidden = false;
   }
 
-  getAIConfig().then(config => { aiProviders = config.providers || []; render(live.get()); }).catch(() => {});
+  const refreshAI = () => getAIConfig().then(config => { aiProviders = config.providers || []; render(live.get()); }).catch(() => {});
+  refreshAI();
+  window.addEventListener('lumen-ai-config-change', refreshAI);
   const off = live.subscribe(render);
-  return { el, destroy: off };
+  return { el, destroy: () => { off(); window.removeEventListener('lumen-ai-config-change', refreshAI); } };
 }
