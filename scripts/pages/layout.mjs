@@ -63,15 +63,19 @@ function footer(domains) {
  * @param {string} [p.og]           nombre de la imagen social en assets/img/og/ (sin extensión); si no existe, se usa la genérica
  */
 export function layout({ path, title, description, main, script, bodyData = {}, jsonld = [], domains, noindex = false, og = '' }) {
-  const ogFile = og && existsSync(`${ROOT}/assets/img/og/${og}.webp`);
-  const image = `${SITE.origin}${ogFile ? `/assets/img/og/${og}.webp` : '/assets/img/og-image.webp'}`;
+  const ogJpeg = og && existsSync(`${ROOT}/assets/img/og/${og}.jpg`);
+  const ogWebp = og && existsSync(`${ROOT}/assets/img/og/${og}.webp`);
+  const ogFile = ogJpeg || ogWebp;
+  const ogPath = ogJpeg ? `/assets/img/og/${og}.jpg` : ogWebp ? `/assets/img/og/${og}.webp` : '/assets/img/og-image.webp';
+  const image = `${SITE.origin}${ogPath}`;
+  const imageType = ogJpeg ? 'image/jpeg' : 'image/webp';
   const url = SITE.origin + path;
   const data = Object.entries(bodyData).map(([k, v]) => ` data-${k}="${esc(v)}"`).join('');
   return `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="application-name" content="${SITE.name}">
@@ -89,6 +93,7 @@ export function layout({ path, title, description, main, script, bodyData = {}, 
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${image}">
+<meta property="og:image:type" content="${imageType}">
 ${ogFile ? `<meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 ` : ''}<meta property="og:image:alt" content="${esc(title)}">

@@ -8,6 +8,12 @@ const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
 const isAndroid = /android/i.test(navigator.userAgent);
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 
+if (window.matchMedia('(pointer: coarse)').matches) {
+  for (const type of ['gesturestart', 'gesturechange']) {
+    document.addEventListener(type, event => event.preventDefault(), { passive: false });
+  }
+}
+
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).catch(error => {
