@@ -16,6 +16,16 @@ const hitsList = $('[data-hits-list]');
 const hitsCount = $('[data-hits-count]');
 let role = '';
 let query = '';
+// Alias de intención para las búsquedas habituales: una consulta puede encontrar etiquetas
+// que usan otra palabra (p. ej. «pelo» también encuentra «cabello» y «peinado»).
+const INTENTS = {
+  pelo: 'cabello peinado peinados', cabello: 'pelo peinado peinados', peinado: 'pelo cabello peinados',
+  cara: 'rostro cara facial', rostro: 'cara facial', ojos: 'ojo mirada iris', labios: 'labio boca maquillaje',
+  fondo: 'escenario paisaje interior exterior', lugar: 'escenario paisaje localización', tiempo: 'clima atmósfera lluvia nieve niebla',
+  luz: 'iluminación iluminación luz', ropa: 'vestuario ropa prendas', cámara: 'fotografía cámara objetivo lente',
+  tristeza: 'triste melancólica llorando', alegría: 'feliz alegre sonrisa', móvil: 'teléfono wallpaper fondo pantalla',
+};
+const termsFor = q => [q, ...(INTENTS[q] || '').split(' ').filter(Boolean)];
 
 /* --- buscador global de opciones: el índice se baja solo la primera vez que se busca --- */
 const MAX_HITS = 40;
@@ -35,10 +45,11 @@ async function renderHits() {
   const idx = await loadIndex();
   if (!idx || q !== query) return;
   const found = [];
+  const terms = termsFor(q);
   let total = 0;
   for (const row of idx.rows) {
     for (let i = 0; i < row.labels.length; i++) {
-      if (!matchesAll(row.folded[i], q)) continue;
+      if (!terms.some(term => matchesAll(row.folded[i], term))) continue;
       total++;
       if (found.length < MAX_HITS * 4) found.push({ row, label: row.labels[i], start: row.folded[i].startsWith(q) ? 0 : 1 });
     }
@@ -64,7 +75,8 @@ async function renderHits() {
 }
 
 function apply() {
-  cards.forEach(c => { c.hidden = !((!role || c.dataset.role === role) && (!query || matchesAll(c.dataset.s, query))); });
+  const terms = termsFor(query);
+  cards.forEach(c => { c.hidden = !((!role || c.dataset.role === role) && (!query || terms.some(term => matchesAll(c.dataset.s, term)))); });
   groups.forEach(g => { g.hidden = !g.querySelector('.card--domain:not([hidden])'); });
   const showEmpty = () => { empty.hidden = cards.some(c => !c.hidden) || hitCount > 0; };
   showEmpty();

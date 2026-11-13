@@ -1,0 +1,28 @@
+/* Flujo guiado, revisión y modo compacto del constructor */
+.quick-toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--text-2); font-size: var(--fs-sm); cursor: pointer; }
+.quick-toggle input { accent-color: var(--accent); width: 18px; height: 18px; }
+.start-dialog { width: min(620px, calc(100% - 28px)); max-width: none; padding: 0; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: 0 24px 80px #0009; }
+.start-dialog::backdrop { background: #080706c9; backdrop-filter: blur(5px); }
+.start-dialog__panel { position: relative; display: grid; gap: var(--space-3); padding: clamp(22px, 5vw, 36px); }
+.start-dialog__panel > p:not(.eyebrow) { color: var(--text-2); }
+.start-dialog__close { position: absolute; top: 18px; right: 18px; }
+.start-dialog__choices { display: grid; gap: 10px; margin-top: 8px; }
+.start-choice { display: grid; gap: 5px; padding: 16px 18px; text-align: left; text-decoration: none; color: var(--text); background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-lg); cursor: pointer; }
+.start-choice:hover, .start-choice:focus-visible { border-color: var(--accent); background: var(--accent-soft); }
+.start-choice b { font-size: 1rem; }
+.start-choice span { color: var(--text-2); font-size: var(--fs-sm); }
+.prompt-review { padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); font-size: var(--fs-xs); }
+.prompt-review:empty { display: none; }
+.prompt-review p { margin: 0; }
+.prompt-review__note { color: var(--text-2); }
+.prompt-review__ok { color: var(--accent); }
+.quick-mode .slot { padding: var(--space-3); }
+.quick-mode .slot__hint { display: none; }
+.quick-mode .slot__pills { margin-top: var(--space-2); }
+.quick-mode .constructor__board { gap: var(--space-2); }
+.prompt-profile { max-width: 220px; }
+@media (max-width: 600px) {
+  .constructor__bar > .btn { flex: 1 1 calc(50% - var(--space-2)); }
+  .quick-toggle { flex: 1 0 100%; }
+  .prompt-profile { max-width: 100%; }
+}

@@ -41,11 +41,16 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   const boostInput = h('input', { type: 'checkbox', class: 'switch__input', onChange: e => store.set({ boost: e.target.checked }) });
   const boost = h('label', { class: 'switch', title: 'Añade un acabado de máxima calidad y los negativos habituales' }, boostInput, h('span', { class: 'switch__track', 'aria-hidden': 'true' }), h('span', { class: 'switch__label' }, 'Calidad máxima'));
   const aspect = aspectSelect();
+  const profile = h('select', { class: 'select prompt-profile', 'aria-label': 'Perfil de salida', onChange: e => {
+    const profiles = { editorial: { format: 'natural', aspect: '4:5', detail: 'rich', boost: true }, phone: { format: 'text', aspect: '9:19.5', detail: 'rich', boost: true }, product: { format: 'sd', aspect: '1:1', detail: 'rich', boost: true }, social: { format: 'ideogram', aspect: '4:5', detail: 'short', boost: true }, character: { format: 'midjourney', aspect: '2:3', detail: 'rich', boost: true } };
+    if (profiles[e.target.value]) store.set(profiles[e.target.value]);
+  } }, h('option', { value: '' }, 'Perfil de salida…'), h('option', { value: 'editorial' }, 'Retrato editorial'), h('option', { value: 'phone' }, 'Wallpaper móvil'), h('option', { value: 'product' }, 'Producto cuadrado'), h('option', { value: 'social' }, 'Publicación vertical'), h('option', { value: 'character' }, 'Personaje vertical'));
 
   const hint = h('p', { class: 'prompt-panel__hint' });
   const out = h('div', { class: 'prompt-panel__out', 'aria-live': 'polite' });
   const meta = h('p', { class: 'prompt-panel__meta' });
   const summary = h('div', { class: 'prompt-panel__summary' });
+  const review = h('div', { class: 'prompt-review', role: 'status', 'aria-live': 'polite' });
 
   // Texto libre: se escribe aquí y se añade al final del prompt (mejor en inglés).
   const customBox = h('textarea', { class: 'field__textarea', rows: '2', maxlength: String(CUSTOM_MAX), placeholder: 'Añade tus propios detalles, mejor en inglés: «a small red umbrella», «cinematic fog»…', 'aria-label': 'Texto libre para añadir al prompt' });
@@ -70,14 +75,15 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.totalItems() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
   const libBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => openLibrary() }, h('span', { html: icon('bookmark') }), 'Mis prompts');
   const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
+  const undoBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.undo() }, 'Deshacer');
 
   const el = h('section', { class: `prompt-panel prompt-panel--${variant}`, 'aria-label': 'Tu prompt' },
     tabs,
-    h('div', { class: 'prompt-panel__controls' }, detail, boost, aspect),
+    h('div', { class: 'prompt-panel__controls' }, detail, boost, profile, aspect),
     customField,
     refs,
-    hint, out, meta, summary,
-    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, clearBtn));
+    hint, out, meta, review, summary,
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, undoBtn, clearBtn));
 
   function renderSummary(composed) {
     clear(summary);
@@ -105,6 +111,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     const refOk = state.format === 'text' || state.format === 'natural';
     refNote.textContent = refOk ? 'Adjunta tú la imagen en ChatGPT, Gemini u otra herramienta que admita referencias.' : 'Solo se añade en los formatos Texto y ChatGPT / Gemini.';
     aspect.value = state.aspect;
+    profile.value = '';
     if (document.activeElement !== customBox && customBox.value !== state.custom) customBox.value = state.custom;
     customCount.textContent = state.custom ? `${state.custom.length}/${CUSTOM_MAX}` : '';
     hint.textContent = FORMAT_BY_ID[state.format].hint;
@@ -130,6 +137,18 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       meta.textContent = `${fmtNumber(words)} palabras · ${fmtNumber(result.text.length)} caracteres`;
     }
     renderSummary(composed);
+    undoBtn.disabled = !store.canUndo();
+    clear(review);
+    if (!composed.empty) {
+      const hasSubject = composed.slots.some(s => s.slot === 'subject' && s.parts.some(p => !p.boost));
+      const selectedSlots = composed.slots.filter(s => s.parts.some(p => !p.boost)).length;
+      const notes = [];
+      if (!hasSubject) notes.push('Añade un sujeto para que la imagen tenga un protagonista claro.');
+      if (selectedSlots === 1) notes.push('Solo hay una categoría seleccionada; puedes enriquecerlo con escenario, pose o estilo.');
+      if (state.aspect && !['sd', 'midjourney'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
+      if (notes.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión: ', notes.join(' ')));
+      else review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
+    }
   }
 
   const off = live.subscribe(render);

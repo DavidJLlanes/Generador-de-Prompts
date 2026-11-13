@@ -63,11 +63,16 @@ function normalize(raw) {
 
 let state = normalize(loadJSON(KEY));
 const subs = new Set();
+const undoStack = [];
 let queued = false;
 
-function commit(next) {
+function commit(next, { record = true } = {}) {
   // Última barrera: ninguna vía (enlace, aleatorio, guardado, receta) puede dejar un par incompatible.
   const safe = enforce(next.sel, { adult: next.adult === true });
+  if (record && JSON.stringify(state) !== JSON.stringify(next)) {
+    undoStack.push(state);
+    if (undoStack.length > 30) undoStack.shift();
+  }
   state = safe.removed.length ? { ...next, sel: safe.sel } : next;
   saveJSON(KEY, state);
   if (queued) return;
@@ -77,6 +82,8 @@ function commit(next) {
 
 export const store = {
   get: () => state,
+  canUndo: () => undoStack.length > 0,
+  undo() { const previous = undoStack.pop(); if (previous) commit(previous, { record: false }); },
 
   /** Suscribe un callback que recibe el estado; devuelve la función para darse de baja. */
   subscribe(fn) { subs.add(fn); return () => subs.delete(fn); },
