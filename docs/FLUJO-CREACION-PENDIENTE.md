@@ -12,8 +12,9 @@
 
 ## Para una siguiente fase
 
-- Mejorar el análisis semántico: el asistente actual trabaja con palabras y sinónimos definidos en código; no comprende todavía bien paráfrasis, contexto o relaciones entre conceptos.
+- El asistente ya pondera contexto básico por sección, usa equivalencias españolas y puede corregir algunas erratas de una o dos letras cuando la coincidencia es inequívoca.
+- Mantener una comprensión abierta de paráfrasis y relaciones entre conceptos: la versión local sigue limitada al vocabulario del catálogo y a reglas explícitas.
 - Si se quiere comprensión abierta, diseñar y conectar un servicio de IA con consentimiento explícito y gestión segura de claves. No incluir claves privadas en el JavaScript público.
-- Ampliar las equivalencias de búsqueda a partir de consultas reales y añadir soporte para errores tipográficos.
+- Ampliar las equivalencias a partir de consultas reales y revisar casos ambiguos de corrección ortográfica.
 - Revisar visualmente el asistente y el modo rápido en móvil y escritorio.
 - Considerar sugerencias para incompatibilidades y redundancias del prompt además de las comprobaciones estructurales actuales.

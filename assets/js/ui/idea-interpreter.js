@@ -8,23 +8,77 @@ import { toast } from './toast.js';
 const STOP = new Set('una uno un el la las los de del en con y o que para por quiero crear imagen foto fotografía retrato escena estilo aspecto como'.split(' '));
 const ALIASES = {
   pelirroja: 'rojo roja pelirrojo cobrizo cobre cabello pelo', pelirrojo: 'rojo roja pelirroja cobrizo cobre cabello pelo',
-  bosque: 'bosque arboles arbol árbol arboleda hayedo selva', niebla: 'niebla bruma neblina',
-  cinematografica: 'cinematografico cine pelicula película film', cinematografico: 'cinematografica cine pelicula película film',
-  mujer: 'mujer femenina', hombre: 'hombre masculino', joven: 'joven veinteañera veinteañero',
-  atardecer: 'atardecer ocaso puesta sol anochecer golden hour', amanecer: 'amanecer alba sunrise',
-  sonrisa: 'sonrisa sonriente feliz alegre', triste: 'tristeza melancolica melancólico', lluvioso: 'lluvia lluvia lluvia',
-  azul: 'azul azulada azulado', elegante: 'elegante sofisticada sofisticado', playa: 'playa costa mar arena',
-  noche: 'noche nocturno nocturna oscuridad', primerplano: 'primer plano close up rostro cara',
+  bosque: 'bosque arboles arbol arboleda hayedo selva forest', arbol: 'arboles bosque arboleda hayedo',
+  niebla: 'bruma neblina niebla', brumoso: 'niebla bruma neblina', cinematografica: 'cinematografico cine pelicula film cinematica',
+  cinematografico: 'cinematografica cine pelicula film cinematica', mujer: 'femenina mujer adulta', hombre: 'masculino hombre varon',
+  chica: 'mujer femenina joven', chico: 'hombre masculino joven', joven: 'veinteañera veinteañero juvenil',
+  atardecer: 'ocaso puesta sol anochecer hora dorada golden hour', ocaso: 'atardecer puesta sol anochecer',
+  amanecer: 'alba primera luz sunrise', lluvia: 'lluvioso lluviosa lluvia aguacero llovizna', nieve: 'nevado nevada copos ventisca',
+  tormenta: 'tormentoso relampago trueno rayos', sonrisa: 'sonriente feliz alegre contenta', triste: 'tristeza melancolica melancolico afligida',
+  enfadada: 'enfadado enojada furiosa ira', sorprendida: 'sorpresa asombro asombrada', azul: 'azulada azulado celeste cobalto',
+  rojo: 'roja rojizo escarlata carmesi granate', rubio: 'rubia dorado miel platino', moreno: 'morena oscuro castaño',
+  elegante: 'sofisticada sofisticado refinada refinado', playa: 'costa mar arena litoral', costa: 'playa litoral orilla mar',
+  noche: 'nocturno nocturna oscuridad medianoche', dia: 'diurno diurna luz solar', primerplano: 'primer plano close up rostro cara',
+  retrato: 'rostro cara retrato primer plano busto', ojos: 'ojo mirada iris', labios: 'labio boca',
+  pelo: 'cabello peinado melena', cabello: 'pelo peinado melena', ropa: 'vestuario vestido prendas', vestido: 'ropa vestuario prendas',
+  coche: 'automovil auto vehiculo', ciudad: 'urbano urbana calles edificios', antiguo: 'antigua vintage historico clasico',
+  futurista: 'futurismo sci fi ciencia ficcion tecnologico', fantasia: 'fantastico magico magia mitico',
+  terror: 'horror oscuro siniestro miedo', minimalista: 'minimal limpio sencillo', vapor: 'humo niebla bruma',
 };
+
+// Afinidad entre palabras de la idea y el selector más probable. Da prioridad a la sección
+// correcta cuando la misma palabra aparece también en labios, ropa, clima o paleta.
+const FOCUSES = [
+  { words: ['pelirroja', 'pelirrojo', 'pelo', 'cabello', 'peinado', 'rubio', 'moreno'], sections: ['colorpelo', 'peinado', 'textura', 'largo', 'raya', 'flequillo'] },
+  { words: ['ojos', 'ojo', 'mirada'], sections: ['ojos', 'ojosforma'] },
+  { words: ['labios', 'labio', 'boca'], sections: ['labios', 'colorlabios'] },
+  { words: ['sonrisa', 'sonriente', 'triste', 'enfadada', 'sorprendida'], sections: ['expresion'] },
+  { words: ['bosque', 'arbol', 'selva', 'playa', 'costa', 'ciudad', 'montana', 'desierto'], sections: ['motivo', 'ideas'] },
+  { words: ['niebla', 'lluvia', 'nieve', 'tormenta', 'viento', 'clima'], sections: ['tipo-niebla', 'tipo-lluvia', 'tipo-nieve', 'tipo-clima', 'ambiente'] },
+  { words: ['atardecer', 'ocaso', 'amanecer', 'noche', 'dia', 'luz'], sections: ['ambiente', 'paleta', 'luz-ambiente', 'cielo-color'] },
+  { words: ['cinematografica', 'cinematografico', 'fotografia', 'camara', 'objetivo'], sections: ['estilo', 'style', 'camera', 'lens'] },
+  { words: ['vestido', 'ropa', 'vestuario'], sections: ['ropa', 'colorropa', 'tejido'] },
+];
 
 function words(text) {
   return fold(text).split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP.has(w));
 }
 
-function termsFor(query) {
-  const out = new Set(words(query));
-  for (const w of [...out]) for (const alias of (ALIASES[w] || '').split(' ')) if (alias) out.add(fold(alias));
-  return [...out];
+function editDistanceAtMostTwo(a, b) {
+  if (Math.abs(a.length - b.length) > 2) return 3;
+  let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  let prev2 = null;
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i]; let rowMin = i;
+    for (let j = 1; j <= b.length; j++) {
+      cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) cur[j] = Math.min(cur[j], prev2[j - 2] + 1);
+      rowMin = Math.min(rowMin, cur[j]);
+    }
+    if (rowMin > 2) return 3;
+    prev2 = prev; prev = cur;
+  }
+  return prev[b.length];
+}
+
+function termsFor(query, vocabulary) {
+  const original = words(query);
+  const out = new Set(original);
+  let corrected = false;
+  for (const w of original) {
+    if (w.length >= 5 && !vocabulary.has(w)) {
+      let best = 3; let candidates = [];
+      for (const known of vocabulary) {
+        if (Math.abs(known.length - w.length) > 2) continue;
+        const distance = editDistanceAtMostTwo(w, known);
+        if (distance < best) { best = distance; candidates = [known]; }
+        else if (distance === best) candidates.push(known);
+      }
+      if (best <= 2 && candidates.length === 1) { out.add(candidates[0]); corrected = true; }
+    }
+    for (const alias of (ALIASES[w] || '').split(' ')) if (alias) out.add(fold(alias));
+  }
+  return { original, terms: [...out], corrected };
 }
 
 async function loadSearchIndex() {
@@ -50,11 +104,11 @@ export function openIdeaInterpreter() {
   let matches = [];
   find.addEventListener('click', async () => {
     const query = description.value.trim();
-    const terms = termsFor(query);
-    if (!query || terms.length < 1) { status.textContent = 'Escribe una idea con algún detalle concreto, por ejemplo pelo, lugar o ambiente.'; return; }
+    if (!query) { status.textContent = 'Escribe una idea con algún detalle concreto, por ejemplo pelo, lugar o ambiente.'; return; }
     find.disabled = true; apply.disabled = true; status.textContent = 'Buscando coincidencias…'; clear(results); matches = [];
     try {
       const index = await loadSearchIndex();
+      const { original, terms, corrected } = termsFor(query, new Set(index.o.flatMap(row => row[3].flatMap(words))));
       const scored = [];
       for (let d = 0; d < index.d.length; d++) {
         const [slug, short] = index.d[d];
@@ -65,17 +119,21 @@ export function openIdeaInterpreter() {
           if (domainIndex !== d || /conjunto completo|galer[ií]a/i.test(title)) continue;
           for (const label of labels) {
             const folded = fold(label);
-            const hits = terms.filter(term => folded.includes(term));
+            const labelWords = new Set(words(label));
+            const hits = terms.filter(term => labelWords.has(term));
             if (!hits.length) continue;
             const phrase = fold(query);
-            scored.push({ id: meta.id, slug, short, sectionId, title, label, score: hits.length * 3 + (phrase.length > 4 && folded.includes(phrase) ? 8 : 0) });
+            const focus = FOCUSES.filter(f => f.words.some(w => original.includes(w)) && f.sections.includes(sectionId)).length;
+            const fullPhrase = phrase.length > 5 && folded.includes(phrase) ? 8 : 0;
+            const originalHits = original.filter(w => labelWords.has(w)).length;
+            scored.push({ id: meta.id, slug, short, sectionId, title, label, score: hits.length * 2 + originalHits * 2 + focus * 7 + fullPhrase });
           }
         }
       }
       const seen = new Set();
       matches = scored.sort((a, b) => b.score - a.score).filter(x => { const key = `${x.slug}/${x.sectionId}`; if (seen.has(key)) return false; seen.add(key); return true; }).slice(0, 14);
       if (!matches.length) { status.textContent = 'No encontré opciones claras. Prueba con palabras más concretas o abre el catálogo.'; return; }
-      status.textContent = `He encontrado ${matches.length} coincidencias. Marca las que encajan; el texto original no se convierte automáticamente en prompt.`;
+      status.textContent = `He encontrado ${matches.length} coincidencias${terms.length > original.length ? ' con equivalencias' : ''}${corrected ? ' y una posible corrección ortográfica' : ''}. Marca las que encajan; el texto original no se añade al prompt.`;
       matches.forEach((m, i) => {
         const checkbox = h('input', { type: 'checkbox', checked: i < 8, dataset: { match: String(i) } });
         const label = h('label', { class: 'idea-match' }, checkbox, h('span', {}, h('b', {}, m.label), h('small', {}, `${m.short} · ${m.title}`)));
