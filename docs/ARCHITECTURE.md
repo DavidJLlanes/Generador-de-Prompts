@@ -4,10 +4,10 @@
 
 1. **Los datos mandan.** Todo el contenido vive en `data/domains/*.js`. El código no conoce ningún generador concreto: añadir un generador es añadir un archivo de datos.
 2. **Una sola fuente de verdad.** El catálogo, las páginas HTML, el sitemap y los contadores de la web se *derivan* de los datos (`npm run build`); nunca se editan a mano.
-3. **Sitio estático y sin servidor.** Todo ocurre en el navegador. El servidor solo sirve archivos: se despliega con `git pull`.
+3. **Sitio estático por defecto.** El generador funciona solo en el navegador. La IA es opcional y usa un proxy Node separado para proteger las claves de proveedor.
 4. **Lógica pura y testeable.** El compositor, los formatos, el aleatorio y el esquema no tocan el DOM y se prueban en Node.
 5. **Interfaz en español, prompts en inglés.** Cada opción lleva `es` (lo que se ve) y `en` (lo que se escribe en el prompt).
-6. **Sin dependencias.** Ni framework ni paquetes npm: HTML, CSS y módulos ES nativos.
+6. **Sin dependencias de interfaz.** HTML, CSS y módulos ES nativos; el proxy IA usa las APIs HTTP de Node sin paquetes adicionales.
 
 ## Flujo de datos
 
@@ -98,7 +98,11 @@ Las páginas son HTML generado (`scripts/pages/*.mjs`) con `<title>`, descripci�
 
 ## Seguridad
 
-Sin cookies, sin terceros y sin ejecución de contenido de usuario (todo se escapa o se crea con `createTextNode`). CSP estricta recomendada y probada en desarrollo (`scripts/dev-server.mjs` envía las mismas cabeceras que `deploy/nginx.conf.example`).
+Sin IA activada, las ideas y selecciones permanecen en el navegador. Al activar el afinado o pulsar la revisión semántica, el usuario ve qué datos saldrán y se envían al servicio configurado. El proxy mantiene las claves OpenAI, Anthropic, Gemini y OpenRouter en variables de entorno; el navegador solo conserva en memoria el token local del proxy, nunca en `localStorage`.
+
+El proxy (`scripts/ai-api.mjs`) escucha en `127.0.0.1`, acepta solo el origen configurado, requiere un token de acceso, limita tamaño y frecuencia, usa destinos fijos y valida los IDs que devuelve el modelo contra las opciones del catálogo. Las sugerencias del asistente nunca se seleccionan solas. La respuesta del modelo se trata como datos y se crea con el DOM seguro.
+
+La CSP permite conexiones de la misma web (`connect-src 'self'`); Nginx pasa `/api/ai/` al servicio local. `npm run dev` levanta el proxy en localhost junto con la web.
 
 ## Decisiones y alternativas descartadas
 

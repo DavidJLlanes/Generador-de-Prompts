@@ -5,6 +5,8 @@ import { store } from '../core/store.js';
 import { reasonBlocked } from '../core/exclusions.js';
 import { fold } from '../core/util.js';
 import { toast } from './toast.js';
+import { getAIConfig, getAIProvider, hasAIAccessToken, refineIdeaWithAI, setAIProvider } from '../core/ai-service.js';
+import { openAISettings } from './ai-settings.js';
 
 const STOP = new Set('una uno un el la las los de del en con y o que para por quiero crear imagen foto fotografía retrato escena estilo aspecto como'.split(' '));
 const ALIASES = {
@@ -115,6 +117,9 @@ async function loadSearchIndex() {
 export function openIdeaInterpreter() {
   const description = h('textarea', { class: 'field__textarea', rows: 3, maxlength: 500, placeholder: 'Ejemplo: retrato de una mujer pelirroja en un bosque con niebla, estilo cinematográfico', 'aria-label': 'Describe tu idea en español' });
   const find = h('button', { type: 'button', class: 'btn btn--primary' }, 'Buscar opciones');
+  const aiOptIn = h('input', { type: 'checkbox' });
+  const aiToggle = h('label', { class: 'idea-interpreter__ai-toggle' }, aiOptIn, h('span', {}, h('b', {}, 'Afinar estas sugerencias con IA'), h('small', {}, 'Envía la idea y hasta 40 opciones al proveedor elegido; puede tener coste.')));
+  const aiSettings = h('button', { type: 'button', class: 'btn btn--outline btn--sm', onClick: () => openAISettings() }, 'Configurar conexión IA');
   const status = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
   const results = h('div', { class: 'idea-interpreter__results' });
   const apply = h('button', { type: 'button', class: 'btn btn--primary', disabled: true }, 'Añadir selección al prompt');
@@ -124,6 +129,7 @@ export function openIdeaInterpreter() {
       h('button', { type: 'button', class: 'icon-btn start-dialog__close', 'aria-label': 'Cerrar', onClick: () => dialog.close() }, '×'),
       h('p', { class: 'eyebrow' }, 'Asistente de ideas'), h('h2', { id: 'idea-interpreter-title' }, 'Describe la imagen que tienes en mente'),
       h('p', {}, 'El asistente buscará opciones del catálogo. Revisa las coincidencias y decide cuáles añadir.'), description,
+      h('div', { class: 'idea-interpreter__ai' }, aiToggle, aiSettings),
       h('div', { class: 'idea-interpreter__actions' }, find, catalogLink), status, results, apply));
 
   let matches = [];
@@ -163,14 +169,38 @@ export function openIdeaInterpreter() {
             const focus = FOCUSES.filter(f => f.words.some(w => original.includes(w)) && f.sections.includes(sectionId)).length;
             const fullPhrase = phrase.length > 5 && folded.includes(phrase) ? 8 : 0;
             const originalHits = original.filter(w => labelWords.has(w)).length;
-            scored.push({ id: meta.id, slug, short, sectionId, title, label, score: hits.length * 2 + originalHits * 2 + focus * 7 + fullPhrase });
+            scored.push({ id: meta.id, slug, short, sectionId, title, label, matchKey: `${slug}::${sectionId}::${fold(label)}`, score: hits.length * 2 + originalHits * 2 + focus * 7 + fullPhrase });
           }
         }
       }
       const seen = new Set();
-      matches = scored.sort((a, b) => b.score - a.score).filter(x => { const key = `${x.slug}/${x.sectionId}`; if (seen.has(key)) return false; seen.add(key); return true; }).slice(0, 14);
+      const ranked = scored.sort((a, b) => b.score - a.score).filter(x => { const key = `${x.slug}/${x.sectionId}`; if (seen.has(key)) return false; seen.add(key); return true; });
+      matches = ranked.slice(0, 14);
       if (!matches.length) { status.textContent = 'No encontré opciones claras. Prueba con palabras más concretas o abre el catálogo.'; return; }
-      status.textContent = `He encontrado ${matches.length} coincidencias${terms.length > original.length ? ' con equivalencias' : ''}${corrected ? ' y una posible corrección ortográfica' : ''}. Marca las que encajan; el texto original no se añade al prompt.`;
+      let statusBase = `He encontrado ${matches.length} coincidencias${terms.length > original.length ? ' con equivalencias' : ''}${corrected ? ' y una posible corrección ortográfica' : ''}. Marca las que encajan; el texto original no se añade al prompt.`;
+      if (aiOptIn.checked) {
+        status.textContent = 'Afinando coincidencias con IA…';
+        try {
+          const config = await getAIConfig();
+          const providerId = config.providers.some(p => p.id === getAIProvider()) ? getAIProvider() : config.providers[0]?.id;
+          if (!providerId) throw new Error('El servidor no tiene proveedores de IA configurados.');
+          if (getAIProvider() !== providerId) setAIProvider(providerId);
+          if (!hasAIAccessToken()) throw new Error('Abre «Configurar conexión IA» e introduce el token de acceso del proxy.');
+          const candidates = ranked.slice(0, 40).map(m => ({ id: m.matchKey, label: m.label, section: m.title, domain: m.short }));
+          const ai = await refineIdeaWithAI(query, candidates);
+          const byKey = new Map(ranked.map(m => [m.matchKey, m]));
+          const ordered = ai.selected_ids.map(id => byKey.get(id)).filter(Boolean);
+          if (ordered.length) {
+            matches = ordered;
+            statusBase = `La IA afinó las coincidencias a ${matches.length} opciones del catálogo. Revisa y marca solo las que quieras añadir.`;
+          } else {
+            statusBase = 'La IA no encontró coincidencias claras entre las opciones recuperadas; revisa las coincidencias locales.';
+          }
+        } catch (err) {
+          statusBase = `No se pudo afinar con IA: ${err.message} Se muestran las coincidencias locales.`;
+        }
+      }
+      status.textContent = statusBase;
       matches.forEach((m, i) => {
         const checkbox = h('input', { type: 'checkbox', dataset: { match: String(i) }, onChange: () => { apply.disabled = !results.querySelector('input:checked'); } });
         const label = h('label', { class: 'idea-match' }, checkbox, h('span', {}, h('b', {}, m.label), h('small', {}, `${m.short} · ${m.title}`)));

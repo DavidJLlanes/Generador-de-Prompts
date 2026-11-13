@@ -23,6 +23,17 @@
 .prompt-profile { max-width: 220px; }
 .idea-interpreter { width: min(720px, calc(100% - 28px)); }
 .idea-interpreter__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.idea-interpreter__ai { display: grid; gap: var(--space-2); padding: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); }
+.idea-interpreter__ai-toggle { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.idea-interpreter__ai-toggle input { flex: none; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+.idea-interpreter__ai-toggle span { display: grid; gap: 3px; }
+.idea-interpreter__ai-toggle small, .ai-settings__privacy { color: var(--text-2); font-size: var(--fs-xs); line-height: 1.55; }
+.ai-settings .field__input { padding-left: 14px; border-radius: var(--radius); }
+.ai-settings__privacy { margin: 0; }
+.prompt-review__ai { display: grid; justify-items: start; gap: 6px; margin-top: 8px; }
+.prompt-review__ai small { color: var(--text-3); font-size: var(--fs-xs); }
+.prompt-review__ai p { margin: 0; }
+.prompt-review__chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .idea-interpreter__status { margin: 0; color: var(--text-2); font-size: var(--fs-sm); }
 .idea-interpreter__results { display: grid; gap: 8px; max-height: min(38vh, 360px); overflow: auto; }
 .idea-match { display: flex; align-items: flex-start; gap: 11px; padding: 11px 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); cursor: pointer; }

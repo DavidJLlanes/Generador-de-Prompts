@@ -3,7 +3,7 @@
  * Envía las mismas cabeceras de seguridad que se recomiendan en producción (deploy/nginx.conf.example),
  * de modo que cualquier incumplimiento de la CSP aparece en desarrollo y en las pruebas.
  */
-import { createServer } from 'node:http';
+import { createServer, request as httpRequest } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT } from './domains.mjs';
@@ -31,8 +31,20 @@ async function resolveFile(urlPath) {
 }
 
 /** @returns {import('node:http').Server} servidor sin iniciar: llama a `.listen(puerto)` (0 = puerto libre). */
-export function createStaticServer() {
+export function createStaticServer({ aiProxyPort = 0 } = {}) {
   return createServer(async (req, res) => {
+    if (aiProxyPort && req.url?.startsWith('/api/ai/')) {
+      const proxy = httpRequest({ hostname: '127.0.0.1', port: aiProxyPort, path: req.url, method: req.method, headers: req.headers }, upstream => {
+        res.writeHead(upstream.statusCode || 502, upstream.headers);
+        upstream.pipe(res);
+      });
+      proxy.on('error', () => {
+        if (!res.headersSent) res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: 'ai_service_unavailable' }));
+      });
+      req.pipe(proxy);
+      return;
+    }
     let file = await resolveFile(req.url);
     let status = 200;
     if (!file) { file = path.join(ROOT, '404.html'); status = 404; }

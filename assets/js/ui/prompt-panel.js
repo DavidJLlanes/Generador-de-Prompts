@@ -15,6 +15,8 @@ import { fmtNumber, debounce } from '../core/util.js';
 import { copyText } from './clipboard.js';
 import { openLibrary } from './library-dialog.js';
 import { toast } from './toast.js';
+import { getAIConfig, getAIProvider, hasAIAccessToken, reviewSelectionWithAI, setAIProvider } from '../core/ai-service.js';
+import { openAISettings } from './ai-settings.js';
 
 function aspectSelect() {
   const select = h('select', { class: 'select', 'aria-label': 'Proporción de la imagen', onChange: e => store.set({ aspect: e.target.value }) });
@@ -56,6 +58,34 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   const meta = h('p', { class: 'prompt-panel__meta' });
   const summary = h('div', { class: 'prompt-panel__summary' });
   const review = h('div', { class: 'prompt-review', role: 'status', 'aria-live': 'polite' });
+  const aiReviewStatus = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
+  let latestComposed = null;
+  let aiProviders = [];
+  let aiFindings = null;
+  const aiReviewButton = h('button', { type: 'button', class: 'btn btn--outline btn--sm', hidden: true, onClick: async () => {
+    const selected = (latestComposed?.parts || []).filter(p => !p.boost && p.section !== '_rule').map(p => ({
+      id: `${p.domain}::${p.section}::${p.option}`,
+      label: p.es || 'Texto libre', meaning: (p.custom ? p.text : p.short || p.text || '').slice(0, 240), section: p.section, domain: p.domain,
+    }));
+    if (selected.length < 2) return;
+    if (!hasAIAccessToken()) { openAISettings(); return; }
+    const providerId = aiProviders.some(p => p.id === getAIProvider()) ? getAIProvider() : aiProviders[0]?.id;
+    if (!providerId) { aiReviewStatus.textContent = 'Configura un proveedor de IA en el servidor.'; return; }
+    if (getAIProvider() !== providerId) setAIProvider(providerId);
+    aiReviewButton.disabled = true;
+    aiReviewStatus.textContent = `Revisando ${selected.length} selecciones con ${aiProviders.find(p => p.id === providerId)?.label || 'IA'}…`;
+    try {
+      const result = await reviewSelectionWithAI(selected);
+      const signature = selected.map(p => p.id + ':' + p.meaning).join('|');
+      aiFindings = { signature, groups: result.groups || [] };
+      aiReviewStatus.textContent = aiFindings.groups.length ? 'Revisión terminada. Comprueba los posibles duplicados señalados.' : 'La IA no detectó repeticiones semánticas claras.';
+      render(live.get());
+    } catch (error) {
+      aiReviewStatus.textContent = error.message;
+    } finally { aiReviewButton.disabled = false; }
+  } }, 'Buscar redundancias con IA');
+  const aiReviewActions = h('div', { class: 'prompt-review__ai', hidden: true }, aiReviewButton, aiReviewStatus,
+    h('small', {}, 'Al pulsar, se enviarán las selecciones al proveedor configurado; puede tener coste.'));
 
   // Texto libre: se escribe aquí y se añade al final del prompt (mejor en inglés).
   const customBox = h('textarea', { class: 'field__textarea', rows: '2', maxlength: String(CUSTOM_MAX), placeholder: 'Añade tus propios detalles, mejor en inglés: «a small red umbrella», «cinematic fog»…', 'aria-label': 'Texto libre para añadir al prompt' });
@@ -87,7 +117,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     h('div', { class: 'prompt-panel__controls' }, detail, boost, profile, aspect),
     customField,
     refs,
-    hint, out, meta, review, summary,
+    hint, out, meta, review, aiReviewActions, summary,
     h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, undoBtn, clearBtn));
 
   function renderSummary(composed) {
@@ -108,6 +138,9 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   }
 
   function render({ state, composed }) {
+    latestComposed = composed;
+    const signature = composed.parts.filter(p => !p.boost && p.section !== '_rule').map(p => `${p.domain}::${p.section}::${p.option}:${p.custom ? p.text : p.short || ''}`).join('|');
+    if (aiFindings && aiFindings.signature !== signature) aiFindings = null;
     el.querySelectorAll('.tab').forEach(t => { const on = t.dataset.format === state.format; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on); });
     detail.querySelectorAll('.segmented__btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.value === state.detail));
     boostInput.checked = state.boost;
@@ -167,9 +200,23 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       if (state.aspect && !['sd', 'midjourney'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
       if (notes.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión: ', notes.join(' ')));
       else review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
+      if (aiFindings?.signature === signature) {
+        if (!aiFindings.groups.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión IA: no detectó repeticiones semánticas claras.'));
+        for (const group of aiFindings.groups) {
+          const items = group.ids.map(id => composed.parts.find(p => `${p.domain}::${p.section}::${p.option}` === id)).filter(Boolean);
+          if (items.length < 2) continue;
+          const chips = h('div', { class: 'prompt-review__chips' });
+          items.forEach(p => chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar del prompt', 'aria-label': `Quitar ${p.es}`, onClick: () => (p.custom ? store.set({ custom: '' }) : store.removeOption(p.domain, p.section, p.option)) }, p.es)));
+          review.append(h('div', { class: 'prompt-review__note' }, h('p', {}, 'Posible repetición: ', group.reason || 'estas opciones pueden describir el mismo detalle.'), chips));
+        }
+      }
     }
+    const reviewable = composed.parts.filter(p => !p.boost && p.section !== '_rule').length >= 2;
+    aiReviewActions.hidden = !reviewable || !aiProviders.length;
+    aiReviewButton.hidden = false;
   }
 
+  getAIConfig().then(config => { aiProviders = config.providers || []; render(live.get()); }).catch(() => {});
   const off = live.subscribe(render);
   return { el, destroy: off };
 }

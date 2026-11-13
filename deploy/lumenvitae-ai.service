@@ -1,0 +1,31 @@
+[Unit]
+Description=Lumen Vitae AI API proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/lumenvitae.es
+Environment=AI_HOST=127.0.0.1
+Environment=AI_PORT=8787
+EnvironmentFile=/etc/lumenvitae-ai.env
+ExecStart=/usr/bin/node /var/www/lumenvitae.es/scripts/ai-api.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6
+MemoryMax=256M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

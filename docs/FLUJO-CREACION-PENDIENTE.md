@@ -13,6 +13,9 @@
 - Aviso de acumulación con recuento por ranura para que se puedan revisar selecciones redundantes.
 - Modo rápido compacto para pantallas pequeñas.
 - Revisión visual del modo rápido en móvil y escritorio.
+- Afinado semántico opcional del asistente con IA: la respuesta solo puede ordenar IDs del catálogo y queda sin marcar para que la persona decida.
+- Revisión opcional de redundancias semánticas mediante una acción manual; marca las selecciones posibles y permite quitar cualquiera desde el aviso.
+- Proxy de IA para OpenRouter, OpenAI, Anthropic Claude y Google Gemini; las claves viven en el VPS, no en el navegador ni en Git.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
 
 ## Para una siguiente fase
@@ -21,7 +24,5 @@
 - Las equivalencias del asistente se limitan a sus secciones de intención y se respeta el género indicado, para evitar resultados cruzados como sugerencias masculinas en una idea de mujer.
 - La corrección de erratas exige una coincidencia única y limita la distancia permitida según la longitud de la palabra; también descarta opciones de rostro cuyo rótulo indique explícitamente el género contrario.
 - Las sugerencias incompatibles se omiten o ajustan al aplicarlas, con aviso; la revisión del prompt avisa si se acumulan demasiadas opciones en una ranura.
-- Mantener una comprensión abierta de paráfrasis y relaciones entre conceptos: la versión local sigue limitada al vocabulario del catálogo y a reglas explícitas.
-- Si se quiere comprensión abierta, diseñar y conectar un servicio de IA con consentimiento explícito y gestión segura de claves. No incluir claves privadas en el JavaScript público.
-- Ampliar las equivalencias a partir de consultas reales y revisar casos ambiguos de corrección ortográfica.
-- Ampliar la revisión con avisos de redundancia semántica solo cuando se puedan detectar con suficiente precisión.
+- Las equivalencias locales siguen ampliándose a partir de consultas reales. El modo IA aporta interpretación contextual cuando se configura el proxy.
+- Configurar en el VPS el token de acceso y las claves/modelos de los proveedores que se vayan a usar; véase `docs/DEPLOY.md`.
