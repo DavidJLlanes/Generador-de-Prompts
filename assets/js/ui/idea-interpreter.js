@@ -2,6 +2,7 @@
 import { h, clear } from './dom.js';
 import { getCatalog, loadDomain } from '../core/registry.js';
 import { store } from '../core/store.js';
+import { reasonBlocked } from '../core/exclusions.js';
 import { fold } from '../core/util.js';
 import { toast } from './toast.js';
 
@@ -152,13 +153,27 @@ export function openIdeaInterpreter() {
     try {
       const domains = await Promise.all([...new Set(chosen.map(x => x.id))].map(loadDomain));
       const bySlug = new Map(domains.map(d => [d.id, d]));
+      let skipped = 0;
+      let adjusted = 0;
+      let added = 0;
+      let unchanged = 0;
       for (const item of chosen) {
         const domain = bySlug.get(item.id);
         const section = domain?._secById.get(item.sectionId);
         const option = section?.options.find(o => o.es === item.label);
-        if (section && option) store.toggleOption(domain.id, section, option.id, domain);
+        if (!section || !option) continue;
+        if (store.isSelected(domain.id, section.id, option.id)) { unchanged++; continue; }
+        const why = reasonBlocked(store.get().sel, domain.id, section.id, option.id, { adult: store.get().adult });
+        if (why) { skipped++; continue; }
+        added++;
+        adjusted += store.toggleOption(domain.id, section, option.id, domain).length;
       }
-      toast(`${chosen.length} opciones añadidas al prompt`);
+      const notices = [`${added} añadidas`];
+      if (skipped) notices.push(`${skipped} omitidas por incompatibilidad`);
+      if (adjusted) notices.push(`${adjusted} selecciones relacionadas ajustadas`);
+      if (unchanged) notices.push(`${unchanged} ya estaban seleccionadas`);
+      const notice = notices.join(' · ');
+      toast(notice, { tone: skipped ? 'warn' : 'ok' });
       dialog.close();
     } catch (err) { toast('No se pudieron aplicar todas las opciones', { tone: 'warn' }); }
     finally { apply.disabled = false; }

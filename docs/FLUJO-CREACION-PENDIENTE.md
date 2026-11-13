@@ -13,6 +13,7 @@
 ## Para una siguiente fase
 
 - El asistente ya pondera contexto básico por sección, usa equivalencias españolas y puede corregir algunas erratas de una o dos letras cuando la coincidencia es inequívoca.
+- Las sugerencias incompatibles se omiten o ajustan al aplicarlas, con aviso; la revisión del prompt avisa si se acumulan demasiadas opciones en una ranura.
 - Mantener una comprensión abierta de paráfrasis y relaciones entre conceptos: la versión local sigue limitada al vocabulario del catálogo y a reglas explícitas.
 - Si se quiere comprensión abierta, diseñar y conectar un servicio de IA con consentimiento explícito y gestión segura de claves. No incluir claves privadas en el JavaScript público.
 - Ampliar las equivalencias a partir de consultas reales y revisar casos ambiguos de corrección ortográfica.

@@ -145,6 +145,8 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       const notes = [];
       if (!hasSubject) notes.push('Añade un sujeto para que la imagen tenga un protagonista claro.');
       if (selectedSlots === 1) notes.push('Solo hay una categoría seleccionada; puedes enriquecerlo con escenario, pose o estilo.');
+      const crowded = composed.slots.filter(s => ['attribute', 'setting', 'atmosphere', 'technical'].includes(s.slot) && s.parts.filter(p => !p.boost).length > 8);
+      if (crowded.length) notes.push(`Hay muchas opciones en ${crowded.map(s => SLOT_BY_ID[s.slot].es.toLowerCase()).join(' y ')}; revisa si todas aportan algo distinto.`);
       if (state.aspect && !['sd', 'midjourney'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
       if (notes.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión: ', notes.join(' ')));
       else review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
