@@ -9,12 +9,18 @@ import { toast } from './toast.js';
 const STOP = new Set('una uno un el la las los de del en con y o que para por quiero crear imagen foto fotografía retrato escena estilo aspecto como'.split(' '));
 const ALIASES = {
   pelirroja: 'rojo roja pelirrojo cobrizo cobre cabello pelo', pelirrojo: 'rojo roja pelirroja cobrizo cobre cabello pelo',
+  melena: 'cabello pelo peinado',
   bosque: 'bosque arboles arbol arboleda hayedo selva forest', arbol: 'arboles bosque arboleda hayedo',
   niebla: 'bruma neblina niebla', brumoso: 'niebla bruma neblina', cinematografica: 'cinematografico cine pelicula film cinematica',
   cinematografico: 'cinematografica cine pelicula film cinematica', mujer: 'femenina mujer adulta', hombre: 'masculino hombre varon',
+  sonriendo: 'sonrisa sonriente feliz alegre', sonreir: 'sonrisa sonriente feliz alegre', riendo: 'sonrisa sonriente feliz alegre',
+  enfadado: 'enfadada enojado enojada furioso furiosa ira', enojado: 'enfadada enfadado enojada furiosa ira',
+  sorprendido: 'sorprendida sorpresa asombro asombrada',
   chica: 'mujer femenina joven', chico: 'hombre masculino joven', joven: 'veinteañera veinteañero juvenil',
   atardecer: 'ocaso puesta sol anochecer hora dorada golden hour', ocaso: 'atardecer puesta sol anochecer',
-  amanecer: 'alba primera luz sunrise', lluvia: 'lluvioso lluviosa lluvia aguacero llovizna', nieve: 'nevado nevada copos ventisca',
+  amanecer: 'alba primera luz sunrise', amaneciendo: 'amanecer alba primera luz sunrise', anocheciendo: 'atardecer ocaso anochecer',
+  atardeciendo: 'atardecer ocaso puesta sol anochecer', lluvia: 'lluvioso lluviosa lluvia aguacero llovizna',
+  lloviendo: 'lluvia lluvioso lluviosa aguacero llovizna', nieve: 'nevado nevada copos ventisca', nevando: 'nieve nevado nevada copos',
   tormenta: 'tormentoso relampago trueno rayos', sonrisa: 'sonriente feliz alegre contenta', triste: 'tristeza melancolica melancolico afligida',
   enfadada: 'enfadado enojada furiosa ira', sorprendida: 'sorpresa asombro asombrada', azul: 'azulada azulado celeste cobalto',
   rojo: 'roja rojizo escarlata carmesi granate', rubio: 'rubia dorado miel platino', moreno: 'morena oscuro castaño',
@@ -30,13 +36,13 @@ const ALIASES = {
 // Afinidad entre palabras de la idea y el selector más probable. Da prioridad a la sección
 // correcta cuando la misma palabra aparece también en labios, ropa, clima o paleta.
 const FOCUSES = [
-  { words: ['pelirroja', 'pelirrojo', 'pelo', 'cabello', 'peinado', 'rubio', 'moreno'], sections: ['colorpelo', 'peinado', 'textura', 'largo', 'raya', 'flequillo'] },
+  { words: ['pelirroja', 'pelirrojo', 'pelo', 'cabello', 'melena', 'peinado', 'rubio', 'moreno'], sections: ['colorpelo', 'peinado', 'textura', 'largo', 'raya', 'flequillo'] },
   { words: ['ojos', 'ojo', 'mirada'], sections: ['ojos', 'ojosforma'] },
   { words: ['labios', 'labio', 'boca'], sections: ['labios', 'colorlabios'] },
-  { words: ['sonrisa', 'sonriente', 'triste', 'enfadada', 'sorprendida'], sections: ['expresion'] },
+  { words: ['sonrisa', 'sonriente', 'sonriendo', 'sonreir', 'riendo', 'triste', 'enfadada', 'enfadado', 'enojado', 'sorprendida', 'sorprendido'], sections: ['expresion'] },
   { words: ['bosque', 'arbol', 'selva', 'playa', 'costa', 'ciudad', 'montana', 'desierto'], sections: ['motivo', 'ideas'] },
-  { words: ['niebla', 'lluvia', 'nieve', 'tormenta', 'viento', 'clima'], sections: ['tipo-niebla', 'tipo-lluvia', 'tipo-nieve', 'tipo-clima', 'ambiente'] },
-  { words: ['atardecer', 'ocaso', 'amanecer', 'noche', 'dia', 'luz'], sections: ['ambiente', 'paleta', 'luz-ambiente', 'cielo-color'] },
+  { words: ['niebla', 'lluvia', 'lloviendo', 'nieve', 'nevando', 'tormenta', 'viento', 'clima'], sections: ['tipo-niebla', 'tipo-lluvia', 'tipo-nieve', 'tipo-clima', 'ambiente'] },
+  { words: ['atardecer', 'atardeciendo', 'ocaso', 'amanecer', 'amaneciendo', 'anocheciendo', 'noche', 'dia', 'luz'], sections: ['ambiente', 'paleta', 'luz-ambiente', 'cielo-color'] },
   { words: ['cinematografica', 'cinematografico', 'fotografia', 'camara', 'objetivo'], sections: ['estilo', 'style', 'camera', 'lens'] },
   { words: ['vestido', 'ropa', 'vestuario'], sections: ['ropa', 'colorropa', 'tejido'] },
 ];
