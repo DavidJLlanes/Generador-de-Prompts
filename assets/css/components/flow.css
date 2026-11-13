@@ -30,6 +30,10 @@
 .idea-interpreter__ai-toggle small, .ai-settings__privacy { color: var(--text-2); font-size: var(--fs-xs); line-height: 1.55; }
 .ai-settings .field__input { padding-left: 14px; border-radius: var(--radius); }
 .ai-settings__row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.ai-settings__models { display: grid; gap: 5px; max-height: 280px; overflow-y: auto; overscroll-behavior: contain; padding: 6px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); }
+.ai-settings__model { display: grid; gap: 2px; width: 100%; padding: 10px 12px; text-align: left; color: var(--text); background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); cursor: pointer; }
+.ai-settings__model:hover, .ai-settings__model:focus-visible, .ai-settings__model.is-selected { border-color: var(--accent); background: var(--accent-soft); }
+.ai-settings__model small { overflow-wrap: anywhere; color: var(--text-2); font-size: var(--fs-xs); }
 .ai-settings__privacy { margin: 0; }
 .prompt-review__ai { display: grid; justify-items: start; gap: 6px; margin-top: 8px; }
 .prompt-review__ai small { color: var(--text-3); font-size: var(--fs-xs); }

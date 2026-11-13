@@ -9,16 +9,37 @@ export function openAISettings() {
     ...Object.entries(providers).map(([id, info]) => h('option', { value: id }, info.label)));
   provider.value = initial.provider || 'openrouter';
   const apiKey = h('input', { class: 'field__input', type: 'password', autocomplete: 'off', spellcheck: 'false', placeholder: 'Pega aquí tu clave API', 'aria-label': 'Clave API' });
-  const model = h('input', { class: 'field__input', type: 'text', autocomplete: 'off', spellcheck: 'false', list: 'ai-model-list', placeholder: 'Carga la lista o escribe el ID del modelo', 'aria-label': 'Modelo de IA' });
-  const modelList = h('datalist', { id: 'ai-model-list' });
+  const model = h('input', { class: 'field__input', type: 'text', autocomplete: 'off', spellcheck: 'false', placeholder: 'Toca un modelo de la lista o escribe su ID', 'aria-label': 'Modelo de IA' });
+  const modelSearch = h('input', { class: 'field__input ai-settings__model-search', type: 'search', placeholder: 'Filtrar modelos por nombre o ID', 'aria-label': 'Filtrar modelos', hidden: true });
+  const modelList = h('div', { class: 'ai-settings__models', role: 'list', 'aria-label': 'Modelos disponibles', hidden: true });
+  let availableModels = [];
   const keyLink = h('a', { class: 'btn btn--outline btn--sm', target: '_blank', rel: 'noopener noreferrer' }, 'Obtener clave API ↗');
   const status = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
+  function renderModels() {
+    const query = modelSearch.value.trim().toLocaleLowerCase();
+    const matches = availableModels.filter(item => `${item.name} ${item.id}`.toLocaleLowerCase().includes(query));
+    modelList.replaceChildren(...matches.map(item => h('button', {
+      type: 'button', class: `ai-settings__model${model.value === item.id ? ' is-selected' : ''}`,
+      'aria-pressed': model.value === item.id ? 'true' : 'false',
+      onClick: () => { model.value = item.id; renderModels(); status.textContent = `Modelo seleccionado: ${item.id}`; },
+    }, h('b', {}, item.name), h('small', {}, item.id))));
+    if (availableModels.length) {
+      modelSearch.hidden = false;
+      modelList.hidden = false;
+      status.textContent = query
+        ? `Mostrando ${matches.length} de ${availableModels.length} modelos.`
+        : `Lista de ${availableModels.length} modelos disponibles. Toca uno para seleccionarlo.`;
+    }
+  }
+  modelSearch.addEventListener('input', renderModels);
+  model.addEventListener('input', renderModels);
   const loadButton = h('button', { type: 'button', class: 'btn btn--outline btn--sm', onClick: async () => {
     loadButton.disabled = true; status.textContent = 'Consultando los modelos de tu cuenta…';
     try {
-      const models = await loadAIModels(provider.value, apiKey.value);
-      modelList.replaceChildren(...models.map(item => h('option', { value: item.id, label: item.name })));
-      status.textContent = models.length ? `Encontré ${models.length} modelos. Selecciona uno o escribe su ID.` : 'La API no devolvió modelos; escribe el ID manualmente.';
+      availableModels = await loadAIModels(provider.value, apiKey.value);
+      modelSearch.value = '';
+      renderModels();
+      if (!availableModels.length) status.textContent = 'La API no devolvió modelos; escribe el ID manualmente.';
     } catch (error) { status.textContent = `${error.message} Si falla la consulta por el navegador, puedes escribir el ID del modelo manualmente.`; }
     finally { loadButton.disabled = false; }
   } }, 'Cargar modelos');
@@ -44,11 +65,17 @@ export function openAISettings() {
       h('div', { class: 'ai-settings__row' }, keyLink, h('span', { class: 'idea-interpreter__status' }, 'La clave se guarda solo en este navegador.')),
       h('label', { class: 'prompt-panel__custom' }, h('span', { class: 'prompt-panel__custom-label' }, 'Clave API'), apiKey),
       h('div', { class: 'ai-settings__row' }, loadButton, h('span', { class: 'idea-interpreter__status' }, 'También puedes escribir el modelo manualmente.')),
-      h('label', { class: 'prompt-panel__custom' }, h('span', { class: 'prompt-panel__custom-label' }, 'Modelo'), model, modelList),
+      h('label', { class: 'prompt-panel__custom' }, h('span', { class: 'prompt-panel__custom-label' }, 'Modelo'), model),
+      modelSearch, modelList,
       h('p', { class: 'ai-settings__privacy' }, 'La clave se almacena en el almacenamiento local de este navegador y las solicitudes se envían al proveedor elegido. Úsalo en un dispositivo de confianza. El proveedor puede aplicar sus condiciones y cobrar por el uso.'),
       status, h('div', { class: 'idea-interpreter__actions' }, saveButton, removeButton)));
 
   function fillForProvider() {
+    availableModels = [];
+    modelSearch.value = '';
+    modelSearch.hidden = true;
+    modelList.replaceChildren();
+    modelList.hidden = true;
     const info = providers[provider.value];
     const account = initial.accounts[provider.value] || {};
     apiKey.value = account.apiKey || '';
