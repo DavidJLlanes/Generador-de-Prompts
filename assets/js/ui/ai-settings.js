@@ -15,13 +15,30 @@ export function openAISettings() {
   let availableModels = [];
   const keyLink = h('a', { class: 'btn btn--outline btn--sm', target: '_blank', rel: 'noopener noreferrer' }, 'Obtener clave API ↗');
   const status = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
+  function persistModelWithSavedKey(modelId) {
+    const savedKey = getAISettings().accounts[provider.value]?.apiKey;
+    if (!savedKey || !modelId.trim()) return false;
+    apiKey.value = savedKey;
+    saveAIProvider(provider.value, savedKey, modelId);
+    setAIProvider(provider.value);
+    return true;
+  }
   function renderModels() {
     const query = modelSearch.value.trim().toLocaleLowerCase();
     const matches = availableModels.filter(item => `${item.name} ${item.id}`.toLocaleLowerCase().includes(query));
     modelList.replaceChildren(...matches.map(item => h('button', {
       type: 'button', class: `ai-settings__model${model.value === item.id ? ' is-selected' : ''}`,
       'aria-pressed': model.value === item.id ? 'true' : 'false',
-      onClick: () => { model.value = item.id; renderModels(); status.textContent = `Modelo seleccionado: ${item.id}`; },
+      onClick: () => {
+        model.value = item.id;
+        let saved = false;
+        try { saved = persistModelWithSavedKey(item.id); }
+        catch (error) { status.textContent = error.message; }
+        renderModels();
+        status.textContent = saved
+          ? `Modelo actualizado y clave conservada: ${item.id}`
+          : `Modelo seleccionado: ${item.id}. Pulsa «Guardar y conectar» para conservarlo.`;
+      },
     }, h('b', {}, item.name), h('small', {}, item.id))));
     if (availableModels.length) {
       modelSearch.hidden = false;
@@ -33,6 +50,11 @@ export function openAISettings() {
   }
   modelSearch.addEventListener('input', renderModels);
   model.addEventListener('input', renderModels);
+  model.addEventListener('change', () => {
+    try {
+      if (persistModelWithSavedKey(model.value)) status.textContent = 'Modelo y clave guardados en este navegador.';
+    } catch (error) { status.textContent = error.message; }
+  });
   const loadButton = h('button', { type: 'button', class: 'btn btn--outline btn--sm', onClick: async () => {
     loadButton.disabled = true; status.textContent = 'Consultando los modelos de tu cuenta…';
     try {

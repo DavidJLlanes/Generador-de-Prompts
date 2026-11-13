@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lumen-vitae-shell-v1';
+const CACHE_NAME = 'lumen-vitae-shell-v2';
 const CORE_ASSETS = [
   '/',
   '/manifest.webmanifest',

@@ -15,7 +15,7 @@
 - Revisión visual del modo rápido en móvil y escritorio.
 - Afinado semántico opcional del asistente con IA: la respuesta solo puede ordenar IDs del catálogo y queda sin marcar para que la persona decida.
 - Revisión opcional de redundancias semánticas mediante una acción manual; marca las selecciones posibles y permite quitar cualquiera desde el aviso.
-- Proxy de IA para OpenRouter, OpenAI, Anthropic Claude y Google Gemini; las claves viven en el VPS, no en el navegador ni en Git.
+- Conexión directa opcional con OpenRouter, OpenAI, Anthropic Claude y Google Gemini; proveedor, clave y modelo se configuran desde el navegador.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
 
 ## Para una siguiente fase
