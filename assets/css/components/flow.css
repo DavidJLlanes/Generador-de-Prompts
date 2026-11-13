@@ -21,6 +21,14 @@
 .quick-mode .slot__pills { margin-top: var(--space-2); }
 .quick-mode .constructor__board { gap: var(--space-2); }
 .prompt-profile { max-width: 220px; }
+.idea-interpreter { width: min(720px, calc(100% - 28px)); }
+.idea-interpreter__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.idea-interpreter__status { margin: 0; color: var(--text-2); font-size: var(--fs-sm); }
+.idea-interpreter__results { display: grid; gap: 8px; max-height: min(38vh, 360px); overflow: auto; }
+.idea-match { display: flex; align-items: flex-start; gap: 11px; padding: 11px 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); cursor: pointer; }
+.idea-match input { flex: none; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+.idea-match span { display: grid; gap: 3px; }
+.idea-match small { color: var(--text-3); }
 @media (max-width: 600px) {
   .constructor__bar > .btn { flex: 1 1 calc(50% - var(--space-2)); }
   .quick-toggle { flex: 1 0 100%; }

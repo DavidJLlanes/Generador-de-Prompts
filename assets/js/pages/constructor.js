@@ -7,6 +7,7 @@ import { createPromptPanel } from '../ui/prompt-panel.js';
 import { mountSlotBoard, randomizeAll } from '../ui/slot-board.js';
 import { openPresets } from '../ui/presets-drawer.js';
 import { toast } from '../ui/toast.js';
+import { openIdeaInterpreter } from '../ui/idea-interpreter.js';
 
 initChrome();
 
@@ -21,6 +22,7 @@ $('[data-act="start"]').addEventListener('click', () => startDialog.showModal())
 $('[data-act="close-start"]').addEventListener('click', () => startDialog.close());
 $('[data-act="inspire"]').addEventListener('click', () => { startDialog.close(); loadDomain('scenarios').then(openPresets).catch(() => toast('No se pudieron cargar las ideas', { tone: 'warn' })); });
 $('[data-act="surprise"]').addEventListener('click', () => { startDialog.close(); randomizeAll().catch(() => toast('No se pudo generar la combinación', { tone: 'warn' })); });
+$('[data-act="describe-idea"]').addEventListener('click', () => { startDialog.close(); openIdeaInterpreter(); });
 const quick = $('[data-act="quick"]');
 quick.checked = localStorage.getItem('lv:quick-mode') === '1';
 document.body.classList.toggle('quick-mode', quick.checked);
