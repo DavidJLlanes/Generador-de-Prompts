@@ -150,8 +150,14 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       const notes = [];
       if (!hasSubject) notes.push('Añade un sujeto para que la imagen tenga un protagonista claro.');
       if (selectedSlots === 1) notes.push('Solo hay una categoría seleccionada; puedes enriquecerlo con escenario, pose o estilo.');
-      const crowded = composed.slots.filter(s => ['attribute', 'setting', 'atmosphere', 'technical'].includes(s.slot) && s.parts.filter(p => !p.boost).length > 8);
-      if (crowded.length) notes.push(`Hay muchas opciones en ${crowded.map(s => SLOT_BY_ID[s.slot].es.toLowerCase()).join(' y ')}; revisa si todas aportan algo distinto.`);
+      const crowded = composed.slots
+        .filter(s => ['attribute', 'setting', 'atmosphere', 'technical'].includes(s.slot))
+        .map(s => ({ slot: s.slot, count: s.parts.filter(p => !p.boost).length }))
+        .filter(s => s.count > 8);
+      if (crowded.length) {
+        const detail = crowded.map(s => `${s.count} en ${SLOT_BY_ID[s.slot].es.toLowerCase()}`).join(' y ');
+        notes.push(`Hay ${detail}; comprueba si cada opción añade algo distinto al prompt.`);
+      }
       const customText = composed.parts.find(p => p.custom)?.text;
       if (customText) {
         const normalizedCustom = ` ${normalizeReviewText(customText)} `;
