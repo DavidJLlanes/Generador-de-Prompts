@@ -1,0 +1,26 @@
+[Unit]
+Description=Lumen Vitae passkey authentication service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/djl.com.es/prompt/auth
+Environment=NODE_ENV=production
+Environment=AUTH_HOST=127.0.0.1
+Environment=AUTH_PORT=4011
+Environment=RP_ID=djl.com.es
+Environment=RP_ORIGIN=https://djl.com.es
+Environment=DATA_DIR=/var/lib/lumen-prompt
+ExecStart=/usr/bin/node /var/www/djl.com.es/prompt/auth/server.mjs
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/lumen-prompt
+
+[Install]
+WantedBy=multi-user.target

@@ -1,25 +1,77 @@
 # Añadir dentro del bloque HTTPS existente de djl.com.es.
+# La web y la gestión de passkeys no usan Basic Auth; el primer registro se
+# autoriza con un código aleatorio de un solo uso.
 location = /prompt {
-    auth_basic "Lumen Vitae";
-    auth_basic_user_file /etc/nginx/.htpasswd-lumen-prompt;
     return 301 /prompt/$is_args$args;
+}
+
+location = /prompt/login {
+    root /var/www/djl.com.es;
+    try_files /prompt/auth/login.html =404;
+    add_header Cache-Control "no-store" always;
+}
+
+location = /prompt/enroll {
+    root /var/www/djl.com.es;
+    try_files /prompt/auth/enroll.html =404;
+    add_header Cache-Control "no-store" always;
+}
+
+location = /prompt/auth/check {
+    internal;
+    proxy_pass http://127.0.0.1:4011/auth/check;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+}
+
+location = /prompt/auth/status {
+    proxy_pass http://127.0.0.1:4011/prompt/auth/status;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+}
+
+location = /prompt/auth/register/status {
+    proxy_pass http://127.0.0.1:4011/prompt/auth/register/status;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+}
+
+location = /prompt/auth/logout {
+    proxy_pass http://127.0.0.1:4011/prompt/auth/logout;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+    proxy_set_header Origin $http_origin;
+    proxy_set_header Content-Type $content_type;
+}
+
+location ^~ /prompt/auth/login/ {
+    proxy_pass http://127.0.0.1:4011;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+    proxy_set_header Origin $http_origin;
+    proxy_set_header Content-Type $content_type;
+}
+
+location ^~ /prompt/auth/register/ {
+    proxy_pass http://127.0.0.1:4011;
+    proxy_set_header Host $host;
+    proxy_set_header Cookie $http_cookie;
+    proxy_set_header Origin $http_origin;
+    proxy_set_header Content-Type $content_type;
 }
 
 location ^~ /prompt/ {
     root /var/www/djl.com.es;
     index index.html;
     try_files $uri $uri/ =404;
-    error_page 404 /prompt/404.html;
+    error_page 401 = /prompt/login;
 
-    # Un único acceso protege HTML, scripts, imágenes y el manifiesto.
-    auth_basic "Lumen Vitae";
-    auth_basic_user_file /etc/nginx/.htpasswd-lumen-prompt;
-
-    # Evita que navegadores o proxies reutilicen páginas protegidas sin validar el acceso.
+    auth_request /prompt/auth/check;
     add_header Cache-Control "private, no-store, no-cache, must-revalidate" always;
 
-    # Protege el repositorio y los archivos de desarrollo bajo la raíz pública.
+    # Estas reglas anidadas evitan servir archivos internos o código PHP.
     location ~ /\. { deny all; }
+    location ~ \.php$ { deny all; }
     location ~ ^/prompt/(?:docs|deploy|scripts|tests|e2e|node_modules)(?:/|$) { deny all; }
     location = /prompt/package.json { deny all; }
 }

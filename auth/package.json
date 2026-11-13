@@ -1,0 +1,11 @@
+{
+  "name": "lumen-vitae-passkey-auth",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "13.3.3"
+  }
+}

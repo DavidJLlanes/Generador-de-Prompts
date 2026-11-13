@@ -1,5 +1,7 @@
 # Dependencias y caché
 node_modules/
+auth/node_modules/
+auth/data/
 .npm/
 
 # Sistema y editores

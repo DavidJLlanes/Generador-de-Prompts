@@ -1,4 +1,4 @@
-# Despliegue protegido en djl.com.es/prompt/
+# Despliegue con passkeys en djl.com.es/prompt/
 
 El repositorio se publica en `/var/www/djl.com.es/prompt`. El HTML, el sitemap y el manifiesto ya vienen generados en Git. Para cambiar el prefijo de URL, edita `assets/js/core/site-path.js` y ejecuta `npm run build` antes de publicar.
 
@@ -10,26 +10,51 @@ Con un usuario con permisos de escritura en `/var/www/djl.com.es`:
 git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/djl.com.es/prompt
 ```
 
-Instala la utilidad para crear usuarios y contraseñas de Nginx y crea el primer acceso (sustituye `david` por el usuario que quieras):
+Instala las dependencias del servicio de passkeys y prepara su almacenamiento:
 
 ```bash
-sudo apt update && sudo apt install apache2-utils
-sudo htpasswd -c /etc/nginx/.htpasswd-lumen-prompt david
-sudo chown root:www-data /etc/nginx/.htpasswd-lumen-prompt
-sudo chmod 640 /etc/nginx/.htpasswd-lumen-prompt
+node --version
+cd /var/www/djl.com.es/prompt/auth
+sudo npm install --omit=dev --no-package-lock
+sudo install -d -o www-data -g www-data -m 700 /var/lib/lumen-prompt
+sudo cp /var/www/djl.com.es/prompt/deploy/lumen-prompt-auth.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now lumen-prompt-auth
 ```
 
-El segundo comando solicita la contraseña sin mostrarla en pantalla. No la pongas en Git ni en una URL.
+Genera un código aleatorio de un solo uso para guardar la primera passkey en tu dispositivo. Este código se usa solo para activar el primer dispositivo; no es una contraseña de acceso:
 
-Añade las ubicaciones de `deploy/nginx.conf.example` dentro del bloque HTTPS existente de `djl.com.es`. Estas ubicaciones protegen la página y todos sus recursos, y desactivan la caché de contenido protegido. Después, valida y aplica la configuración:
+```bash
+sudo -u www-data sh -c 'umask 077; openssl rand -hex 32 > /var/lib/lumen-prompt/bootstrap-token'
+sudo chmod 600 /var/lib/lumen-prompt/bootstrap-token
+sudo cat /var/lib/lumen-prompt/bootstrap-token
+```
+
+Copia ese código para introducirlo una vez en `https://djl.com.es/prompt/enroll`. Tras registrar la primera passkey, el servidor borra el código. No lo compartas ni lo guardes en Git.
+
+Sustituye en el bloque HTTPS de `djl.com.es` las ubicaciones anteriores de `/prompt` por las de `deploy/nginx.conf.example`. Borra las directivas `auth_basic` y `auth_basic_user_file` anteriores, incluidas las de `location = /prompt` y `location ^~ /prompt/`. Después de guardar la nueva configuración, valida y aplícala:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Al abrir `https://djl.com.es/prompt/`, el navegador mostrará su cuadro nativo de usuario y contraseña. Guarda el acceso en el gestor de contraseñas del dispositivo para que iPhone/iPad lo rellenen con Face ID o Android con huella. La app puede seguir añadiéndose a la pantalla de inicio; el service worker anterior se elimina para que no pueda mostrar una copia en caché sin validar el acceso con Nginx.
+Ya aplicada la configuración nueva, elimina el archivo de claves de Basic Auth para retirar por completo el sistema anterior:
 
-Para cambiar la contraseña de un usuario existente, ejecuta `sudo htpasswd /etc/nginx/.htpasswd-lumen-prompt david`. Para añadir otro usuario, ejecuta el mismo comando con otro nombre. No uses `-c` al actualizar o añadir usuarios, porque ese parámetro recrea el archivo y borraría los demás accesos.
+```bash
+sudo rm -f /etc/nginx/.htpasswd-lumen-prompt
+```
+
+Al abrir `https://djl.com.es/prompt/`, elige «Entrar con Face ID o huella». Las sesiones duran 24 horas; al caducar, confirmas la passkey de nuevo en el dispositivo. Para añadir otro dispositivo, entra con una passkey existente y visita `/prompt/enroll`. No se guardan datos biométricos en el VPS.
+
+Si pierdes todos los dispositivos registrados, puedes crear otro código de recuperación en el VPS. Ese código sustituye las passkeys anteriores al registrar la nueva:
+
+```bash
+sudo -u www-data sh -c 'umask 077; openssl rand -hex 32 > /var/lib/lumen-prompt/bootstrap-token'
+sudo chmod 600 /var/lib/lumen-prompt/bootstrap-token
+sudo cat /var/lib/lumen-prompt/bootstrap-token
+```
+
+Introduce el código en `https://djl.com.es/prompt/enroll`. Se elimina al completar el registro.
 
 Si el dominio ya aplica una política CSP, su directiva `connect-src` debe permitir `'self'` y los orígenes de los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`. La clave se introduce en «Constructor → Configurar IA» y se guarda en el navegador para el nuevo dominio.
 
