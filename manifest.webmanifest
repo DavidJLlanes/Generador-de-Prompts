@@ -2,28 +2,28 @@
   "name": "Lumen Vitae · Generador de prompts",
   "short_name": "Lumen Vitae",
   "description": "Constructor modular de prompts para imágenes con IA.",
-  "id": "/",
+  "id": "/prompt/",
   "lang": "es",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/prompt/",
+  "scope": "/prompt/",
   "display": "standalone",
   "background_color": "#12100e",
   "theme_color": "#12100e",
   "icons": [
     {
-      "src": "/assets/img/icon-192.png",
+      "src": "/prompt/assets/img/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/img/icon-512.png",
+      "src": "/prompt/assets/img/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/img/icon-maskable-512.png",
+      "src": "/prompt/assets/img/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /**
  * TABLERO DE RANURAS — vista del constructor: una fila por ranura (sujeto, atributos, pose,
  * escenario, atmósfera, técnica) con los generadores disponibles y lo elegido en cada una.
@@ -62,7 +63,7 @@ export function mountSlotBoard(root) {
   }
 
   function pillFor(meta, n) {
-    return h('a', { class: `domain-pill${n ? ' has-selection' : ''}`, href: `/generadores/${meta.slug}/`, title: meta.summary },
+    return h('a', { class: `domain-pill${n ? ' has-selection' : ''}`, href: sitePath(`/generadores/${meta.slug}/`), title: meta.summary },
       meta.short, n ? h('b', { class: 'domain-pill__n' }, n) : null);
   }
 

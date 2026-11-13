@@ -25,7 +25,7 @@ export function guidesIndexPage({ domains }) {
     path: '/guias/', title: 'Guías de prompts para imágenes con IA | Lumen Vitae',
     description: 'Guías prácticas para escribir prompts de calidad, cruzar generadores y adaptar el resultado a ChatGPT, Stable Diffusion, Flux, Ideogram, Midjourney y a cada pantalla.',
     main, script: 'static', bodyData: { dock: 'off' }, domains, og: 'guias',
-    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de Lumen Vitae', url: `${SITE.origin}/guias/`, inLanguage: 'es' }],
+    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de Lumen Vitae', url: `${SITE.url}/guias/`, inLanguage: 'es' }],
   });
 }
 
@@ -47,11 +47,11 @@ export function guidePage(g, { domains }) {
   return layout({
     path, title: `${g.title} | Lumen Vitae`, description: g.description, main, script: 'static', bodyData: { dock: 'off' }, domains, og: `guia-${g.slug}`,
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description, datePublished: g.date, dateModified: g.date, inLanguage: 'es', author: { '@type': 'Organization', name: SITE.name }, publisher: { '@type': 'Organization', name: SITE.name }, mainEntityOfPage: `${SITE.origin}${path}`, image: `${SITE.origin}/assets/img/og/guia-${g.slug}.webp` },
+      { '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description, datePublished: g.date, dateModified: g.date, inLanguage: 'es', author: { '@type': 'Organization', name: SITE.name }, publisher: { '@type': 'Organization', name: SITE.name }, mainEntityOfPage: `${SITE.url}${path}`, image: `${SITE.url}/assets/img/og/guia-${g.slug}.webp` },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.origin}/` },
-        { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.origin}/guias/` },
-        { '@type': 'ListItem', position: 3, name: g.title, item: `${SITE.origin}${path}` },
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE.url}/guias/` },
+        { '@type': 'ListItem', position: 3, name: g.title, item: `${SITE.url}${path}` },
       ] },
     ],
   });

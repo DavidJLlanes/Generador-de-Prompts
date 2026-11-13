@@ -1,3 +1,4 @@
+import { sitePath } from './site-path.js';
 /**
  * REGISTRO — conoce todos los dominios (por el catálogo ligero) y carga los datos de cada uno
  * bajo demanda con import() dinámico, de modo que ninguna página descarga más de lo que usa.
@@ -24,7 +25,7 @@ function prepare(d) {
 /** Carga (una sola vez) los datos completos de un dominio. */
 export function loadDomain(id) {
   if (!domainMeta(id)) return Promise.reject(new Error(`Dominio desconocido: ${id}`));
-  if (!cache.has(id)) cache.set(id, import(`/data/domains/${id}.js`).then(m => prepare(m.default)));
+  if (!cache.has(id)) cache.set(id, import(sitePath(`/data/domains/${id}.js`)).then(m => prepare(m.default)));
   return cache.get(id);
 }
 
@@ -36,7 +37,7 @@ export async function loadDomains(ids) {
 
 /** Carga los presets de un dominio, si los tiene. */
 export function loadPresets(id) {
-  return import(`/data/presets/${id}.js`).then(m => m.default);
+  return import(sitePath(`/data/presets/${id}.js`)).then(m => m.default);
 }
 
 /** Búsqueda en el catálogo (título, nombre corto, kicker y resumen). */

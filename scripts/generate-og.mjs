@@ -1,3 +1,4 @@
+import { BASE_PATH } from '../assets/js/core/site-path.js';
 /**
  * Genera las imágenes Open Graph (1200×630, WebP; home también como JPEG) de cada página:
  *   assets/img/og/<nombre>.webp   (home, generadores, constructor, <slug del generador>, guias, guia-<slug>)
@@ -27,7 +28,7 @@ const items = [
   { name: 'constructor', kicker: 'Constructor', title: 'Cruza lo que quieras', facts: 'Sujeto · Escenario · Atmósfera · Técnica' },
   { name: 'guias', kicker: 'Guías', title: 'Aprende a describir imágenes', facts: `${GUIDES.length} guías prácticas` },
   ...catalog.domains.map(d => ({ name: d.slug, kicker: `${SLOT_BY_ID[d.role].es} · ${d.kicker}`, title: d.title, facts: `${d.sections} secciones · ${fmtNumber(d.options)} opciones${d.presets ? ` · ${fmtNumber(d.presets)} ${d.presetsLabel}` : ''}` })),
-  ...GUIDES.map(g => ({ name: `guia-${g.slug}`, kicker: `Guía · ${readingMinutes(g.body)} min de lectura`, title: g.title, facts: 'lumenvitae.es/guias' })),
+  ...GUIDES.map(g => ({ name: `guia-${g.slug}`, kicker: `Guía · ${readingMinutes(g.body)} min de lectura`, title: g.title, facts: 'djl.com.es/prompt/guias' })),
 ];
 
 const sizeFor = t => (t.length > 70 ? 56 : t.length > 48 ? 68 : t.length > 28 ? 82 : 100);
@@ -39,13 +40,13 @@ if (onlyName && selectedItems.length === 0) throw new Error(`No existe una image
 function html(it) {
   const isHome = it.name === 'home';
   return `<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{font-family:"Instrument Serif";src:url("/assets/fonts/instrument-serif.woff2") format("woff2");font-style:normal}
-@font-face{font-family:"Instrument Serif";src:url("/assets/fonts/instrument-serif-italic.woff2") format("woff2");font-style:italic}
-@font-face{font-family:"Inter";src:url("/assets/fonts/inter-variable.woff2") format("woff2");font-weight:300 700}
-@font-face{font-family:"JetBrains Mono";src:url("/assets/fonts/jetbrains-mono-variable.woff2") format("woff2");font-weight:400 500}
+@font-face{font-family:"Instrument Serif";src:url("${BASE_PATH}/assets/fonts/instrument-serif.woff2") format("woff2");font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url("${BASE_PATH}/assets/fonts/instrument-serif-italic.woff2") format("woff2");font-style:italic}
+@font-face{font-family:"Inter";src:url("${BASE_PATH}/assets/fonts/inter-variable.woff2") format("woff2");font-weight:300 700}
+@font-face{font-family:"JetBrains Mono";src:url("${BASE_PATH}/assets/fonts/jetbrains-mono-variable.woff2") format("woff2");font-weight:400 500}
 *{box-sizing:border-box;margin:0}
 body{width:1200px;height:630px;overflow:hidden;position:relative;background:#12100e;color:#efe8da;font-family:Inter,sans-serif}
-.home-art{position:absolute;inset:0;background:url('/assets/img/og/home-background.webp') center/cover no-repeat}
+.home-art{position:absolute;inset:0;background:url('${BASE_PATH}/assets/img/og/home-background.webp') center/cover no-repeat}
 .home-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#12100e 0%,rgba(18,16,14,.96) 25%,rgba(18,16,14,.72) 47%,rgba(18,16,14,.08) 78%),linear-gradient(0deg,rgba(18,16,14,.52),transparent 32%,rgba(18,16,14,.16))}
 .is-home .title{top:250px;right:610px;font-size:72px;line-height:1.04}
 .glow{position:absolute;inset:0;background:radial-gradient(760px 420px at 92% -6%,rgba(214,178,124,.30),transparent 62%),radial-gradient(640px 380px at -8% 108%,rgba(120,90,60,.22),transparent 60%)}
@@ -61,12 +62,12 @@ body{width:1200px;height:630px;overflow:hidden;position:relative;background:#121
 <div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span>Lumen <em>Vitae</em></span></div>
 <div class="kicker">${esc(it.kicker)}</div>
 <div class="title">${titleHtml(it.title)}</div>
-<div class="foot"><span>${esc(it.facts)}</span><b>lumenvitae.es</b></div></body></html>`;
+<div class="foot"><span>${esc(it.facts)}</span><b>djl.com.es/prompt</b></div></body></html>`;
 }
 
 const server = createStaticServer();
 await new Promise(r => server.listen(0, '127.0.0.1', r));
-const base = `http://127.0.0.1:${server.address().port}`;
+const base = `http://127.0.0.1:${server.address().port}${BASE_PATH}`;
 const b = await launch({ width: 1200, height: 630 });
 try {
   await b.goto(base + '/404.html', 100); // mismo origen: así se cargan las tipografías del sitio

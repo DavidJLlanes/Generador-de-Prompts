@@ -1,3 +1,4 @@
+import { BASE_PATH } from '../assets/js/core/site-path.js';
 /**
  * Pruebas de extremo a extremo en un navegador real. Uso: npm run test:e2e
  *
@@ -24,7 +25,7 @@ if (!findChrome()) {
 const here = path.dirname(fileURLToPath(import.meta.url));
 const server = createStaticServer();
 await new Promise(r => server.listen(0, '127.0.0.1', r));
-const base = `http://127.0.0.1:${server.address().port}`;
+const base = `http://127.0.0.1:${server.address().port}${BASE_PATH}`;
 const b = await launch();
 
 let pass = 0, fail = 0;

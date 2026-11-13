@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /** Inicio (/): chrome común y el botón «Probar este cruce», que rellena un prompt de ejemplo. */
 import { $ } from '../ui/dom.js';
 import { initChrome } from '../ui/chrome.js';
@@ -29,7 +30,7 @@ if (btn) btn.addEventListener('click', async () => {
       const opt = sec && (sec.options.find(o => rx.test(o.en)) || sec.options[0]);
       if (opt) store.toggleOption(d, sec, opt.id);
     }
-    location.href = '/constructor/';
+    location.href = sitePath('/constructor/');
   } catch {
     toast('No se pudo preparar el ejemplo', { tone: 'warn' });
     btn.disabled = false;

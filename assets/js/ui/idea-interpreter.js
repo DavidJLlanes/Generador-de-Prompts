@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /** Asistente local de ideas: traduce una descripción breve en opciones revisables del catálogo. */
 import { h, clear } from './dom.js';
 import { getCatalog, loadDomain } from '../core/registry.js';
@@ -109,7 +110,7 @@ function conflictsWithExplicitGender(gender, slug, sectionId, label) {
 }
 
 async function loadSearchIndex() {
-  const res = await fetch('/data/search-index.json');
+  const res = await fetch(sitePath('/data/search-index.json'));
   if (!res.ok) throw new Error('No se pudo cargar el índice del catálogo');
   return res.json();
 }
@@ -123,7 +124,7 @@ export function openIdeaInterpreter() {
   const status = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
   const results = h('div', { class: 'idea-interpreter__results' });
   const apply = h('button', { type: 'button', class: 'btn btn--primary', disabled: true }, 'Añadir selección al prompt');
-  const catalogLink = h('a', { class: 'btn btn--outline', href: '/generadores/' }, 'Abrir catálogo');
+  const catalogLink = h('a', { class: 'btn btn--outline', href: sitePath('/generadores/') }, 'Abrir catálogo');
   const dialog = h('dialog', { class: 'start-dialog idea-interpreter', 'aria-labelledby': 'idea-interpreter-title' },
     h('div', { class: 'start-dialog__panel' },
       h('button', { type: 'button', class: 'icon-btn start-dialog__close', 'aria-label': 'Cerrar', onClick: () => dialog.close() }, '×'),

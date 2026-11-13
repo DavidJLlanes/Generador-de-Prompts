@@ -1,3 +1,4 @@
+import { BASE_PATH } from '../assets/js/core/site-path.js';
 /**
  * Auditoría de accesibilidad con axe-core sobre las páginas y estados principales (WCAG 2.x A/AA + buenas prácticas).
  * Uso: npm run audit:a11y   (requiere Chrome/Edge y axe-core: `npm i -D axe-core`, o AXE_PATH=/ruta/a/axe.min.js)
@@ -17,7 +18,7 @@ const AXE = readFileSync(axePath, 'utf8');
 
 const server = createStaticServer();
 await new Promise(r => server.listen(0, '127.0.0.1', r));
-const base = `http://127.0.0.1:${server.address().port}`;
+const base = `http://127.0.0.1:${server.address().port}${BASE_PATH}`;
 
 const clickText = (sel, text) => `[...document.querySelectorAll(${JSON.stringify(sel)})].find(e=>e.textContent.includes(${JSON.stringify(text)})).click()`;
 // Cada caso: nombre, ruta y preparación opcional (estados interactivos).

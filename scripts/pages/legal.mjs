@@ -4,7 +4,7 @@
  * Recomendación: revisarlas con asesoramiento legal antes de publicar.
  */
 import { esc } from '../../assets/js/core/util.js';
-import { layout } from './layout.mjs';
+import { SITE, layout } from './layout.mjs';
 
 const UPDATED = 'noviembre de 2026';
 const CONTACT = 'djl@djl.red';
@@ -17,7 +17,7 @@ const DOCS = {
     sections: [
       ['1. Datos identificativos',
         'En cumplimiento del deber de información recogido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los datos del titular de este sitio web:',
-        { list: ['Titular: David', 'Localidad: León (España)', `Correo electrónico: ${CONTACT}`, 'Sitio web: lumenvitae.es'] }],
+        { list: ['Titular: David', 'Localidad: León (España)', `Correo electrónico: ${CONTACT}`, `Sitio web: ${SITE.url}/`] }],
       ['2. Objeto',
         'El presente aviso legal regula el acceso, la navegación y el uso del sitio web Lumen Vitae (en adelante, «el Sitio»), una plataforma gratuita que ofrece herramientas para crear descripciones de texto («prompts») destinadas a generadores de imágenes por inteligencia artificial.',
         'El acceso al Sitio es libre y gratuito, y atribuye a quien lo realiza la condición de usuario, lo que implica la aceptación plena de las condiciones recogidas en este aviso legal desde el momento en que se accede.'],

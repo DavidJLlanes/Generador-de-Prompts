@@ -1,3 +1,4 @@
+import { sitePath } from './site-path.js';
 /** Codifica/decodifica el prompt para compartirlo en un enlace (#s=…). Base64 URL-safe en UTF-8, sin servidor. */
 
 const toB64Url = s => {
@@ -28,7 +29,7 @@ export function decodeState(code) {
   }
 }
 
-export const shareUrl = state => `${location.origin}/constructor/#s=${encodeState(state)}`;
+export const shareUrl = state => `${location.origin}${sitePath('/constructor/')}#s=${encodeState(state)}`;
 
 /** Si la URL trae un prompt compartido, devuelve su estado (y limpia el hash). */
 export function readSharedFromLocation() {

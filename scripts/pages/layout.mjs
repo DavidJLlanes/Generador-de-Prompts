@@ -2,11 +2,12 @@
 import { esc } from '../../assets/js/core/util.js';
 import { icon } from '../../assets/js/ui/icons.js';
 import { existsSync } from 'node:fs';
+import { sitePath } from '../../assets/js/core/site-path.js';
 import { ROOT } from '../lib/domains.mjs';
 
 export const SITE = {
   name: 'Lumen Vitae',
-  origin: 'https://lumenvitae.es',
+  url: 'https://djl.com.es' + sitePath(''),
   themeColor: '#12100e',
   year: new Date().getFullYear(),
 };
@@ -67,9 +68,9 @@ export function layout({ path, title, description, main, script, bodyData = {}, 
   const ogWebp = og && existsSync(`${ROOT}/assets/img/og/${og}.webp`);
   const ogFile = ogJpeg || ogWebp;
   const ogPath = ogJpeg ? `/assets/img/og/${og}.jpg` : ogWebp ? `/assets/img/og/${og}.webp` : '/assets/img/og-image.webp';
-  const image = `${SITE.origin}${ogPath}`;
+  const image = `${SITE.url}${ogPath}`;
   const imageType = ogJpeg ? 'image/jpeg' : 'image/webp';
-  const url = SITE.origin + path;
+  const url = SITE.url + path;
   const data = Object.entries(bodyData).map(([k, v]) => ` data-${k}="${esc(v)}"`).join('');
   return `<!doctype html>
 <html lang="es">
@@ -129,5 +130,5 @@ ${footer(domains)}
 ${script ? `<script type="module" src="/assets/js/pages/${script}.js"></script>` : ''}
 </body>
 </html>
-`;
+`.replace(/(\s(?:href|src|action)=")\/(?!\/)/g, (_, attr) => attr + sitePath('/'));
 }

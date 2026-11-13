@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /** Catálogo (/generadores/): filtra por ranura y busca sobre las tarjetas ya renderizadas por el build. */
 import { $, $$ } from '../ui/dom.js';
 import { initChrome } from '../ui/chrome.js';
@@ -30,7 +31,7 @@ const termsFor = q => [q, ...(INTENTS[q] || '').split(' ').filter(Boolean)];
 /* --- buscador global de opciones: el índice se baja solo la primera vez que se busca --- */
 const MAX_HITS = 40;
 let indexPromise = null;
-const loadIndex = () => indexPromise || (indexPromise = fetch('/data/search-index.json')
+const loadIndex = () => indexPromise || (indexPromise = fetch(sitePath('/data/search-index.json'))
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(raw => ({
     domains: raw.d,
@@ -60,7 +61,7 @@ async function renderHits() {
   const items = found.map(({ row, label }) => {
     const [slug, short] = idx.domains[row.d];
     const a = document.createElement('a');
-    a.href = `/generadores/${slug}/?q=${encodeURIComponent(label.split(' · ')[0])}#sec-${row.id}`;
+    a.href = sitePath(`/generadores/${slug}/?q=${encodeURIComponent(label.split(' · ')[0])}#sec-${row.id}`);
     const b = document.createElement('b');
     b.textContent = label;
     const span = document.createElement('span');

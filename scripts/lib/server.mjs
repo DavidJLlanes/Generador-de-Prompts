@@ -6,6 +6,7 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { BASE_PATH } from '../../assets/js/core/site-path.js';
 import { ROOT } from './domains.mjs';
 
 const MIME = {
@@ -22,8 +23,9 @@ export const SECURITY_HEADERS = {
 
 async function resolveFile(urlPath) {
   const clean = decodeURIComponent(urlPath.split('?')[0].split('#')[0]);
-  const target = path.normalize(path.join(ROOT, clean));
-  if (!target.startsWith(ROOT)) return null; // evita salir de la carpeta del proyecto
+  if (!clean.startsWith(BASE_PATH + '/')) return null;
+  const target = path.normalize(path.join(ROOT, clean.slice(BASE_PATH.length)));
+  if (target !== ROOT && !target.startsWith(ROOT + path.sep)) return null; // evita salir de la carpeta del proyecto
   try {
     const s = await stat(target);
     return s.isDirectory() ? path.join(target, 'index.html') : target;
@@ -33,7 +35,13 @@ async function resolveFile(urlPath) {
 /** @returns {import('node:http').Server} servidor sin iniciar: llama a `.listen(puerto)` (0 = puerto libre). */
 export function createStaticServer() {
   return createServer(async (req, res) => {
-    let file = await resolveFile(req.url);
+    const pathname = req.url.split('?')[0];
+    if (pathname === '/' || pathname === BASE_PATH) {
+      res.writeHead(302, { Location: BASE_PATH + '/' + req.url.slice(pathname.length) });
+      res.end();
+      return;
+    }
+    let file = await resolveFile(req.url).catch(() => null);
     let status = 200;
     if (!file) { file = path.join(ROOT, '404.html'); status = 404; }
     try {

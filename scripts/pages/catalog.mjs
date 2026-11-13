@@ -2,7 +2,7 @@
 import { esc } from '../../assets/js/core/util.js';
 import { SLOTS } from '../../data/taxonomy.js';
 import { icon } from '../../assets/js/ui/icons.js';
-import { layout } from './layout.mjs';
+import { SITE, layout } from './layout.mjs';
 import { domainCard, fmt } from './shared.mjs';
 
 export function catalogPage({ domains, totals }) {
@@ -37,6 +37,6 @@ export function catalogPage({ domains, totals }) {
     title: 'Generadores de prompts para imágenes con IA | Lumen Vitae',
     description: `Explora ${totals.domains} generadores de prompts: personajes, criaturas, vehículos, paisajes, escenarios, clima, efectos y fotografía. Combínalos para crear imágenes de máxima calidad.`,
     main, script: 'catalog', domains, og: 'generadores',
-    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Generadores de prompts', url: 'https://lumenvitae.es/generadores/', inLanguage: 'es' }],
+    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Generadores de prompts', url: `${SITE.url}/generadores/`, inLanguage: 'es' }],
   });
 }

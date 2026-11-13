@@ -2,7 +2,7 @@
 import { esc } from '../../assets/js/core/util.js';
 import { SLOTS } from '../../data/taxonomy.js';
 import { icon } from '../../assets/js/ui/icons.js';
-import { layout } from './layout.mjs';
+import { SITE, layout } from './layout.mjs';
 import { fmt } from './shared.mjs';
 
 const MARQUEE = [
@@ -128,12 +128,12 @@ export function homePage({ domains, totals }) {
     description: `Construye prompts de máxima calidad para imágenes con IA: ${totals.domains} generadores, más de ${fmt(Math.floor(totals.options / 1000) * 1000)} opciones y un constructor que cruza personajes, escenarios, clima y fotografía. Interfaz en español, prompts en inglés.`,
     main, script: 'home', domains, og: 'home',
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: 'https://lumenvitae.es/', inLanguage: 'es' },
+      { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: `${SITE.url}/`, inLanguage: 'es' },
       {
-        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Lumen Vitae', url: 'https://lumenvitae.es/',
+        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Lumen Vitae', url: `${SITE.url}/`,
         applicationCategory: 'DesignApplication', operatingSystem: 'Web, iOS, Android', inLanguage: 'es', isAccessibleForFree: true,
         description: 'Constructor modular de prompts para imágenes con IA, con generadores de personajes, escenas, fotografía y estilo.',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, image: 'https://lumenvitae.es/assets/img/og/home.webp',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, image: `${SITE.url}/assets/img/og/home.webp`,
       },
     ],
   });

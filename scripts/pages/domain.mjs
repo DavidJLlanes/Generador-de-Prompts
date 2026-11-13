@@ -2,7 +2,7 @@
 import { esc } from '../../assets/js/core/util.js';
 import { SLOT_BY_ID } from '../../data/taxonomy.js';
 import { icon } from '../../assets/js/ui/icons.js';
-import { layout } from './layout.mjs';
+import { SITE, layout } from './layout.mjs';
 import { fmt, relatedFor } from './shared.mjs';
 
 /** Límites del contenido pre-renderizado: suficiente para SEO sin inflar las páginas de los generadores grandes. */
@@ -69,11 +69,11 @@ ${staticSections(domain)}
   return layout({
     path, title, description: meta.summary, main, script: 'domain', bodyData: { 'domain-id': d.id, 'domain-slug': d.slug }, domains, og: d.slug,
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${meta.title} · Lumen Vitae`, url: `https://lumenvitae.es${path}`, applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true, description: meta.summary },
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${meta.title} · Lumen Vitae`, url: `${SITE.url}${path}`, applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true, description: meta.summary },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://lumenvitae.es/' },
-        { '@type': 'ListItem', position: 2, name: 'Generadores', item: 'https://lumenvitae.es/generadores/' },
-        { '@type': 'ListItem', position: 3, name: meta.short || meta.title, item: `https://lumenvitae.es${path}` },
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Generadores', item: `${SITE.url}/generadores/` },
+        { '@type': 'ListItem', position: 3, name: meta.short || meta.title, item: `${SITE.url}${path}` },
       ] },
     ],
   });

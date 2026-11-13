@@ -1,3 +1,4 @@
+import { sitePath } from './core/site-path.js';
 const installButton = document.querySelector('[data-install-app]');
 const installDialog = document.querySelector('[data-install-help]');
 const instructionText = document.querySelector('[data-install-instructions]');
@@ -16,7 +17,7 @@ if (window.matchMedia('(pointer: coarse)').matches) {
 
 if ('serviceWorker' in navigator && window.isSecureContext) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).catch(error => {
+    navigator.serviceWorker.register(sitePath('/service-worker.js'), { scope: sitePath('/') }).catch(error => {
       console.error('No se pudo registrar el service worker de Lumen Vitae:', error);
     });
   }, { once: true });

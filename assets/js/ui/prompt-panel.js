@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /**
  * PANEL DE PROMPT — muestra el prompt compuesto en el formato elegido y los controles que lo
  * afectan (detalle, calidad máxima, proporción). Se usa en el dock inferior y en el constructor.
@@ -159,7 +160,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
       out.append(h('div', { class: 'empty' },
         h('p', { class: 'empty__title' }, 'Tu prompt aparecerá aquí'),
         h('p', {}, 'Elige opciones en cualquier generador. Puedes mezclar sujeto, escenario, clima y fotografía: si no eliges algo, simplemente no se incluye.'),
-        h('a', { class: 'btn btn--outline btn--sm', href: '/generadores/' }, 'Explorar generadores')));
+        h('a', { class: 'btn btn--outline btn--sm', href: sitePath('/generadores/') }, 'Explorar generadores')));
       meta.textContent = '';
       copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = true;
     } else {

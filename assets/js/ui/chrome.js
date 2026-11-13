@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /**
  * CHROME — comportamiento común de todas las páginas: menú móvil, enlace activo, contador de
  * «Mi prompt», dock inferior y carga de prompts compartidos por enlace.
@@ -31,9 +32,12 @@ export function initChrome() {
 
   // Enlace activo
   const path = location.pathname;
+  const home = sitePath('/');
+  const catalog = sitePath('/generadores/');
+  const scenarios = sitePath('/generadores/escenarios/');
   $$('.site-nav a').forEach(a => {
     const href = a.getAttribute('href');
-    const active = href === '/' ? path === '/' : path.startsWith(href) && !(href === '/generadores/' && path.startsWith('/generadores/escenarios'));
+    const active = href === home ? path === home : path.startsWith(href) && !(href === catalog && path.startsWith(scenarios));
     a.classList.toggle('is-active', active);
     if (active) a.setAttribute('aria-current', 'page');
   });
@@ -51,7 +55,7 @@ export function initChrome() {
   store.subscribe(refreshBadge);
   $$('[data-dock-open]').forEach(btn => btn.addEventListener('click', () => {
     if (dock) dock.isOpen() ? dock.close() : dock.open();
-    else location.href = '/constructor/';
+    else location.href = sitePath('/constructor/');
   }));
 
   // Atajo «/» para ir al buscador de la página

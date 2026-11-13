@@ -1,3 +1,4 @@
+import { sitePath } from '../core/site-path.js';
 /**
  * NAVEGADOR DE OPCIONES — pinta las secciones de un dominio como acordeón (cada sección se pliega
  * y muestra un resumen de lo elegido), gestiona la selección (single/multi), el bloqueo ante
@@ -27,7 +28,7 @@ function optionHTML(o) {
   const tip = esc((o.name ? `${o.name} — ` : '') + o.en.slice(0, 180));
   if (o.thumb) {
     return `<button type="button" class="opt opt--thumb" data-opt="${o.id}" data-s="${s}" aria-pressed="false" title="${tip}">
-      <img class="opt__img" src="${o.thumb}" alt="" loading="lazy" decoding="async">
+      <img class="opt__img" src="${sitePath(o.thumb)}" alt="" loading="lazy" decoding="async">
       <span class="opt__label"><span class="opt__title">${esc(o.es)}</span>${o.name ? `<span class="opt__sub">${esc(o.name)}</span>` : ''}</span></button>`;
   }
   if (o.info && o.info.length) {
