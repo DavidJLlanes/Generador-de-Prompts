@@ -10,15 +10,16 @@
 - Resultados del asistente sin preselección: la persona marca solo las coincidencias que quiere añadir.
 - Revisión del prompt con aviso de texto libre que repite literalmente una opción ya seleccionada.
 - Modo rápido compacto para pantallas pequeñas.
+- Revisión visual del modo rápido en móvil y escritorio.
 - Las galerías «Conjunto completo» y «Pose» quedan fuera de estos cambios.
 
 ## Para una siguiente fase
 
 - El asistente ya pondera contexto básico por sección, usa equivalencias españolas y puede corregir algunas erratas de una o dos letras cuando la coincidencia es inequívoca.
 - Las equivalencias del asistente se limitan a sus secciones de intención y se respeta el género indicado, para evitar resultados cruzados como sugerencias masculinas en una idea de mujer.
+- La corrección de erratas exige una coincidencia única y limita la distancia permitida según la longitud de la palabra; también descarta opciones de rostro cuyo rótulo indique explícitamente el género contrario.
 - Las sugerencias incompatibles se omiten o ajustan al aplicarlas, con aviso; la revisión del prompt avisa si se acumulan demasiadas opciones en una ranura.
 - Mantener una comprensión abierta de paráfrasis y relaciones entre conceptos: la versión local sigue limitada al vocabulario del catálogo y a reglas explícitas.
 - Si se quiere comprensión abierta, diseñar y conectar un servicio de IA con consentimiento explícito y gestión segura de claves. No incluir claves privadas en el JavaScript público.
 - Ampliar las equivalencias a partir de consultas reales y revisar casos ambiguos de corrección ortográfica.
-- Revisar visualmente el modo rápido en móvil y escritorio.
 - Ampliar la revisión con avisos de redundancia semántica solo cuando se puedan detectar con suficiente precisión.
