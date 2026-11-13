@@ -68,6 +68,7 @@ function termsFor(query, vocabulary) {
   let corrected = false;
   for (const w of original) {
     if (w.length >= 5 && !vocabulary.has(w)) {
+      const maxDistance = w.length >= 7 ? 2 : 1;
       let best = 3; let candidates = [];
       for (const known of vocabulary) {
         if (Math.abs(known.length - w.length) > 2) continue;
@@ -75,7 +76,7 @@ function termsFor(query, vocabulary) {
         if (distance < best) { best = distance; candidates = [known]; }
         else if (distance === best) candidates.push(known);
       }
-      if (best <= 2 && candidates.length === 1) { out.add(candidates[0]); corrected = true; }
+      if (best <= maxDistance && candidates.length === 1) { out.add(candidates[0]); corrected = true; }
     }
     for (const alias of (ALIASES[w] || '').split(' ')) if (alias) out.add(fold(alias));
   }
@@ -86,6 +87,17 @@ function explicitGender(original) {
   if (original.some(w => ['mujer', 'chica', 'femenina'].includes(w))) return 'mujer';
   if (original.some(w => ['hombre', 'chico', 'masculino', 'varon'].includes(w))) return 'hombre';
   return null;
+}
+
+function conflictsWithExplicitGender(gender, slug, sectionId, label) {
+  if (!gender) return false;
+  if (gender === 'mujer' && slug === 'hombre') return true;
+  if (gender === 'hombre' && slug === 'mujer') return true;
+  if (slug !== 'rostros' || sectionId !== 'genero') return false;
+  const labelWords = new Set(words(label));
+  return gender === 'mujer'
+    ? labelWords.has('hombre') || labelWords.has('varon')
+    : labelWords.has('mujer') || labelWords.has('mujeres');
 }
 
 async function loadSearchIndex() {
@@ -130,14 +142,13 @@ export function openIdeaInterpreter() {
       const scored = [];
       for (let d = 0; d < index.d.length; d++) {
         const [slug, short] = index.d[d];
-        if (gender === 'mujer' && slug === 'hombre') continue;
-        if (gender === 'hombre' && slug === 'mujer') continue;
         const meta = getCatalog().domains.find(x => x.slug === slug);
         if (!meta) continue;
         if (slug === 'poses') continue; // se respeta la galería de poses excluida del trabajo
         for (const [domainIndex, sectionId, title, labels] of index.o) {
           if (domainIndex !== d || /conjunto completo|galer[ií]a/i.test(title)) continue;
           for (const label of labels) {
+            if (conflictsWithExplicitGender(gender, slug, sectionId, label)) continue;
             const folded = fold(label);
             const labelWords = new Set(words(label));
             const hits = terms.filter(term => labelWords.has(term) && (!focusedTerms.has(term) || focusedTerms.get(term).has(sectionId)));
