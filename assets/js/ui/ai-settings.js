@@ -45,10 +45,12 @@ export function openAISettings() {
   } }, 'Cargar modelos');
   const saveButton = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => {
     try {
-      saveAIProvider(provider.value, apiKey.value, model.value);
+      const savedKey = getAISettings().accounts[provider.value]?.apiKey;
+      const keyToSave = apiKey.value.trim() || savedKey || '';
+      saveAIProvider(provider.value, keyToSave, model.value);
       setAIProvider(provider.value);
-      status.textContent = 'Clave guardada en este navegador. Ya puedes usar la IA.';
-      apiKey.value = '';
+      status.textContent = 'Clave y modelo guardados en este navegador. Ya puedes usar la IA.';
+      apiKey.value = keyToSave;
       apiKey.placeholder = 'Clave guardada · pega otra para reemplazarla';
     } catch (error) { status.textContent = error.message; }
   } }, 'Guardar y conectar');
@@ -77,7 +79,7 @@ export function openAISettings() {
     modelList.replaceChildren();
     modelList.hidden = true;
     const info = providers[provider.value];
-    const account = initial.accounts[provider.value] || {};
+    const account = getAISettings().accounts[provider.value] || {};
     apiKey.value = account.apiKey || '';
     apiKey.placeholder = account.apiKey ? 'Clave guardada · pega otra para reemplazarla' : 'Pega aquí tu clave API';
     model.value = account.model || '';
