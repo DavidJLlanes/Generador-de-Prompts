@@ -8,6 +8,7 @@ import { mountSlotBoard, randomizeAll } from '../ui/slot-board.js';
 import { openPresets } from '../ui/presets-drawer.js';
 import { toast } from '../ui/toast.js';
 import { openIdeaInterpreter } from '../ui/idea-interpreter.js';
+import { openAISettings } from '../ui/ai-settings.js';
 
 initChrome();
 
@@ -16,6 +17,7 @@ mountSlotBoard($('[data-board]'));
 
 $('[data-act="random-all"]').addEventListener('click', () => randomizeAll().catch(() => toast('No se pudo generar la combinación', { tone: 'warn' })));
 $('[data-act="clear"]').addEventListener('click', () => store.clearAll());
+$('[data-act="ai-settings"]').addEventListener('click', () => openAISettings());
 $('[data-act="ideas"]').addEventListener('click', () => loadDomain('scenarios').then(openPresets).catch(() => toast('No se pudieron cargar las ideas', { tone: 'warn' })));
 const startDialog = $('[data-start-dialog]');
 $('[data-act="start"]').addEventListener('click', () => startDialog.showModal());

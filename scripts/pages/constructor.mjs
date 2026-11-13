@@ -10,6 +10,7 @@ export function constructorPage({ domains }) {
     <p>Cada ranura es opcional. Elige un generador en cada una, marca las opciones que te interesen y el prompt se ordena y se completa solo, incluso si dejas ranuras vacías.</p>
   </div>
   <div class="constructor__bar">
+    <button type="button" class="btn btn--outline" data-act="ai-settings" title="Configura proveedor, clave API y modelo">${icon('spark', 18)} Configurar IA</button>
     <button type="button" class="btn btn--primary" data-act="start">${icon('spark', 18)} Empezar guiado</button>
     <button type="button" class="btn btn--primary" data-act="random-all">${icon('dice', 18)} Combinación aleatoria</button>
     <button type="button" class="btn btn--outline" data-act="ideas">${icon('spark', 18)} Galería de ideas</button>
