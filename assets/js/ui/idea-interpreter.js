@@ -82,6 +82,12 @@ function termsFor(query, vocabulary) {
   return { original, terms: [...out], corrected };
 }
 
+function explicitGender(original) {
+  if (original.some(w => ['mujer', 'chica', 'femenina'].includes(w))) return 'mujer';
+  if (original.some(w => ['hombre', 'chico', 'masculino', 'varon'].includes(w))) return 'hombre';
+  return null;
+}
+
 async function loadSearchIndex() {
   const res = await fetch('/data/search-index.json');
   if (!res.ok) throw new Error('No se pudo cargar el índice del catálogo');
@@ -110,9 +116,22 @@ export function openIdeaInterpreter() {
     try {
       const index = await loadSearchIndex();
       const { original, terms, corrected } = termsFor(query, new Set(index.o.flatMap(row => row[3].flatMap(words))));
+      const gender = explicitGender(original);
+      const focusedTerms = new Map();
+      for (const focus of FOCUSES) {
+        if (!focus.words.some(w => original.includes(w))) continue;
+        const permitted = new Set(focus.sections);
+        for (const word of original) {
+          if (!focus.words.includes(word)) continue;
+          const aliases = (ALIASES[word] || '').split(' ').filter(Boolean).map(fold);
+          for (const term of [word, ...aliases]) focusedTerms.set(term, permitted);
+        }
+      }
       const scored = [];
       for (let d = 0; d < index.d.length; d++) {
         const [slug, short] = index.d[d];
+        if (gender === 'mujer' && slug === 'hombre') continue;
+        if (gender === 'hombre' && slug === 'mujer') continue;
         const meta = getCatalog().domains.find(x => x.slug === slug);
         if (!meta) continue;
         if (slug === 'poses') continue; // se respeta la galería de poses excluida del trabajo
@@ -121,7 +140,7 @@ export function openIdeaInterpreter() {
           for (const label of labels) {
             const folded = fold(label);
             const labelWords = new Set(words(label));
-            const hits = terms.filter(term => labelWords.has(term));
+            const hits = terms.filter(term => labelWords.has(term) && (!focusedTerms.has(term) || focusedTerms.get(term).has(sectionId)));
             if (!hits.length) continue;
             const phrase = fold(query);
             const focus = FOCUSES.filter(f => f.words.some(w => original.includes(w)) && f.sections.includes(sectionId)).length;
