@@ -1,6 +1,5 @@
 # Añadir dentro del bloque HTTPS existente de djl.com.es.
-# La web y la gestión de passkeys no usan Basic Auth; el primer registro se
-# autoriza con un código aleatorio de un solo uso.
+# El formulario de acceso queda público; el resto del sitio usa la sesión.
 location = /prompt {
     return 301 /prompt/$is_args$args;
 }
@@ -48,6 +47,7 @@ location ^~ /prompt/auth/login/ {
     proxy_pass http://127.0.0.1:4011;
     proxy_set_header Host $host;
     proxy_set_header Cookie $http_cookie;
+    proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header Origin $http_origin;
     proxy_set_header Content-Type $content_type;
 }
@@ -56,6 +56,7 @@ location ^~ /prompt/auth/register/ {
     proxy_pass http://127.0.0.1:4011;
     proxy_set_header Host $host;
     proxy_set_header Cookie $http_cookie;
+    proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header Origin $http_origin;
     proxy_set_header Content-Type $content_type;
 }

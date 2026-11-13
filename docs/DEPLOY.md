@@ -1,18 +1,13 @@
-# Despliegue con passkeys en djl.com.es/prompt/
+# Acceso privado en djl.com.es/prompt/
 
-El repositorio se publica en `/var/www/djl.com.es/prompt`. El HTML, el sitemap y el manifiesto ya vienen generados en Git. Para cambiar el prefijo de URL, edita `assets/js/core/site-path.js` y ejecuta `npm run build` antes de publicar.
+La web se sirve en `/var/www/djl.com.es/prompt`. El acceso usa usuario y contraseña con una sesión de 30 días. El navegador puede guardar la contraseña y rellenarla mediante Face ID o huella. También se pueden añadir passkeys opcionales por dispositivo.
 
-## Primera instalación
+## Primera instalación del servicio
 
 Con un usuario con permisos de escritura en `/var/www/djl.com.es`:
 
 ```bash
 git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/djl.com.es/prompt
-```
-
-Instala las dependencias del servicio de passkeys y prepara su almacenamiento:
-
-```bash
 node --version
 cd /var/www/djl.com.es/prompt/auth
 sudo npm install --omit=dev --no-package-lock
@@ -22,41 +17,31 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now lumen-prompt-auth
 ```
 
-Genera un código aleatorio de un solo uso para guardar la primera passkey en tu dispositivo. Este código se usa solo para activar el primer dispositivo; no es una contraseña de acceso:
+En el primer arranque se crea la cuenta `david` y una contraseña temporal aleatoria. Consúltala una vez en los registros del servicio:
 
 ```bash
-sudo -u www-data sh -c 'umask 077; openssl rand -hex 32 > /var/lib/lumen-prompt/bootstrap-token'
-sudo chmod 600 /var/lib/lumen-prompt/bootstrap-token
-sudo cat /var/lib/lumen-prompt/bootstrap-token
+sudo journalctl -u lumen-prompt-auth -n 40 --no-pager
 ```
 
-Copia ese código para introducirlo una vez en `https://djl.com.es/prompt/enroll`. Tras registrar la primera passkey, el servidor borra el código. No lo compartas ni lo guardes en Git.
+Entra en `https://djl.com.es/prompt/login` con esa cuenta y cambia la contraseña en `https://djl.com.es/prompt/enroll`. Guarda la nueva contraseña en el gestor del navegador para poder usar Face ID o huella al rellenarla. La sesión dura 30 días. Las passkeys son opcionales y se añaden desde la página de cuenta.
 
-Sustituye en el bloque HTTPS de `djl.com.es` las ubicaciones anteriores de `/prompt` por las de `deploy/nginx.conf.example`. Borra las directivas `auth_basic` y `auth_basic_user_file` anteriores, incluidas las de `location = /prompt` y `location ^~ /prompt/`. Después de guardar la nueva configuración, valida y aplícala:
+## Nginx
+
+Dentro del bloque HTTPS existente de `djl.com.es`, instala las ubicaciones de `deploy/nginx.conf.example`. Elimina todas las directivas `auth_basic` y `auth_basic_user_file` que se hubieran añadido para `/prompt`. Valida y recarga Nginx:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Ya aplicada la configuración nueva, elimina el archivo de claves de Basic Auth para retirar por completo el sistema anterior:
+Elimina el archivo de contraseñas del antiguo Basic Auth, si existe:
 
 ```bash
 sudo rm -f /etc/nginx/.htpasswd-lumen-prompt
 ```
 
-Al abrir `https://djl.com.es/prompt/`, elige «Entrar con Face ID o huella». Las sesiones duran 24 horas; al caducar, confirmas la passkey de nuevo en el dispositivo. Para vincular otro móvil u ordenador, abre `/prompt/enroll` desde un dispositivo donde ya hayas iniciado sesión, pulsa «Vincular otro dispositivo» y comparte el código temporal. En el otro dispositivo, abre `/prompt/enroll`, pega ese código y crea la passkey. La invitación caduca en 15 minutos, se puede usar una sola vez y no elimina las passkeys existentes. No se guardan datos biométricos en el VPS.
+Las ubicaciones proxy de `/prompt/auth/login/` y `/prompt/auth/register/` deben incluir `proxy_set_header X-Real-IP $remote_addr;` para limitar los intentos fallidos por IP.
 
-Si pierdes todos los dispositivos registrados, puedes crear otro código de recuperación en el VPS. Ese código sustituye las passkeys anteriores al registrar la nueva:
-
-```bash
-sudo -u www-data sh -c 'umask 077; openssl rand -hex 32 > /var/lib/lumen-prompt/bootstrap-token'
-sudo chmod 600 /var/lib/lumen-prompt/bootstrap-token
-sudo cat /var/lib/lumen-prompt/bootstrap-token
-```
-
-Introduce el código en `https://djl.com.es/prompt/enroll`. Se elimina al completar el registro.
-
-Si el dominio ya aplica una política CSP, su directiva `connect-src` debe permitir `'self'` y los orígenes de los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`. La clave se introduce en «Constructor → Configurar IA» y se guarda en el navegador para el nuevo dominio.
+Si el dominio ya aplica una política CSP, su directiva `connect-src` debe permitir `'self'` y los orígenes de los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`. La clave se introduce en «Constructor → Configurar IA» y se guarda en el navegador.
 
 El sitemap está en `https://djl.com.es/prompt/sitemap.xml`. Para anunciarlo a los buscadores, añade esa URL al `robots.txt` de la raíz de `djl.com.es` sin sustituir sus reglas actuales.
 
@@ -67,7 +52,7 @@ git -C /var/www/djl.com.es/prompt pull --ff-only origin main
 sudo systemctl restart lumen-prompt-auth
 ```
 
-GitHub Actions puede actualizar esa misma carpeta si están configurados los secretos `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` y `VPS_KNOWN_HOSTS`. Si la clave de despliegue tiene un comando forzado en `authorized_keys`, apunta ese comando al nuevo checkout:
+GitHub Actions puede actualizar esa misma carpeta si están configurados los secretos `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` y `VPS_KNOWN_HOSTS`. Si la clave de despliegue tiene un comando forzado en `authorized_keys`, apunta ese comando al checkout:
 
 ```text
 command="git -C /var/www/djl.com.es/prompt pull --ff-only origin main",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-ed25519 AAAA… github-actions-lumenvitae

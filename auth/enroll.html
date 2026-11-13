@@ -5,159 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#17130f">
-  <title>Configurar acceso · Lumen Vitae</title>
+  <title>Cuenta · Lumen Vitae</title>
   <style>
-    :root{color-scheme:dark;--bg:#100e0c;--panel:#1d1915;--line:#403831;--text:#f1e8da;--muted:#b8ad9e;--gold:#dfbc82;--ink:#21180e}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 0,#30241a 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(100%,440px);padding:36px;border:1px solid var(--line);border-radius:28px;background:#1d1915f5;box-shadow:0 24px 80px #0008}.brand{margin:0 0 30px;color:var(--gold);font:italic 24px/1.2 Georgia,serif}.brand span{font-style:normal;color:var(--text)}h1{margin:0 0 8px;font:40px/1.1 Georgia,serif;letter-spacing:-1px}.intro{margin:0 0 28px;color:var(--muted)}label{display:block;margin:18px 0 8px;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase}input{width:100%;min-height:54px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#17130f;color:var(--text);font:inherit}input:focus{outline:2px solid var(--gold);outline-offset:2px}button,.secondary{display:flex;width:100%;min-height:56px;align-items:center;justify-content:center;margin-top:14px;padding:12px 16px;border:0;border-radius:999px;background:var(--gold);color:var(--ink);font:600 16px system-ui;text-decoration:none;cursor:pointer}.secondary{border:1px solid var(--line);background:transparent;color:var(--text)}button:disabled{opacity:.6;cursor:wait}.notice{min-height:25px;margin:18px 0 0;color:var(--muted);text-align:center}.notice.error{color:#ffd1c7}.invite-code{padding:16px;border:1px dashed var(--gold);border-radius:12px;color:var(--gold);font:600 21px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-align:center;overflow-wrap:anywhere}.privacy{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:center}@media(max-width:480px){main{padding:28px 22px;border-radius:22px}h1{font-size:35px}}
+    :root{color-scheme:dark;--bg:#100e0c;--line:#403831;--text:#f1e8da;--muted:#b8ad9e;--gold:#dfbc82;--ink:#21180e}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 0,#30241a 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(100%,480px);padding:36px;border:1px solid var(--line);border-radius:28px;background:#1d1915f5;box-shadow:0 24px 80px #0008}.brand{margin:0 0 30px;color:var(--gold);font:italic 24px/1.2 Georgia,serif}.brand span{font-style:normal;color:var(--text)}h1{margin:0 0 8px;font:40px/1.1 Georgia,serif;letter-spacing:-1px}h2{margin:25px 0 5px;font:26px/1.2 Georgia,serif}.intro,.help{color:var(--muted)}.help{font-size:13px}label{display:block;margin:16px 0 7px;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase}input{width:100%;min-height:54px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#17130f;color:var(--text);font:inherit}input:focus{outline:2px solid var(--gold);outline-offset:2px}button,.secondary{display:flex;width:100%;min-height:54px;align-items:center;justify-content:center;margin-top:14px;padding:12px 16px;border:0;border-radius:999px;background:var(--gold);color:var(--ink);font:600 16px system-ui;text-decoration:none;cursor:pointer}.secondary{border:1px solid var(--line);background:transparent;color:var(--text)}button:disabled{opacity:.6;cursor:wait}.notice{min-height:25px;margin:17px 0 0;color:var(--muted);text-align:center}.notice.error{color:#ffd1c7}.privacy{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:center}.device{padding:16px;border:1px solid var(--line);border-radius:16px;margin-top:18px}.device[hidden]{display:none}@media(max-width:480px){main{padding:28px 22px;border-radius:22px}h1{font-size:35px}}
   </style>
 </head>
 <body>
   <main>
     <p class="brand">✦ <span>Lumen</span> Vitae</p>
-    <h1>Activa Face ID o huella</h1>
-    <p class="intro">Guarda una passkey en este dispositivo. La próxima vez podrás entrar con la biometría o el método de desbloqueo que uses aquí.</p>
-    <div id="bootstrap" hidden>
-      <label id="code-label" for="setup-token">Código de activación de un solo uso</label>
-      <input id="setup-token" type="password" autocomplete="one-time-code" autocapitalize="none" spellcheck="false">
-    </div>
-    <p id="signed-out" class="notice" hidden>Para vincular este dispositivo, genera una invitación desde el dispositivo donde ya has iniciado sesión y pega aquí el código. La invitación no elimina tus otras passkeys.</p>
-    <button id="register" type="button">Crear passkey en este dispositivo</button>
-    <section id="invite-panel" hidden>
-      <p class="intro">¿Quieres entrar desde otro móvil u ordenador? Crea una invitación de un solo uso, válida durante 15 minutos.</p>
-      <button id="create-invite" class="secondary" type="button">Vincular otro dispositivo</button>
-      <p id="invite-code" class="invite-code" hidden></p>
-      <button id="share-invite" class="secondary" type="button" hidden>Compartir código</button>
+    <h1>Tu cuenta</h1>
+    <p id="signed-out" class="intro" hidden>Inicia sesión primero para cambiar tu contraseña o añadir Face ID/huella en este dispositivo.</p>
+    <section id="account" hidden>
+      <p class="intro">Usuario: <strong id="username"></strong></p>
+      <p class="help">Al iniciar sesión, este navegador permanece conectado hasta 30 días. Puedes guardar la contraseña en el gestor de tu dispositivo para rellenarla con Face ID o huella.</p>
+      <form id="password-form">
+        <h2>Cambiar contraseña</h2>
+        <label for="current-password">Contraseña actual</label>
+        <input id="current-password" type="password" autocomplete="current-password" required>
+        <label for="new-password">Nueva contraseña</label>
+        <input id="new-password" type="password" autocomplete="new-password" minlength="8" required>
+        <label for="confirm-password">Repite la nueva contraseña</label>
+        <input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+        <button id="save-password" type="submit">Guardar contraseña</button>
+      </form>
+      <div class="device">
+        <h2>Añadir Face ID o huella</h2>
+        <p id="passkey-status" class="help"></p>
+        <button id="add-passkey" type="button">Registrar este dispositivo</button>
+      </div>
+      <button id="logout" class="secondary" type="button">Cerrar sesión</button>
     </section>
-    <a id="login" class="secondary" href="/prompt/login" hidden>Entrar con mi passkey</a>
+    <a class="secondary" href="/prompt/login">Volver al acceso</a>
     <a class="secondary" href="/prompt/">Volver al generador</a>
     <p id="notice" class="notice" role="status" aria-live="polite"></p>
-    <p class="privacy">El rostro o la huella se quedan en tu dispositivo; el servidor solo guarda la clave pública de la passkey.</p>
+    <p class="privacy">La passkey usa el desbloqueo seguro de tu dispositivo. El servidor nunca recibe tu huella ni tu rostro.</p>
   </main>
   <script type="module">
-    const button = document.querySelector('#register');
     const notice = document.querySelector('#notice');
-    const bootstrap = document.querySelector('#bootstrap');
-    const setupToken = document.querySelector('#setup-token');
-    const signedOut = document.querySelector('#signed-out');
-    const loginLink = document.querySelector('#login');
-    const invitePanel = document.querySelector('#invite-panel');
-    const inviteButton = document.querySelector('#create-invite');
-    const inviteCode = document.querySelector('#invite-code');
-    const shareInvite = document.querySelector('#share-invite');
-    const codeLabel = document.querySelector('#code-label');
-    let currentInvite = '';
+    const account = document.querySelector('#account');
     const b64urlToBytes = value => {
       const padded = value.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - value.length % 4) % 4);
       return Uint8Array.from(atob(padded), char => char.charCodeAt(0));
     };
     const bytesToB64url = value => {
-      const bytes = new Uint8Array(value);
-      let binary = '';
+      const bytes = new Uint8Array(value); let binary = '';
       for (const byte of bytes) binary += String.fromCharCode(byte);
       return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     };
-    const responseToJSON = credential => ({
-      id: credential.id,
-      rawId: bytesToB64url(credential.rawId),
-      type: credential.type,
-      response: {
-        clientDataJSON: bytesToB64url(credential.response.clientDataJSON),
-        attestationObject: bytesToB64url(credential.response.attestationObject),
-        transports: credential.response.getTransports?.() || [],
-      },
-      clientExtensionResults: credential.getClientExtensionResults(),
-      authenticatorAttachment: credential.authenticatorAttachment,
-    });
     async function request(path, options = {}) {
       const response = await fetch(path, { credentials: 'same-origin', cache: 'no-store', ...options });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || `Error ${response.status}`);
       return data;
     }
+    let state;
     try {
-      const state = await request('/prompt/auth/register/status');
-      if (!state.authenticated) {
-        bootstrap.hidden = false;
-        setupToken.required = true;
-        if (state.hasPasskey) {
-          signedOut.hidden = false;
-          loginLink.hidden = false;
-          codeLabel.textContent = 'Código de invitación del dispositivo autorizado';
-          button.textContent = 'Añadir este dispositivo';
+      state = await request('/prompt/auth/register/status');
+      if (!state.authenticated) document.querySelector('#signed-out').hidden = false;
+      else {
+        account.hidden = false;
+        document.querySelector('#username').textContent = state.username || 'david';
+        document.querySelector('#passkey-status').textContent = state.hasPasskey ? 'Ya tienes una passkey registrada; puedes añadir la de este dispositivo.' : 'La passkey es opcional; también puedes entrar con usuario y contraseña.';
+        if (!window.PublicKeyCredential || !navigator.credentials) {
+          document.querySelector('#add-passkey').disabled = true;
+          document.querySelector('#add-passkey').textContent = 'Este navegador no admite passkeys';
         }
-      } else {
-        invitePanel.hidden = false;
       }
     } catch (error) {
-      button.disabled = true;
       notice.textContent = error.message;
       notice.classList.add('error');
     }
-    button.addEventListener('click', async () => {
-      button.disabled = true;
-      notice.classList.remove('error');
-      notice.textContent = 'Sigue la indicación del dispositivo para guardar tu passkey…';
+    document.querySelector('#password-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      const currentPassword = document.querySelector('#current-password').value;
+      const newPassword = document.querySelector('#new-password').value;
+      const confirmPassword = document.querySelector('#confirm-password').value;
+      if (newPassword !== confirmPassword) { notice.textContent = 'Las contraseñas nuevas no coinciden.'; notice.classList.add('error'); return; }
+      const button = document.querySelector('#save-password'); button.disabled = true;
+      notice.classList.remove('error'); notice.textContent = 'Guardando…';
       try {
-        if (!window.PublicKeyCredential || !navigator.credentials) throw new Error('Este navegador no admite passkeys. Abre la web en Safari o Chrome actualizado.');
-        const token = setupToken.value.trim();
-        const options = await request('/prompt/auth/register/options', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ setupToken: token }),
-        });
+        await request('/prompt/auth/register/password', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ currentPassword, newPassword }) });
+        document.querySelector('#password-form').reset();
+        notice.textContent = 'Contraseña actualizada. Tu sesión seguirá abierta en este dispositivo.';
+      } catch (error) { notice.textContent = error.message; notice.classList.add('error'); }
+      finally { button.disabled = false; }
+    });
+    document.querySelector('#add-passkey').addEventListener('click', async event => {
+      const button = event.currentTarget; button.disabled = true;
+      notice.classList.remove('error'); notice.textContent = 'Sigue la indicación del dispositivo para registrar tu passkey…';
+      try {
+        const options = await request('/prompt/auth/register/options', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
         options.challenge = b64urlToBytes(options.challenge);
         options.user.id = b64urlToBytes(options.user.id);
         options.excludeCredentials = (options.excludeCredentials || []).map(item => ({ ...item, id: b64urlToBytes(item.id) }));
         const credential = await navigator.credentials.create({ publicKey: options });
-        if (!credential) throw new Error('No se creó una passkey.');
+        if (!credential) throw new Error('No se registró ninguna passkey.');
         await request('/prompt/auth/register/verify', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...responseToJSON(credential), setupToken: token }),
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: credential.id, rawId: bytesToB64url(credential.rawId), type: credential.type,
+            response: { clientDataJSON: bytesToB64url(credential.response.clientDataJSON), attestationObject: bytesToB64url(credential.response.attestationObject), transports: credential.response.getTransports?.() || [] },
+            clientExtensionResults: credential.getClientExtensionResults(), authenticatorAttachment: credential.authenticatorAttachment,
+          }),
         });
-        setupToken.value = '';
-        window.location.replace('/prompt/');
+        notice.textContent = 'Dispositivo registrado. Ya puedes entrar con Face ID o huella.';
       } catch (error) {
-        notice.textContent = error.name === 'NotAllowedError' ? 'Creación cancelada. Toca el botón para intentarlo de nuevo.' : error.message;
+        notice.textContent = error.name === 'NotAllowedError' ? 'Registro cancelado. Vuelve a intentarlo cuando quieras.' : error.message;
         notice.classList.add('error');
-        button.disabled = false;
-      }
+      } finally { button.disabled = false; }
     });
-
-    inviteButton.addEventListener('click', async () => {
-      inviteButton.disabled = true;
-      notice.classList.remove('error');
-      notice.textContent = 'Generando invitación…';
-      try {
-        const invitation = await request('/prompt/auth/register/invite', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: '{}',
-        });
-        currentInvite = invitation.code;
-        inviteCode.textContent = currentInvite;
-        inviteCode.hidden = false;
-        shareInvite.hidden = false;
-        notice.textContent = 'Código válido durante 15 minutos. Úsalo una sola vez en el otro dispositivo.';
-      } catch (error) {
-        notice.textContent = error.message;
-        notice.classList.add('error');
-      } finally {
-        inviteButton.disabled = false;
-      }
-    });
-
-    shareInvite.addEventListener('click', async () => {
-      try {
-        if (navigator.share) await navigator.share({ title: 'Invitación Lumen Vitae', text: currentInvite });
-        else {
-          await navigator.clipboard.writeText(currentInvite);
-          notice.textContent = 'Código copiado. Pégalo en el otro dispositivo.';
-        }
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          notice.textContent = 'Copia manualmente el código mostrado y pégalo en el otro dispositivo.';
-        }
-      }
+    document.querySelector('#logout').addEventListener('click', async () => {
+      try { await request('/prompt/auth/logout', { method: 'POST' }); } catch {}
+      window.location.replace('/prompt/login');
     });
   </script>
 </body>

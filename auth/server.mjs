@@ -1,7 +1,8 @@
 import { createServer } from 'node:http';
-import { randomBytes, createHash, timingSafeEqual } from 'node:crypto';
-import { mkdir, readFile, rename, writeFile, chmod, unlink } from 'node:fs/promises';
+import { randomBytes, createHash, timingSafeEqual, scrypt as scryptCallback } from 'node:crypto';
+import { mkdir, rename, writeFile, chmod, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { promisify } from 'node:util';
 import {
   generateAuthenticationOptions,
   generateRegistrationOptions,
@@ -15,13 +16,14 @@ const RP_ID = process.env.RP_ID || 'djl.com.es';
 const RP_ORIGIN = process.env.RP_ORIGIN || `https://${RP_ID}`;
 const DATA_DIR = process.env.DATA_DIR || '/var/lib/lumen-prompt';
 const STATE_FILE = path.join(DATA_DIR, 'auth-state.json');
-const BOOTSTRAP_TOKEN_FILE = path.join(DATA_DIR, 'bootstrap-token');
 const SESSION_COOKIE = 'lumen_prompt_session';
 const CHALLENGE_TTL_MS = 5 * 60_000;
-const SESSION_TTL_MS = 24 * 60 * 60_000;
+const SESSION_TTL_MS = 30 * 24 * 60 * 60_000;
 const USER_ID = Buffer.from('lumen-vitae-owner-account-v1');
 const USER_NAME = 'david';
+const scrypt = promisify(scryptCallback);
 const pending = new Map();
+const failedLogins = new Map();
 
 await mkdir(DATA_DIR, { recursive: true, mode: 0o700 });
 
@@ -29,13 +31,13 @@ async function readState() {
   try {
     const value = JSON.parse(await readFile(STATE_FILE, 'utf8'));
     return {
+      account: value.account || null,
       credentials: Array.isArray(value.credentials) ? value.credentials : [],
       sessions: Array.isArray(value.sessions) ? value.sessions : [],
-      invites: Array.isArray(value.invites) ? value.invites : [],
     };
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
-    return { credentials: [], sessions: [], invites: [] };
+    return { account: null, credentials: [], sessions: [] };
   }
 }
 
@@ -98,6 +100,27 @@ function requireSameOrigin(request) {
   }
 }
 
+async function passwordHash(password, salt) {
+  return Buffer.from(await scrypt(password, salt, 64, { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 })).toString('base64url');
+}
+
+function loginBlocked(ip) {
+  const record = failedLogins.get(ip);
+  if (!record) return 0;
+  if (record.blockedUntil > Date.now()) return record.blockedUntil - Date.now();
+  if (record.startedAt + 15 * 60_000 < Date.now()) failedLogins.delete(ip);
+  return 0;
+}
+
+function recordLoginFailure(ip) {
+  const now = Date.now();
+  let record = failedLogins.get(ip);
+  if (!record || record.startedAt + 15 * 60_000 < now) record = { count: 0, startedAt: now, blockedUntil: 0 };
+  record.count++;
+  if (record.count >= 5) record.blockedUntil = now + 10 * 60_000;
+  failedLogins.set(ip, record);
+}
+
 async function currentSession(request) {
   const token = parseCookies(request)[SESSION_COOKIE];
   if (!token) return null;
@@ -154,6 +177,8 @@ async function handle(request, response) {
     return json(response, 200, {
       authenticated: Boolean(await currentSession(request)),
       hasPasskey: state.credentials.length > 0,
+      hasAccount: Boolean(state.account?.passwordHash),
+      username: state.account?.username || null,
     });
   }
 
@@ -162,21 +187,70 @@ async function handle(request, response) {
     return json(response, 200, {
       hasPasskey: state.credentials.length > 0,
       authenticated: Boolean(await currentSession(request)),
+      hasAccount: Boolean(state.account?.passwordHash),
+      username: state.account?.username || null,
     });
   }
 
-  if (url.pathname === '/prompt/auth/register/invite' && request.method === 'POST') {
+  if (url.pathname === '/prompt/auth/login/password' && request.method === 'POST') {
     requireSameOrigin(request);
-    if (!await currentSession(request)) {
-      return json(response, 401, { error: 'Entra con una passkey para autorizar otro dispositivo.' });
+    const ip = request.headers['x-real-ip'] || request.socket.remoteAddress || 'unknown';
+    const wait = loginBlocked(ip);
+    if (wait) return json(response, 429, { error: `Demasiados intentos. Prueba de nuevo en ${Math.ceil(wait / 60_000)} min.` });
+    const body = await readJson(request);
+    const username = typeof body.username === 'string' ? body.username.trim().toLowerCase() : '';
+    const password = typeof body.password === 'string' ? body.password : '';
+    const state = await readState();
+    let matches = false;
+    if (state.account?.passwordHash && username === state.account.username.toLowerCase() && password.length <= 1024) {
+      const actual = Buffer.from(await passwordHash(password, state.account.passwordSalt));
+      const expected = Buffer.from(state.account.passwordHash);
+      matches = actual.length === expected.length && timingSafeEqual(actual, expected);
+    }
+    if (!matches) {
+      recordLoginFailure(ip);
+      return json(response, 401, { error: 'Usuario o contraseña incorrectos.' });
+    }
+    failedLogins.delete(ip);
+    await issueSession(response, state);
+    return json(response, 200, { authenticated: true, username: state.account.username });
+  }
+
+  if (url.pathname === '/prompt/auth/register/password' && request.method === 'POST') {
+    requireSameOrigin(request);
+    if (!await currentSession(request)) return json(response, 401, { error: 'Inicia sesión para cambiar la contraseña.' });
+    const body = await readJson(request);
+    const currentPassword = typeof body.currentPassword === 'string' ? body.currentPassword : '';
+    const newPassword = typeof body.newPassword === 'string' ? body.newPassword : '';
+    if (newPassword.length < 8 || Buffer.byteLength(newPassword) > 1024) {
+      return json(response, 400, { error: 'La nueva contraseña debe tener al menos 8 caracteres.' });
     }
     const state = await readState();
-    const code = randomBytes(12).toString('hex');
-    const expiresAt = Date.now() + 15 * 60_000;
-    state.invites = state.invites.filter(item => item.expiresAt > Date.now());
-    state.invites.push({ tokenHash: createHash('sha256').update(code).digest('hex'), expiresAt });
+    const actual = Buffer.from(await passwordHash(currentPassword, state.account.passwordSalt));
+    const expected = Buffer.from(state.account.passwordHash);
+    if (actual.length !== expected.length || !timingSafeEqual(actual, expected)) {
+      return json(response, 401, { error: 'La contraseña actual no es correcta.' });
+    }
+    state.account.passwordSalt = randomBytes(16).toString('base64url');
+    state.account.passwordHash = await passwordHash(newPassword, state.account.passwordSalt);
+    const token = parseCookies(request)[SESSION_COOKIE];
+    const currentHash = token ? createHash('sha256').update(token).digest('hex') : '';
+    state.sessions = state.sessions.filter(item => item.tokenHash === currentHash && item.expiresAt > Date.now());
     await writeState(state);
-    return json(response, 200, { code, expiresAt });
+    return json(response, 200, { updated: true });
+  }
+
+  if (url.pathname === '/prompt/auth/logout' && request.method === 'POST') {
+    requireSameOrigin(request);
+    const token = parseCookies(request)[SESSION_COOKIE];
+    const state = await readState();
+    if (token) {
+      const tokenHash = createHash('sha256').update(token).digest('hex');
+      state.sessions = state.sessions.filter(item => item.tokenHash !== tokenHash);
+      await writeState(state);
+    }
+    setCookies(response, [`${SESSION_COOKIE}=; Path=/prompt/; Max-Age=0; Secure; HttpOnly; SameSite=Lax`]);
+    return json(response, 200, { loggedOut: true });
   }
 
   if (url.pathname === '/prompt/auth/login/options' && request.method === 'GET') {
@@ -226,31 +300,9 @@ async function handle(request, response) {
 
   if (url.pathname === '/prompt/auth/register/options' && request.method === 'POST') {
     requireSameOrigin(request);
-    const body = await readJson(request);
+    await readJson(request);
     const state = await readState();
-    let bootstrapTokenHash = null;
-    let inviteTokenHash = null;
-    const session = await currentSession(request);
-    if (!session) {
-      const supplied = typeof body.setupToken === 'string' ? body.setupToken.trim() : '';
-      const suppliedHash = supplied ? createHash('sha256').update(supplied).digest('hex') : '';
-      const invite = suppliedHash && state.invites.find(item => item.expiresAt > Date.now()
-        && item.tokenHash.length === suppliedHash.length
-        && timingSafeEqual(Buffer.from(item.tokenHash), Buffer.from(suppliedHash)));
-      if (invite) {
-        inviteTokenHash = suppliedHash;
-      } else {
-        let expected = '';
-        try { expected = (await readFile(BOOTSTRAP_TOKEN_FILE, 'utf8')).trim(); } catch {}
-        const suppliedBytes = Buffer.from(supplied);
-        const expectedBytes = Buffer.from(expected);
-        if (!supplied || !expected || suppliedBytes.length !== expectedBytes.length
-          || !timingSafeEqual(suppliedBytes, expectedBytes)) {
-          return json(response, 401, { error: 'El código no es válido o ha caducado. Genera una invitación desde un dispositivo donde ya hayas iniciado sesión.' });
-        }
-        bootstrapTokenHash = createHash('sha256').update(supplied).digest('hex');
-      }
-    }
+    if (!await currentSession(request)) return json(response, 401, { error: 'Inicia sesión para añadir este dispositivo.' });
     const options = await generateRegistrationOptions({
       rpName: 'Lumen Vitae',
       rpID: RP_ID,
@@ -264,13 +316,13 @@ async function handle(request, response) {
         userVerification: 'required',
       },
       supportedAlgorithmIDs: [-7, -257],
-      excludeCredentials: bootstrapTokenHash ? [] : state.credentials.map(credential => ({
+      excludeCredentials: state.credentials.map(credential => ({
         id: credential.id,
         type: 'public-key',
         transports: credential.transports,
       })),
     });
-    beginChallenge(response, options.challenge, 'register', { bootstrapTokenHash, inviteTokenHash });
+    beginChallenge(response, options.challenge, 'register');
     return json(response, 200, options);
   }
 
@@ -278,27 +330,9 @@ async function handle(request, response) {
     requireSameOrigin(request);
     const body = await readJson(request);
     const challengeState = takeChallenge(request, 'register');
-    const { setupToken = '', ...credentialResponse } = body;
-    if (challengeState.bootstrapTokenHash) {
-      let expected = '';
-      try { expected = (await readFile(BOOTSTRAP_TOKEN_FILE, 'utf8')).trim(); } catch {}
-      const suppliedHash = createHash('sha256').update(String(setupToken).trim()).digest('hex');
-      const expectedHash = expected ? createHash('sha256').update(expected).digest('hex') : '';
-      if (!expectedHash || suppliedHash.length !== expectedHash.length
-        || !timingSafeEqual(Buffer.from(suppliedHash), Buffer.from(expectedHash))
-        || suppliedHash !== challengeState.bootstrapTokenHash) {
-        return json(response, 401, { error: 'El código de activación ha caducado. Vuelve a empezar.' });
-      }
-    } else if (challengeState.inviteTokenHash) {
-      const state = await readState();
-      const invite = state.invites.find(item => item.tokenHash === challengeState.inviteTokenHash
-        && item.expiresAt > Date.now());
-      if (!invite) return json(response, 401, { error: 'La invitación ya se usó o ha caducado. Genera otra desde el dispositivo autorizado.' });
-    } else if (!await currentSession(request)) {
-      return json(response, 401, { error: 'Tu sesión caducó. Entra con tu passkey y vuelve a intentarlo.' });
-    }
+    if (!await currentSession(request)) return json(response, 401, { error: 'Tu sesión caducó. Inicia sesión de nuevo.' });
     const verification = await verifyRegistrationResponse({
-      response: credentialResponse,
+      response: body,
       expectedChallenge: challengeState.challenge,
       expectedOrigin: RP_ORIGIN,
       expectedRPID: RP_ID,
@@ -314,41 +348,26 @@ async function handle(request, response) {
       id: credential.id,
       publicKey: Buffer.from(credential.publicKey).toString('base64url'),
       counter: credential.counter,
-      transports: credentialResponse.response?.transports || [],
+      transports: body.response?.transports || [],
       createdAt: new Date().toISOString(),
     };
-    if (challengeState.bootstrapTokenHash) {
-      state.credentials = [savedCredential];
-      state.sessions = [];
-      state.invites = [];
-    } else if (!state.credentials.some(item => item.id === credential.id)) {
+    if (!state.credentials.some(item => item.id === credential.id)) {
       state.credentials.push(savedCredential);
     }
-    if (challengeState.inviteTokenHash) {
-      const inviteIndex = state.invites.findIndex(item => item.tokenHash === challengeState.inviteTokenHash
-        && item.expiresAt > Date.now());
-      if (inviteIndex < 0) return json(response, 401, { error: 'La invitación ya se usó o ha caducado. Genera otra desde el dispositivo autorizado.' });
-      state.invites.splice(inviteIndex, 1);
-    }
     await issueSession(response, state);
-    if (challengeState.bootstrapTokenHash) await unlink(BOOTSTRAP_TOKEN_FILE).catch(() => {});
     return json(response, 200, { verified: true });
   }
 
-  if (url.pathname === '/prompt/auth/logout' && request.method === 'POST') {
-    requireSameOrigin(request);
-    const token = parseCookies(request)[SESSION_COOKIE];
-    const state = await readState();
-    if (token) {
-      const tokenHash = createHash('sha256').update(token).digest('hex');
-      state.sessions = state.sessions.filter(item => item.tokenHash !== tokenHash);
-      await writeState(state);
-    }
-    setCookies(response, [`${SESSION_COOKIE}=; Path=/prompt/; Max-Age=0; Secure; HttpOnly; SameSite=Lax`]);
-    return json(response, 200, { loggedOut: true });
-  }
-
   return json(response, 404, { error: 'Not found' });
+}
+
+const initialState = await readState();
+if (!initialState.account?.passwordHash) {
+  const initialPassword = randomBytes(18).toString('base64url');
+  const salt = randomBytes(16).toString('base64url');
+  initialState.account = { username: USER_NAME, passwordSalt: salt, passwordHash: await passwordHash(initialPassword, salt) };
+  await writeState(initialState);
+  console.info(`Cuenta inicial Lumen Vitae creada. Usuario: ${USER_NAME} · Contraseña temporal: ${initialPassword} · Cámbiala en /prompt/enroll.`);
 }
 
 createServer((request, response) => {
