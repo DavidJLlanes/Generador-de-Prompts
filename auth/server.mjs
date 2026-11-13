@@ -31,10 +31,11 @@ async function readState() {
     return {
       credentials: Array.isArray(value.credentials) ? value.credentials : [],
       sessions: Array.isArray(value.sessions) ? value.sessions : [],
+      invites: Array.isArray(value.invites) ? value.invites : [],
     };
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
-    return { credentials: [], sessions: [] };
+    return { credentials: [], sessions: [], invites: [] };
   }
 }
 
@@ -164,6 +165,20 @@ async function handle(request, response) {
     });
   }
 
+  if (url.pathname === '/prompt/auth/register/invite' && request.method === 'POST') {
+    requireSameOrigin(request);
+    if (!await currentSession(request)) {
+      return json(response, 401, { error: 'Entra con una passkey para autorizar otro dispositivo.' });
+    }
+    const state = await readState();
+    const code = randomBytes(12).toString('hex');
+    const expiresAt = Date.now() + 15 * 60_000;
+    state.invites = state.invites.filter(item => item.expiresAt > Date.now());
+    state.invites.push({ tokenHash: createHash('sha256').update(code).digest('hex'), expiresAt });
+    await writeState(state);
+    return json(response, 200, { code, expiresAt });
+  }
+
   if (url.pathname === '/prompt/auth/login/options' && request.method === 'GET') {
     const state = await readState();
     if (!state.credentials.length) return json(response, 409, { error: 'Aún no hay una passkey registrada.' });
@@ -214,18 +229,27 @@ async function handle(request, response) {
     const body = await readJson(request);
     const state = await readState();
     let bootstrapTokenHash = null;
+    let inviteTokenHash = null;
     const session = await currentSession(request);
     if (!session) {
       const supplied = typeof body.setupToken === 'string' ? body.setupToken.trim() : '';
-      let expected = '';
-      try { expected = (await readFile(BOOTSTRAP_TOKEN_FILE, 'utf8')).trim(); } catch {}
-      const suppliedBytes = Buffer.from(supplied);
-      const expectedBytes = Buffer.from(expected);
-      if (!supplied || !expected || suppliedBytes.length !== expectedBytes.length
-        || !timingSafeEqual(suppliedBytes, expectedBytes)) {
-        return json(response, 401, { error: 'El código de activación no es válido.' });
+      const suppliedHash = supplied ? createHash('sha256').update(supplied).digest('hex') : '';
+      const invite = suppliedHash && state.invites.find(item => item.expiresAt > Date.now()
+        && item.tokenHash.length === suppliedHash.length
+        && timingSafeEqual(Buffer.from(item.tokenHash), Buffer.from(suppliedHash)));
+      if (invite) {
+        inviteTokenHash = suppliedHash;
+      } else {
+        let expected = '';
+        try { expected = (await readFile(BOOTSTRAP_TOKEN_FILE, 'utf8')).trim(); } catch {}
+        const suppliedBytes = Buffer.from(supplied);
+        const expectedBytes = Buffer.from(expected);
+        if (!supplied || !expected || suppliedBytes.length !== expectedBytes.length
+          || !timingSafeEqual(suppliedBytes, expectedBytes)) {
+          return json(response, 401, { error: 'El código no es válido o ha caducado. Genera una invitación desde un dispositivo donde ya hayas iniciado sesión.' });
+        }
+        bootstrapTokenHash = createHash('sha256').update(supplied).digest('hex');
       }
-      bootstrapTokenHash = createHash('sha256').update(supplied).digest('hex');
     }
     const options = await generateRegistrationOptions({
       rpName: 'Lumen Vitae',
@@ -246,7 +270,7 @@ async function handle(request, response) {
         transports: credential.transports,
       })),
     });
-    beginChallenge(response, options.challenge, 'register', { bootstrapTokenHash });
+    beginChallenge(response, options.challenge, 'register', { bootstrapTokenHash, inviteTokenHash });
     return json(response, 200, options);
   }
 
@@ -265,6 +289,11 @@ async function handle(request, response) {
         || suppliedHash !== challengeState.bootstrapTokenHash) {
         return json(response, 401, { error: 'El código de activación ha caducado. Vuelve a empezar.' });
       }
+    } else if (challengeState.inviteTokenHash) {
+      const state = await readState();
+      const invite = state.invites.find(item => item.tokenHash === challengeState.inviteTokenHash
+        && item.expiresAt > Date.now());
+      if (!invite) return json(response, 401, { error: 'La invitación ya se usó o ha caducado. Genera otra desde el dispositivo autorizado.' });
     } else if (!await currentSession(request)) {
       return json(response, 401, { error: 'Tu sesión caducó. Entra con tu passkey y vuelve a intentarlo.' });
     }
@@ -291,8 +320,15 @@ async function handle(request, response) {
     if (challengeState.bootstrapTokenHash) {
       state.credentials = [savedCredential];
       state.sessions = [];
+      state.invites = [];
     } else if (!state.credentials.some(item => item.id === credential.id)) {
       state.credentials.push(savedCredential);
+    }
+    if (challengeState.inviteTokenHash) {
+      const inviteIndex = state.invites.findIndex(item => item.tokenHash === challengeState.inviteTokenHash
+        && item.expiresAt > Date.now());
+      if (inviteIndex < 0) return json(response, 401, { error: 'La invitación ya se usó o ha caducado. Genera otra desde el dispositivo autorizado.' });
+      state.invites.splice(inviteIndex, 1);
     }
     await issueSession(response, state);
     if (challengeState.bootstrapTokenHash) await unlink(BOOTSTRAP_TOKEN_FILE).catch(() => {});

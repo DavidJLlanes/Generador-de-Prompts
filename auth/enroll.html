@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#17130f">
   <title>Configurar acceso · Lumen Vitae</title>
   <style>
-    :root{color-scheme:dark;--bg:#100e0c;--panel:#1d1915;--line:#403831;--text:#f1e8da;--muted:#b8ad9e;--gold:#dfbc82;--ink:#21180e}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 0,#30241a 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(100%,440px);padding:36px;border:1px solid var(--line);border-radius:28px;background:#1d1915f5;box-shadow:0 24px 80px #0008}.brand{margin:0 0 30px;color:var(--gold);font:italic 24px/1.2 Georgia,serif}.brand span{font-style:normal;color:var(--text)}h1{margin:0 0 8px;font:40px/1.1 Georgia,serif;letter-spacing:-1px}.intro{margin:0 0 28px;color:var(--muted)}label{display:block;margin:18px 0 8px;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase}input{width:100%;min-height:54px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#17130f;color:var(--text);font:inherit}input:focus{outline:2px solid var(--gold);outline-offset:2px}button,.secondary{display:flex;width:100%;min-height:56px;align-items:center;justify-content:center;margin-top:14px;padding:12px 16px;border:0;border-radius:999px;background:var(--gold);color:var(--ink);font:600 16px system-ui;text-decoration:none;cursor:pointer}.secondary{border:1px solid var(--line);background:transparent;color:var(--text)}button:disabled{opacity:.6;cursor:wait}.notice{min-height:25px;margin:18px 0 0;color:var(--muted);text-align:center}.notice.error{color:#ffd1c7}.privacy{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:center}@media(max-width:480px){main{padding:28px 22px;border-radius:22px}h1{font-size:35px}}
+    :root{color-scheme:dark;--bg:#100e0c;--panel:#1d1915;--line:#403831;--text:#f1e8da;--muted:#b8ad9e;--gold:#dfbc82;--ink:#21180e}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 0,#30241a 0,transparent 55%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(100%,440px);padding:36px;border:1px solid var(--line);border-radius:28px;background:#1d1915f5;box-shadow:0 24px 80px #0008}.brand{margin:0 0 30px;color:var(--gold);font:italic 24px/1.2 Georgia,serif}.brand span{font-style:normal;color:var(--text)}h1{margin:0 0 8px;font:40px/1.1 Georgia,serif;letter-spacing:-1px}.intro{margin:0 0 28px;color:var(--muted)}label{display:block;margin:18px 0 8px;color:var(--muted);font-size:13px;letter-spacing:.1em;text-transform:uppercase}input{width:100%;min-height:54px;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#17130f;color:var(--text);font:inherit}input:focus{outline:2px solid var(--gold);outline-offset:2px}button,.secondary{display:flex;width:100%;min-height:56px;align-items:center;justify-content:center;margin-top:14px;padding:12px 16px;border:0;border-radius:999px;background:var(--gold);color:var(--ink);font:600 16px system-ui;text-decoration:none;cursor:pointer}.secondary{border:1px solid var(--line);background:transparent;color:var(--text)}button:disabled{opacity:.6;cursor:wait}.notice{min-height:25px;margin:18px 0 0;color:var(--muted);text-align:center}.notice.error{color:#ffd1c7}.invite-code{padding:16px;border:1px dashed var(--gold);border-radius:12px;color:var(--gold);font:600 21px/1.4 ui-monospace,monospace;letter-spacing:.12em;text-align:center;overflow-wrap:anywhere}.privacy{margin:22px 0 0;color:var(--muted);font-size:13px;text-align:center}@media(max-width:480px){main{padding:28px 22px;border-radius:22px}h1{font-size:35px}}
   </style>
 </head>
 <body>
@@ -16,11 +16,17 @@
     <h1>Activa Face ID o huella</h1>
     <p class="intro">Guarda una passkey en este dispositivo. La próxima vez podrás entrar con la biometría o el método de desbloqueo que uses aquí.</p>
     <div id="bootstrap" hidden>
-      <label for="setup-token">Código de activación de un solo uso</label>
+      <label id="code-label" for="setup-token">Código de activación de un solo uso</label>
       <input id="setup-token" type="password" autocomplete="one-time-code" autocapitalize="none" spellcheck="false">
     </div>
-    <p id="signed-out" class="notice" hidden>Ya hay una passkey. Entra con ella para añadir otro dispositivo. Si has perdido todos tus dispositivos, puedes usar un nuevo código de recuperación generado en el VPS; esto sustituirá las passkeys anteriores.</p>
+    <p id="signed-out" class="notice" hidden>Para vincular este dispositivo, genera una invitación desde el dispositivo donde ya has iniciado sesión y pega aquí el código. La invitación no elimina tus otras passkeys.</p>
     <button id="register" type="button">Crear passkey en este dispositivo</button>
+    <section id="invite-panel" hidden>
+      <p class="intro">¿Quieres entrar desde otro móvil u ordenador? Crea una invitación de un solo uso, válida durante 15 minutos.</p>
+      <button id="create-invite" class="secondary" type="button">Vincular otro dispositivo</button>
+      <p id="invite-code" class="invite-code" hidden></p>
+      <button id="share-invite" class="secondary" type="button" hidden>Compartir código</button>
+    </section>
     <a id="login" class="secondary" href="/prompt/login" hidden>Entrar con mi passkey</a>
     <a class="secondary" href="/prompt/">Volver al generador</a>
     <p id="notice" class="notice" role="status" aria-live="polite"></p>
@@ -33,6 +39,12 @@
     const setupToken = document.querySelector('#setup-token');
     const signedOut = document.querySelector('#signed-out');
     const loginLink = document.querySelector('#login');
+    const invitePanel = document.querySelector('#invite-panel');
+    const inviteButton = document.querySelector('#create-invite');
+    const inviteCode = document.querySelector('#invite-code');
+    const shareInvite = document.querySelector('#share-invite');
+    const codeLabel = document.querySelector('#code-label');
+    let currentInvite = '';
     const b64urlToBytes = value => {
       const padded = value.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - value.length % 4) % 4);
       return Uint8Array.from(atob(padded), char => char.charCodeAt(0));
@@ -69,7 +81,11 @@
         if (state.hasPasskey) {
           signedOut.hidden = false;
           loginLink.hidden = false;
+          codeLabel.textContent = 'Código de invitación del dispositivo autorizado';
+          button.textContent = 'Añadir este dispositivo';
         }
+      } else {
+        invitePanel.hidden = false;
       }
     } catch (error) {
       button.disabled = true;
@@ -104,6 +120,43 @@
         notice.textContent = error.name === 'NotAllowedError' ? 'Creación cancelada. Toca el botón para intentarlo de nuevo.' : error.message;
         notice.classList.add('error');
         button.disabled = false;
+      }
+    });
+
+    inviteButton.addEventListener('click', async () => {
+      inviteButton.disabled = true;
+      notice.classList.remove('error');
+      notice.textContent = 'Generando invitación…';
+      try {
+        const invitation = await request('/prompt/auth/register/invite', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: '{}',
+        });
+        currentInvite = invitation.code;
+        inviteCode.textContent = currentInvite;
+        inviteCode.hidden = false;
+        shareInvite.hidden = false;
+        notice.textContent = 'Código válido durante 15 minutos. Úsalo una sola vez en el otro dispositivo.';
+      } catch (error) {
+        notice.textContent = error.message;
+        notice.classList.add('error');
+      } finally {
+        inviteButton.disabled = false;
+      }
+    });
+
+    shareInvite.addEventListener('click', async () => {
+      try {
+        if (navigator.share) await navigator.share({ title: 'Invitación Lumen Vitae', text: currentInvite });
+        else {
+          await navigator.clipboard.writeText(currentInvite);
+          notice.textContent = 'Código copiado. Pégalo en el otro dispositivo.';
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          notice.textContent = 'Copia manualmente el código mostrado y pégalo en el otro dispositivo.';
+        }
       }
     });
   </script>

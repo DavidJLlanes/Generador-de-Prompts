@@ -44,7 +44,7 @@ Ya aplicada la configuración nueva, elimina el archivo de claves de Basic Auth 
 sudo rm -f /etc/nginx/.htpasswd-lumen-prompt
 ```
 
-Al abrir `https://djl.com.es/prompt/`, elige «Entrar con Face ID o huella». Las sesiones duran 24 horas; al caducar, confirmas la passkey de nuevo en el dispositivo. Para añadir otro dispositivo, entra con una passkey existente y visita `/prompt/enroll`. No se guardan datos biométricos en el VPS.
+Al abrir `https://djl.com.es/prompt/`, elige «Entrar con Face ID o huella». Las sesiones duran 24 horas; al caducar, confirmas la passkey de nuevo en el dispositivo. Para vincular otro móvil u ordenador, abre `/prompt/enroll` desde un dispositivo donde ya hayas iniciado sesión, pulsa «Vincular otro dispositivo» y comparte el código temporal. En el otro dispositivo, abre `/prompt/enroll`, pega ese código y crea la passkey. La invitación caduca en 15 minutos, se puede usar una sola vez y no elimina las passkeys existentes. No se guardan datos biométricos en el VPS.
 
 Si pierdes todos los dispositivos registrados, puedes crear otro código de recuperación en el VPS. Ese código sustituye las passkeys anteriores al registrar la nueva:
 
@@ -64,6 +64,7 @@ El sitemap está en `https://djl.com.es/prompt/sitemap.xml`. Para anunciarlo a l
 
 ```bash
 git -C /var/www/djl.com.es/prompt pull --ff-only origin main
+sudo systemctl restart lumen-prompt-auth
 ```
 
 GitHub Actions puede actualizar esa misma carpeta si están configurados los secretos `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` y `VPS_KNOWN_HOSTS`. Si la clave de despliegue tiene un comando forzado en `authorized_keys`, apunta ese comando al nuevo checkout:
