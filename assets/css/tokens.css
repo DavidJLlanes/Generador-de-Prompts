@@ -2,28 +2,28 @@
 :root {
   color-scheme: dark;
 
-  /* Superficies (oscuro cálido, «atelier») */
-  --bg: #12100e;
-  --bg-2: #171410;
-  --surface: #1c1814;
-  --surface-2: #26211b;
-  --surface-3: #312a22;
+  /* Superficies en carbón neutro */
+  --bg: #15171b;
+  --bg-2: #1b1e23;
+  --surface: #202329;
+  --surface-2: #282b32;
+  --surface-3: #333840;
 
   /* Líneas */
-  --line: rgba(239, 232, 218, 0.09);
-  --line-2: rgba(239, 232, 218, 0.16);
+  --line: rgba(231, 233, 237, 0.09);
+  --line-2: rgba(231, 233, 237, 0.16);
 
   /* Texto */
-  --text: #efe8da;
-  --text-2: #bdb4a4;
-  --text-3: #8d8475;
+  --text: #e7e9ed;
+  --text-2: #b7bbc4;
+  --text-3: #898e98;
 
-  /* Acento dorado (único) */
-  --accent: #d6b27c;
-  --accent-2: #e8c892;
-  --accent-ink: #1b1409;
-  --accent-soft: rgba(214, 178, 124, 0.12);
-  --accent-line: rgba(214, 178, 124, 0.4);
+  /* Acento marfil suave, sin blanco puro */
+  --accent: #e7e9ed;
+  --accent-2: #cdd1d8;
+  --accent-ink: #191b1f;
+  --accent-soft: rgba(231, 233, 237, 0.10);
+  --accent-line: rgba(231, 233, 237, 0.30);
 
   /* Semánticos */
   --rose: #d98a7d;
