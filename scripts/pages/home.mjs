@@ -25,7 +25,7 @@ export function homePage({ domains, totals }) {
 <section class="hero">
   <div class="container hero__inner">
     <div class="hero__copy">
-    <p class="dateline"><b>Lumen Vitae</b><span>·</span>Generador de prompts para imágenes con IA</p>
+    <p class="dateline"><b>Generador de Prompts</b><span>·</span>Para imágenes con IA</p>
     <h1 class="hero__title">Prompts de <em>máxima calidad</em>, pieza a pieza.</h1>
     <p class="hero__lead">${totals.domains} generadores, más de ${fmt(Math.floor(totals.options / 1000) * 1000)} opciones y un constructor que cruza personajes, escenarios, clima y fotografía en un único prompt en inglés.</p>
     <div class="hero__cta">
@@ -124,13 +124,13 @@ export function homePage({ domains, totals }) {
 
   return layout({
     path: '/',
-    title: 'Lumen Vitae · Generador de prompts para imágenes con IA',
+    title: 'Generador de Prompts para imágenes con IA',
     description: `Construye prompts de máxima calidad para imágenes con IA: ${totals.domains} generadores, más de ${fmt(Math.floor(totals.options / 1000) * 1000)} opciones y un constructor que cruza personajes, escenarios, clima y fotografía. Interfaz en español, prompts en inglés.`,
     main, script: 'home', domains, og: 'home',
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Lumen Vitae', url: `${SITE.url}/`, inLanguage: 'es' },
+      { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Generador de Prompts', url: `${SITE.url}/`, inLanguage: 'es' },
       {
-        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Lumen Vitae', url: `${SITE.url}/`,
+        '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Generador de Prompts', url: `${SITE.url}/`,
         applicationCategory: 'DesignApplication', operatingSystem: 'Web, iOS, Android', inLanguage: 'es', isAccessibleForFree: true,
         description: 'Constructor modular de prompts para imágenes con IA, con generadores de personajes, escenas, fotografía y estilo.',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, image: `${SITE.url}/assets/img/og/home.webp`,

@@ -46,7 +46,7 @@ function openInstallHelp() {
   } else if (isAndroid) {
     instructionText.textContent = 'Abre el menú ⋮ del navegador y elige «Instalar aplicación» o «Añadir a pantalla de inicio». Luego confirma la instalación.';
   } else {
-    instructionText.textContent = 'Usa la opción «Instalar Lumen Vitae» del menú del navegador o el icono de instalación junto a la barra de direcciones.';
+    instructionText.textContent = 'Usa la opción «Instalar Generador de Prompts» del menú del navegador o el icono de instalación junto a la barra de direcciones.';
   }
   if (typeof installDialog.showModal === 'function') installDialog.showModal();
   else window.alert(instructionText.textContent);

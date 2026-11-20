@@ -38,7 +38,7 @@ Combina generadores (personajes, escenarios, coches, criaturas, fotografía…) 
 
 ## Qué es
 
-Lumen Vitae es un sitio **100 % estático** (HTML, CSS y módulos ES nativos, sin framework ni bundler) que ayuda a escribir prompts largos y coherentes para generadores de imágenes. La interfaz está en **español** y los prompts se generan en **inglés**: cada opción lleva un texto visible (`es`) y el texto que entra en el prompt (`en`).
+Generador de Prompts es un sitio **100 % estático** (HTML, CSS y módulos ES nativos, sin framework ni bundler) que ayuda a escribir prompts largos y coherentes para generadores de imágenes. La interfaz está en **español** y los prompts se generan en **inglés**: cada opción lleva un texto visible (`es`) y el texto que entra en el prompt (`en`).
 
 En lugar de un cuadro de texto vacío, eliges opciones de **28 generadores** temáticos. El motor las ordena por *ranuras* (sujeto → atributos → acción → escenario → atmósfera → técnica) y produce un prompt completo sin importar en qué orden las elegiste ni cuántos generadores mezcles.
 
@@ -228,7 +228,7 @@ Se recomienda una clave dedicada con comando forzado en `authorized_keys` (detal
 ## Seguridad y privacidad
 
 - **Sin IA activada, nada sale del navegador.** Las selecciones y los prompts viven en `localStorage`.
-- **Las claves de IA** se guardan solo en tu navegador y se envían directamente al proveedor cuando pides una función de IA. No pasan por el servidor de Lumen Vitae ni se incluyen en el repositorio. Usa claves con límite de gasto.
+- **Las claves de IA** se guardan solo en tu navegador y se envían directamente al proveedor cuando pides una función de IA. No pasan por el servidor de Generador de Prompts ni se incluyen en el repositorio. Usa claves con límite de gasto.
 - Las respuestas del modelo se tratan como **datos**: solo se aceptan IDs presentes en el catálogo, que el cliente vuelve a validar, y las sugerencias nunca se seleccionan solas.
 - La **CSP** limita las conexiones salientes a los cuatro proveedores admitidos.
 - El acceso al despliegue privado usa sesión con cookie, contraseña con `scrypt`, límite de intentos por IP y passkeys WebAuthn opcionales.

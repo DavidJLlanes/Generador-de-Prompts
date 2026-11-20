@@ -23,7 +23,7 @@ const { totals } = catalog;
 
 /** Lista de imágenes: nombre de archivo, kicker, título (la parte tras la primera palabra va en cursiva dorada) y datos. */
 const items = [
-  { name: 'home', kicker: 'Generador de prompts para imágenes con IA', title: 'Crea prompts para tus imágenes.', facts: `${totals.domains} generadores · ${fmtNumber(totals.options)} opciones` },
+  { name: 'home', kicker: 'Prompts para imágenes con IA', title: 'Crea prompts para tus imágenes.', facts: `${totals.domains} generadores · ${fmtNumber(totals.options)} opciones` },
   { name: 'generadores', kicker: 'Catálogo', title: 'Todos los generadores', facts: `${totals.domains} generadores · ${fmtNumber(totals.options)} opciones` },
   { name: 'constructor', kicker: 'Constructor', title: 'Cruza lo que quieras', facts: 'Sujeto · Escenario · Atmósfera · Técnica' },
   { name: 'guias', kicker: 'Guías', title: 'Aprende a describir imágenes', facts: `${GUIDES.length} guías prácticas` },
@@ -59,7 +59,7 @@ body{width:1200px;height:630px;overflow:hidden;position:relative;background:#121
 .foot{position:absolute;left:78px;right:90px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font:400 21px "JetBrains Mono",monospace;color:#8d8475}
 .foot b{font-weight:500;color:#bdb4a4}
 </style></head><body class="${isHome ? 'is-home' : ''}">${isHome ? '<div class="home-art"></div>' : ''}<div class="glow"></div><div class="frame"></div>
-<div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span>Lumen <em>Vitae</em></span></div>
+<div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span>Generador <em>de Prompts</em></span></div>
 <div class="kicker">${esc(it.kicker)}</div>
 <div class="title">${titleHtml(it.title)}</div>
 <div class="foot"><span>${esc(it.facts)}</span><b>djl.com.es/prompt</b></div></body></html>`;

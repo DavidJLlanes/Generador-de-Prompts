@@ -1,6 +1,6 @@
 {
-  "name": "Lumen Vitae · Generador de prompts",
-  "short_name": "Lumen Vitae",
+  "name": "Generador de Prompts",
+  "short_name": "Generador de Prompts",
   "description": "Constructor modular de prompts para imágenes con IA.",
   "id": "/prompt/",
   "lang": "es",

@@ -13,7 +13,7 @@ export const GUIDES = [
 <p>Un buen prompt no <em>pide</em> una imagen: la <strong>describe</strong>. Imagina que se la cuentas por teléfono a un fotógrafo o a una ilustradora que no puede hacerte preguntas. Todo lo que no digas lo decidirá el modelo por su cuenta, y rara vez coincidirá con lo que tenías en la cabeza.</p>
 
 <h2>Las seis piezas de un prompt</h2>
-<p>Casi cualquier imagen se puede describir con seis piezas. Lumen Vitae las usa, en este orden, para componer tu prompt:</p>
+<p>Casi cualquier imagen se puede describir con seis piezas. Generador de Prompts las usa, en este orden, para componer tu prompt:</p>
 <ol>
   <li><strong>Sujeto:</strong> quién o qué protagoniza la imagen («una mujer de unos treinta años», «un dragón de porcelana»).</li>
   <li><strong>Atributos:</strong> rasgos concretos del sujeto: rostro, peinado, vestuario, accesorios, tatuajes.</li>
@@ -39,13 +39,13 @@ export const GUIDES = [
   <li>Decir el color del pelo en el peinado y otra vez en el color de pelo.</li>
   <li>Un estilo de acuarela junto a una cámara y un objetivo concretos.</li>
 </ul>
-<p>Por eso Lumen Vitae hace que muchas secciones sean de <em>elección única</em> y avisa cuando una elección deja sin efecto otra («Se quitó el motivo: no combina con la idea destacada»).</p>
+<p>Por eso Generador de Prompts hace que muchas secciones sean de <em>elección única</em> y avisa cuando una elección deja sin efecto otra («Se quitó el motivo: no combina con la idea destacada»).</p>
 
 <h2>La calidad no está en las etiquetas mágicas</h2>
-<p>Palabras como «8K», «obra maestra» o «ultra detallado» pueden ayudar algo o nada, según el modelo y la herramienta. Lo que suele marcar la diferencia es lo de siempre: una <strong>composición</strong> clara, una <strong>luz</strong> bien descrita, una <strong>óptica</strong> creíble y materiales concretos. El interruptor «Calidad máxima» de Lumen Vitae añade un acabado cuidado, pero puedes apagarlo si tu modelo rinde mejor sin él.</p>
+<p>Palabras como «8K», «obra maestra» o «ultra detallado» pueden ayudar algo o nada, según el modelo y la herramienta. Lo que suele marcar la diferencia es lo de siempre: una <strong>composición</strong> clara, una <strong>luz</strong> bien descrita, una <strong>óptica</strong> creíble y materiales concretos. El interruptor «Calidad máxima» de Generador de Prompts añade un acabado cuidado, pero puedes apagarlo si tu modelo rinde mejor sin él.</p>
 
 <h2>Qué quieres evitar también cuenta</h2>
-<p>Muchos modelos admiten un «prompt negativo» o una lista de exclusiones: texto dentro de la imagen, deformaciones, copias de elementos, aspecto plástico. En Lumen Vitae lo encuentras en la sección <em>Evitar</em> de «Fotografía y estilo», y cada formato de salida lo coloca donde corresponde.</p>
+<p>Muchos modelos admiten un «prompt negativo» o una lista de exclusiones: texto dentro de la imagen, deformaciones, copias de elementos, aspecto plástico. En Generador de Prompts lo encuentras en la sección <em>Evitar</em> de «Fotografía y estilo», y cada formato de salida lo coloca donde corresponde.</p>
 
 <h2>Itera con método</h2>
 <ol>
@@ -59,10 +59,10 @@ export const GUIDES = [
   {
     slug: 'cruzar-generadores-en-un-solo-prompt',
     title: 'Cruzar generadores: personajes, escenarios y clima en un solo prompt',
-    description: 'Cómo combinar un personaje, un escenario, el clima y la fotografía en un único prompt con el constructor de Lumen Vitae, y qué hace cada ranura.',
+    description: 'Cómo combinar un personaje, un escenario, el clima y la fotografía en un único prompt con el constructor de Generador de Prompts, y qué hace cada ranura.',
     date: '2026-11-10',
     body: `
-<p>La idea central de Lumen Vitae es que cada generador es una <strong>pieza</strong>, no una web aparte. Puedes poner a una mujer en uno de los escenarios de la galería, añadir niebla y elegir una cámara, y todo acaba en <strong>un único prompt</strong> ordenado.</p>
+<p>La idea central de Generador de Prompts es que cada generador es una <strong>pieza</strong>, no una web aparte. Puedes poner a una mujer en uno de los escenarios de la galería, añadir niebla y elegir una cámara, y todo acaba en <strong>un único prompt</strong> ordenado.</p>
 
 <h2>Las ranuras</h2>
 <p>Los 28 generadores se reparten en seis ranuras: sujeto, atributos, pose y acción, escenario, atmósfera y técnica. El prompt final se compone siempre en ese orden, sin importar en qué orden elijas.</p>
@@ -97,10 +97,10 @@ export const GUIDES = [
   {
     slug: 'prompts-para-chatgpt-stable-diffusion-flux-ideogram-midjourney',
     title: 'Prompts para ChatGPT, Stable Diffusion, Flux, Ideogram y Midjourney: qué cambia',
-    description: 'Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Lumen Vitae usar en cada caso.',
+    description: 'Diferencias prácticas entre escribir un prompt para ChatGPT o Gemini, Stable Diffusion o Flux, Ideogram y Midjourney, y qué formato de Generador de Prompts usar en cada caso.',
     date: '2026-11-10',
     body: `
-<p>El mismo prompt no rinde igual en todos los modelos. Unos entienden bien el lenguaje natural; otros prefieren etiquetas cortas, y casi todos tienen sus propios parámetros. Lumen Vitae prepara el prompt en <strong>cinco formatos</strong> para que no tengas que reescribirlo a mano.</p>
+<p>El mismo prompt no rinde igual en todos los modelos. Unos entienden bien el lenguaje natural; otros prefieren etiquetas cortas, y casi todos tienen sus propios parámetros. Generador de Prompts prepara el prompt en <strong>cinco formatos</strong> para que no tengas que reescribirlo a mano.</p>
 
 <table>
   <thead><tr><th>Formato</th><th>Cómo es</th><th>Úsalo con</th></tr></thead>
@@ -123,7 +123,7 @@ export const GUIDES = [
 <p>El formato JSON organiza la imagen en descripción general, estilo (luz, fotografía, paleta de color) y composición del fondo y los elementos. Úsalo solo si tu versión de Ideogram admite este tipo de descripción estructurada; si no, copia el formato <em>Texto</em>.</p>
 
 <h2>Midjourney</h2>
-<p>Midjourney funciona mejor con descripciones breves y parámetros al final. Lumen Vitae añade <code>--ar</code> con la proporción y <code>--no</code> con lo que quieres evitar. Como Midjourney pide proporciones con números enteros, una proporción como 9:19.5 se convierte en su equivalente reducida (6:13).</p>
+<p>Midjourney funciona mejor con descripciones breves y parámetros al final. Generador de Prompts añade <code>--ar</code> con la proporción y <code>--no</code> con lo que quieres evitar. Como Midjourney pide proporciones con números enteros, una proporción como 9:19.5 se convierte en su equivalente reducida (6:13).</p>
 
 <h2>Consejos para todos</h2>
 <ul>
@@ -162,7 +162,7 @@ export const GUIDES = [
   <li>Deja el tercio superior más sereno y con textura suave.</li>
   <li>Evita detalles esenciales justo en el borde inferior.</li>
 </ul>
-<p>Cuando eliges una proporción de móvil, Lumen Vitae añade esta indicación de composición al prompt (en inglés), sin que tengas que escribirla.</p>
+<p>Cuando eliges una proporción de móvil, Generador de Prompts añade esta indicación de composición al prompt (en inglés), sin que tengas que escribirla.</p>
 
 <h2>Escritorio y ultraancho</h2>
 <p>En el escritorio, los iconos suelen ir a un lado: sitúa el motivo siguiendo la <strong>regla de tercios</strong> y deja el lado opuesto más tranquilo. En un monitor ultraancho, la imagen se extiende en horizontal; coloca elementos secundarios y atmósfera en los extremos y evita que lo importante quede cerca de los bordes, donde puede recortarse.</p>

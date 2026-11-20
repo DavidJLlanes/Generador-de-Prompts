@@ -1,5 +1,5 @@
 [Unit]
-Description=Lumen Vitae passkey authentication service
+Description=Generador de Prompts passkey authentication service
 After=network.target
 
 [Service]

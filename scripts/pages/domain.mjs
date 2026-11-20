@@ -65,11 +65,11 @@ ${staticSections(domain)}
   </div>
 </div>`;
 
-  const title = `${meta.title} · Generador de prompts para imágenes con IA | Lumen Vitae`;
+  const title = `${meta.title} · Prompts para imágenes con IA | Generador de Prompts`;
   return layout({
     path, title, description: meta.summary, main, script: 'domain', bodyData: { 'domain-id': d.id, 'domain-slug': d.slug }, domains, og: d.slug,
     jsonld: [
-      { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${meta.title} · Lumen Vitae`, url: `${SITE.url}${path}`, applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true, description: meta.summary },
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${meta.title} · Generador de Prompts`, url: `${SITE.url}${path}`, applicationCategory: 'DesignApplication', operatingSystem: 'Web', inLanguage: 'es', isAccessibleForFree: true, description: meta.summary },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE.url}/` },
         { '@type': 'ListItem', position: 2, name: 'Generadores', item: `${SITE.url}/generadores/` },

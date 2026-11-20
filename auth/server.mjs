@@ -304,11 +304,11 @@ async function handle(request, response) {
     const state = await readState();
     if (!await currentSession(request)) return json(response, 401, { error: 'Inicia sesión para añadir este dispositivo.' });
     const options = await generateRegistrationOptions({
-      rpName: 'Lumen Vitae',
+      rpName: 'Generador de Prompts',
       rpID: RP_ID,
       userID: USER_ID,
       userName: USER_NAME,
-      userDisplayName: 'Lumen Vitae',
+      userDisplayName: 'Generador de Prompts',
       attestationType: 'none',
       timeout: 60_000,
       authenticatorSelection: {
@@ -367,7 +367,7 @@ if (!initialState.account?.passwordHash) {
   const salt = randomBytes(16).toString('base64url');
   initialState.account = { username: USER_NAME, passwordSalt: salt, passwordHash: await passwordHash(initialPassword, salt) };
   await writeState(initialState);
-  console.info(`Cuenta inicial Lumen Vitae creada. Usuario: ${USER_NAME} · Contraseña temporal: ${initialPassword} · Cámbiala en /prompt/enroll.`);
+  console.info(`Cuenta inicial Generador de Prompts creada. Usuario: ${USER_NAME} · Contraseña temporal: ${initialPassword} · Cámbiala en /prompt/enroll.`);
 }
 
 createServer((request, response) => {
@@ -377,5 +377,5 @@ createServer((request, response) => {
     json(response, status, { error: status >= 500 ? 'Error interno del servicio de acceso.' : error.message });
   });
 }).listen(PORT, HOST, () => {
-  console.log(`Lumen Vitae passkey auth listening on http://${HOST}:${PORT}`);
+  console.log(`Generador de Prompts passkey auth listening on http://${HOST}:${PORT}`);
 });

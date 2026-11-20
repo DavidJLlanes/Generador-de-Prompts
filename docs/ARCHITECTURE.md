@@ -98,7 +98,7 @@ Las páginas son HTML generado (`scripts/pages/*.mjs`) con `<title>`, descripci�
 
 ## Seguridad
 
-Sin IA activada, las ideas y selecciones permanecen en el navegador. La persona introduce su clave de OpenRouter, OpenAI, Anthropic o Google Gemini en los ajustes; se guarda en `localStorage` de ese navegador y se envía directamente al proveedor solo al solicitar una función de IA. No se envía a Lumen Vitae ni se incluye en el repositorio. La persona debe usar un dispositivo de confianza y claves con límites de gasto.
+Sin IA activada, las ideas y selecciones permanecen en el navegador. La persona introduce su clave de OpenRouter, OpenAI, Anthropic o Google Gemini en los ajustes; se guarda en `localStorage` de ese navegador y se envía directamente al proveedor solo al solicitar una función de IA. No se envía a Generador de Prompts ni se incluye en el repositorio. La persona debe usar un dispositivo de confianza y claves con límites de gasto.
 
 El afinado devuelve solo IDs presentes en el catálogo, que el cliente vuelve a validar. Las sugerencias nunca se seleccionan solas. La revisión semántica también limita los grupos devueltos a IDs seleccionados. El contenido del modelo se trata como datos y se crea con el DOM seguro. La CSP limita las conexiones salientes a los cuatro proveedores admitidos.
 

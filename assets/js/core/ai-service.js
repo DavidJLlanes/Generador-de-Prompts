@@ -67,7 +67,7 @@ function authHeaders(account) {
   const headers = { Authorization: `Bearer ${account.apiKey}` };
   if (account.id === 'openrouter') {
     headers['HTTP-Referer'] = location.origin;
-    headers['X-OpenRouter-Title'] = 'Lumen Vitae';
+    headers['X-OpenRouter-Title'] = 'Generador de Prompts';
   }
   return headers;
 }

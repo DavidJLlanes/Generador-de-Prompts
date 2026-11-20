@@ -29,7 +29,7 @@ export async function buildPages({ domains, totals, all, write }) {
 
   // 404 (no indexable)
   write('404.html', layout({
-    path: '/404.html', title: 'Página no encontrada | Lumen Vitae', description: 'La página que buscas no existe.', domains, script: 'static', bodyData: { dock: 'off' }, noindex: true,
+    path: '/404.html', title: 'Página no encontrada | Generador de Prompts', description: 'La página que buscas no existe.', domains, script: 'static', bodyData: { dock: 'off' }, noindex: true,
     main: `<div class="container"><div class="page-head"><p class="eyebrow">Error 404</p><h1>Esta página <em>no existe</em></h1><p>Puede que el enlace esté roto o que la página se haya movido.</p><div class="hero__cta"><a class="btn btn--primary" href="/">Volver al inicio</a><a class="btn btn--outline" href="/generadores/">Ver generadores</a></div></div></div>`,
   }));
 
@@ -38,7 +38,7 @@ export async function buildPages({ domains, totals, all, write }) {
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE.url}${u.path}</loc></url>`).join('\n')}\n</urlset>\n`);
   write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
   write('manifest.webmanifest', JSON.stringify({
-    name: 'Lumen Vitae · Generador de prompts', short_name: 'Lumen Vitae', description: 'Constructor modular de prompts para imágenes con IA.',
+    name: 'Generador de Prompts', short_name: 'Generador de Prompts', description: 'Constructor modular de prompts para imágenes con IA.',
     id: sitePath('/'), lang: 'es', start_url: sitePath('/'), scope: sitePath('/'), display: 'standalone', background_color: SITE.themeColor, theme_color: SITE.themeColor,
     icons: [
       { src: sitePath('/assets/img/icon-192.png'), sizes: '192x192', type: 'image/png', purpose: 'any' },

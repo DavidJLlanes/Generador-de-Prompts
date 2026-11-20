@@ -6,7 +6,7 @@ import { sitePath } from '../../assets/js/core/site-path.js';
 import { ROOT } from '../lib/domains.mjs';
 
 export const SITE = {
-  name: 'Lumen Vitae',
+  name: 'Generador de Prompts',
   url: 'https://djl.com.es' + sitePath(''),
   themeColor: '#12100e',
   year: new Date().getFullYear(),
@@ -18,7 +18,7 @@ function header() {
   return `<a class="skip-link" href="#main">Saltar al contenido</a>
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="brand" href="/" aria-label="Lumen Vitae, inicio">${MARK}<span class="brand__name">Lumen <em>Vitae</em></span></a>
+    <a class="brand" href="/" aria-label="Generador de Prompts, inicio">${MARK}<span class="brand__name">Generador <em>de Prompts</em></span></a>
     <nav class="site-nav" id="site-nav" aria-label="Principal">
       <a href="/generadores/">Generadores</a>
       <a href="/constructor/">Constructor</a>
@@ -27,7 +27,7 @@ function header() {
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open>${icon('layers', 16)}<span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>
-      <button type="button" class="btn btn--outline btn--sm install-button" data-install-app hidden aria-label="Instalar Lumen Vitae" title="Instalar Lumen Vitae">${icon('download', 16)}<span class="btn__label">Instalar</span></button>
+      <button type="button" class="btn btn--outline btn--sm install-button" data-install-app hidden aria-label="Instalar Generador de Prompts" title="Instalar Generador de Prompts">${icon('download', 16)}<span class="btn__label">Instalar</span></button>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir el menú">${icon('menu', 20)}</button>
     </div>
   </div>
@@ -39,14 +39,14 @@ function footer(domains) {
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <a class="brand" href="/" aria-label="Lumen Vitae, inicio">${MARK}<span class="brand__name">Lumen <em>Vitae</em></span></a>
+      <a class="brand" href="/" aria-label="Generador de Prompts, inicio">${MARK}<span class="brand__name">Generador <em>de Prompts</em></span></a>
       <p class="footer-blurb">Constructor modular de prompts para imágenes con IA. La interfaz está en español y los prompts salen siempre en inglés.</p>
     </div>
     <div><h2>Generadores</h2><ul>${top.map(d => `<li><a href="/generadores/${d.slug}/">${esc(d.short)}</a></li>`).join('')}<li><a href="/generadores/">Ver todos</a></li></ul></div>
     <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
-  <div class="container footer-base"><span>© ${SITE.year} Lumen Vitae</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
+  <div class="container footer-base"><span>© ${SITE.year} Generador de Prompts</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
 </footer>`;
 }
 
@@ -80,7 +80,7 @@ export function layout({ path, title, description, main, script, bodyData = {}, 
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="application-name" content="${SITE.name}">
-<meta name="apple-mobile-web-app-title" content="Lumen Vitae">
+<meta name="apple-mobile-web-app-title" content="Generador de Prompts">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -121,7 +121,7 @@ ${footer(domains)}
   <div class="install-help__inner">
     <button type="button" class="install-help__close" data-install-close aria-label="Cerrar">${icon('x', 20)}</button>
     <img class="install-help__icon" src="/assets/img/icon-192.png" width="64" height="64" alt="">
-    <h2 id="install-help-title">Instala Lumen Vitae</h2>
+    <h2 id="install-help-title">Instala Generador de Prompts</h2>
     <p data-install-instructions></p>
     <button type="button" class="btn btn--primary" data-install-close>Entendido</button>
   </div>

@@ -6,4 +6,4 @@ import { BASE_PATH } from '../assets/js/core/site-path.js';
 import { createStaticServer } from './lib/server.mjs';
 
 const PORT = Number(process.env.PORT) || 5173;
-createStaticServer().listen(PORT, () => console.log(`Lumen Vitae · desarrollo en http://localhost:${PORT}${BASE_PATH}/`));
+createStaticServer().listen(PORT, () => console.log(`Generador de Prompts · desarrollo en http://localhost:${PORT}${BASE_PATH}/`));

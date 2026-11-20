@@ -102,7 +102,7 @@ export const exportLibrary = () => JSON.stringify(loadLibrary(), null, 2);
 export function importLibrary(text) {
   let raw;
   try { raw = JSON.parse(text); } catch { throw new Error('El archivo no es un JSON válido.'); }
-  if (!raw || typeof raw !== 'object' || raw.v !== 1 || !Array.isArray(raw.saved)) throw new Error('El archivo no parece una exportación de Lumen Vitae.');
+  if (!raw || typeof raw !== 'object' || raw.v !== 1 || !Array.isArray(raw.saved)) throw new Error('El archivo no parece una exportación de Generador de Prompts.');
   const incoming = normalize(raw);
   const lib = loadLibrary();
   const known = new Set(lib.saved.map(x => signature(x.snap)));

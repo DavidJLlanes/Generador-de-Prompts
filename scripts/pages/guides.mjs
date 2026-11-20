@@ -22,10 +22,10 @@ export function guidesIndexPage({ domains }) {
   <div class="grid">${cards}</div>
 </div>`;
   return layout({
-    path: '/guias/', title: 'Guías de prompts para imágenes con IA | Lumen Vitae',
+    path: '/guias/', title: 'Guías de prompts para imágenes con IA | Generador de Prompts',
     description: 'Guías prácticas para escribir prompts de calidad, cruzar generadores y adaptar el resultado a ChatGPT, Stable Diffusion, Flux, Ideogram, Midjourney y a cada pantalla.',
     main, script: 'static', bodyData: { dock: 'off' }, domains, og: 'guias',
-    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de Lumen Vitae', url: `${SITE.url}/guias/`, inLanguage: 'es' }],
+    jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de Generador de Prompts', url: `${SITE.url}/guias/`, inLanguage: 'es' }],
   });
 }
 
@@ -45,7 +45,7 @@ export function guidePage(g, { domains }) {
   </aside>
 </div>`;
   return layout({
-    path, title: `${g.title} | Lumen Vitae`, description: g.description, main, script: 'static', bodyData: { dock: 'off' }, domains, og: `guia-${g.slug}`,
+    path, title: `${g.title} | Generador de Prompts`, description: g.description, main, script: 'static', bodyData: { dock: 'off' }, domains, og: `guia-${g.slug}`,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description, datePublished: g.date, dateModified: g.date, inLanguage: 'es', author: { '@type': 'Organization', name: SITE.name }, publisher: { '@type': 'Organization', name: SITE.name }, mainEntityOfPage: `${SITE.url}${path}`, image: `${SITE.url}/assets/img/og/guia-${g.slug}.webp` },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [

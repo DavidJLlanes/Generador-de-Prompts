@@ -34,7 +34,7 @@ export function catalogPage({ domains, totals }) {
 
   return layout({
     path: '/generadores/',
-    title: 'Generadores de prompts para imágenes con IA | Lumen Vitae',
+    title: 'Generadores de prompts para imágenes con IA | Generador de Prompts',
     description: `Explora ${totals.domains} generadores de prompts: personajes, criaturas, vehículos, paisajes, escenarios, clima, efectos y fotografía. Combínalos para crear imágenes de máxima calidad.`,
     main, script: 'catalog', domains, og: 'generadores',
     jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Generadores de prompts', url: `${SITE.url}/generadores/`, inLanguage: 'es' }],

@@ -13,13 +13,13 @@ const CONTACT = 'djl@djl.red';
 const DOCS = {
   'aviso-legal': {
     title: 'Aviso legal',
-    description: 'Aviso legal de Lumen Vitae: datos del titular, condiciones de uso, propiedad intelectual y legislación aplicable.',
+    description: 'Aviso legal de Generador de Prompts: datos del titular, condiciones de uso, propiedad intelectual y legislación aplicable.',
     sections: [
       ['1. Datos identificativos',
         'En cumplimiento del deber de información recogido en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los datos del titular de este sitio web:',
         { list: ['Titular: David', 'Localidad: León (España)', `Correo electrónico: ${CONTACT}`, `Sitio web: ${SITE.url}/`] }],
       ['2. Objeto',
-        'El presente aviso legal regula el acceso, la navegación y el uso del sitio web Lumen Vitae (en adelante, «el Sitio»), una plataforma gratuita que ofrece herramientas para crear descripciones de texto («prompts») destinadas a generadores de imágenes por inteligencia artificial.',
+        'El presente aviso legal regula el acceso, la navegación y el uso del sitio web Generador de Prompts (en adelante, «el Sitio»), una plataforma gratuita que ofrece herramientas para crear descripciones de texto («prompts») destinadas a generadores de imágenes por inteligencia artificial.',
         'El acceso al Sitio es libre y gratuito, y atribuye a quien lo realiza la condición de usuario, lo que implica la aceptación plena de las condiciones recogidas en este aviso legal desde el momento en que se accede.'],
       ['3. Condiciones de acceso y uso',
         'El usuario se compromete a hacer un uso adecuado y lícito del Sitio y de sus contenidos, de conformidad con la legislación vigente, la buena fe y el orden público. En particular, el usuario se obliga a:',
@@ -29,7 +29,7 @@ const DOCS = {
         'El diseño del Sitio, su código fuente, la estructura de navegación, los textos, las herramientas de creación de prompts y los demás elementos que lo integran son titularidad de David o cuenta con la correspondiente autorización para su uso, y están protegidos por la normativa de propiedad intelectual e industrial.',
         'El acceso al Sitio no otorga al usuario ningún derecho sobre su código, textos o datos más allá de consultarlos; cualquier otro uso requiere la autorización expresa del titular.'],
       ['5. Exclusión de responsabilidad',
-        'El Sitio es una herramienta de apoyo a la creatividad. Los prompts generados son sugerencias de texto, y las imágenes resultantes se producen en plataformas de terceros ajenas a Lumen Vitae. El titular no se hace responsable del uso que el usuario haga de los prompts ni de las imágenes que obtenga a partir de ellos.',
+        'El Sitio es una herramienta de apoyo a la creatividad. Los prompts generados son sugerencias de texto, y las imágenes resultantes se producen en plataformas de terceros ajenas a Generador de Prompts. El titular no se hace responsable del uso que el usuario haga de los prompts ni de las imágenes que obtenga a partir de ellos.',
         'El titular no garantiza la disponibilidad y continuidad ininterrumpida del Sitio, ni la ausencia de errores en sus contenidos, si bien empleará los medios razonables para evitarlos, corregirlos o actualizarlos. El titular queda exonerado de cualquier responsabilidad por los daños y perjuicios que pudieran derivarse de la falta de disponibilidad temporal del Sitio.'],
       ['6. Enlaces a terceros',
         'El Sitio puede contener enlaces a páginas o servicios de terceros (por ejemplo, plataformas de generación de imágenes por inteligencia artificial). El titular no asume responsabilidad alguna sobre los contenidos, políticas o prácticas de dichos sitios externos, cuyo acceso se realiza bajo la exclusiva responsabilidad del usuario.'],
@@ -41,12 +41,12 @@ const DOCS = {
   },
   privacidad: {
     title: 'Política de privacidad',
-    description: 'Política de privacidad de Lumen Vitae: la herramienta funciona en tu navegador, sin cuentas ni envío de tus selecciones a ningún servidor.',
-    lead: { callout: '<strong>En resumen:</strong> Lumen Vitae funciona por completo en tu navegador. No tiene cuentas de usuario, no pide registro y no envía tus selecciones ni tus prompts a ningún servidor. Lo que creas se queda en tu dispositivo.' },
+    description: 'Política de privacidad de Generador de Prompts: la herramienta funciona en tu navegador, sin cuentas ni envío de tus selecciones a ningún servidor.',
+    lead: { callout: '<strong>En resumen:</strong> Generador de Prompts funciona por completo en tu navegador. No tiene cuentas de usuario, no pide registro y no envía tus selecciones ni tus prompts a ningún servidor. Lo que creas se queda en tu dispositivo.' },
     sections: [
       ['1. Responsable del tratamiento', 'El responsable del tratamiento de los datos relacionados con este sitio web es:', { list: ['Titular: David', 'Localidad: León (España)', `Correo electrónico: ${CONTACT}`] }],
       ['2. Qué datos tratamos',
-        'Lumen Vitae es una herramienta de uso libre que se ejecuta íntegramente en el navegador del usuario. Por su diseño:',
+        'Generador de Prompts es una herramienta de uso libre que se ejecuta íntegramente en el navegador del usuario. Por su diseño:',
         { list: [
           'No solicitamos datos personales: no hay formularios de registro, ni alta de cuentas, ni suscripciones.',
           'No recopilamos información en servidores: las opciones que eliges y los prompts que generas no se transmiten ni se almacenan en ningún sistema del titular.',
@@ -59,7 +59,7 @@ const DOCS = {
       ['3. Finalidad del tratamiento', 'La información almacenada localmente en tu navegador tiene como única finalidad recordar tus selecciones para mejorar tu experiencia de uso. Los datos que nos envíes por correo se tratan solo para responder a tu consulta.'],
       ['4. Legitimación', 'La base legal para el almacenamiento local de tus preferencias es tu consentimiento al utilizar la herramienta, así como el interés legítimo en ofrecer un servicio funcional. En el caso de las consultas por correo, la base es tu consentimiento al dirigirte voluntariamente al titular.'],
       ['5. Conservación de los datos', 'Los datos guardados en el almacenamiento local permanecen en tu navegador hasta que tú los elimines (borrando los datos de navegación del sitio o usando el botón «Vaciar» del panel «Mi prompt»). Los correos electrónicos se conservarán durante el tiempo necesario para gestionar tu consulta y, en su caso, durante los plazos legalmente exigibles.'],
-      ['6. Destinatarios', 'No cedemos ni comunicamos datos a terceros. Al no recopilar información personal en servidores, no existe transferencia de datos derivada del uso de las herramientas. Ten en cuenta que, cuando copias un prompt y lo utilizas en una plataforma externa de generación de imágenes, dicho texto pasa a regirse por la política de privacidad de esa plataforma, ajena a Lumen Vitae.'],
+      ['6. Destinatarios', 'No cedemos ni comunicamos datos a terceros. Al no recopilar información personal en servidores, no existe transferencia de datos derivada del uso de las herramientas. Ten en cuenta que, cuando copias un prompt y lo utilizas en una plataforma externa de generación de imágenes, dicho texto pasa a regirse por la política de privacidad de esa plataforma, ajena a Generador de Prompts.'],
       ['7. Tus derechos',
         'Como titular de tus datos, la normativa de protección de datos (RGPD y LOPDGDD) te reconoce los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad. Dado que no almacenamos datos personales en servidores, puedes ejercer de forma directa la supresión de la información guardada localmente borrándola desde tu propio navegador en cualquier momento.',
         `Para cualquier otra cuestión relativa a tus derechos, puedes escribir a <a href="mailto:${CONTACT}">${CONTACT}</a>. También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="noopener">www.aepd.es</a>) si consideras que tus derechos no han sido atendidos.`],
@@ -68,12 +68,12 @@ const DOCS = {
   },
   cookies: {
     title: 'Política de cookies',
-    description: 'Política de cookies de Lumen Vitae: no se usan cookies de seguimiento, publicitarias ni de analítica; solo almacenamiento local para recordar tus selecciones.',
-    lead: { callout: '<strong>En resumen:</strong> Lumen Vitae no utiliza cookies de seguimiento, ni publicitarias, ni de analítica. Solo emplea el almacenamiento local de tu navegador para recordar tus selecciones dentro de las herramientas.' },
+    description: 'Política de cookies de Generador de Prompts: no se usan cookies de seguimiento, publicitarias ni de analítica; solo almacenamiento local para recordar tus selecciones.',
+    lead: { callout: '<strong>En resumen:</strong> Generador de Prompts no utiliza cookies de seguimiento, ni publicitarias, ni de analítica. Solo emplea el almacenamiento local de tu navegador para recordar tus selecciones dentro de las herramientas.' },
     sections: [
       ['1. ¿Qué son las cookies?', 'Las cookies son pequeños archivos de texto que los sitios web guardan en el dispositivo del usuario cuando los visita. Sirven para almacenar y recuperar información sobre la navegación. Junto a ellas existen otras tecnologías de almacenamiento en el navegador, como el almacenamiento local (localStorage), que cumplen una función similar de guardar datos en tu equipo.'],
       ['2. ¿Usa cookies este sitio?',
-        'Lumen Vitae no instala cookies propias ni de terceros con fines de seguimiento, perfilado, publicidad o medición de audiencia. No utilizamos herramientas de analítica que requieran consentimiento de cookies.',
+        'Generador de Prompts no instala cookies propias ni de terceros con fines de seguimiento, perfilado, publicidad o medición de audiencia. No utilizamos herramientas de analítica que requieran consentimiento de cookies.',
         'Lo único que el Sitio guarda en tu navegador es la información necesaria para recordar las opciones que eliges, y lo hace mediante el almacenamiento local, no mediante cookies.'],
       ['3. Almacenamiento local que utilizamos',
         'El Sitio guarda en el localStorage de tu navegador los siguientes datos, exclusivamente técnicos y funcionales:',
@@ -83,7 +83,7 @@ const DOCS = {
           '<code>lv:v1:open:&lt;generador&gt;</code>: qué secciones de cada generador dejaste abiertas o plegadas.',
         ] },
         'Esta información se almacena únicamente en tu dispositivo, no se transmite a ningún servidor y no permite identificarte personalmente.'],
-      ['4. Cookies de terceros', 'El Sitio no incorpora cookies de terceros. Ten en cuenta que, si desde aquí accedes a plataformas externas de generación de imágenes por inteligencia artificial, dichas plataformas podrán utilizar sus propias cookies, sujetas a sus respectivas políticas, ajenas a Lumen Vitae.'],
+      ['4. Cookies de terceros', 'El Sitio no incorpora cookies de terceros. Ten en cuenta que, si desde aquí accedes a plataformas externas de generación de imágenes por inteligencia artificial, dichas plataformas podrán utilizar sus propias cookies, sujetas a sus respectivas políticas, ajenas a Generador de Prompts.'],
       ['5. Cómo gestionar o eliminar el almacenamiento',
         'Puedes eliminar en cualquier momento la información que el Sitio haya guardado en tu navegador. Para ello puedes:',
         { list: ['Pulsar «Vaciar» en el panel «Mi prompt» para borrar tu selección actual.', 'Borrar los datos de navegación del sitio desde la configuración de tu navegador (sección de privacidad o datos de sitios).', 'Utilizar el modo de navegación privada o de incógnito, que no conserva el almacenamiento al cerrar la ventana.', 'Configurar tu navegador para bloquear o limitar el almacenamiento de datos de sitios web.'] },
@@ -93,19 +93,19 @@ const DOCS = {
   },
   terminos: {
     title: 'Términos de uso',
-    description: 'Términos de uso de Lumen Vitae: servicio gratuito de creación de prompts para imágenes con IA, uso correcto y exclusión de garantías.',
+    description: 'Términos de uso de Generador de Prompts: servicio gratuito de creación de prompts para imágenes con IA, uso correcto y exclusión de garantías.',
     sections: [
-      ['1. Aceptación de los términos', `El uso del sitio web Lumen Vitae (en adelante, «el Servicio») implica la aceptación plena de los presentes términos de uso. Si no estás de acuerdo con ellos, te rogamos que no utilices el Servicio. El responsable del Servicio es David, con domicilio en León (España) y correo de contacto <a href="mailto:${CONTACT}">${CONTACT}</a>.`],
+      ['1. Aceptación de los términos', `El uso del sitio web Generador de Prompts (en adelante, «el Servicio») implica la aceptación plena de los presentes términos de uso. Si no estás de acuerdo con ellos, te rogamos que no utilices el Servicio. El responsable del Servicio es David, con domicilio en León (España) y correo de contacto <a href="mailto:${CONTACT}">${CONTACT}</a>.`],
       ['2. Descripción del servicio',
-        'Lumen Vitae es una colección de herramientas gratuitas que ayudan al usuario a construir descripciones de texto («prompts») para generadores de imágenes basados en inteligencia artificial. El usuario selecciona opciones dentro de cada herramienta y el Servicio compone automáticamente un texto, en inglés, que puede copiar y utilizar en plataformas externas de IA.',
-        { callout: '<strong>Importante:</strong> Lumen Vitae genera texto, no imágenes. Las imágenes se crean en plataformas de terceros (como Midjourney, DALL·E, Stable Diffusion u otras), que tienen sus propias condiciones y licencias.' }],
+        'Generador de Prompts es una colección de herramientas gratuitas que ayudan al usuario a construir descripciones de texto («prompts») para generadores de imágenes basados en inteligencia artificial. El usuario selecciona opciones dentro de cada herramienta y el Servicio compone automáticamente un texto, en inglés, que puede copiar y utilizar en plataformas externas de IA.',
+        { callout: '<strong>Importante:</strong> Generador de Prompts genera texto, no imágenes. Las imágenes se crean en plataformas de terceros (como Midjourney, DALL·E, Stable Diffusion u otras), que tienen sus propias condiciones y licencias.' }],
       ['3. Gratuidad', 'El acceso y uso del Servicio es totalmente gratuito y no requiere registro. El titular no cobra por el uso de las herramientas ni condiciona su disponibilidad al pago de cantidad alguna.'],
       ['4. Uso correcto del servicio',
         'El usuario se compromete a utilizar el Servicio conforme a la ley, la buena fe y estos términos. En particular, se compromete a no emplear el Servicio para:',
         { list: ['Crear contenidos ilícitos, difamatorios, que vulneren derechos de terceros o que resulten contrarios a la dignidad de las personas.', 'Generar prompts orientados a producir material que infrinja la legislación vigente.', 'Realizar acciones que puedan dañar, sobrecargar o deteriorar el funcionamiento del Servicio.', 'Activar el contenido para adultos (lencería, boudoir, busto, látex, poses y ambientes sensuales) siendo menor de 18 años, o usarlo para representar a menores de edad o a personas reales sin su consentimiento. El Servicio bloquea esas opciones junto a menores y personajes de aspecto joven, pero la responsabilidad del uso es del usuario.'] },
         'El usuario es el único responsable del uso que haga de los prompts generados y de las imágenes que obtenga a partir de ellos en plataformas de terceros.'],
       ['5. Propiedad intelectual del servicio', 'El Servicio, incluyendo su diseño, código, estructura y herramientas, es titularidad de David y está protegido por la normativa de propiedad intelectual. El acceso al Sitio no otorga ningún derecho sobre su código, textos o datos más allá de consultarlos. Los textos de prompt que generes mediante las herramientas puedes utilizarlos libremente para tus proyectos.'],
-      ['6. Prompts e imágenes generadas', 'El Servicio se limita a facilitar la redacción de prompts. El titular no garantiza ningún resultado concreto al utilizar dichos prompts en generadores de IA, ya que la imagen final depende de la plataforma elegida, de su modelo y de factores ajenos a Lumen Vitae. La titularidad, los derechos y el uso comercial de las imágenes generadas se rigen por las condiciones de la plataforma de inteligencia artificial que utilices, que debes consultar y respetar.'],
+      ['6. Prompts e imágenes generadas', 'El Servicio se limita a facilitar la redacción de prompts. El titular no garantiza ningún resultado concreto al utilizar dichos prompts en generadores de IA, ya que la imagen final depende de la plataforma elegida, de su modelo y de factores ajenos a Generador de Prompts. La titularidad, los derechos y el uso comercial de las imágenes generadas se rigen por las condiciones de la plataforma de inteligencia artificial que utilices, que debes consultar y respetar.'],
       ['7. Disponibilidad del servicio', 'El titular procurará mantener el Servicio disponible y en correcto funcionamiento, pero no garantiza la ausencia de interrupciones, errores o indisponibilidades temporales debidas a mantenimiento, causas técnicas o ajenas a su control. El titular podrá modificar, suspender o retirar el Servicio, total o parcialmente, en cualquier momento.'],
       ['8. Exclusión de garantías y responsabilidad', 'El Servicio se ofrece «tal cual», sin garantías de ningún tipo. En la máxima medida permitida por la ley, el titular no será responsable de los daños o perjuicios, directos o indirectos, que pudieran derivarse del uso o de la imposibilidad de uso del Servicio, ni del uso que el usuario haga de los prompts o de las imágenes generadas con plataformas de terceros.'],
       ['9. Enlaces y servicios de terceros', 'El Servicio puede mencionar o enlazar plataformas de terceros. El titular no controla ni se responsabiliza de dichos servicios externos, que se rigen por sus propios términos y políticas. El acceso a ellos se realiza bajo la responsabilidad del usuario.'],
@@ -129,5 +129,5 @@ export function legalPage(slug, domains) {
     ${d.sections.map(([h, ...blocks]) => `<h2>${esc(h)}</h2>${blocks.map(block).join('')}`).join('\n')}
   </div>
 </div>`;
-  return layout({ path: `/legal/${slug}/`, title: `${d.title} | Lumen Vitae`, description: d.description, main, script: 'static', bodyData: { dock: 'off' }, domains });
+  return layout({ path: `/legal/${slug}/`, title: `${d.title} | Generador de Prompts`, description: d.description, main, script: 'static', bodyData: { dock: 'off' }, domains });
 }
