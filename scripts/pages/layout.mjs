@@ -12,7 +12,7 @@ export const SITE = {
   year: new Date().getFullYear(),
 };
 
-const MARK = '<svg class="brand__mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg>';
+const MARK = '<svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="#11172b"/><path d="M2 4h14v12H2z" fill="#4657d8"/><path d="M16 2h12a3 3 0 0 1 3 3v13H16z" fill="#ff786b"/><circle cx="23" cy="9" r="3" fill="#fff0d9"/><path d="M2 18 11 12l6 7 5-4 9 6v7a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="#4657d8"/><path d="M2 24q7-5 14-1t16-1v5a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="#8fe0c2"/></svg>';
 
 function header() {
   return `<a class="skip-link" href="#main">Saltar al contenido</a>

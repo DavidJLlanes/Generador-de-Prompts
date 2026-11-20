@@ -1,23 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Generador de Prompts">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
-      <stop offset="0" stop-color="#302519"/>
-      <stop offset="1" stop-color="#12100e"/>
-    </radialGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f2d8a4"/>
-      <stop offset=".48" stop-color="#d6b27c"/>
-      <stop offset="1" stop-color="#aa8050"/>
-    </linearGradient>
-    <radialGradient id="glow">
-      <stop offset="0" stop-color="#f2d8a4" stop-opacity=".28"/>
-      <stop offset="1" stop-color="#f2d8a4" stop-opacity="0"/>
-    </radialGradient>
+    <clipPath id="tile"><rect width="512" height="512" rx="112"/></clipPath>
   </defs>
-  <rect width="512" height="512" fill="url(#bg)"/>
-  <circle cx="256" cy="256" r="210" fill="url(#glow)"/>
-  <circle cx="256" cy="256" r="204" fill="none" stroke="#d6b27c" stroke-opacity=".17" stroke-width="2"/>
-  <path d="M256 72 291 221 440 256 291 291 256 440 221 291 72 256 221 221Z" fill="url(#gold)"/>
-  <path d="M256 122 279 233 390 256 279 279 256 390 233 279 122 256 233 233Z" fill="#f3dfba" fill-opacity=".16"/>
-  <circle cx="256" cy="256" r="7" fill="#fff1d4"/>
+  <g clip-path="url(#tile)">
+    <rect width="512" height="512" fill="#11172b"/>
+    <path d="M0 0h278c2 72-37 107-95 138-49 26-93 17-183 72Z" fill="#4657d8"/>
+    <path d="M266 0h246v238c-66 5-95-53-139-74-61-28-92-13-134-64-28-34-11-71 27-100Z" fill="#ff786b"/>
+    <circle cx="391" cy="112" r="54" fill="#fff0d9"/>
+    <path d="M0 150c39-36 67-32 90-8 20-25 48-18 64 12 30-3 43 17 49 42H0Z" fill="#fff0d9"/>
+    <path d="M0 311c55-45 107-57 156-27 39-41 74-79 112-72 41 7 63 64 96 58 34-7 48-47 76-36 31 12 43 44 72 56v142H0Z" fill="#4657d8"/>
+    <path d="M0 366c53-33 102-38 151-15 45 22 67 5 101-12 36-18 65-11 94 8-45 18-70 36-87 72-23 48-59 82-105 93H0Z" fill="#8fe0c2"/>
+    <path d="M512 333c-45 20-76 19-114 8-35-10-72-4-98 17 31 13 52 30 67 54 24 38 66 72 145 100Z" fill="#fff0d9"/>
+    <path d="M251 512c13-39 44-59 83-66 26-5 48-2 74 8-20-33-53-55-90-62-49-10-78 12-111 38-31 25-62 37-105 33-36-3-68-13-102-29v78Z" fill="#11172b"/>
+  </g>
 </svg>

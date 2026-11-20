@@ -46,20 +46,25 @@ function html(it) {
 @font-face{font-family:"JetBrains Mono";src:url("${BASE_PATH}/assets/fonts/jetbrains-mono-variable.woff2") format("woff2");font-weight:400 500}
 *{box-sizing:border-box;margin:0}
 body{width:1200px;height:630px;overflow:hidden;position:relative;background:#12100e;color:#efe8da;font-family:Inter,sans-serif}
+.is-home{background:#11172b;color:#fff0d9}
 .home-art{position:absolute;inset:0;background:url('${BASE_PATH}/assets/img/og/home-background.webp') center/cover no-repeat}
-.home-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#12100e 0%,rgba(18,16,14,.96) 25%,rgba(18,16,14,.72) 47%,rgba(18,16,14,.08) 78%),linear-gradient(0deg,rgba(18,16,14,.52),transparent 32%,rgba(18,16,14,.16))}
+.home-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#11172b 0%,rgba(17,23,43,.96) 25%,rgba(17,23,43,.78) 47%,rgba(17,23,43,.08) 78%),linear-gradient(0deg,rgba(17,23,43,.48),transparent 32%,rgba(17,23,43,.12))}
 .is-home .title{top:250px;right:610px;font-size:72px;line-height:1.04}
 .glow{position:absolute;inset:0;background:radial-gradient(760px 420px at 92% -6%,rgba(214,178,124,.30),transparent 62%),radial-gradient(640px 380px at -8% 108%,rgba(120,90,60,.22),transparent 60%)}
 .frame{position:absolute;inset:26px;border:1px solid rgba(239,232,218,.12);border-radius:26px}
 .brand{position:absolute;left:78px;top:64px;display:flex;align-items:center;gap:14px;font:400 36px "Instrument Serif",serif}
 .brand svg{width:34px;height:34px;color:#d6b27c}.brand em{color:#d6b27c}
+.is-home .brand em{color:#8fe0c2}.is-home .brand svg{color:inherit}
+.is-home .kicker{color:#8fe0c2}.is-home .title em{color:#ff786b}
+.is-home .foot{color:#b6c0db}.is-home .foot b{color:#ff9b8d}
+.is-home .glow{background:radial-gradient(760px 420px at 92% -6%,rgba(70,87,216,.30),transparent 62%),radial-gradient(640px 380px at -8% 108%,rgba(255,120,107,.13),transparent 60%)}
 .kicker{position:absolute;left:78px;top:190px;right:90px;font:500 19px "JetBrains Mono",monospace;letter-spacing:.17em;text-transform:uppercase;color:#d6b27c;line-height:1.5}
 .title{position:absolute;left:78px;right:90px;top:250px;font:400 ${sizeFor(it.title)}px/1.02 "Instrument Serif",serif;letter-spacing:-.02em}
 .title em{color:#d6b27c}
 .foot{position:absolute;left:78px;right:90px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font:400 21px "JetBrains Mono",monospace;color:#8d8475}
 .foot b{font-weight:500;color:#bdb4a4}
 </style></head><body class="${isHome ? 'is-home' : ''}">${isHome ? '<div class="home-art"></div>' : ''}<div class="glow"></div><div class="frame"></div>
-<div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg><span>Generador <em>de Prompts</em></span></div>
+<div class="brand">${isHome ? '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="#11172b"/><path d="M2 4h14v12H2z" fill="#4657d8"/><path d="M16 2h12a3 3 0 0 1 3 3v13H16z" fill="#ff786b"/><circle cx="23" cy="9" r="3" fill="#fff0d9"/><path d="M2 18 11 12l6 7 5-4 9 6v7a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="#4657d8"/><path d="M2 24q7-5 14-1t16-1v5a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="#8fe0c2"/></svg>' : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.4 9.6 22.5 12l-8.1 2.4L12 22.5l-2.4-8.1L1.5 12l8.1-2.4L12 1.5Z"/></svg>'}<span>Generador <em>de Prompts</em></span></div>
 <div class="kicker">${esc(it.kicker)}</div>
 <div class="title">${titleHtml(it.title)}</div>
 <div class="foot"><span>${esc(it.facts)}</span><b>djl.com.es/prompt</b></div></body></html>`;

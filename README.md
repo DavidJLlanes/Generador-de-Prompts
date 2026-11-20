@@ -1,6 +1,8 @@
 <div align="center">
 
-# ✦ Generador de Prompts
+![Generador de Prompts — Constructor modular para imágenes con IA](assets/img/og/home.jpg)
+
+# Generador de Prompts
 
 **Constructor modular de prompts para imágenes con IA.**
 Combina generadores (personajes, escenarios, coches, criaturas, fotografía…) en un único prompt y expórtalo para ChatGPT/Gemini, Stable Diffusion/Flux o Ideogram.
