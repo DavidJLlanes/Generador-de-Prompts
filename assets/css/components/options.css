@@ -20,7 +20,7 @@
 .sec-nav__link.is-active { color: var(--accent-2); border-left-color: var(--accent); background: var(--accent-soft); }
 .sec-nav__badge { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: var(--radius-pill); background: var(--accent); color: var(--accent-ink); font-size: 0.66rem; font-weight: 600; }
 
-.domain-toolbar { position: sticky; top: var(--header-h); z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0 calc(var(--gutter) * -0.4) var(--space-5); padding: var(--space-3) calc(var(--gutter) * 0.4); background: rgba(18, 16, 14, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.domain-toolbar { position: sticky; top: var(--header-h); z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0 calc(var(--gutter) * -0.4) var(--space-5); padding: var(--space-3) calc(var(--gutter) * 0.4); background: rgba(21, 23, 27, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .domain-toolbar .field { flex: 1 1 240px; max-width: 460px; }
 .domain-toolbar .btn { flex: none; }
 .search-status { font-size: var(--fs-xs); color: var(--text-3); font-family: var(--font-mono); }
