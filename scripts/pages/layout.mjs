@@ -8,7 +8,7 @@ import { ROOT } from '../lib/domains.mjs';
 export const SITE = {
   name: 'Generador de Prompts',
   url: 'https://djl.com.es' + sitePath(''),
-  themeColor: '#12100e',
+  themeColor: '#15171b',
   year: new Date().getFullYear(),
 };
 
