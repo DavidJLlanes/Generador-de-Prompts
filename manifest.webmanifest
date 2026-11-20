@@ -7,8 +7,8 @@
   "start_url": "/prompt/",
   "scope": "/prompt/",
   "display": "standalone",
-  "background_color": "#12100e",
-  "theme_color": "#12100e",
+  "background_color": "#15171b",
+  "theme_color": "#15171b",
   "icons": [
     {
       "src": "/prompt/assets/img/icon-192.png",
