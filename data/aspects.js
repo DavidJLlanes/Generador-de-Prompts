@@ -1,15 +1,16 @@
 /**
  * PROPORCIONES (aspect ratio).
  * `label` va en español (interfaz). `kind` elige la nota de composición, en inglés, que se añade
- * al prompt (los prompts son siempre en inglés). `{r}` se sustituye por la proporción.
+ * al prompt (los prompts son siempre en inglés). La nota NO repite la cifra: la proporción se escribe
+ * una sola vez, al final del prompt («Aspect ratio "9:16"»).
  */
 export const ASPECT_NOTES = {
   square: 'Square format: balanced composition with the subject centered or on a third and even margins on all sides.',
-  tall: 'Vertical format ({r}): composition built in height with the subject in the central third, breathing room above and below, and elements that guide the eye vertically.',
-  phone: 'Vertical phone-screen format ({r}): main subject in the lower-middle third, with the upper third kept calmer and softly textured so the clock and widgets do not cover the subject, and the bottom strip free of critical detail because of the dock; the scene develops in height with layered depth.',
-  landscape: 'Horizontal format ({r}): balanced landscape composition with the subject on a third and the horizon on the upper or lower third.',
-  wide: 'Horizontal desktop format ({r}): panoramic composition with the main subject on a third (rule of thirds) and the opposite side calmer for desktop icons; horizon on the lower or upper third as the scene requires.',
-  ultra: 'Ultra-wide format ({r}): panoramic composition that extends horizontally, with the subject in the center or on a third and secondary elements and atmosphere filling the edges; nothing essential near the borders, which must not be cropped.',
+  tall: 'Vertical format: composition built in height with the subject in the central third, breathing room above and below, and elements that guide the eye vertically.',
+  phone: 'Vertical phone-screen format: main subject in the lower-middle third, with the upper third kept calmer and softly textured so the clock and widgets do not cover the subject, and the bottom strip free of critical detail because of the dock; the scene develops in height with layered depth.',
+  landscape: 'Horizontal format: balanced landscape composition with the subject on a third and the horizon on the upper or lower third.',
+  wide: 'Horizontal desktop format: panoramic composition with the main subject on a third (rule of thirds) and the opposite side calmer for desktop icons; horizon on the lower or upper third as the scene requires.',
+  ultra: 'Ultra-wide format: panoramic composition that extends horizontally, with the subject in the center or on a third and secondary elements and atmosphere filling the edges; nothing essential near the borders, which must not be cropped.',
 };
 
 export const ASPECTS = [
@@ -36,5 +37,5 @@ export const ASPECT_BY_ID = Object.fromEntries(ASPECTS.map(a => [a.id, a]));
 export function aspectNote(id) {
   const a = ASPECT_BY_ID[id];
   if (!a || a.kind === 'none') return '';
-  return (ASPECT_NOTES[a.kind] || '').replace('{r}', id);
+  return ASPECT_NOTES[a.kind] || '';
 }

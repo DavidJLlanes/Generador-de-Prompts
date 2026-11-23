@@ -253,3 +253,14 @@ test('Mujer + Personaje avanzado: es una sola mujer, no «a woman together with 
   const text = renderFormat('text', c, state).text;
   assert.doesNotMatch(text, /together with/);
 });
+
+test('la proporción aparece una sola vez y al final, también con nota de composición', () => {
+  for (const aspect of ['9:19.5', '16:9', '4:5', '21:9']) {
+    const st = base({ creatures: { [domains.creatures.sections[0].id]: [domains.creatures.sections[0].options[0].id] } }, { aspect });
+    for (const fmt of ['text', 'natural']) {
+      const text = renderFormat(fmt, compose(domains, st), st).text;
+      assert.equal(text.split(aspect).length - 1, 1, `${fmt} ${aspect}: la proporción sale una sola vez`);
+      assert.match(text, new RegExp(`Aspect ratio:? "?${aspect.replace('.', '\\.')}"?\\.$`), `${fmt} ${aspect}: va al final`);
+    }
+  }
+});
