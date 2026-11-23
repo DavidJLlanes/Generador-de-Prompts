@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { loadAllDomains } from '../scripts/lib/domains.mjs';
 import { FAMILIES } from '../data/families.js';
 import { familyOf, familySiblings, clearFamily, pruneFamilies } from '../assets/js/core/families.js';
-import { enforce } from '../assets/js/core/exclusions.js';
+import { enforce, reasonBlocked } from '../assets/js/core/exclusions.js';
 import { compose } from '../assets/js/core/composer.js';
 import { randomSelection } from '../assets/js/core/random.js';
 import { store } from '../assets/js/core/store.js';
@@ -35,7 +35,7 @@ test('las familias cubren lo que se solapa entre Mujer y los generadores especia
   for (const [d, s] of [['woman', 'colorpelo'], ['woman', 'ropa'], ['woman', 'peinado'], ['faces', 'ojos-color'], ['poses', 'poses'], ['photo', 'lighting']]) {
     assert.ok(familyOf(d, s), `«${d}/${s}» debería estar en una familia`);
   }
-  assert.deepEqual(familySiblings('woman', 'colorpelo').map(x => `${x.domain}/${x.section}`).sort(), ['girl/hair-color', 'hairstyles/color-principal', 'man/colorpelo'].sort());
+  assert.deepEqual(familySiblings('woman', 'colorpelo').map(x => `${x.domain}/${x.section}`).sort(), ['hairstyles/color-principal'], 'Hombre y Personaje avanzado son otros sujetos: no compiten con Mujer');
   assert.deepEqual(familySiblings('photo', 'composition').length, 2);
   assert.equal(familyOf('cars', 'marca'), null, 'lo que no se solapa no entra en ninguna familia');
 });
@@ -100,4 +100,22 @@ test('«Aleatorio» con varios generadores no deja dos secciones de la misma fam
       seen.add(f.id);
     }
   }
+});
+
+test('dos sujetos distintos conviven: Mujer + Hombre no se quitan la edad', () => {
+  const w = domains.woman.sections.find(x => x.id === 'edad'), m = domains.man.sections.find(x => x.id === 'edad');
+  store.clearAll();
+  store.toggleOption('woman', w, w.options[0].id, domains.woman);
+  const out = store.toggleOption('man', m, m.options[0].id, domains.man);
+  assert.deepEqual(out, [], 'no se descarta nada');
+  assert.equal(store.selectedIds('woman', 'edad').length, 1);
+  assert.equal(store.selectedIds('man', 'edad').length, 1);
+  const pruned = pruneFamilies({ woman: { edad: [w.options[0].id] }, man: { edad: [m.options[0].id] } });
+  assert.deepEqual(pruned.removed, []);
+  // Pero un generador de atributos (Rostros) sigue compitiendo con ambos
+  const f = domains.faces.sections.find(x => x.id === 'edad');
+  const free = f.options.find(o => !reasonBlocked(store.get().sel, 'faces', 'edad', o.id, { adult: false })); // las de menores están bloqueadas junto a personajes adultos
+  const cleared = store.toggleOption('faces', f, free.id, domains.faces);
+  assert.equal(cleared.length, 2);
+  store.clearAll();
 });

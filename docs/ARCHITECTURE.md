@@ -31,6 +31,7 @@ Cada dominio declara un `role` que es una **ranura**; un prompt combinado se com
 
 (sujeto, atributos, pose/acción, escenario, atmósfera, técnica y estilo — ver `data/taxonomy.js`).
 
+- **Varios sujetos:** si eliges en más de un generador de sujeto (Mujer + Hombre, Mujer + Coches), cada uno abre su propia frase («a woman… together with a man…») y `compose` devuelve `subjects` con uno por generador. El formato natural los separa en líneas (`Subject (a woman): …`) y las familias no los hacen competir entre sí.
 - Un dominio sin selección **no aporta nada**: no hay ranuras obligatorias. Una «Mujer» sin escenario genera un prompt completo.
 - Una sección puede salirse del rol de su dominio con `slot` (p. ej. el «Estilo» de «Escenarios» va a `technical`).
 - El **estado es global** (`core/store.js`, clave `lv:v1:workspace` en `localStorage`): la selección sobrevive entre páginas, de modo que se puede ir de «Mujer» a «Escenarios» a «Clima» construyendo un único prompt. El dock «Mi prompt» y el constructor lo muestran en cualquier página.
@@ -43,6 +44,8 @@ Función pura `compose(domains, state)`. Pasos:
 2. Aplica las **reglas** del dominio (`rules`): p. ej. si el motivo es una miniatura se añade una frase de integración con el ambiente.
 3. Si «Calidad máxima» está activa y el usuario no ha elegido nada a mano, añade el acabado y los negativos de `photo`.
 4. Ordena por `[ranura, orden de dominio, orden de sección, orden de elección]`, elimina textos repetidos y calcula el *lead* («a woman») fundiéndolo con la primera pieza si esta ya nombra al sujeto.
+
+En el formato de texto, el escenario y la atmósfera llevan conector («set in …», «with …») en su primera pieza corta, para que no se lean como un rasgo más del sujeto.
 
 ### Formatos de salida (`core/formats/`)
 

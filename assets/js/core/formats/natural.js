@@ -6,9 +6,24 @@ import { aspectNote } from '../../../../data/aspects.js';
 export function formatNatural(c, state) {
   if (c.empty) return { id: 'natural', blocks: [], text: '' };
   const lines = [`Create a highly detailed, high-quality image${c.lead ? ` of ${c.lead}` : ''}.`];
+  const subs = c.subjects || [];
   for (const s of c.slots) {
     const parts = s.parts.filter(p => !p.custom); // el texto libre del usuario va aparte
-    if (parts.length) lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(parts.map(sentenceItem)).join(' ')}`);
+    if (!parts.length) continue;
+    if (s.slot === 'subject' && subs.length > 1) {
+      // Varios sujetos: una línea por sujeto para que sus rasgos no se mezclen.
+      const label = SLOT_BY_ID.subject.en;
+      const taken = new Set();
+      for (const sub of subs) {
+        const own = parts.filter(p => p.domain === sub.domain);
+        own.forEach(p => taken.add(p));
+        if (own.length) lines.push(`${label} (${sub.lead}): ${toSentences(own.map(sentenceItem)).join(' ')}`);
+      }
+      const other = parts.filter(p => !taken.has(p));
+      if (other.length) lines.push(`${label}: ${toSentences(other.map(sentenceItem)).join(' ')}`);
+      continue;
+    }
+    lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(parts.map(sentenceItem)).join(' ')}`);
   }
   const custom = c.parts.find(p => p.custom);
   if (custom) lines.push(`Additional details: ${endSentence(custom.text)}`);

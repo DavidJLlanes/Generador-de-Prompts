@@ -29,7 +29,7 @@ const AN = /^([aeiou]|(8\d?|11|18)(?=\D|$))/i; // vocal, o «80-year-old», «18
 export const withArticle = t => (/^(a|an|the)\s/i.test(t) ? t : `${AN.test(t) ? 'an' : 'a'} ${t}`);
 
 const capFirst = s => s.replace(/^([a-z])/, c => c.toUpperCase());
-const isLong = t => t.length > 130 || /[.!?]\s/.test(t) || /[.!?]$/.test(t);
+export const isLong = t => t.length > 130 || /[.!?]\s/.test(t) || /[.!?]$/.test(t);
 
 /**
  * Convierte una lista de piezas en oraciones legibles: las etiquetas cortas consecutivas se unen

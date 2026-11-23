@@ -24,7 +24,8 @@ function ruleMatches(rule, domain, bySection) {
 /**
  * @param {Record<string, object>} domains  dominios ya cargados, por id
  * @param {object} state                     estado del store
- * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, empty: boolean, slots: object[]}}
+ * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, subjects: {domain: string, lead: string, merged: object|null}[], empty: boolean, slots: object[]}}
+ *   `subjects`: un elemento por generador de sujeto con selección; `lead` los une con «together with».
  */
 export const REF_POSE = 'Match the body pose of the attached pose reference image exactly (it is a faceless mannequin line drawing: take only the posture and proportions, not its grey color or line style).';
 export const REF_COSTUME = 'Dress the character in the outfit shown in the attached costume reference image (garments only, no person in it) and keep every other detail as described.';
@@ -87,17 +88,25 @@ export function compose(domains, state) {
   const seen = new Set();
   const unique = parts.filter(p => { const k = p.text.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
 
-  const leadPart = unique.find(p => domains[p.domain]?.role === 'subject' && domains[p.domain]?.lead);
-  const lead = leadPart ? domains[leadPart.domain].lead : null;
-
-  // Si la primera pieza del sujeto ya nombra al sujeto («woman in her late 20s»), se funde con la frase inicial.
-  let merged = null;
-  if (lead) {
+  // Un sujeto por cada generador de sujeto con selección (Mujer, Hombre, Coches…), en el orden de los generadores.
+  const subjectIds = [];
+  for (const p of unique) {
+    const d = domains[p.domain];
+    if (d?.role === 'subject' && d.lead && !subjectIds.includes(p.domain)) subjectIds.push(p.domain);
+  }
+  const multi = subjectIds.length > 1;
+  const subjects = subjectIds.map(did => {
+    const lead = domains[did].lead;
+    // Si la primera pieza del sujeto ya nombra al sujeto («woman in her late 20s»), se funde con la frase inicial.
+    // La primera pieza corta que ya lo nombra (puede no ser la primera de todas: p. ej. tras una época).
+    // Con varios sujetos solo se miran las piezas de su propio generador.
     const noun = lead.replace(/^an?\s+/i, '').split(' ').pop();
     const nounRx = new RegExp(`\\b${noun}s?\\b`, 'i');
-    // La primera pieza corta del sujeto que ya lo nombra (puede no ser la primera de todas: p. ej. tras una época).
-    merged = unique.find(p => p.slot === 'subject' && p.text.length < 130 && nounRx.test(p.text)) || null;
-  }
+    const merged = unique.find(p => p.slot === 'subject' && (!multi || p.domain === did) && p.text.length < 130 && nounRx.test(p.text)) || null;
+    return { domain: did, lead, merged };
+  });
+  const lead = subjects.length ? subjects.map(s => s.lead).join(' together with ') : null;
+  const merged = subjects[0]?.merged || null;
 
   const slots = SLOT_IDS.map(id => ({ slot: id, parts: unique.filter(p => p.slot === id) })).filter(s => s.parts.length);
   // Imágenes de referencia que la persona adjuntará en su herramienta de IA (solo las usan los formatos de texto).
@@ -105,5 +114,5 @@ export function compose(domains, state) {
   if (unique.length && state.refPose) refs.push(REF_POSE);
   if (unique.length && state.refCostume) refs.push(REF_COSTUME);
 
-  return { parts: unique, negative, lead, merged, empty: unique.length === 0, slots, refs };
+  return { parts: unique, negative, lead, merged, subjects, empty: unique.length === 0, slots, refs };
 }

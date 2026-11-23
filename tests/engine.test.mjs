@@ -207,3 +207,37 @@ test('«girl» es un generador de adultos: edades de 18 a 80 y sin términos exp
   const all = domains.girl.sections.flatMap(s => s.options.map(o => o.en)).join(' | ');
   assert.doesNotMatch(all, /(topless|naked|nude|nipples?|explicit|nsfw|porn\w*)/i);
 });
+
+const firstOpt = d => { const s = domains[d].sections.find(x => !x.polarity); return [s.id, s.options[0].id]; };
+
+test('Mujer + Hombre: cada uno abre su frase y ninguno desaparece', () => {
+  const [ws, wo] = ['edad', domains.woman.sections.find(x => x.id === 'edad').options[0].id];
+  const [ms, mo] = ['edad', domains.man.sections.find(x => x.id === 'edad').options[0].id];
+  const state = base({ woman: { [ws]: [wo] }, man: { [ms]: [mo] } });
+  const c = compose(domains, state);
+  assert.equal(c.subjects.length, 2);
+  assert.equal(c.lead, 'a woman together with a man');
+  const text = renderFormat('text', c, state).text;
+  assert.match(text, /^Create the image of an? [^,.]*woman[^,.]* together with an? [^,.]*man/);
+  const nat = renderFormat('natural', c, state).text;
+  assert.match(nat, /Subject \(a woman\):/);
+  assert.match(nat, /Subject \(a man\):/);
+});
+
+test('Mujer + Coche: el coche no se pega a la mujer como un rasgo', () => {
+  const [cs, co] = firstOpt('cars');
+  const state = base({ woman: { edad: [domains.woman.sections.find(x => x.id === 'edad').options[0].id] }, cars: { [cs]: [co] } });
+  const text = renderFormat('text', compose(domains, state), state).text;
+  assert.match(text, /woman[^,.]* together with a car/);
+});
+
+test('el escenario y la atmósfera llevan conector en el texto continuo', () => {
+  const [ls, lo] = firstOpt('landscape');
+  const [cs, co] = firstOpt('creatures');
+  const [ws, wo] = firstOpt('weather');
+  const state = base({ creatures: { [cs]: [co] }, landscape: { [ls]: [lo] }, weather: { [ws]: [wo] } });
+  const text = renderFormat('text', compose(domains, state), state).text;
+  assert.match(text, /set in /);
+  assert.match(text, /with /);
+  assert.equal((text.match(/set in /g) || []).length, 1, 'solo la primera pieza lleva el conector');
+});
