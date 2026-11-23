@@ -24,8 +24,8 @@ function ruleMatches(rule, domain, bySection) {
 /**
  * @param {Record<string, object>} domains  dominios ya cargados, por id
  * @param {object} state                     estado del store
- * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, subjects: {domain: string, lead: string, merged: object|null}[], empty: boolean, slots: object[]}}
- *   `subjects`: un elemento por generador de sujeto con selección; `lead` los une con «together with».
+ * @returns {{parts: object[], negative: object[], lead: string|null, merged: object|null, subjects: {domain: string, domains: string[], lead: string, merged: object|null}[], empty: boolean, slots: object[]}}
+ *   `subjects`: un elemento por sujeto distinto con selección (los generadores del mismo sujeto cuentan como uno); `lead` los une con «together with».
  */
 export const REF_POSE = 'Match the body pose of the attached pose reference image exactly (it is a faceless mannequin line drawing: take only the posture and proportions, not its grey color or line style).';
 export const REF_COSTUME = 'Dress the character in the outfit shown in the attached costume reference image (garments only, no person in it) and keep every other detail as described.';
@@ -88,22 +88,22 @@ export function compose(domains, state) {
   const seen = new Set();
   const unique = parts.filter(p => { const k = p.text.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
 
-  // Un sujeto por cada generador de sujeto con selección (Mujer, Hombre, Coches…), en el orden de los generadores.
-  const subjectIds = [];
+  // Un sujeto por cada «lead» distinto con selección (Mujer, Hombre, Coches…), en el orden de los generadores.
+  // Generadores que describen el mismo sujeto (Mujer y Personaje avanzado: «a woman») forman un único sujeto.
+  const groups = new Map(); // lead → generadores
   for (const p of unique) {
     const d = domains[p.domain];
-    if (d?.role === 'subject' && d.lead && !subjectIds.includes(p.domain)) subjectIds.push(p.domain);
+    if (d?.role === 'subject' && d.lead) groups.set(d.lead, [...new Set([...(groups.get(d.lead) || []), p.domain])]);
   }
-  const multi = subjectIds.length > 1;
-  const subjects = subjectIds.map(did => {
-    const lead = domains[did].lead;
+  const multi = groups.size > 1;
+  const subjects = [...groups].map(([lead, dids]) => {
     // Si la primera pieza del sujeto ya nombra al sujeto («woman in her late 20s»), se funde con la frase inicial.
     // La primera pieza corta que ya lo nombra (puede no ser la primera de todas: p. ej. tras una época).
     // Con varios sujetos solo se miran las piezas de su propio generador.
     const noun = lead.replace(/^an?\s+/i, '').split(' ').pop();
     const nounRx = new RegExp(`\\b${noun}s?\\b`, 'i');
-    const merged = unique.find(p => p.slot === 'subject' && (!multi || p.domain === did) && p.text.length < 130 && nounRx.test(p.text)) || null;
-    return { domain: did, lead, merged };
+    const merged = unique.find(p => p.slot === 'subject' && (!multi || dids.includes(p.domain)) && p.text.length < 130 && nounRx.test(p.text)) || null;
+    return { domain: dids[0], domains: dids, lead, merged };
   });
   const lead = subjects.length ? subjects.map(s => s.lead).join(' together with ') : null;
   const merged = subjects[0]?.merged || null;

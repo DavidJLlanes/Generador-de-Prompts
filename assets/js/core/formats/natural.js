@@ -15,7 +15,7 @@ export function formatNatural(c, state) {
       const label = SLOT_BY_ID.subject.en;
       const taken = new Set();
       for (const sub of subs) {
-        const own = parts.filter(p => p.domain === sub.domain);
+        const own = parts.filter(p => sub.domains.includes(p.domain));
         own.forEach(p => taken.add(p));
         if (own.length) lines.push(`${label} (${sub.lead}): ${toSentences(own.map(sentenceItem)).join(' ')}`);
       }

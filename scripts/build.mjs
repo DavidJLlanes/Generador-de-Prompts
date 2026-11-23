@@ -27,7 +27,7 @@ for (const { domain: d } of all) {
   const presets = await loadPresetsFor(d.id);
   if (presets) presetCount += presets.length;
   domains.push({
-    id: d.id, slug: d.slug, role: d.role, order: d.order,
+    id: d.id, slug: d.slug, role: d.role, order: d.order, lead: d.lead || null,
     title: d.meta.title, short: d.meta.short || d.meta.title, kicker: d.meta.kicker || '', summary: d.meta.summary,
     sections: d.sections.length,
     options: d.sections.reduce((n, s) => n + s.options.length, 0),

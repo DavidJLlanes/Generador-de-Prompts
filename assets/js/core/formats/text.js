@@ -29,7 +29,7 @@ function openerOf(c) {
   }
   const used = new Set();
   const phrases = subs.map(s => {
-    const own = c.parts.filter(p => p.slot === 'subject' && p.domain === s.domain && p !== s.merged && sentenceItem(p).phrase);
+    const own = c.parts.filter(p => p.slot === 'subject' && s.domains.includes(p.domain) && p !== s.merged && sentenceItem(p).phrase);
     if (s.merged) used.add(s.merged);
     own.forEach(p => used.add(p));
     return [s.merged ? withArticle(s.merged.text) : s.lead, ...own.map(p => p.text)].join(', ');

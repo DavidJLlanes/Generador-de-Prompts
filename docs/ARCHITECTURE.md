@@ -31,7 +31,7 @@ Cada dominio declara un `role` que es una **ranura**; un prompt combinado se com
 
 (sujeto, atributos, pose/acción, escenario, atmósfera, técnica y estilo — ver `data/taxonomy.js`).
 
-- **Varios sujetos:** si eliges en más de un generador de sujeto (Mujer + Hombre, Mujer + Coches), cada uno abre su propia frase («a woman… together with a man…») y `compose` devuelve `subjects` con uno por generador. El formato natural los separa en líneas (`Subject (a woman): …`) y las familias no los hacen competir entre sí.
+- **Varios sujetos:** si eliges en más de un generador de sujeto (Mujer + Hombre, Mujer + Coches), cada uno abre su propia frase («a woman… together with a man…») y `compose` devuelve `subjects` con uno por generador. El formato natural los separa en líneas (`Subject (a woman): …`) y las familias no los hacen competir entre sí. Dos generadores con el mismo `lead` (Mujer y Personaje avanzado, ambos «a woman») cuentan como un único sujeto: se funden en una sola frase y sus rasgos sí compiten.
 - Un dominio sin selección **no aporta nada**: no hay ranuras obligatorias. Una «Mujer» sin escenario genera un prompt completo.
 - Una sección puede salirse del rol de su dominio con `slot` (p. ej. el «Estilo» de «Escenarios» va a `technical`).
 - El **estado es global** (`core/store.js`, clave `lv:v1:workspace` en `localStorage`): la selección sobrevive entre páginas, de modo que se puede ir de «Mujer» a «Escenarios» a «Clima» construyendo un único prompt. El dock «Mi prompt» y el constructor lo muestran en cualquier página.

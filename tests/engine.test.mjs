@@ -241,3 +241,15 @@ test('el escenario y la atmósfera llevan conector en el texto continuo', () => 
   assert.match(text, /with /);
   assert.equal((text.match(/set in /g) || []).length, 1, 'solo la primera pieza lleva el conector');
 });
+
+test('Mujer + Personaje avanzado: es una sola mujer, no «a woman together with a woman»', () => {
+  const wOpt = domains.woman.sections.find(x => x.id === 'colorpelo').options[0].id;
+  const g = domains.girl.sections.find(x => x.id === 'top-type');
+  const state = base({ woman: { colorpelo: [wOpt] }, girl: { 'top-type': [g.options[0].id] } });
+  const c = compose(domains, state);
+  assert.equal(c.subjects.length, 1);
+  assert.deepEqual(c.subjects[0].domains.sort(), ['girl', 'woman']);
+  assert.equal(c.lead, 'a woman');
+  const text = renderFormat('text', c, state).text;
+  assert.doesNotMatch(text, /together with/);
+});

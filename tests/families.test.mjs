@@ -35,7 +35,7 @@ test('las familias cubren lo que se solapa entre Mujer y los generadores especia
   for (const [d, s] of [['woman', 'colorpelo'], ['woman', 'ropa'], ['woman', 'peinado'], ['faces', 'ojos-color'], ['poses', 'poses'], ['photo', 'lighting']]) {
     assert.ok(familyOf(d, s), `«${d}/${s}» debería estar en una familia`);
   }
-  assert.deepEqual(familySiblings('woman', 'colorpelo').map(x => `${x.domain}/${x.section}`).sort(), ['hairstyles/color-principal'], 'Hombre y Personaje avanzado son otros sujetos: no compiten con Mujer');
+  assert.deepEqual(familySiblings('woman', 'colorpelo').map(x => `${x.domain}/${x.section}`).sort(), ['girl/hair-color', 'hairstyles/color-principal'], 'Personaje avanzado describe a la misma mujer y compite; Hombre es otro sujeto y no');
   assert.deepEqual(familySiblings('photo', 'composition').length, 2);
   assert.equal(familyOf('cars', 'marca'), null, 'lo que no se solapa no entra en ninguna familia');
 });
@@ -117,5 +117,15 @@ test('dos sujetos distintos conviven: Mujer + Hombre no se quitan la edad', () =
   const free = f.options.find(o => !reasonBlocked(store.get().sel, 'faces', 'edad', o.id, { adult: false })); // las de menores están bloqueadas junto a personajes adultos
   const cleared = store.toggleOption('faces', f, free.id, domains.faces);
   assert.equal(cleared.length, 2);
+  store.clearAll();
+});
+
+test('Mujer y Personaje avanzado son el mismo sujeto («a woman»): compiten en los rasgos', () => {
+  const w = domains.woman.sections.find(x => x.id === 'edad'), g = domains.girl.sections.find(x => x.id === 'identity-age');
+  store.clearAll();
+  store.toggleOption('woman', w, w.options[0].id, domains.woman);
+  const out = store.toggleOption('girl', g, g.options.find(o => !reasonBlocked(store.get().sel, 'girl', 'identity-age', o.id, { adult: false })).id, domains.girl);
+  assert.equal(out.length, 1, 'la edad de Mujer se sustituye por la de Personaje avanzado');
+  assert.equal(store.selectedIds('woman', 'edad').length, 0);
   store.clearAll();
 });

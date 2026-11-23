@@ -4,7 +4,7 @@
  * Un mismo rasgo puede estar descrito en varios generadores (Mujer trae el pelo, Peinados lo
  * desarrolla, Personaje avanzado lo repite). Una familia agrupa esas secciones: al elegir en una
  * se quitan las demás de su familia, estén donde estén, para que el prompt no diga dos veces lo mismo.
- * Excepción: los generadores de sujeto distintos (Mujer + Hombre) no se quitan entre sí.
+ * Excepción: los generadores de sujetos distintos (Mujer + Hombre) no se quitan entre sí.
  *
  *  · familyOf(d, s)         → familia de la sección, o null.
  *  · familySiblings(d, s)   → secciones de la misma familia (sin contar la dada).
@@ -14,14 +14,15 @@
 import { FAMILIES } from '../../../data/families.js';
 import catalog from '../../../data/catalog.js';
 
-/** Generadores que describen un sujeto propio (Mujer, Hombre, Coches…). */
-const SUBJECT_DOMAINS = new Set(catalog.domains.filter(d => d.role === 'subject').map(d => d.id));
+/** Sujeto que describe cada generador de sujeto (su `lead`: «a woman», «a car»…). Mujer y Personaje avanzado comparten «a woman». */
+const SUBJECT_OF = new Map(catalog.domains.filter(d => d.role === 'subject' && d.lead).map(d => [d.id, d.lead]));
 
 /**
- * Dos secciones de generadores de sujeto DISTINTOS (Mujer y Hombre, Mujer y Coches) describen sujetos distintos
- * del mismo prompt: no son «el mismo rasgo dos veces», así que no compiten entre sí.
+ * Dos secciones de generadores que describen sujetos DISTINTOS (Mujer y Hombre, Mujer y Coches) son rasgos de
+ * personajes diferentes del mismo prompt, no «el mismo rasgo dos veces»: no compiten entre sí. Si describen el
+ * mismo sujeto (Mujer y Personaje avanzado, ambos «a woman») sí compiten.
  */
-const independent = (d1, d2) => d1 !== d2 && SUBJECT_DOMAINS.has(d1) && SUBJECT_DOMAINS.has(d2);
+const independent = (d1, d2) => SUBJECT_OF.has(d1) && SUBJECT_OF.has(d2) && SUBJECT_OF.get(d1) !== SUBJECT_OF.get(d2);
 
 const BY_SECTION = new Map();
 for (const f of FAMILIES) for (const key of f.sections) BY_SECTION.set(key, f);
