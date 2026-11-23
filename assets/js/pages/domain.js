@@ -6,6 +6,7 @@ import { store } from '../core/store.js';
 import { randomSelection } from '../core/random.js';
 import { mountOptionBrowser } from '../ui/option-browser.js';
 import { openPresets } from '../ui/presets-drawer.js';
+import { copyCurrentPrompt } from '../ui/quick-actions.js';
 import { toast } from '../ui/toast.js';
 import { mountAdultNotice, hasAdultContent } from '../ui/adult-notice.js';
 
@@ -30,6 +31,7 @@ try {
     const sel = randomSelection([domain], store.get(), Math.random, 12);
     store.applySelection(domain.id, sel[domain.id] || {});
   });
+  $('[data-act="copy-prompt"]').addEventListener('click', copyCurrentPrompt);
   $('[data-act="clear-domain"]').addEventListener('click', () => store.clearDomain(domain.id));
   const ideas = $('[data-act="ideas"]');
   if (ideas) ideas.addEventListener('click', () => openPresets(domain).catch(() => toast('No se pudieron cargar las ideas', { tone: 'warn' })));

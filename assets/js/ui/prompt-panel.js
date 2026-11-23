@@ -16,6 +16,7 @@ import { fmtNumber, debounce } from '../core/util.js';
 import { copyText } from './clipboard.js';
 import { openLibrary } from './library-dialog.js';
 import { toast } from './toast.js';
+import { randomizeHere } from './quick-actions.js';
 import { getAIConfig, getAIProvider, reviewSelectionWithAI, setAIProvider } from '../core/ai-service.js';
 import { openAISettings } from './ai-settings.js';
 
@@ -107,6 +108,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
 
   let lastText = '';
   const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => { if (lastText) { copyText(lastText, 'Prompt copiado'); recordHistory(store.get()); } } }, h('span', { html: icon('copy') }), 'Copiar prompt');
+  const randomBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => randomizeHere() }, h('span', { html: icon('dice') }), 'Aleatorio');
   const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.totalItems() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
   const libBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => openLibrary() }, h('span', { html: icon('bookmark') }), 'Mis prompts');
   const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
@@ -118,7 +120,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     customField,
     refs,
     hint, out, meta, review, aiReviewActions, summary,
-    h('div', { class: 'prompt-panel__actions' }, copyBtn, linkBtn, libBtn, undoBtn, clearBtn));
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, randomBtn, linkBtn, libBtn, undoBtn, clearBtn));
 
   function renderSummary(composed) {
     clear(summary);

@@ -38,6 +38,7 @@ export function domainPage({ d, domain, domains }) {
   <p class="domain-hero__intro">${esc(intro)}</p>
   <div class="domain-hero__actions">
     <button type="button" class="btn btn--primary" data-act="random">${icon('dice', 18)} Aleatorio</button>
+    <button type="button" class="btn btn--primary" data-act="copy-prompt">${icon('copy', 18)} Copiar prompt</button>
     ${d.presets ? `<button type="button" class="btn btn--outline" data-act="ideas">${icon('spark', 18)} ${d.presetsLabel === 'recetas' ? `Ver ${fmt(d.presets)} recetas` : `Galería de ${fmt(d.presets)} ideas`}</button>` : ''}
     <button type="button" class="btn btn--ghost" data-act="clear-domain">${icon('trash', 18)} Vaciar</button>
     <a class="btn btn--ghost" href="/constructor/">Ir al constructor ${icon('arrow', 16)}</a>
