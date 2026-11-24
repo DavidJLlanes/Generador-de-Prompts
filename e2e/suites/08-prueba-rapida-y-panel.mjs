@@ -1,0 +1,67 @@
+/** Portada «Prueba rápida» (bloqueo, prompt del día, historial), panel (formatos, edición, comparar), vista previa y atributos por sujeto. */
+export async function run({ b, base, ok, step }) {
+  step('[1] Prueba rápida de la portada');
+  await b.goto(base + '/');
+  await b.eval('localStorage.clear()');
+  await b.goto(base + '/');
+  await b.eval(`document.querySelector('[data-quick]').scrollIntoView()`);
+  await b.waitFor(`document.querySelector('[data-quick-text]').textContent.length > 60`, 8000, 'primer prompt automático');
+  ok(true, 'genera un primer prompt al entrar en pantalla');
+  ok(await b.eval(`return !document.querySelector('[data-quick-copy]').disabled`), 'los botones de copiar y abrir se activan');
+  const tag = await b.eval(`const t=document.querySelector('.quick__tag--btn'); t.click(); return t.textContent.trim()`);
+  await b.eval(`document.querySelector('[data-quick-roll]').click()`);
+  await b.sleep(2500);
+  ok((await b.eval(`return [...document.querySelectorAll('.quick__tag--btn')].map(e=>e.textContent.trim())`)).includes(tag), `la pieza bloqueada «${tag}» se conserva al relanzar`);
+  await b.eval(`document.querySelector('[data-quick-daily]').click()`); await b.sleep(2500);
+  const d1 = await b.eval(`return document.querySelector('[data-quick-text]').textContent`);
+  await b.eval(`document.querySelector('[data-quick-daily]').click()`); await b.sleep(2500);
+  ok(d1 === await b.eval(`return document.querySelector('[data-quick-text]').textContent`), 'el prompt del día es el mismo cada vez');
+  ok(await b.eval(`return !document.querySelector('[data-quick-history]').hidden && JSON.parse(localStorage.getItem('lv:v1:quick')).length >= 2`), 'el historial se guarda y se muestra');
+  await b.eval(`const g=document.querySelector('[data-quick-gen]'); g.value='woman'; g.dispatchEvent(new Event('change',{bubbles:true}))`); await b.sleep(1500);
+  await b.eval(`const a=document.querySelector('[data-quick-aspect]'); a.value='9:16'; a.dispatchEvent(new Event('change',{bubbles:true}))`); await b.sleep(1500);
+  ok(/Aspect ratio "9:16"\.$/.test(await b.eval(`return document.querySelector('[data-quick-text]').textContent`)), 'con generador y proporción elegidos, la proporción va una sola vez al final');
+  ok(await b.eval(`return !localStorage.getItem('lv:v1:workspace') || Object.keys(JSON.parse(localStorage.getItem('lv:v1:workspace')).sel||{}).length === 0`), 'no toca la selección del constructor');
+  await b.eval(`document.querySelector('[data-quick-open]').click()`);
+  await b.waitFor(`location.pathname.endsWith('/constructor/')`, 6000, 'abre el constructor');
+  await b.waitFor(`document.querySelector('.out-block__text, .out-edit__text')`, 6000, 'prompt en el constructor');
+  ok(true, '«Abrir en el constructor» carga el prompt');
+
+  step('[2] Panel: formatos, edición, comparar y vista previa');
+  await b.eval('localStorage.clear()');
+  await b.goto(base + '/generadores/mujer/');
+  await b.waitFor(`document.querySelectorAll('.opt-section').length > 5`, 8000);
+  await b.eval(`document.querySelector('#sec-edad button[data-opt]').click()`); await b.sleep(400);
+  await b.eval(`document.querySelector('.dock__toggle').click()`); await b.sleep(400);
+  ok((await b.eval(`return [...document.querySelectorAll('.dock .tab')].map(t=>t.dataset.format).join()`)) === 'text,natural,sd,flux,dalle,ideogram,midjourney', 'siete formatos de salida');
+  await b.eval(`[...document.querySelectorAll('.dock .tab')].find(t=>t.dataset.format==='dalle').click()`); await b.sleep(300);
+  ok(/1024x1024|1792x1024|1024x1792/.test(await b.eval(`return document.querySelector('.dock .prompt-panel__out').textContent`)), 'DALL·E muestra un tamaño admitido');
+  await b.eval(`[...document.querySelectorAll('.dock .tab')].find(t=>t.dataset.format==='text').click()`); await b.sleep(300);
+  const btn = t => b.eval(`[...document.querySelectorAll('.dock .prompt-panel__actions button')].find(x=>x.textContent.trim().startsWith(${JSON.stringify(t)})).click()`);
+  await btn('Fijar como A'); await b.sleep(250);
+  await b.eval(`document.querySelectorAll('#sec-edad button[data-opt]')[2].click()`); await b.sleep(400);
+  await btn('Comparar con A'); await b.sleep(400);
+  ok(await b.eval(`return !!document.querySelector('dialog.cmp[open]') && document.querySelectorAll('.cmp__mark').length > 0`), 'el comparador marca las diferencias');
+  await b.eval(`document.querySelector('dialog.cmp .icon-btn').click()`); await b.sleep(250);
+  await btn('Editar'); await b.sleep(250);
+  await b.eval(`const t=document.querySelector('.dock .out-edit__text'); t.value=t.value+' EXTRA'; t.dispatchEvent(new Event('input',{bubbles:true}))`); await b.sleep(200);
+  ok(await b.eval(`return document.querySelector('.dock .out-edit__tag').textContent`) === 'Editado a mano', 'la edición se marca como «Editado a mano»');
+  await b.eval(`document.querySelectorAll('#sec-edad button[data-opt]')[0].click()`); await b.sleep(400);
+  ok(!(await b.eval(`return document.querySelector('.dock .out-edit__text')?.value.includes('EXTRA')`)), 'cambiar la selección descarta la edición');
+  await b.eval(`document.querySelector('#sec-edad button[data-opt]').dispatchEvent(new MouseEvent('mouseover',{bubbles:true}))`); await b.sleep(150);
+  ok(await b.eval(`const p=document.querySelector('.opt-peek'); return !p.hidden && p.textContent.length > 5`), 'la vista previa muestra el texto en inglés de la opción');
+
+  step('[3] Dos sujetos: atributos asignados a uno');
+  await b.eval('localStorage.clear()');
+  await b.goto(base + '/generadores/mujer/');
+  await b.waitFor(`document.querySelectorAll('.opt-section').length > 5`, 8000);
+  await b.eval(`document.querySelector('#sec-edad button[data-opt]').click()`);
+  await b.goto(base + '/generadores/hombre/');
+  await b.waitFor(`document.querySelectorAll('.opt-section').length > 3`, 8000);
+  await b.eval(`document.querySelector('button[data-opt]:not([aria-disabled="true"])').click()`);
+  await b.goto(base + '/generadores/peinados/');
+  await b.waitFor(`document.querySelectorAll('.opt-section').length > 1`, 8000);
+  await b.eval(`document.querySelector('button[data-opt]:not([aria-disabled="true"])').click()`); await b.sleep(300);
+  await b.goto(base + '/constructor/');
+  await b.waitFor(`document.querySelector('.slot__attach:not([hidden])')`, 6000, 'selector de atributos');
+  ok(await b.eval(`return document.querySelectorAll('.slot__attach select option').length >= 2`), 'con dos sujetos aparece «se aplica a»');
+}

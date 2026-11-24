@@ -217,7 +217,8 @@ export function mountQuickRoll(quick) {
 
   // Primer prompt automático cuando la sección entra en pantalla (no se descargan datos antes de hacer falta).
   if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { io.disconnect(); roll(false); } }, { rootMargin: '200px' });
+    // Solo cuando ya se ve de verdad (no antes): evita bajar cientos de KB de datos a quien no llega a esta sección.
+    const io = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { io.disconnect(); roll(false); } }, { threshold: 0.3 });
     io.observe(quick);
   } else roll(false);
 }

@@ -203,12 +203,19 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
         // Editor: el texto final es lo que se copia; solo vale mientras no cambie la selección.
         const box = h('textarea', { class: 'field__textarea out-edit__text', rows: '8', spellcheck: 'false', 'aria-label': 'Prompt editable' });
         box.value = finalText;
-        box.addEventListener('input', () => { manual.set(result.text, box.value); });
+        const tag = h('span', { class: 'out-edit__tag' });
+        const restore = h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => { manual.clear(); render(live.get()); } }, 'Restaurar original');
+        const sync = () => {
+          const e = manual.for(result.text);
+          tag.textContent = e?.by === 'ai' ? 'Pulido con IA' : e ? 'Editado a mano' : 'Modo edición';
+          restore.hidden = !e;
+          const finalNow = e ? e.text : result.text;
+          meta.textContent = `${fmtNumber(finalNow.trim().split(/\s+/).length)} palabras · ${fmtNumber(finalNow.length)} caracteres`;
+        };
+        box.addEventListener('input', () => { manual.set(result.text, box.value); sync(); });
+        sync();
         out.append(h('div', { class: 'out-edit' },
-          h('div', { class: 'out-edit__bar' },
-            h('span', { class: 'out-edit__tag' }, edited?.by === 'ai' ? 'Pulido con IA' : edited ? 'Editado a mano' : 'Modo edición'),
-            h('span', {}, 'Si cambias la selección, se vuelve al prompt generado.'),
-            edited ? h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => { manual.clear(); render(live.get()); } }, 'Restaurar original') : null),
+          h('div', { class: 'out-edit__bar' }, tag, h('span', {}, 'Si cambias la selección, se vuelve al prompt generado.'), restore),
           box));
       } else {
         const many = result.blocks.length > 1;

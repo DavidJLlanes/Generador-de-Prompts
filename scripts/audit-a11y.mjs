@@ -24,6 +24,7 @@ const clickText = (sel, text) => `[...document.querySelectorAll(${JSON.stringify
 // Cada caso: nombre, ruta y preparación opcional (estados interactivos).
 const CASES = [
   { name: 'Inicio', path: '/' },
+  { name: 'Inicio con la Prueba rápida generada', path: '/', setup: `document.querySelector('[data-quick]').scrollIntoView(); await new Promise(r=>setTimeout(r,2500)); document.querySelector('[data-quick-history] summary').click()` },
   { name: 'Catálogo', path: '/generadores/' },
   { name: 'Generador (Mujer)', path: '/generadores/mujer/', wait: `document.querySelectorAll('.opt-section').length > 5` },
   { name: 'Generador con selección y dock abierto', path: '/generadores/mujer/', wait: `document.querySelectorAll('.opt-section').length > 5`, setup: `document.querySelector('#sec-edad button[data-opt]').click(); await new Promise(r=>setTimeout(r,400)); document.querySelector('.dock__toggle').click(); await new Promise(r=>setTimeout(r,500));` },

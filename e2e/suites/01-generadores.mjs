@@ -65,7 +65,7 @@ export async function run({ b, base, ok, step }) {
   await b.sleep(250);
   const richLen = await b.eval(`return document.querySelector('.out-block__text').textContent.length`);
   ok(richLen > shortLen * 1.5, `«Detallado» (${richLen}) es mucho más largo que «Conciso» (${shortLen})`);
-  await b.eval(`const s=document.querySelector('.prompt-panel__controls select'); s.value='9:19.5'; s.dispatchEvent(new Event('change',{bubbles:true}))`);
+  await b.eval(`const s=document.querySelector('.prompt-panel__controls select[aria-label="Proporción de la imagen"]'); s.value='9:19.5'; s.dispatchEvent(new Event('change',{bubbles:true}))`);
   await b.sleep(250);
   ok(/Aspect ratio "9:19\.5"/.test(await b.eval(`return document.querySelector('.out-block__text').textContent`)), 'la proporción se añade al prompt');
 
@@ -116,7 +116,7 @@ export async function run({ b, base, ok, step }) {
   await b.waitFor(`document.querySelectorAll('.opt-section').length > 3`, 8000);
   await b.eval(`document.querySelector('[data-act="clear-domain"]').click(); document.querySelector('#sec-tipo-clima button[data-opt]').click()`);
   await b.sleep(400);
-  const code = await b.eval(`const m = await import('/assets/js/core/url-state.js'); const {store} = await import('/assets/js/core/store.js'); store.set({custom:'una sombrilla roja — ñandú'}); return m.encodeState(store.get())`);
+  const code = await b.eval(`const m = await import('/prompt/assets/js/core/url-state.js'); const {store} = await import('/prompt/assets/js/core/store.js'); store.set({custom:'una sombrilla roja — ñandú'}); return m.encodeState(store.get())`);
   await b.eval('localStorage.clear()');
   await b.goto(`${base}/constructor/#s=${code}`);
   await b.waitFor(`document.querySelector('.out-block__text')`, 6000, 'prompt desde enlace');

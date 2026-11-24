@@ -5,7 +5,7 @@
 # Generador de Prompts
 
 **Constructor modular de prompts para imágenes con IA.**
-Combina generadores (personajes, escenarios, coches, criaturas, fotografía…) en un único prompt y expórtalo para ChatGPT/Gemini, Stable Diffusion/Flux o Ideogram.
+Combina generadores (personajes, escenarios, coches, criaturas, fotografía…) en un único prompt y expórtalo para ChatGPT/Gemini, DALL·E, Stable Diffusion, Flux, Midjourney o Ideogram.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
@@ -50,7 +50,10 @@ El catálogo actual ronda los **22.000 opciones**, **750 secciones** y **1.000 i
 
 - **28 generadores** combinables: Personajes femeninos y masculinos, Personaje avanzado (épocas y culturas), Personajes animados, Rostros, Peinados, Anatomía, Accesorios, Tatuajes, Animales, Criaturas, Cosas extrañas, Magia, Efectos visuales, Vehículos, Coches míticos y actuales, Cohetes, Espacio, Armas, Objetos, Interiores, Paisajes, Escenas, Escenarios y mundos, Clima, Localizaciones, Poses y Fotografía y estilo.
 - **Un único prompt entre páginas:** la selección persiste en el navegador, así que puedes ir de un personaje a «Escenarios» y a «Clima» construyendo una sola composición. El dock «Mi prompt» la muestra en cualquier página.
-- **Cuatro formatos de salida:** texto continuo, bloques por ranura (ChatGPT/Gemini), positivo/negativo con tamaño sugerido (Stable Diffusion/Flux) y JSON estructurado (Ideogram).
+- **Siete formatos de salida:** texto continuo, bloques por ranura (ChatGPT/Gemini), positivo/negativo con tamaño (Stable Diffusion), texto sin negativo con tamaño (Flux), descripción natural con tamaño admitido (DALL·E / gpt-image), parámetros `--ar`/`--no` (Midjourney) y JSON estructurado (Ideogram).
+- **Prueba rápida en la portada:** elige generador y proporción (o deja que decida el azar) y genera un prompt al momento. Puedes bloquear etiquetas y relanzar el resto, abrir el «Prompt del día» (el mismo para todos), ver el historial con favoritos y compartir por enlace. No toca tu selección del constructor.
+- **Retoque del prompt final:** edítalo a mano, púlelo con tu IA («Pulir con IA», con tu propia clave) o compara dos variantes con las diferencias marcadas.
+- **Aleatorio coherente:** cada tirada tiene un ánimo (suave, neutro o intenso) y no mezcla rasgos de tonos opuestos. Con varios sujetos, eliges a cuál se aplican los atributos (rostro, peinado…).
 - **Nivel de detalle** conciso o detallado, y modo «Calidad máxima».
 - **Acordeón por sección** con resumen de lo elegido, contador y búsqueda instantánea (atajo `/`).
 - **Coherencia automática:** familias de secciones que describen el mismo concepto (no te deja acabar con dos colores de pelo), avisos de compatibilidad y de redundancia, y exclusiones entre contenido adulto y personajes menores o de aspecto joven.
@@ -151,6 +154,7 @@ y haz commit **incluyendo los archivos generados** (`data/catalog.js`, páginas 
 | `npm test` | Pruebas unitarias (`node:test`) |
 | `npm run check` | `validate` + `build` + `test` |
 | `npm run test:e2e` | Pruebas de extremo a extremo en Chrome/Edge sin cabeza |
+| `npm run audit:a11y` | Auditoría de accesibilidad con axe-core (`npm i -D axe-core` o `AXE_PATH`) |
 | `npm run og` | Genera las imágenes Open Graph |
 
 ## Despliegue en un VPS

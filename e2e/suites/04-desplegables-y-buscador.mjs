@@ -31,8 +31,8 @@ export async function run({ b, base, ok, step }) {
   const hitTexts = await b.eval(`return [...document.querySelectorAll('[data-hits-list] a')].map(a=>a.textContent)`);
   ok(hitTexts.length >= 1 && hitTexts.every(t => /ferrari/i.test(t) && /Coches/i.test(t)), 'encuentra opciones de otros generadores', hitTexts.slice(0, 2).join(' | '));
   const href = await b.eval(`return document.querySelector('[data-hits-list] a').getAttribute('href')`);
-  ok(/^\/generadores\/coches\/\?q=.+#sec-car$/.test(href), 'el enlace lleva al generador, a la sección y con la búsqueda', href);
-  await b.goto(base + href);
+  ok(/^\/prompt\/generadores\/coches\/\?q=.+#sec-car$/.test(href), 'el enlace lleva al generador, a la sección y con la búsqueda', href);
+  await b.goto(base.replace(/\/prompt$/, '') + href);
   await b.waitFor(`document.querySelectorAll('.opt-section').length === 5`, 10000);
   await b.sleep(500);
   ok((await b.eval(`return document.querySelector('[data-search]').value`)).length > 0, 'la página del generador llega con la búsqueda rellenada');

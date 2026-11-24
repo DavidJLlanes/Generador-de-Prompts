@@ -144,7 +144,6 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     const visible = domain.sections.filter(s => !secEl.get(s.id).hidden);
     const allOpen = visible.length > 0 && visible.every(s => isOpen(s.id));
     toggleAll.textContent = allOpen ? 'Plegar todo' : 'Desplegar todo';
-    toggleAll.setAttribute('aria-label', allOpen ? 'Plegar todas las secciones' : 'Desplegar todas las secciones');
     toggleAll.disabled = visible.length === 0;
     toggleAll.dataset.state = allOpen ? 'open' : 'closed';
   }

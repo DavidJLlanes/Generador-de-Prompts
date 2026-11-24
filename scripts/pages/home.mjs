@@ -98,7 +98,7 @@ export function homePage({ domains, totals }) {
         <div class="quick__frame-wrap" aria-hidden="true"><div class="quick__frame" data-quick-frame><span data-quick-ratio>16:9</span></div></div>
         <div class="quick__body">
           <div class="quick__tags" data-quick-tags></div>
-          <p class="quick__text" data-quick-text>Pulsa el botón para generar tu primer prompt…</p>
+          <p class="quick__text" data-quick-text tabindex="0" aria-label="Prompt generado">Pulsa el botón para generar tu primer prompt…</p>
           <div class="quick__actions">
             <button type="button" class="btn btn--primary" data-quick-copy disabled>${icon('copy', 18)} Copiar prompt</button>
             <button type="button" class="btn btn--outline" data-quick-open disabled>Abrir en el constructor ${icon('arrow', 16)}</button>
