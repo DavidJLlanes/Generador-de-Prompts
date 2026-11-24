@@ -185,6 +185,7 @@ export const store = {
     if ('attach' in partial) next.attach = cleanAttach(partial.attach);
     if ('refPose' in partial) next.refPose = !!partial.refPose;
     if ('refCostume' in partial) next.refCostume = !!partial.refCostume;
+    if ('sel' in partial) next.sel = sanitizeSel(partial.sel); // selección y ajustes en un solo paso de «Deshacer»
     commit(next);
   },
 

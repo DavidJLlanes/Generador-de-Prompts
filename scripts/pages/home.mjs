@@ -5,6 +5,7 @@ import { icon } from '../../assets/js/ui/icons.js';
 import { SITE, layout } from './layout.mjs';
 import { fmt } from './shared.mjs';
 import { ASPECTS } from '../../data/aspects.js';
+import { TEMPLATES } from '../../data/templates.js';
 
 const MARQUEE = [
   '35 mm analog photography', 'golden hour backlight', 'a tea house suspended over a lake', 'soft volumetric fog', 'long wavy auburn hair',
@@ -30,6 +31,19 @@ function quickOptions(domains) {
   }
   for (const [g, opts] of groups) aspects += `<optgroup label="${esc(g)}">${opts.join('')}</optgroup>`;
   return { gens, aspects };
+}
+
+/** Plantillas destacadas de la portada: enlazan al constructor con la plantilla cargada. */
+function featuredTemplates(domains) {
+  const short = Object.fromEntries(domains.map(d => [d.id, d.short]));
+  return ['retrato-editorial', 'mustang-montana', 'dragon-tormenta', 'aurora-lago', 'cyberpunk-lluvia', 'mascota'].map(id => TEMPLATES.find(t => t.id === id)).filter(Boolean).map(t => `
+      <a class="tpl-card" href="/constructor/?plantilla=${t.id}">
+        <span class="tpl-card__top"><span class="tpl-card__ratio">${esc(t.aspect)}</span><span class="tpl-card__tags">${esc(t.tags.join(' · '))}</span></span>
+        <h3 class="tpl-card__title">${esc(t.title)}</h3>
+        <p class="tpl-card__desc">${esc(t.desc)}</p>
+        <p class="tpl-card__domains">${esc(Object.keys(t.sel).map(id => short[id]).filter(Boolean).join(' + '))}</p>
+        <span class="tpl-card__cta">Usar plantilla →</span>
+      </a>`).join('');
 }
 
 export function homePage({ domains, totals }) {
@@ -111,6 +125,15 @@ export function homePage({ domains, totals }) {
         <ul class="quick__hist-list" data-quick-history-list></ul>
       </details>
     </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tpl-title">
+  <div class="container">
+    <div class="section__head"><p class="eyebrow">Plantillas</p><h2 class="section__title" id="tpl-title">Empieza con algo <em>ya montado</em></h2>
+      <p class="section__lead">Combinaciones de varios generadores listas para cargar y retocar.</p></div>
+    <div class="tpl-grid tpl-grid--home">${featuredTemplates(domains)}</div>
+    <p class="tpl-more"><a class="btn btn--outline" href="/constructor/?plantillas">Ver las ${TEMPLATES.length} plantillas ${icon('arrow', 16)}</a></p>
   </div>
 </section>
 

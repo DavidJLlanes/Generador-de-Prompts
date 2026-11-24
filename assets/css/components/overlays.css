@@ -19,3 +19,23 @@ dialog.ideas::backdrop { background: rgba(7, 9, 12, 0.76); backdrop-filter: blur
 .idea__n { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.08em; }
 .idea__title { font-size: var(--fs-sm); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .idea__style { margin-top: auto; padding-top: 4px; font-size: var(--fs-xs); color: var(--text-3); }
+
+/* PLANTILLAS */
+.tpl-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-filter { padding: 6px 14px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); background: var(--surface); color: var(--text-2); font-size: var(--fs-sm); cursor: pointer; }
+.chip-filter:hover { border-color: var(--accent); color: var(--text); }
+.chip-filter.is-active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.tpl-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); overflow: auto; min-height: 0; padding-right: 4px; }
+.tpl-card { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4); border: 1px solid var(--line-2); border-radius: var(--radius); background: linear-gradient(160deg, var(--surface-2), var(--surface)); }
+.tpl-card:hover { border-color: var(--accent-line); }
+.tpl-card__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.tpl-card__ratio { padding: 2px 8px; border: 1px solid var(--accent-line); border-radius: 6px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent-2); }
+.tpl-card__tags { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); text-align: right; }
+.tpl-card__title { font-family: var(--font-display, inherit); font-size: 1.25rem; line-height: 1.15; }
+.tpl-card__desc { margin: 0; color: var(--text-2); font-size: var(--fs-sm); line-height: 1.5; flex: 1; }
+.tpl-card__domains { margin: 0; font-size: var(--fs-xs); color: var(--text-3); }
+.tpl-card .btn { align-self: flex-start; gap: 6px; }
+a.tpl-card { color: inherit; text-decoration: none; }
+a.tpl-card .tpl-card__cta { margin-top: var(--space-1); font-size: var(--fs-sm); color: var(--accent); }
+.tpl-grid--home { overflow: visible; padding-right: 0; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.tpl-more { margin-top: var(--space-5); text-align: center; }

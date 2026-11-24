@@ -10,6 +10,7 @@ import { openPresets } from '../ui/presets-drawer.js';
 import { toast } from '../ui/toast.js';
 import { openIdeaInterpreter } from '../ui/idea-interpreter.js';
 import { openAISettings } from '../ui/ai-settings.js';
+import { openTemplates, applyTemplate, templateById } from '../ui/templates-dialog.js';
 
 initChrome();
 
@@ -19,6 +20,15 @@ mountSlotBoard($('[data-board]'));
 $('[data-act="random-all"]').addEventListener('click', () => randomizeAll().catch(() => toast('No se pudo generar la combinación', { tone: 'warn' })));
 $('[data-act="copy-prompt"]').addEventListener('click', copyCurrentPrompt);
 $('[data-act="clear"]').addEventListener('click', () => store.clearAll());
+$('[data-act="templates"]').addEventListener('click', openTemplates);
+// ?plantilla=<id> (desde la portada) carga esa plantilla; ?plantillas abre el cajón.
+{
+  const url = new URL(location.href);
+  const tpl = url.searchParams.get('plantilla');
+  if (tpl && templateById(tpl)) applyTemplate(templateById(tpl));
+  if (url.searchParams.has('plantillas')) openTemplates();
+  if (tpl || url.searchParams.has('plantillas')) { url.searchParams.delete('plantilla'); url.searchParams.delete('plantillas'); history.replaceState(history.state, '', url); }
+}
 $('[data-act="ai-settings"]').addEventListener('click', () => openAISettings());
 $('[data-act="ideas"]').addEventListener('click', () => loadDomain('scenarios').then(openPresets).catch(() => toast('No se pudieron cargar las ideas', { tone: 'warn' })));
 const startDialog = $('[data-start-dialog]');

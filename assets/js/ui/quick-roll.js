@@ -198,8 +198,7 @@ export function mountQuickRoll(quick) {
   copyBtn.addEventListener('click', () => { if (last) copyText(last.text, 'Prompt copiado'); });
   openBtn.addEventListener('click', () => {
     if (!last) return;
-    store.replaceSelection(last.sel);
-    store.set({ aspect: last.aspect, attach: {} });
+    store.set({ sel: last.sel, aspect: last.aspect, attach: {} });
     location.href = sitePath('/constructor/');
   });
   shareBtn.addEventListener('click', async () => {

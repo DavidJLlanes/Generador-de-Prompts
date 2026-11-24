@@ -724,7 +724,7 @@ export default {
         {"id":"secret-orders","es":"Órdenes secretas","en":"secret orders"},
         {"id":"demonic-seals","es":"Sellos demoníacos","en":"demonic seals"},
         {"id":"celestial-symbols","es":"Símbolos celestiales","en":"celestial symbols"},
-        {"id":"ancient-runes","es":"Runes antiguas","en":"ancient runes"},
+        {"id":"ancient-runes","es":"Runas antiguas","en":"ancient runes"},
         {"id":"zodiac-signs","es":"Signos zodiacales","en":"zodiac signs"},
         {"id":"roman-numerals","es":"Números romanos","en":"roman numerals"},
         {"id":"arcane-calligraphy","es":"Caligrafía arcana","en":"arcane calligraphy"},

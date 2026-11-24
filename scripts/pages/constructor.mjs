@@ -14,6 +14,7 @@ export function constructorPage({ domains }) {
     <button type="button" class="btn btn--primary" data-act="start">${icon('spark', 18)} Empezar guiado</button>
     <button type="button" class="btn btn--primary" data-act="random-all">${icon('dice', 18)} Combinación aleatoria</button>
     <button type="button" class="btn btn--primary" data-act="copy-prompt">${icon('copy', 18)} Copiar prompt</button>
+    <button type="button" class="btn btn--outline" data-act="templates">${icon('layers', 18)} Plantillas</button>
     <button type="button" class="btn btn--outline" data-act="ideas">${icon('spark', 18)} Galería de ideas</button>
     <button type="button" class="btn btn--ghost" data-act="clear">${icon('trash', 18)} Vaciar todo</button>
     <label class="quick-toggle"><input type="checkbox" data-act="quick"> Modo rápido</label>

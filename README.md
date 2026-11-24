@@ -52,6 +52,7 @@ El catálogo actual ronda los **22.000 opciones**, **750 secciones** y **1.000 i
 - **Un único prompt entre páginas:** la selección persiste en el navegador, así que puedes ir de un personaje a «Escenarios» y a «Clima» construyendo una sola composición. El dock «Mi prompt» la muestra en cualquier página.
 - **Siete formatos de salida:** texto continuo, bloques por ranura (ChatGPT/Gemini), positivo/negativo con tamaño (Stable Diffusion), texto sin negativo con tamaño (Flux), descripción natural con tamaño admitido (DALL·E / gpt-image), parámetros `--ar`/`--no` (Midjourney) y JSON estructurado (Ideogram).
 - **Prueba rápida en la portada:** elige generador y proporción (o deja que decida el azar) y genera un prompt al momento. Puedes bloquear etiquetas y relanzar el resto, abrir el «Prompt del día» (el mismo para todos), ver el historial con favoritos y compartir por enlace. No toca tu selección del constructor.
+- **Plantillas de partida:** 18 combinaciones de varios generadores (retrato editorial, clásico en un puerto de montaña, dragón en la tormenta, ciudad cyberpunk…) para cargar con un toque desde la portada o el constructor y retocar. Se pueden deshacer.
 - **Retoque del prompt final:** edítalo a mano, púlelo con tu IA («Pulir con IA», con tu propia clave) o compara dos variantes con las diferencias marcadas.
 - **Aleatorio coherente:** cada tirada tiene un ánimo (suave, neutro o intenso) y no mezcla rasgos de tonos opuestos. Con varios sujetos, eliges a cuál se aplican los atributos (rostro, peinado…).
 - **Nivel de detalle** conciso o detallado, y modo «Calidad máxima».
@@ -154,6 +155,7 @@ y haz commit **incluyendo los archivos generados** (`data/catalog.js`, páginas 
 | `npm test` | Pruebas unitarias (`node:test`) |
 | `npm run check` | `validate` + `build` + `test` |
 | `npm run test:e2e` | Pruebas de extremo a extremo en Chrome/Edge sin cabeza |
+| `npm run audit:data` | Auditoría de calidad de los datos: duplicados, mayúsculas, inglés sospechoso |
 | `npm run audit:a11y` | Auditoría de accesibilidad con axe-core (`npm i -D axe-core` o `AXE_PATH`) |
 | `npm run og` | Genera las imágenes Open Graph |
 

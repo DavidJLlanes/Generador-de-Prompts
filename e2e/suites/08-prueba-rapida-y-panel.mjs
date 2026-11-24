@@ -79,4 +79,24 @@ export async function run({ b, base, ok, step }) {
   ok(await b.eval(`return document.querySelector('#sec-version .opt-section__toggle, #sec-version [aria-expanded]')?.getAttribute('aria-expanded') === 'true'`), 'la sección Versión (tuning, restyling…) queda desplegada');
   ok(await b.eval(`return !new URLSearchParams(location.search).has('q') && document.querySelector('input[type=search]').value === ''`), 'la búsqueda se limpia');
   ok(await b.eval(`return /user-scalable=no/.test(document.querySelector('meta[name=viewport]').content)`), 'sin zoom con los dedos');
+
+  step('[5] Plantillas');
+  await b.eval('localStorage.clear()');
+  await b.goto(base + '/');
+  ok(await b.eval(`return document.querySelectorAll('.tpl-grid--home .tpl-card').length`) === 6, 'la portada muestra 6 plantillas destacadas');
+  await b.eval(`document.querySelector('.tpl-grid--home .tpl-card').click()`);
+  await b.waitFor(`location.pathname.endsWith('/constructor/') && document.querySelector('.prompt-panel__out')?.textContent.length > 100`, 8000, 'constructor con plantilla');
+  ok(await b.eval(`return !location.search && JSON.parse(localStorage.getItem('lv:v1:workspace')).aspect === '4:5'`), 'carga la plantilla con su proporción y limpia la URL');
+  await b.sleep(800); // el panel termina de pintarse cuando carga Fotografía
+  const before = await b.eval(`return document.querySelector('.prompt-panel__out').textContent`);
+  await b.eval(`document.querySelector('[data-act=templates]').click()`);
+  await b.waitFor(`document.querySelectorAll('dialog.tpl-dialog[open] .tpl-card').length >= 15`, 4000, 'cajón de plantillas');
+  await b.eval(`[...document.querySelectorAll('.chip-filter')].find(c => c.textContent === 'Vehículos').click()`);
+  await b.eval(`document.querySelector('dialog.tpl-dialog .tpl-card .btn').click()`);
+  await b.sleep(600);
+  ok(await b.eval(`return document.querySelector('.prompt-panel__out').textContent !== ${JSON.stringify('')} && !document.querySelector('dialog.tpl-dialog[open]')`), 'usar otra plantilla la carga y cierra el cajón');
+  await b.eval(`[...document.querySelectorAll('.prompt-panel__actions button')].find(x => /Deshacer/.test(x.textContent)).click()`);
+  await b.sleep(500);
+  const after = await b.eval(`return document.querySelector(".prompt-panel__out").textContent`);
+  ok(after === before, "Deshacer recupera la plantilla anterior completa", after === before ? "" : `${before.slice(0, 160)} ‖ ${after.slice(0, 160)}`);
 }

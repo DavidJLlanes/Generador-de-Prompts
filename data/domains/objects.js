@@ -357,7 +357,7 @@ export default {
       "mode": "single",
       "options": [
         {"id":"no-inscription","es":"Sin inscripción","en":"no inscription"},
-        {"id":"ancient-runes","es":"Runes antiguas","en":"ancient runes"},
+        {"id":"ancient-runes","es":"Runas antiguas","en":"ancient runes"},
         {"id":"arcane-calligraphy","es":"Caligrafía arcana","en":"arcane calligraphy"},
         {"id":"lost-language","es":"Lenguaje perdido","en":"lost language"},
         {"id":"celestial-symbols","es":"Símbolos celestiales","en":"celestial symbols"},
