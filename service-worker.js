@@ -1,6 +1,6 @@
 const scope = self.registration.scope;
 const cachePrefix = `lumen-vitae:${scope}:`;
-const CACHE_NAME = `${cachePrefix}shell-v1`;
+const CACHE_NAME = `${cachePrefix}shell-v2`; // al subir la versión se borran las cachés anteriores (posibles respuestas envenenadas)
 const CORE_ASSETS = [
   './',
   'manifest.webmanifest',
@@ -33,8 +33,12 @@ self.addEventListener('fetch', event => {
       const response = await fetch(request);
       const pathname = request.url.slice(scope.length).split('?')[0];
       const isAppIcon = pathname.startsWith('assets/img/icon-') || pathname === 'assets/img/apple-touch-icon.png';
-      const isImage = (response.headers.get('content-type') || '').startsWith('image/');
-      if (response.ok && response.status !== 206 && response.type === 'basic' && (!isImage || isAppIcon)) {
+      const type = response.headers.get('content-type') || '';
+      const isImage = type.startsWith('image/');
+      // Con la sesión caducada, nginx responde a cualquier ruta con la página de acceso (HTML, estado 200):
+      // un HTML solo se guarda si se pidió una página; así no acaba en caché en lugar de un JS, CSS o datos.
+      const htmlForAsset = type.startsWith('text/html') && request.mode !== 'navigate';
+      if (response.ok && response.status !== 206 && response.type === 'basic' && !response.redirected && !htmlForAsset && (!isImage || isAppIcon)) {
         const cache = await caches.open(CACHE_NAME);
         await cache.put(request, response.clone());
       }

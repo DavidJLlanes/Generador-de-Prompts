@@ -685,7 +685,7 @@ export default {
         {"id":"extradimensional","es":"Extradimensional","en":"extradimensional"},
         {"id":"fractal-self-similar","es":"Fractal autosimilar","en":"fractal self-similar"},
         {"id":"probability-scaled","es":"Escala de probabilidad","en":"probability-scaled"},
-        {"id":"scale-less-undefined","es":"Sin escala definida","en":"scale-less undefined"},
+        {"id":"scale-less-undefined","es":"Sin escala definida","en":"scaleless, with no sense of scale"},
         {"id":"paradoxically-variable","es":"Paradójicamente variable","en":"paradoxically variable"}
       ]
     },

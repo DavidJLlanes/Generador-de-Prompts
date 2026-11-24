@@ -1063,7 +1063,7 @@ export default {
       "options": [
         {"id":"soft-silky","es":"Suave sedoso","en":"soft silky"},
         {"id":"smooth-polished","es":"Liso pulido","en":"smooth polished"},
-        {"id":"rough-rough","es":"Áspero rugoso","en":"rough rough"},
+        {"id":"rough-rough","es":"Áspero rugoso","en":"coarse rough texture"},
         {"id":"prickly-sharp","es":"Pinchazo puntiagudo","en":"prickly sharp"},
         {"id":"granulated-texture","es":"Textura granulada","en":"granulated texture"},
         {"id":"scaly-texture","es":"Textura escamosa","en":"scaly texture"},

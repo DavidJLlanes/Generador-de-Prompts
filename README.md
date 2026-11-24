@@ -175,7 +175,7 @@ git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/djl.
 
 ```bash
 cd /var/www/djl.com.es/prompt/auth
-sudo npm install --omit=dev --no-package-lock
+sudo npm ci --omit=dev
 sudo install -d -o www-data -g www-data -m 700 /var/lib/lumen-prompt
 sudo cp ../deploy/lumen-prompt-auth.service /etc/systemd/system/
 sudo systemctl daemon-reload

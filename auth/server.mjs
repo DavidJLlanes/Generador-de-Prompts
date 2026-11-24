@@ -27,7 +27,28 @@ const failedLogins = new Map();
 
 await mkdir(DATA_DIR, { recursive: true, mode: 0o700 });
 
+let stateCache = null;
+let stateQueue = Promise.resolve();
+
+/** Estado en memoria: este proceso es el único que escribe el archivo, así que no hace falta leerlo en cada petición. */
 async function readState() {
+  if (!stateCache) stateCache = await loadStateFile();
+  return structuredClone(stateCache);
+}
+
+/** Lee-modifica-escribe en serie: dos peticiones simultáneas (login y logout) no se pisan los cambios. */
+function mutateState(fn) {
+  const run = stateQueue.then(async () => {
+    const state = await readState();
+    const result = await fn(state);
+    await writeState(state);
+    return result;
+  });
+  stateQueue = run.catch(() => {});
+  return run;
+}
+
+async function loadStateFile() {
   try {
     const value = JSON.parse(await readFile(STATE_FILE, 'utf8'));
     return {
@@ -46,13 +67,16 @@ async function writeState(state) {
   await writeFile(temporary, JSON.stringify(state), { mode: 0o600 });
   await chmod(temporary, 0o600);
   await rename(temporary, STATE_FILE);
+  stateCache = structuredClone(state);
 }
 
 function parseCookies(request) {
   return Object.fromEntries((request.headers.cookie || '').split(';').map(part => {
     const index = part.indexOf('=');
     if (index < 0) return ['', ''];
-    return [part.slice(0, index).trim(), decodeURIComponent(part.slice(index + 1).trim())];
+    let value = part.slice(index + 1).trim();
+    try { value = decodeURIComponent(value); } catch { /* cookie mal codificada: se usa tal cual */ }
+    return [part.slice(0, index).trim(), value];
   }).filter(([name]) => name));
 }
 
@@ -87,9 +111,17 @@ async function readJson(request) {
   let raw = '';
   for await (const chunk of request) {
     raw += chunk;
-    if (raw.length > 256_000) throw new Error('Request body too large');
+    if (raw.length > 256_000) { const error = new Error('Solicitud demasiado grande.'); error.status = 413; throw error; }
   }
-  return raw ? JSON.parse(raw) : {};
+  if (!raw) return {};
+  let value;
+  try { value = JSON.parse(raw); } catch { value = null; }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    const error = new Error('Solicitud no válida.');
+    error.status = 400;
+    throw error;
+  }
+  return value;
 }
 
 function requireSameOrigin(request) {
@@ -100,9 +132,26 @@ function requireSameOrigin(request) {
   }
 }
 
-async function passwordHash(password, salt) {
+// scrypt usa ~32 MB por cálculo: se limita cuántos corren a la vez para que una ráfaga de intentos no agote la memoria.
+const MAX_HASHES = 2;
+let activeHashes = 0;
+const hashWaiters = [];
+async function withHashSlot(fn) {
+  if (activeHashes >= MAX_HASHES) await new Promise(resolve => hashWaiters.push(resolve));
+  activeHashes++;
+  try { return await fn(); } finally { activeHashes--; hashWaiters.shift()?.(); }
+}
+
+function passwordHash(password, salt) {
+  return withHashSlot(() => rawPasswordHash(password, salt));
+}
+
+async function rawPasswordHash(password, salt) {
   return Buffer.from(await scrypt(password, salt, 64, { N: 32768, r: 8, p: 1, maxmem: 64 * 1024 * 1024 })).toString('base64url');
 }
+
+const MAX_TRACKED_IPS = 10_000;
+const MAX_PENDING = 1_000;
 
 function loginBlocked(ip) {
   const record = failedLogins.get(ip);
@@ -119,6 +168,23 @@ function recordLoginFailure(ip) {
   record.count++;
   if (record.count >= 5) record.blockedUntil = now + 10 * 60_000;
   failedLogins.set(ip, record);
+  if (failedLogins.size > MAX_TRACKED_IPS) {
+    for (const [key, item] of failedLogins) if (item.blockedUntil < now && item.startedAt + 15 * 60_000 < now) failedLogins.delete(key);
+    while (failedLogins.size > MAX_TRACKED_IPS) failedLogins.delete(failedLogins.keys().next().value);
+  }
+}
+
+/** Intentos en curso por IP: cuentan como fallos hasta que terminan, así una ráfaga en paralelo no esquiva el límite. */
+const inFlight = new Map();
+function beginAttempt(ip) {
+  const n = (inFlight.get(ip) || 0) + 1;
+  inFlight.set(ip, n);
+  const record = failedLogins.get(ip);
+  return (record?.count || 0) + n - 1 >= 5;
+}
+function endAttempt(ip) {
+  const n = (inFlight.get(ip) || 1) - 1;
+  if (n > 0) inFlight.set(ip, n); else inFlight.delete(ip);
 }
 
 async function currentSession(request) {
@@ -130,18 +196,20 @@ async function currentSession(request) {
   return session || null;
 }
 
-function issueSession(response, state) {
+function issueSession(response, mutate = () => {}) {
   const token = randomBytes(32).toString('base64url');
   const tokenHash = createHash('sha256').update(token).digest('hex');
   const expiresAt = Date.now() + SESSION_TTL_MS;
-  state.sessions = state.sessions.filter(item => item.expiresAt > Date.now());
-  state.sessions.push({ tokenHash, expiresAt, userId: USER_ID.toString('base64url') });
   setCookies(response, [
     sessionCookie(token),
     clearChallengeCookie('lumen_prompt_login_challenge'),
     clearChallengeCookie('lumen_prompt_register_challenge'),
   ]);
-  return writeState(state);
+  return mutateState(state => {
+    mutate(state);
+    state.sessions = state.sessions.filter(item => item.expiresAt > Date.now());
+    state.sessions.push({ tokenHash, expiresAt, userId: USER_ID.toString('base64url') });
+  });
 }
 
 function beginChallenge(response, challenge, purpose, metadata = {}) {
@@ -149,6 +217,7 @@ function beginChallenge(response, challenge, purpose, metadata = {}) {
   const key = randomBytes(24).toString('base64url');
   pending.set(key, { challenge, purpose, expiresAt: Date.now() + CHALLENGE_TTL_MS, ...metadata });
   for (const [id, item] of pending) if (item.expiresAt <= Date.now()) pending.delete(id);
+  while (pending.size > MAX_PENDING) pending.delete(pending.keys().next().value);
   setCookies(response, [`${cookieName}=${key}; Path=/prompt/auth/; Max-Age=300; Secure; HttpOnly; SameSite=Strict`]);
 }
 
@@ -201,18 +270,22 @@ async function handle(request, response) {
     const username = typeof body.username === 'string' ? body.username.trim().toLowerCase() : '';
     const password = typeof body.password === 'string' ? body.password : '';
     const state = await readState();
+    if (beginAttempt(ip)) { endAttempt(ip); return json(response, 429, { error: 'Demasiados intentos a la vez. Espera unos minutos.' }); }
     let matches = false;
-    if (state.account?.passwordHash && username === state.account.username.toLowerCase() && password.length <= 1024) {
-      const actual = Buffer.from(await passwordHash(password, state.account.passwordSalt));
-      const expected = Buffer.from(state.account.passwordHash);
-      matches = actual.length === expected.length && timingSafeEqual(actual, expected);
-    }
+    try {
+      // Se calcula el hash aunque el usuario no exista: misma duración en ambos casos.
+      const salt = state.account?.passwordSalt || 'sin-cuenta';
+      const actual = Buffer.from(await passwordHash(password.slice(0, 1024), salt));
+      const expected = Buffer.from(state.account?.passwordHash || '');
+      matches = Boolean(state.account?.passwordHash) && username === state.account.username.toLowerCase() && password.length <= 1024
+        && actual.length === expected.length && timingSafeEqual(actual, expected);
+    } finally { endAttempt(ip); }
     if (!matches) {
       recordLoginFailure(ip);
       return json(response, 401, { error: 'Usuario o contraseña incorrectos.' });
     }
     failedLogins.delete(ip);
-    await issueSession(response, state);
+    await issueSession(response);
     return json(response, 200, { authenticated: true, username: state.account.username });
   }
 
@@ -225,29 +298,34 @@ async function handle(request, response) {
     if (newPassword.length < 8 || Buffer.byteLength(newPassword) > 1024) {
       return json(response, 400, { error: 'La nueva contraseña debe tener al menos 8 caracteres.' });
     }
+    const ip = request.headers['x-real-ip'] || request.socket.remoteAddress || 'unknown';
+    const wait = loginBlocked(ip);
+    if (wait) return json(response, 429, { error: `Demasiados intentos. Prueba de nuevo en ${Math.ceil(wait / 60_000)} min.` });
     const state = await readState();
-    const actual = Buffer.from(await passwordHash(currentPassword, state.account.passwordSalt));
+    const actual = Buffer.from(await passwordHash(currentPassword.slice(0, 1024), state.account.passwordSalt));
     const expected = Buffer.from(state.account.passwordHash);
     if (actual.length !== expected.length || !timingSafeEqual(actual, expected)) {
+      recordLoginFailure(ip);
       return json(response, 401, { error: 'La contraseña actual no es correcta.' });
     }
-    state.account.passwordSalt = randomBytes(16).toString('base64url');
-    state.account.passwordHash = await passwordHash(newPassword, state.account.passwordSalt);
+    const passwordSalt = randomBytes(16).toString('base64url');
+    const newHash = await passwordHash(newPassword, passwordSalt);
     const token = parseCookies(request)[SESSION_COOKIE];
     const currentHash = token ? createHash('sha256').update(token).digest('hex') : '';
-    state.sessions = state.sessions.filter(item => item.tokenHash === currentHash && item.expiresAt > Date.now());
-    await writeState(state);
+    await mutateState(next => {
+      next.account.passwordSalt = passwordSalt;
+      next.account.passwordHash = newHash;
+      next.sessions = next.sessions.filter(item => item.tokenHash === currentHash && item.expiresAt > Date.now());
+    });
     return json(response, 200, { updated: true });
   }
 
   if (url.pathname === '/prompt/auth/logout' && request.method === 'POST') {
     requireSameOrigin(request);
     const token = parseCookies(request)[SESSION_COOKIE];
-    const state = await readState();
     if (token) {
       const tokenHash = createHash('sha256').update(token).digest('hex');
-      state.sessions = state.sessions.filter(item => item.tokenHash !== tokenHash);
-      await writeState(state);
+      await mutateState(state => { state.sessions = state.sessions.filter(item => item.tokenHash !== tokenHash); });
     }
     setCookies(response, [`${SESSION_COOKIE}=; Path=/prompt/; Max-Age=0; Secure; HttpOnly; SameSite=Lax`]);
     return json(response, 200, { loggedOut: true });
@@ -275,7 +353,7 @@ async function handle(request, response) {
     const body = await readJson(request);
     const challenge = takeChallenge(request, 'login').challenge;
     const state = await readState();
-    const stored = state.credentials.find(item => item.id === body.id);
+    const stored = typeof body.id === 'string' ? state.credentials.find(item => item.id === body.id) : null;
     if (!stored) return json(response, 401, { error: 'Passkey no reconocida.' });
 
     const verification = await verifyAuthenticationResponse({
@@ -293,8 +371,11 @@ async function handle(request, response) {
     });
 
     if (!verification.verified) return json(response, 401, { error: 'No se pudo verificar la passkey.' });
-    stored.counter = verification.authenticationInfo.newCounter;
-    await issueSession(response, state);
+    const newCounter = verification.authenticationInfo.newCounter;
+    await issueSession(response, next => {
+      const item = next.credentials.find(c => c.id === stored.id);
+      if (item) item.counter = newCounter;
+    });
     return json(response, 200, { verified: true });
   }
 
@@ -343,18 +424,16 @@ async function handle(request, response) {
     }
 
     const { credential } = verification.registrationInfo;
-    const state = await readState();
     const savedCredential = {
       id: credential.id,
       publicKey: Buffer.from(credential.publicKey).toString('base64url'),
       counter: credential.counter,
-      transports: body.response?.transports || [],
+      transports: Array.isArray(body.response?.transports) ? body.response.transports.filter(t => typeof t === 'string').slice(0, 8) : [],
       createdAt: new Date().toISOString(),
     };
-    if (!state.credentials.some(item => item.id === credential.id)) {
-      state.credentials.push(savedCredential);
-    }
-    await issueSession(response, state);
+    await issueSession(response, next => {
+      if (!next.credentials.some(item => item.id === credential.id)) next.credentials.push(savedCredential);
+    });
     return json(response, 200, { verified: true });
   }
 

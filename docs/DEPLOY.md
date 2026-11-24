@@ -10,7 +10,7 @@ Con un usuario con permisos de escritura en `/var/www/djl.com.es`:
 git clone https://github.com/DavidJLlanes/Generador-de-Prompts.git /var/www/djl.com.es/prompt
 node --version
 cd /var/www/djl.com.es/prompt/auth
-sudo npm install --omit=dev --no-package-lock
+sudo npm ci --omit=dev
 sudo install -d -o www-data -g www-data -m 700 /var/lib/lumen-prompt
 sudo cp /var/www/djl.com.es/prompt/deploy/lumen-prompt-auth.service /etc/systemd/system/
 sudo systemctl daemon-reload
@@ -32,6 +32,14 @@ Dentro del bloque HTTPS existente de `djl.com.es`, instala las ubicaciones de `d
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
 ```
+
+El ejemplo incluye las cabeceras de seguridad (CSP, HSTS, `nosniff`, `Referrer-Policy`, `Permissions-Policy`) y bloquea la carpeta `auth/`, `package*.json` y `pendiente.md`. Comprueba que llegan:
+
+```bash
+curl -sI https://djl.com.es/prompt/login | grep -iE 'content-security|strict-transport|x-content-type'
+```
+
+Si editas el `<script>` de `auth/login.html` o `auth/enroll.html`, actualiza su hash en la CSP del ejemplo (`npm test` avisa si no coincide).
 
 Elimina el archivo de contraseñas del antiguo Basic Auth, si existe:
 

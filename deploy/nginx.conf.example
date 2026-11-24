@@ -1,5 +1,10 @@
 # Añadir dentro del bloque HTTPS existente de djl.com.es.
 # El formulario de acceso queda público; el resto del sitio usa la sesión.
+#
+# Cabeceras de seguridad: nginx NO hereda los add_header del bloque padre si la ubicación define alguno,
+# por eso se repiten en cada ubicación que sirve HTML. La CSP del sitio es la misma que usa el servidor de
+# desarrollo (scripts/lib/server.mjs). La de login/enroll permite solo sus scripts en línea por hash: si
+# editas esos scripts, actualiza los hashes (lo comprueba tests/security.test.mjs).
 location = /prompt {
     return 301 /prompt/$is_args$args;
 }
@@ -8,12 +13,22 @@ location = /prompt/login {
     root /var/www/djl.com.es;
     try_files /prompt/auth/login.html =404;
     add_header Cache-Control "no-store" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
+    add_header Content-Security-Policy "default-src 'none'; script-src 'sha256-6cKrCQs1bcUyfOYPDV9DTwrKEaYy356cNPTEJc8Frfg=' 'sha256-sKG38MKTTkiCHCFF9uuv/ZUwW+qDI2wAFYZ8diYwExg='; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" always;
 }
 
 location = /prompt/enroll {
     root /var/www/djl.com.es;
     try_files /prompt/auth/enroll.html =404;
     add_header Cache-Control "no-store" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
+    add_header Content-Security-Policy "default-src 'none'; script-src 'sha256-6cKrCQs1bcUyfOYPDV9DTwrKEaYy356cNPTEJc8Frfg=' 'sha256-sKG38MKTTkiCHCFF9uuv/ZUwW+qDI2wAFYZ8diYwExg='; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'" always;
 }
 
 location = /prompt/auth/check {
@@ -61,6 +76,11 @@ location ^~ /prompt/auth/register/ {
     proxy_set_header Content-Type $content_type;
 }
 
+# Código del servicio de acceso y sus dependencias: nunca se sirven (las rutas de la API, más concretas, ganan).
+location ^~ /prompt/auth/ {
+    return 404;
+}
+
 location ^~ /prompt/ {
     root /var/www/djl.com.es;
     index index.html;
@@ -69,10 +89,15 @@ location ^~ /prompt/ {
 
     auth_request /prompt/auth/check;
     add_header Cache-Control "private, no-store, no-cache, must-revalidate" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://openrouter.ai https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" always;
 
     # Estas reglas anidadas evitan servir archivos internos o código PHP.
     location ~ /\. { deny all; }
     location ~ \.php$ { deny all; }
-    location ~ ^/prompt/(?:docs|deploy|scripts|tests|e2e|node_modules)(?:/|$) { deny all; }
-    location = /prompt/package.json { deny all; }
+    location ~ ^/prompt/(?:docs|deploy|scripts|tests|e2e|node_modules|auth)(?:/|$) { deny all; }
+    location ~ ^/prompt/(?:package(?:-lock)?\.json|pendiente\.md)$ { deny all; }
 }

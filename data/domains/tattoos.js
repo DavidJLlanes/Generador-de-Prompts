@@ -355,7 +355,7 @@ export default {
         {"id":"bracelet","es":"Brazalete","en":"bracelet"},
         {"id":"ring","es":"Anillo","en":"ring"},
         {"id":"freeform-organic","es":"Forma libre orgánica","en":"freeform organic"},
-        {"id":"amorphous-undefined","es":"Amorfo indefinido","en":"amorphous undefined"},
+        {"id":"amorphous-undefined","es":"Amorfo indefinido","en":"amorphous, formless"},
         {"id":"impossible-shape","es":"Forma imposible","en":"impossible shape"}
       ]
     },
