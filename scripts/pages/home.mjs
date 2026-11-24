@@ -4,6 +4,7 @@ import { SLOTS } from '../../data/taxonomy.js';
 import { icon } from '../../assets/js/ui/icons.js';
 import { SITE, layout } from './layout.mjs';
 import { fmt } from './shared.mjs';
+import { ASPECTS } from '../../data/aspects.js';
 
 const MARQUEE = [
   '35 mm analog photography', 'golden hour backlight', 'a tea house suspended over a lake', 'soft volumetric fog', 'long wavy auburn hair',
@@ -13,6 +14,24 @@ const MARQUEE = [
   'thunderstorm on the horizon', 'layered paper-cut diorama', 'a fox crossing a lavender field', 'ultra-wide 21:9 panorama',
 ];
 
+
+/** Selectores de la sección «Prompt rápido»: generadores agrupados por ranura y proporciones agrupadas. */
+function quickOptions(domains) {
+  const gens = SLOTS.map(slot => {
+    const list = domains.filter(d => d.role === slot.id);
+    return list.length ? `<optgroup label="${esc(slot.plural)}">${list.map(d => `<option value="${d.id}">${esc(d.short)}</option>`).join('')}</optgroup>` : '';
+  }).join('');
+  const groups = new Map();
+  let aspects = '';
+  for (const a of ASPECTS) {
+    if (!a.group) { aspects += `<option value="${esc(a.id)}">${esc(a.label)}</option>`; continue; }
+    if (!groups.has(a.group)) groups.set(a.group, []);
+    groups.get(a.group).push(`<option value="${esc(a.id)}">${esc(a.label)}</option>`);
+  }
+  for (const [g, opts] of groups) aspects += `<optgroup label="${esc(g)}">${opts.join('')}</optgroup>`;
+  return { gens, aspects };
+}
+
 export function homePage({ domains, totals }) {
   const marquee = [...MARQUEE, ...MARQUEE].map(t => `<span class="marquee__item">${esc(t)}</span>`).join('');
   const index = SLOTS.map(slot => {
@@ -20,6 +39,8 @@ export function homePage({ domains, totals }) {
     return `<div class="role-row"><div><h3 class="role-row__title">${esc(slot.plural)}</h3><p class="role-row__hint">${esc(slot.hint)}</p></div>
       <div class="role-row__pills">${list.map(d => `<a class="domain-pill" href="/generadores/${d.slug}/" title="${esc(d.summary)}">${esc(d.short)}</a>`).join('')}</div></div>`;
   }).join('');
+
+  const quick = quickOptions(domains);
 
   const main = `
 <section class="hero">
@@ -51,6 +72,37 @@ export function homePage({ domains, totals }) {
     </div>
   </div>
   <div class="marquee" aria-hidden="true"><div class="marquee__track">${marquee}</div></div>
+</section>
+
+<section class="section quick" aria-labelledby="quick-title" data-quick>
+  <div class="container">
+    <div class="quick__card">
+      <div class="quick__controls">
+        <p class="eyebrow">Prueba rápida</p>
+        <h2 class="quick__title" id="quick-title">Un prompt al azar, <em>en un clic</em></h2>
+        <p class="quick__lead">Elige un generador y una proporción, o deja que decida el azar. No toca tu selección del constructor.</p>
+        <div class="quick__fields">
+          <label class="quick__field"><span class="quick__label">Generador</span>
+            <select class="select quick__select" data-quick-gen aria-label="Generador"><option value="">Sorpréndeme (combinación completa)</option>${quick.gens}</select></label>
+          <label class="quick__field"><span class="quick__label">Proporción</span>
+            <select class="select quick__select" data-quick-aspect aria-label="Proporción de la imagen"><option value="random">Al azar</option>${quick.aspects}</select></label>
+        </div>
+        <button type="button" class="btn btn--primary btn--lg quick__roll" data-quick-roll>
+          <span class="quick__dice" data-quick-dice>${icon('dice', 22)}</span> Generar prompt aleatorio</button>
+      </div>
+      <div class="quick__result" data-quick-result aria-live="polite">
+        <div class="quick__frame-wrap" aria-hidden="true"><div class="quick__frame" data-quick-frame><span data-quick-ratio>16:9</span></div></div>
+        <div class="quick__body">
+          <div class="quick__tags" data-quick-tags></div>
+          <p class="quick__text" data-quick-text>Pulsa el botón para generar tu primer prompt…</p>
+          <div class="quick__actions">
+            <button type="button" class="btn btn--primary" data-quick-copy disabled>${icon('copy', 18)} Copiar prompt</button>
+            <button type="button" class="btn btn--outline" data-quick-open disabled>Abrir en el constructor ${icon('arrow', 16)}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section">

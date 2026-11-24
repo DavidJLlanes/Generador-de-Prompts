@@ -26,9 +26,8 @@ export async function randomizeSlot(slotId) {
   ids.forEach(id => store.applySelection(id, sel[id] || {}));
 }
 
-/** Aleatorio total: una combinación completa y coherente entre ranuras. */
-export async function randomizeAll() {
-  const state = store.get();
+/** Combinación aleatoria completa (sin tocar el store): devuelve la selección resultante y los dominios usados. */
+export async function buildRandomCombination(state) {
   const plan = { subject: 1, attribute: 0.45, action: 0.55, setting: 0.85, atmosphere: 0.5, technical: 1 };
   const chosen = [];
   for (const slot of SLOTS) {
@@ -39,6 +38,13 @@ export async function randomizeAll() {
   }
   const loaded = await loadDomains(chosen);
   const sel = randomSelection(chosen.map(i => loaded[i]), state, Math.random, d => SLOT_CAPS[d.role]);
+  return { chosen, sel };
+}
+
+/** Aleatorio total: una combinación completa y coherente entre ranuras. */
+export async function randomizeAll() {
+  const state = store.get();
+  const { chosen, sel } = await buildRandomCombination(state);
   store.replaceSelection({ ...Object.fromEntries(Object.entries(state.sel).filter(([id]) => !chosen.includes(id))), ...sel });
 }
 
