@@ -64,4 +64,19 @@ export async function run({ b, base, ok, step }) {
   await b.goto(base + '/constructor/');
   await b.waitFor(`document.querySelector('.slot__attach:not([hidden])')`, 6000, 'selector de atributos');
   ok(await b.eval(`return document.querySelectorAll('.slot__attach select option').length >= 2`), 'con dos sujetos aparece «se aplica a»');
+
+  step('[4] Del buscador general a un coche: al elegirlo vuelven todas las secciones');
+  await b.eval('localStorage.clear()');
+  await b.goto(base + '/generadores/?q=mustang');
+  await b.waitFor(`document.querySelector('.hits__list a')`, 8000, 'resultados del buscador');
+  await b.eval(`document.querySelector('.hits__list a').click()`);
+  await b.waitFor(`location.pathname.endsWith('/coches/') && document.querySelector('#sec-car button[data-opt]')`, 8000, 'generador de coches');
+  await b.sleep(600);
+  ok(await b.eval(`return document.querySelector('#sec-version').hidden`), 'con la búsqueda activa solo se ve la sección del coche');
+  await b.eval(`[...document.querySelectorAll('#sec-car button[data-opt]')].find(x => !x.hidden && /mustang/i.test(x.textContent)).click()`);
+  await b.sleep(600);
+  ok(await b.eval(`return ['version','color','escena-foto'].every(id => !document.querySelector('#sec-' + id).hidden)`), 'al elegir el coche aparecen Versión, Color y Escena');
+  ok(await b.eval(`return document.querySelector('#sec-version .opt-section__toggle, #sec-version [aria-expanded]')?.getAttribute('aria-expanded') === 'true'`), 'la sección Versión (tuning, restyling…) queda desplegada');
+  ok(await b.eval(`return !new URLSearchParams(location.search).has('q') && document.querySelector('input[type=search]').value === ''`), 'la búsqueda se limpia');
+  ok(await b.eval(`return /user-scalable=no/.test(document.querySelector('meta[name=viewport]').content)`), 'sin zoom con los dedos');
 }

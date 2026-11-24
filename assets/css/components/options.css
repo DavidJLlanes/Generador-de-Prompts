@@ -180,3 +180,5 @@
 .opt-peek b { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 .opt-peek span { color: var(--text); line-height: 1.5; }
 .has-dock .opt-peek { bottom: calc(var(--dock-h) + 16px); }
+/* En pantallas táctiles la vista previa va arriba: abajo se pisaba con los avisos y con la barra del prompt. */
+@media (hover: none) { .opt-peek, .has-dock .opt-peek { top: calc(var(--header-h) + 10px); bottom: auto; } }

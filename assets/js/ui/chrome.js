@@ -67,3 +67,6 @@ export function initChrome() {
 
   return { dock };
 }
+
+// Sin zoom con los dedos (decisión de diseño): Safari en iOS ignora user-scalable=no, así que se corta el gesto.
+for (const type of ['gesturestart', 'gesturechange']) document.addEventListener(type, e => e.preventDefault(), { passive: false });

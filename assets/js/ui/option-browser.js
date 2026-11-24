@@ -210,6 +210,7 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
             ? `Se quitó ${list(con)}: no combina con «${sec.title}»`
             : `Se quitó ${list(cleared)}: no puede convivir con «${sec.title}»`);
       }
+      if (query && (store.get().sel[domain.id]?.[sec.id] || []).includes(opt.dataset.opt)) revealAllAfterPick(sec.id, opt);
       return;
     }
     const act = e.target.closest('[data-act]');
@@ -312,6 +313,21 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     status.classList.toggle('is-empty', !!q && !shown);
   }
   search.addEventListener('input', debounce(() => filter(search.value), 90));
+
+  /* Elegir algo con una búsqueda activa (p. ej. al llegar desde «Ford Mustang» en el buscador general) limpia la
+     búsqueda: el filtro ocultaba el resto de secciones (versión, tuning, color, escena…) y parecía que no existían. */
+  function revealAllAfterPick(secId, btn) {
+    search.value = '';
+    filter('');
+    const url = new URL(location.href);
+    if (url.searchParams.has('q')) { url.searchParams.delete('q'); history.replaceState(history.state, '', url); }
+    const ids = domain.sections.map(x => x.id);
+    const next = ids[ids.indexOf(secId) + 1];
+    if (next) setOpen(next, true);
+    // Se lleva a la siguiente sección (la elegida puede quedar dentro de un subgrupo plegado de cientos de opciones).
+    requestAnimationFrame(() => (next ? secEl.get(next) : btn).scrollIntoView({ block: 'start' }));
+    toast(next ? `Ya ves todas las secciones: sigue con «${domain.sections.find(x => x.id === next).title}»` : 'Ya ves todas las secciones');
+  }
 
   /* --- sección activa en la navegación lateral --- */
   const links = new Map();

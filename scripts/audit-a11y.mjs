@@ -49,7 +49,7 @@ try {
     if (c.wait) await b.waitFor(c.wait, 12000, c.name);
     if (c.setup) await b.eval(c.setup);
     const violations = await b.eval(`${AXE}
-      const r = await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } });
+      const r = await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] }, rules: { 'meta-viewport': { enabled: false } } }); // sin zoom con los dedos: decisión de diseño del propietario
       return r.violations.map(v => ({ id: v.id, impact: v.impact, help: v.help, n: v.nodes.length, sample: v.nodes.slice(0, 2).map(n => n.target.join(' ') + ' → ' + (n.failureSummary || '').split('\\n').slice(1, 2).join('').trim().slice(0, 110)) }));`);
     total += violations.length;
     const bad = violations.filter(v => v.impact === 'serious' || v.impact === 'critical');
