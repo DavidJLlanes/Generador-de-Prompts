@@ -229,7 +229,11 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
   if (known.has(hashId)) {
     openSet.add(hashId);
     persist();
-    requestAnimationFrame(() => secEl.get(hashId).scrollIntoView());
+    // ?g=<subgrupo> (desde el buscador): se abre ese subgrupo y se lleva hasta él.
+    const gid = new URLSearchParams(location.search).get('g');
+    const fold = gid ? [...secEl.get(hashId).querySelectorAll('.opt-group--fold')].find(x => x.dataset.group === gid) : null;
+    if (fold) fold.open = true;
+    requestAnimationFrame(() => (fold || secEl.get(hashId)).scrollIntoView());
   }
 
   /* --- exclusiones: deshabilita lo que no se puede combinar con lo ya elegido (data/exclusions.js) --- */
@@ -300,7 +304,14 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
     for (const sec of domain.sections) {
       const el = secEl.get(sec.id);
       let secShown = 0;
-      el.querySelectorAll('[data-s]').forEach(n => { const hide = !!q && !matchesAll(n.dataset.s, q); n.hidden = hide; if (!hide) secShown++; });
+      // Si la búsqueda nombra la sección («Versión») o un subgrupo («1960s»), se muestra entero.
+      const wholeSec = !!q && matchesAll(fold(`${domain.meta?.short || domain.short || ""} ${sec.title}`), q);
+      const groupTitle = g => fold(g.querySelector('.opt-group__title')?.textContent || '');
+      el.querySelectorAll('.opt-group').forEach(g => { g.dataset.whole = q && !wholeSec && matchesAll(groupTitle(g), q) ? '1' : ''; });
+      el.querySelectorAll('[data-s]').forEach(n => {
+        const hide = !!q && !wholeSec && !n.closest('[data-whole="1"]') && !matchesAll(n.dataset.s, q);
+        n.hidden = hide; if (!hide) secShown++;
+      });
       el.querySelectorAll('.opt-group').forEach(g => { g.hidden = !!q && !g.querySelector('[data-s]:not([hidden])'); });
       el.hidden = !!q && secShown === 0;
       navLink.get(sec.id).hidden = el.hidden;

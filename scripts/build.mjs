@@ -48,10 +48,19 @@ console.log(`catálogo: ${totals.domains} dominios · ${totals.sections} seccion
 write('data/tag-index.js', tagIndexSource(all));
 
 /* ---------- índice del buscador global (se carga bajo demanda desde /generadores/) ---------- */
-// { d: [[slug, nombre corto]], o: [[dominio, id de sección, título de sección, [etiquetas…]]] }
+// { d: [[slug, nombre corto]],
+//   o: [[dominio, id de sección, título de sección, [etiquetas es…], [índice de subgrupo por opción | -1], [[id, título] de subgrupos], {i: texto en inglés corto}]] }
+// El inglés solo se guarda si es corto y distinto del español: permite buscar «widebody» o «sunset» sin duplicar el peso.
+const foldText = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const searchIndex = {
   d: all.map(({ domain: d }) => [d.slug, d.meta.short || d.meta.title]),
-  o: all.flatMap(({ domain: d }, i) => d.sections.map(s => [i, s.id, s.title, s.options.map(o => o.es)])),
+  o: all.flatMap(({ domain: d }, i) => d.sections.map(s => {
+    const groups = (s.groups || []).map(g => [g.id, g.title]);
+    const gIndex = new Map(groups.map(([id], k) => [id, k]));
+    const en = {};
+    s.options.forEach((o, k) => { if (o.en.length <= 48 && foldText(o.en) !== foldText(o.es)) en[k] = o.en; });
+    return [i, s.id, s.title, s.options.map(o => o.es), s.options.map(o => (o.group && gIndex.has(o.group) ? gIndex.get(o.group) : -1)), groups, en];
+  })),
 };
 write('data/search-index.json', JSON.stringify(searchIndex));
 console.log(`buscador: ${searchIndex.o.reduce((n, s) => n + s[3].length, 0)} etiquetas indexadas`);

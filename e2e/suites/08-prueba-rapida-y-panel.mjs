@@ -68,8 +68,8 @@ export async function run({ b, base, ok, step }) {
   step('[4] Del buscador general a un coche: al elegirlo vuelven todas las secciones');
   await b.eval('localStorage.clear()');
   await b.goto(base + '/generadores/?q=mustang');
-  await b.waitFor(`document.querySelector('.hits__list a')`, 8000, 'resultados del buscador');
-  await b.eval(`document.querySelector('.hits__list a').click()`);
+  await b.waitFor(`document.querySelector('.hits__list .hit-chip')`, 8000, 'resultados del buscador');
+  await b.eval(`document.querySelector('.hits__list .hit-chip').click()`);
   await b.waitFor(`location.pathname.endsWith('/coches/') && document.querySelector('#sec-car button[data-opt]')`, 8000, 'generador de coches');
   await b.sleep(600);
   ok(await b.eval(`return document.querySelector('#sec-version').hidden`), 'con la búsqueda activa solo se ve la sección del coche');

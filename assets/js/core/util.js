@@ -10,8 +10,31 @@ export const fold = s => String(s || '').toLowerCase().normalize('NFD').replace(
 const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 export const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ESC[c]);
 
-/** Búsqueda por palabras: todas deben aparecer, en cualquier orden. `haystack` ya viene sin acentos y en minúsculas. */
-export const matchesAll = (haystack, query) => fold(query).split(/\s+/).filter(Boolean).every(t => haystack.includes(t));
+/** Variantes de una palabra buscada: tal cual, sin plural y con el otro género (pelirroja → pelirrojo, dragones → dragon). */
+function variants(t) {
+  const out = new Set([t]);
+  const bases = [t];
+  if (t.length >= 5 && t.endsWith('es')) bases.push(t.slice(0, -2));
+  if (t.length >= 4 && t.endsWith('s')) bases.push(t.slice(0, -1));
+  for (const b of bases) {
+    out.add(b);
+    if (b.length >= 4 && /[ao]$/.test(b)) out.add(b.slice(0, -1) + (b.endsWith('a') ? 'o' : 'a'));
+  }
+  return [...out];
+}
+
+/** Palabras sueltas de un texto, sin acentos ni signos, con espacio delante de cada una (para buscar por inicio de palabra). */
+export const wordText = s => ` ${fold(s).replace(/[^a-z0-9]+/g, ' ').trim()} `;
+
+/**
+ * Búsqueda por palabras: cada palabra de la consulta debe ser el comienzo de alguna palabra del texto, en cualquier
+ * orden («ferr» encuentra «Ferrari»; «pelo» no encuentra «terciopelo»), admitiendo plural y género.
+ * `haystack` ya viene sin acentos y en minúsculas.
+ */
+export const matchesAll = (haystack, query) => {
+  const words = wordText(haystack);
+  return fold(query).split(/[^a-z0-9]+/).filter(Boolean).every(t => variants(t).some(v => words.includes(` ${v}`)));
+};
 
 export const uniq =arr => [...new Set(arr)];
 export const clamp = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
