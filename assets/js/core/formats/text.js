@@ -29,7 +29,8 @@ function openerOf(c) {
   }
   const used = new Set();
   const phrases = subs.map(s => {
-    const own = c.parts.filter(p => p.slot === 'subject' && s.domains.includes(p.domain) && p !== s.merged && sentenceItem(p).phrase);
+    const own = c.parts.filter(p => p !== s.merged && sentenceItem(p).phrase
+      && ((p.slot === 'subject' && s.domains.includes(p.domain)) || (p.slot === 'attribute' && p.owner === s.lead)));
     if (s.merged) used.add(s.merged);
     own.forEach(p => used.add(p));
     return [s.merged ? withArticle(s.merged.text) : s.lead, ...own.map(p => p.text)].join(', ');

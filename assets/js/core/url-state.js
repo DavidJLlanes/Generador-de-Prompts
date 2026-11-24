@@ -15,6 +15,7 @@ const fromB64Url = s => {
 export function encodeState(state) {
   const payload = { s: state.sel, d: state.detail === 'short' ? 0 : 1, b: state.boost ? 1 : 0, a: state.aspect || '' };
   if (state.custom && state.custom.trim()) payload.c = state.custom;
+  if (state.attach && Object.keys(state.attach).length) payload.t = state.attach;
   return toB64Url(JSON.stringify(payload));
 }
 
@@ -23,7 +24,7 @@ export function decodeState(code) {
   try {
     const p = JSON.parse(fromB64Url(code));
     if (!p || typeof p.s !== 'object') return null;
-    return { sel: p.s, detail: p.d === 0 ? 'short' : 'rich', boost: p.b !== 0, aspect: typeof p.a === 'string' ? p.a : '', custom: typeof p.c === 'string' ? p.c : '' };
+    return { sel: p.s, detail: p.d === 0 ? 'short' : 'rich', boost: p.b !== 0, aspect: typeof p.a === 'string' ? p.a : '', custom: typeof p.c === 'string' ? p.c : '', attach: p.t && typeof p.t === 'object' ? p.t : {} };
   } catch {
     return null;
   }

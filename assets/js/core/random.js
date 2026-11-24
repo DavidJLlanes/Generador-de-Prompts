@@ -1,9 +1,14 @@
 /**
  * ALEATORIO — elige opciones al azar respetando secciones bloqueadas y la probabilidad
  * `chance` de cada sección (por defecto 0,6; ponla a 0 para excluir una sección del azar).
+ *
+ * Coherencia de tono: cada tirada tiene un ánimo (suave, neutro o intenso). En ánimo suave o intenso se
+ * descartan las opciones del tono contrario; en neutro, la primera opción con tono fija el de la tirada.
+ * Así no se mezclan «adorable» y «malévolo» en un mismo prompt. Se puede forzar con `opts.mood`.
  */
 import { resolveConflicts } from './conflicts.js';
 import { enforce } from './exclusions.js';
+import { toneOf, clashesWithMood, moodFrom } from './tone.js';
 
 const DEFAULT_CHANCE = 0.6;
 
@@ -18,8 +23,9 @@ function pick(arr, rng) { return arr[Math.floor(rng() * arr.length)]; }
  * @param {number|((domain: object) => number)} [maxSections]  tope de secciones nuevas por dominio
  * @returns {Record<string, Record<string, string[]>>} selección nueva solo de esos dominios
  */
-export function randomSelection(domains, state, rng = Math.random, maxSections = Infinity) {
+export function randomSelection(domains, state, rng = Math.random, maxSections = Infinity, opts = {}) {
   const out = {};
+  let mood = opts.mood || moodFrom(rng());
   for (const dom of domains) {
     const selection = {};
     for (const sec of dom.sections) {
@@ -32,9 +38,18 @@ export function randomSelection(domains, state, rng = Math.random, maxSections =
       const chance = typeof sec.chance === 'number' ? sec.chance : DEFAULT_CHANCE;
       if (rng() >= chance) continue;
       const n = sec.mode === 'multi' && rng() < 0.15 ? 2 : 1;
-      const pool = sec.options.slice();
+      let pool = sec.options.slice();
       const chosen = [];
-      for (let i = 0; i < n && pool.length; i++) chosen.push(pool.splice(Math.floor(rng() * pool.length), 1)[0].id);
+      for (let i = 0; i < n && pool.length; i++) {
+        if (mood !== 'neutral') { // quita lo que choca con el ánimo; si no quedara nada, se deja el grupo como estaba
+          const ok = pool.filter(o => !clashesWithMood(toneOf(o.en), mood));
+          if (ok.length) pool = ok;
+        }
+        const o = pool.splice(Math.floor(rng() * pool.length), 1)[0];
+        chosen.push(o.id);
+        const tone = toneOf(o.en);
+        if (mood === 'neutral' && tone) mood = tone > 0 ? 'soft' : 'intense'; // el primer rasgo con tono fija el de la tirada
+      }
       if (chosen.length) selection[sec.id] = chosen;
     }
     const cap = typeof maxSections === 'function' ? maxSections(dom) : maxSections;

@@ -27,17 +27,17 @@ function optionHTML(o) {
   const s = esc(fold(`${o.es} ${o.en} ${o.name || ''}`));
   const tip = esc((o.name ? `${o.name} — ` : '') + o.en.slice(0, 180));
   if (o.thumb) {
-    return `<button type="button" class="opt opt--thumb" data-opt="${o.id}" data-s="${s}" aria-pressed="false" title="${tip}">
+    return `<button type="button" class="opt opt--thumb" data-opt="${o.id}" data-s="${s}" aria-pressed="false" data-tip="${tip}">
       <img class="opt__img" src="${sitePath(o.thumb)}" alt="" loading="lazy" decoding="async">
       <span class="opt__label"><span class="opt__title">${esc(o.es)}</span>${o.name ? `<span class="opt__sub">${esc(o.name)}</span>` : ''}</span></button>`;
   }
   if (o.info && o.info.length) {
     return `<div class="opt-card" data-s="${s}">
-      <button type="button" class="opt opt--card" data-opt="${o.id}" aria-pressed="false" title="${tip}">
+      <button type="button" class="opt opt--card" data-opt="${o.id}" aria-pressed="false" data-tip="${tip}">
         <span class="opt__title">${esc(o.es)}</span><span class="opt__sub">${esc(o.name || '')}</span></button>
       <details class="opt-card__more"><summary>Ver detalle</summary><dl>${o.info.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details></div>`;
   }
-  return `<button type="button" class="opt" data-opt="${o.id}" data-s="${s}" aria-pressed="false" title="${tip}">${esc(o.es)}</button>`;
+  return `<button type="button" class="opt" data-opt="${o.id}" data-s="${s}" aria-pressed="false" data-tip="${tip}">${esc(o.es)}</button>`;
 }
 
 function sectionHTML(domain, sec) {
@@ -166,6 +166,30 @@ export function mountOptionBrowser({ domain, root, nav, search, status, toggleAl
   }
 
   if (toggleAll) toggleAll.addEventListener('click', () => setAll(toggleAll.dataset.state !== 'open'));
+
+  /* Vista previa: el texto en inglés de la opción bajo el cursor, con el foco o tocada (en móvil no hay «hover»). */
+  const peek = document.createElement('div');
+  peek.className = 'opt-peek';
+  peek.setAttribute('role', 'status');
+  peek.hidden = true;
+  document.body.append(peek);
+  let peekTimer;
+  const showPeek = (btn, ms = 0) => {
+    if (!btn?.dataset.tip) return;
+    clearTimeout(peekTimer);
+    peek.replaceChildren();
+    const es = document.createElement('b'); es.textContent = btn.querySelector('.opt__title')?.textContent || btn.textContent.trim();
+    const en = document.createElement('span'); en.textContent = btn.dataset.tip;
+    peek.append(es, en);
+    peek.hidden = false;
+    if (ms) peekTimer = setTimeout(() => { peek.hidden = true; }, ms);
+  };
+  const hidePeek = () => { clearTimeout(peekTimer); peek.hidden = true; };
+  root.addEventListener('mouseover', e => showPeek(e.target.closest('button[data-opt]')));
+  root.addEventListener('mouseleave', hidePeek);
+  root.addEventListener('focusin', e => showPeek(e.target.closest('button[data-opt]')));
+  root.addEventListener('focusout', hidePeek);
+  root.addEventListener('click', e => { const b = e.target.closest('button[data-opt]'); if (b && matchMedia('(hover: none)').matches) showPeek(b, 3500); });
 
   /* --- interacción (delegación) --- */
   root.addEventListener('click', e => {

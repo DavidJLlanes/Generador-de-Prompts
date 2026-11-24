@@ -105,6 +105,12 @@ export function compose(domains, state) {
     const merged = unique.find(p => p.slot === 'subject' && (!multi || dids.includes(p.domain)) && p.text.length < 130 && nounRx.test(p.text)) || null;
     return { domain: dids[0], domains: dids, lead, merged };
   });
+  // Con varios sujetos, cada pieza de atributos (rostro, peinado, accesorios…) pertenece a uno: el elegido en
+  // `state.attach` o, si no hay elección, el primero. Los formatos la colocan junto a su sujeto.
+  if (subjects.length > 1) {
+    const leads = subjects.map(s => s.lead);
+    for (const p of unique) if (p.slot === 'attribute') p.owner = leads.includes(state.attach?.[p.domain]) ? state.attach[p.domain] : leads[0];
+  }
   const lead = subjects.length ? subjects.map(s => s.lead).join(' together with ') : null;
   const merged = subjects[0]?.merged || null;
 

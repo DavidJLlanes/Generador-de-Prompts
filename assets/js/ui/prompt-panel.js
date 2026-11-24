@@ -17,7 +17,9 @@ import { copyText } from './clipboard.js';
 import { openLibrary } from './library-dialog.js';
 import { toast } from './toast.js';
 import { randomizeHere } from './quick-actions.js';
-import { getAIConfig, getAIProvider, reviewSelectionWithAI, setAIProvider } from '../core/ai-service.js';
+import { getAIConfig, getAIProvider, reviewSelectionWithAI, setAIProvider, polishPromptWithAI } from '../core/ai-service.js';
+import { manual } from '../core/manual.js';
+import { openCompare } from './compare-dialog.js';
 import { openAISettings } from './ai-settings.js';
 
 function aspectSelect() {
@@ -107,10 +109,35 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     refNote);
 
   let lastText = '';
-  const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => { if (lastText) { copyText(lastText, 'Prompt copiado'); recordHistory(store.get()); } } }, h('span', { html: icon('copy') }), 'Copiar prompt');
+  const copyBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => { if (lastText) { copyText(manual.resolve(lastText), 'Prompt copiado'); recordHistory(store.get()); } } }, h('span', { html: icon('copy') }), 'Copiar prompt');
   const randomBtn = h('button', { type: 'button', class: 'btn btn--primary', onClick: () => randomizeHere() }, h('span', { html: icon('dice') }), 'Aleatorio');
   const linkBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.totalItems() ? copyText(shareUrl(store.get()), 'Enlace copiado') : toast('Elige algo primero', { tone: 'warn' }) }, h('span', { html: icon('link') }), 'Copiar enlace');
   const libBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => openLibrary() }, h('span', { html: icon('bookmark') }), 'Mis prompts');
+  let editing = false;
+  let compareA = null;
+  let polishing = false;
+  const editBtn = h('button', { type: 'button', class: 'btn btn--outline', title: 'Retoca el texto a mano antes de copiarlo', onClick: () => { editing = !editing; if (!editing) manual.clear(); render(live.get()); } }, 'Editar');
+  const polishBtn = h('button', { type: 'button', class: 'btn btn--outline', title: 'Reescribe el prompt con fluidez usando tu IA configurada (se envía el texto al proveedor; puede tener coste)', onClick: async () => {
+    if (!lastText) return;
+    if (!aiProviders.length) { openAISettings(); return; }
+    const providerId = aiProviders.some(p => p.id === getAIProvider()) ? getAIProvider() : aiProviders[0].id;
+    if (getAIProvider() !== providerId) setAIProvider(providerId);
+    const base = lastText;
+    polishing = true; render(live.get());
+    try {
+      const { prompt } = await polishPromptWithAI(manual.resolve(base), FORMAT_BY_ID[store.get().format].label);
+      manual.set(base, prompt, 'ai');
+      editing = true;
+      toast('Prompt pulido con IA. Puedes retocarlo o restaurar el original.');
+    } catch (error) { toast(error.message, { tone: 'warn' }); }
+    polishing = false; render(live.get());
+  } }, h('span', { html: icon('spark') }), 'Pulir con IA');
+  const compareBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => {
+    if (!lastText) return;
+    const now = manual.resolve(lastText);
+    if (compareA == null) { compareA = now; toast('Guardada como versión A. Cambia algo y pulsa «Comparar con A».'); render(live.get()); return; }
+    openCompare({ a: compareA, b: now, onPinB: () => { compareA = now; render(live.get()); } });
+  } }, 'Fijar como A');
   const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
   const undoBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.undo() }, 'Deshacer');
 
@@ -120,7 +147,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     customField,
     refs,
     hint, out, meta, review, aiReviewActions, summary,
-    h('div', { class: 'prompt-panel__actions' }, copyBtn, randomBtn, linkBtn, libBtn, undoBtn, clearBtn));
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, randomBtn, linkBtn, libBtn, editBtn, polishBtn, compareBtn, undoBtn, clearBtn));
 
   function renderSummary(composed) {
     clear(summary);
@@ -164,20 +191,39 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
         h('p', {}, 'Elige opciones en cualquier generador. Puedes mezclar sujeto, escenario, clima y fotografía: si no eliges algo, simplemente no se incluye.'),
         h('a', { class: 'btn btn--outline btn--sm', href: sitePath('/generadores/') }, 'Explorar generadores')));
       meta.textContent = '';
-      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = true;
+      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = editBtn.disabled = polishBtn.disabled = compareBtn.disabled = true;
     } else {
-      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = false;
+      copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = editBtn.disabled = compareBtn.disabled = false;
+      polishBtn.disabled = polishing;
       const result = renderFormat(state.format, composed, state);
       lastText = result.text;
-      const many = result.blocks.length > 1;
-      result.blocks.forEach(b => out.append(h('div', { class: 'out-block' },
-        many ? h('div', { class: 'out-block__head' }, h('h3', {}, b.title), h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => copyText(b.text, `${b.title} copiado`) }, h('span', { html: icon('copy', 16) }), 'Copiar')) : null,
-        h('pre', { class: `out-block__text${state.format === 'ideogram' ? ' is-json' : ''}`, tabindex: '0' }, b.text))));
-      const words = result.text.trim().split(/\s+/).length;
-      meta.textContent = `${fmtNumber(words)} palabras · ${fmtNumber(result.text.length)} caracteres`;
+      const edited = manual.for(result.text);
+      const finalText = edited ? edited.text : result.text;
+      if (editing || edited) {
+        // Editor: el texto final es lo que se copia; solo vale mientras no cambie la selección.
+        const box = h('textarea', { class: 'field__textarea out-edit__text', rows: '8', spellcheck: 'false', 'aria-label': 'Prompt editable' });
+        box.value = finalText;
+        box.addEventListener('input', () => { manual.set(result.text, box.value); });
+        out.append(h('div', { class: 'out-edit' },
+          h('div', { class: 'out-edit__bar' },
+            h('span', { class: 'out-edit__tag' }, edited?.by === 'ai' ? 'Pulido con IA' : edited ? 'Editado a mano' : 'Modo edición'),
+            h('span', {}, 'Si cambias la selección, se vuelve al prompt generado.'),
+            edited ? h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => { manual.clear(); render(live.get()); } }, 'Restaurar original') : null),
+          box));
+      } else {
+        const many = result.blocks.length > 1;
+        result.blocks.forEach(b => out.append(h('div', { class: 'out-block' },
+          many ? h('div', { class: 'out-block__head' }, h('h3', {}, b.title), h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => copyText(b.text, `${b.title} copiado`) }, h('span', { html: icon('copy', 16) }), 'Copiar')) : null,
+          h('pre', { class: `out-block__text${state.format === 'ideogram' ? ' is-json' : ''}`, tabindex: '0' }, b.text))));
+      }
+      const words = finalText.trim().split(/\s+/).length;
+      meta.textContent = `${fmtNumber(words)} palabras · ${fmtNumber(finalText.length)} caracteres`;
     }
     renderSummary(composed);
     undoBtn.disabled = !store.canUndo();
+    editBtn.textContent = editing ? 'Terminar edición' : 'Editar';
+    compareBtn.textContent = compareA == null ? 'Fijar como A' : 'Comparar con A';
+    polishBtn.lastChild.textContent = polishing ? 'Puliendo…' : 'Pulir con IA';
     clear(review);
     if (!composed.empty) {
       const hasSubject = composed.slots.some(s => s.slot === 'subject' && s.parts.some(p => !p.boost));
@@ -199,7 +245,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
         const repeated = composed.parts.find(p => !p.custom && !p.boost && p.section !== '_rule' && p.short && normalizeReviewText(p.short).split(' ').length >= 3 && normalizedCustom.includes(` ${normalizeReviewText(p.short)} `));
         if (repeated) notes.push(`El texto libre repite «${repeated.short.slice(0, 72)}${repeated.short.length > 72 ? '…' : ''}», que ya está seleccionado; puedes quitar una de las dos apariciones.`);
       }
-      if (state.aspect && !['sd', 'midjourney'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
+      if (state.aspect && !['sd', 'midjourney', 'dalle'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
       if (notes.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión: ', notes.join(' ')));
       else review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
       if (aiFindings?.signature === signature) {

@@ -11,7 +11,7 @@
  *     detail: 'rich' | 'short',                                  // nivel de detalle del prompt
  *     boost: boolean,                                            // añadir acabado de máxima calidad
  *     aspect: string,                                            // id de proporción ('' = sin definir)
- *     format: 'text' | 'natural' | 'sd' | 'ideogram' | 'midjourney'   // formato de salida activo
+ *     format: 'text' | 'natural' | 'sd' | 'flux' | 'dalle' | 'ideogram' | 'midjourney'   // formato de salida activo
  *     custom: string                                             // texto libre del usuario (máx. 800)
  *     adult: boolean                                             // ha confirmado ser mayor de 18 años (muestra el contenido para adultos)
  *     refPose, refCostume: boolean                               // añadirá una imagen de referencia de pose / vestuario
@@ -27,7 +27,7 @@ const KEY = 'lv:v1:workspace';
 const FORMATS = FORMAT_LIST.map(f => f.id);
 export const CUSTOM_MAX = 800;
 
-const fresh = () => ({ v: 1, sel: {}, locks: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '', adult: false, refPose: false, refCostume: false });
+const fresh = () => ({ v: 1, sel: {}, locks: {}, attach: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '', adult: false, refPose: false, refCostume: false });
 
 export function sanitizeSel(sel) {
   const out = {};
@@ -43,6 +43,13 @@ export function sanitizeSel(sel) {
   return out;
 }
 
+/** A qué sujeto (por su «lead», p. ej. «a woman») se aplica cada generador de atributos cuando hay varios sujetos. */
+function cleanAttach(raw) {
+  const out = {};
+  if (raw && typeof raw === 'object') for (const [k, v] of Object.entries(raw)) if (typeof v === 'string' && v.length < 60) out[k] = v;
+  return out;
+}
+
 function normalize(raw) {
   const base = fresh();
   if (!raw || raw.v !== 1) return base;
@@ -53,6 +60,7 @@ function normalize(raw) {
     refCostume: raw.refCostume === true,
     sel: enforce(sanitizeSel(raw.sel), { adult: raw.adult === true }).sel,
     locks: raw.locks && typeof raw.locks === 'object' ? raw.locks : {},
+    attach: cleanAttach(raw.attach),
     detail: raw.detail === 'short' ? 'short' : 'rich',
     boost: raw.boost !== false,
     aspect: typeof raw.aspect === 'string' ? raw.aspect : '',
@@ -150,7 +158,7 @@ export const store = {
   /** Carga un prompt guardado: sustituye selección y ajustes del prompt, y conserva formato y bloqueos. */
   loadSnapshot(snap) {
     const n = normalize({ v: 1, ...snap, format: state.format, locks: state.locks, adult: state.adult });
-    commit({ ...state, sel: n.sel, detail: n.detail, boost: n.boost, aspect: n.aspect, custom: n.custom });
+    commit({ ...state, sel: n.sel, attach: n.attach, detail: n.detail, boost: n.boost, aspect: n.aspect, custom: n.custom });
   },
 
   /** Aplica una selección completa de un dominio (preset), sustituyendo la que hubiera de ese dominio. */
@@ -172,9 +180,17 @@ export const store = {
     if ('format' in partial && FORMATS.includes(partial.format)) next.format = partial.format;
     if ('custom' in partial) next.custom = String(partial.custom || '').slice(0, CUSTOM_MAX);
     if ('adult' in partial) next.adult = partial.adult === true;
+    if ('attach' in partial) next.attach = cleanAttach(partial.attach);
     if ('refPose' in partial) next.refPose = !!partial.refPose;
     if ('refCostume' in partial) next.refCostume = !!partial.refCostume;
     commit(next);
+  },
+
+  /** Asigna un generador de atributos (rostros, peinados…) a uno de los sujetos del prompt. */
+  setAttach(domainId, lead) {
+    const attach = { ...state.attach };
+    if (lead) attach[domainId] = lead; else delete attach[domainId];
+    commit({ ...state, attach });
   },
 
   toggleLock(domainId, sectionId) {

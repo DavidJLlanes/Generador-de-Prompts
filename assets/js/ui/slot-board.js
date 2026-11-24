@@ -13,7 +13,7 @@ import { randomSelection, SLOT_CAPS } from '../core/random.js';
 import { SLOTS } from '../../../data/taxonomy.js';
 import { toast } from './toast.js';
 
-const pickOne = arr => arr[Math.floor(Math.random() * arr.length)];
+const pickOne = (arr, rng = Math.random) => arr[Math.floor(rng() * arr.length)];
 
 /** Aleatorio de una ranura: usa los generadores con selección; si no hay ninguno, elige uno al azar. */
 export async function randomizeSlot(slotId) {
@@ -27,17 +27,17 @@ export async function randomizeSlot(slotId) {
 }
 
 /** Combinación aleatoria completa (sin tocar el store): devuelve la selección resultante y los dominios usados. */
-export async function buildRandomCombination(state) {
+export async function buildRandomCombination(state, rng = Math.random) {
   const plan = { subject: 1, attribute: 0.45, action: 0.55, setting: 0.85, atmosphere: 0.5, technical: 1 };
   const chosen = [];
   for (const slot of SLOTS) {
     const metas = domainsByRole(slot.id);
     const existing = metas.filter(m => state.sel[m.id]).map(m => m.id);
     if (existing.length) chosen.push(...existing);
-    else if (Math.random() < plan[slot.id]) chosen.push(slot.id === 'technical' ? 'photo' : pickOne(metas).id);
+    else if (rng() < plan[slot.id]) chosen.push(slot.id === 'technical' ? 'photo' : pickOne(metas, rng).id);
   }
   const loaded = await loadDomains(chosen);
-  const sel = randomSelection(chosen.map(i => loaded[i]), state, Math.random, d => SLOT_CAPS[d.role]);
+  const sel = randomSelection(chosen.map(i => loaded[i]), state, rng, d => SLOT_CAPS[d.role]);
   return { chosen, sel };
 }
 
@@ -64,8 +64,25 @@ export function mountSlotBoard(root) {
           h('button', { type: 'button', class: 'icon-btn', title: `Aleatorio en «${slot.es}»`, 'aria-label': `Aleatorio en ${slot.es}`, html: icon('dice'), onClick: () => randomizeSlot(slot.id).catch(() => toast('No se pudo cargar el generador', { tone: 'warn' })) }),
           h('button', { type: 'button', class: 'icon-btn', title: `Vaciar «${slot.es}»`, 'aria-label': `Vaciar ${slot.es}`, html: icon('trash'), onClick: () => domainsByRole(slot.id).forEach(m => store.clearDomain(m.id)) }))),
       pills, chips);
-    rows.set(slot.id, { row, pills, chips, count });
+    const attach = slot.id === 'attribute' ? h('div', { class: 'slot__attach' }) : null;
+    if (attach) row.append(attach);
+    rows.set(slot.id, { row, pills, chips, count, attach });
     root.append(row);
+  }
+
+  /** Con 2 o más sujetos: un selector por generador de atributos con selección para elegir a quién se aplica. */
+  function renderAttach(box, composed, metas) {
+    clear(box);
+    const subs = composed.subjects || [];
+    const used = metas.filter(m => store.countSelected(m.id));
+    box.hidden = subs.length < 2 || !used.length;
+    if (box.hidden) return;
+    const current = store.get().attach || {};
+    for (const m of used) {
+      const select = h('select', { class: 'select select--sm', 'aria-label': `A quién se aplica «${m.short}»`, onChange: e => store.setAttach(m.id, e.target.value) },
+        ...subs.map(s => h('option', { value: s.lead, selected: (current[m.id] || subs[0].lead) === s.lead }, s.lead)));
+      box.append(h('label', { class: 'slot__attach-row' }, h('span', {}, `${m.short} se aplica a`), select));
+    }
   }
 
   function pillFor(meta, n) {
@@ -84,6 +101,7 @@ export function mountSlotBoard(root) {
       const parts = (composed.slots.find(s => s.slot === slot.id)?.parts || []).filter(p => !p.boost);
       parts.forEach(p => r.chips.append(h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar', 'aria-label': `Quitar ${p.es}`, onClick: () => { if (p.custom) store.set({ custom: '' }); else if (p.section !== '_rule') store.removeOption(p.domain, p.section, p.option); } },
         h('span', { class: 'chip__text' }, p.es), p.section !== '_rule' ? h('span', { html: icon('x', 14) }) : null)));
+      if (r.attach) renderAttach(r.attach, composed, metas);
       r.count.textContent = parts.length ? String(parts.length) : '';
       r.row.classList.toggle('has-selection', parts.length > 0);
     }

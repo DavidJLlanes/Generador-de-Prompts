@@ -87,8 +87,12 @@ export function homePage({ domains, totals }) {
           <label class="quick__field"><span class="quick__label">Proporción</span>
             <select class="select quick__select" data-quick-aspect aria-label="Proporción de la imagen"><option value="random">Al azar</option>${quick.aspects}</select></label>
         </div>
-        <button type="button" class="btn btn--primary btn--lg quick__roll" data-quick-roll>
-          <span class="quick__dice" data-quick-dice>${icon('dice', 22)}</span> Generar prompt aleatorio</button>
+        <div class="quick__buttons">
+          <button type="button" class="btn btn--primary btn--lg quick__roll" data-quick-roll>
+            <span class="quick__dice" data-quick-dice>${icon('dice', 22)}</span> Generar prompt aleatorio</button>
+          <button type="button" class="btn btn--outline" data-quick-daily title="El mismo prompt para todo el mundo durante el día de hoy">${icon('spark', 18)} Prompt del día</button>
+        </div>
+        <p class="quick__lockhint" data-quick-lockhint hidden>Pulsa una etiqueta para <b>bloquearla</b>: se conserva al volver a generar y se sortea el resto.</p>
       </div>
       <div class="quick__result" data-quick-result aria-live="polite">
         <div class="quick__frame-wrap" aria-hidden="true"><div class="quick__frame" data-quick-frame><span data-quick-ratio>16:9</span></div></div>
@@ -98,9 +102,14 @@ export function homePage({ domains, totals }) {
           <div class="quick__actions">
             <button type="button" class="btn btn--primary" data-quick-copy disabled>${icon('copy', 18)} Copiar prompt</button>
             <button type="button" class="btn btn--outline" data-quick-open disabled>Abrir en el constructor ${icon('arrow', 16)}</button>
+            <button type="button" class="btn btn--ghost" data-quick-share disabled>${icon('link', 18)} Compartir</button>
           </div>
         </div>
       </div>
+      <details class="quick__history" data-quick-history hidden>
+        <summary>Tus últimas tiradas <b data-quick-history-count>0</b></summary>
+        <ul class="quick__hist-list" data-quick-history-list></ul>
+      </details>
     </div>
   </div>
 </section>
@@ -161,7 +170,8 @@ export function homePage({ domains, totals }) {
     <div class="formats">
       <div class="format"><h3>Texto</h3><p>Una descripción continua en inglés, válida en cualquier generador de imágenes.</p><code>Create the image of a woman, …</code></div>
       <div class="format"><h3>ChatGPT / Gemini</h3><p>Redacción en lenguaje natural, organizada por bloques de sujeto, escenario y técnica.</p><code>Setting: A traditional Japanese tea house…</code></div>
-      <div class="format"><h3>Stable Diffusion / Flux</h3><p>Prompt positivo y negativo por separado, con el tamaño sugerido para tu proporción.</p><code>Negative prompt: lowres, blurry, …</code></div>
+      <div class="format"><h3>Stable Diffusion</h3><p>Prompt positivo y negativo por separado, con el tamaño sugerido para tu proporción.</p><code>Negative prompt: lowres, blurry, …</code></div>
+      <div class="format"><h3>Flux · DALL·E</h3><p>Texto natural sin campo negativo, con el tamaño que admite cada modelo.</p><code>Size: 1792x1024</code></div>
       <div class="format"><h3>Ideogram (JSON)</h3><p>Descripción, estilo y composición estructurados, con paletas de color deducidas.</p><code>{ "high_level_description": … }</code></div>
     </div>
   </div>

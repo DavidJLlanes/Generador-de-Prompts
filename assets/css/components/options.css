@@ -173,3 +173,10 @@
 .adult-notice__text { flex: 1 1 320px; margin: 0; font-size: var(--fs-sm); color: var(--text-2); }
 .adult-notice__text strong { color: var(--text); }
 .adult-notice.is-on { border-left-color: var(--line-2); }
+
+/* VISTA PREVIA DE OPCIÓN: texto en inglés que se enviará al modelo */
+.opt-peek { position: fixed; left: 50%; bottom: 16px; z-index: 70; display: grid; gap: 2px; width: max-content; max-width: min(560px, calc(100vw - 24px)); padding: 10px 16px; transform: translateX(-50%); border: 1px solid var(--accent-line); border-radius: var(--radius); background: rgba(27, 30, 35, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--shadow-pop); pointer-events: none; font-size: var(--fs-sm); }
+.opt-peek[hidden] { display: none; }
+.opt-peek b { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.opt-peek span { color: var(--text); line-height: 1.5; }
+.has-dock .opt-peek { bottom: calc(var(--dock-h) + 16px); }

@@ -9,6 +9,7 @@ import { randomSelection } from '../core/random.js';
 import { renderFormat } from '../core/formats/index.js';
 import { recordHistory } from '../core/library.js';
 import { copyText } from './clipboard.js';
+import { manual } from '../core/manual.js';
 import { randomizeAll } from './slot-board.js';
 import { toast } from './toast.js';
 
@@ -16,7 +17,7 @@ import { toast } from './toast.js';
 export function copyCurrentPrompt() {
   const { composed, state } = live.get();
   if (composed.empty) { toast('Elige algo primero', { tone: 'warn' }); return; }
-  copyText(renderFormat(state.format, composed, state).text, 'Prompt copiado');
+  copyText(manual.resolve(renderFormat(state.format, composed, state).text), 'Prompt copiado');
   recordHistory(state);
 }
 

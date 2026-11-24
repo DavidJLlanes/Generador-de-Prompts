@@ -33,3 +33,20 @@ dialog.lib::backdrop { background: rgba(7, 9, 12, 0.76); backdrop-filter: blur(5
 .prompt-panel__refs { display: grid; gap: var(--space-2); }
 .prompt-panel__ref-switches { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
 .prompt-panel__ref-note { margin: 0; font-size: var(--fs-xs); color: var(--text-3); }
+
+/* COMPARAR VARIANTES */
+.cmp__grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr 1fr; overflow: auto; }
+.cmp__col { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.cmp__col h3 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.cmp__text { margin: 0; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text-2); }
+.cmp__mark { padding: 0 2px; border-radius: 3px; color: var(--text); }
+.cmp__mark--del { background: rgba(217, 138, 125, 0.22); text-decoration: line-through; text-decoration-color: var(--rose); }
+.cmp__mark--add { background: rgba(156, 197, 154, 0.22); }
+.cmp__pin { align-self: flex-start; }
+@media (max-width: 720px) { .cmp__grid { grid-template-columns: 1fr; } }
+
+/* EDICIÓN A MANO DEL PROMPT */
+.out-edit { display: grid; gap: var(--space-2); }
+.out-edit__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); font-size: var(--fs-xs); color: var(--text-3); }
+.out-edit__tag { padding: 2px 10px; border: 1px solid var(--accent-line); border-radius: var(--radius-pill); font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); }
+.out-edit__text { width: 100%; min-height: 9rem; resize: vertical; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.7; }

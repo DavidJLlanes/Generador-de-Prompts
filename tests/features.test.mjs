@@ -145,3 +145,24 @@ test('descripciones largas de ropa: se integran en la frase del sujeto, con su �
   const shortText = renderFormat('text', compose(domains, short), short).text;
   assert.ok(shortText.includes(o.en) && !shortText.includes(o.rich), 'en modo conciso se usa el texto corto');
 });
+
+test('formatos Flux y DALL·E: sin negativo propio, con tamaño y sin duplicar la proporción', async () => {
+  const { loadAllDomains } = await import('../scripts/lib/domains.mjs');
+  const { compose } = await import('../assets/js/core/composer.js');
+  const { renderFormat } = await import('../assets/js/core/formats/index.js');
+  const { dalleSize } = await import('../assets/js/core/formats/flux-dalle.js');
+  const domains = Object.fromEntries((await loadAllDomains()).map(x => [x.domain.id, x.domain]));
+  const edad = domains.woman.sections.find(s => s.id === 'edad').options[0].id;
+  const st = { v: 1, sel: { woman: { edad: [edad] } }, locks: {}, detail: 'rich', boost: true, aspect: '16:9', format: 'text', adult: false, attach: {} };
+  const c = compose(domains, st);
+  const flux = renderFormat('flux', c, st).text;
+  assert.doesNotMatch(flux, /Avoid:/);
+  assert.match(flux, /\nSize: \d+x\d+$/);
+  const dalle = renderFormat('dalle', c, st).text;
+  assert.match(dalle, /Do not include: /);
+  assert.doesNotMatch(dalle, /Aspect ratio/);
+  assert.match(dalle, /\nSize: 1792x1024$/);
+  assert.equal(dalleSize('9:16'), '1024x1792');
+  assert.equal(dalleSize('1:1'), '1024x1024');
+  assert.equal(dalleSize(''), '1024x1024');
+});

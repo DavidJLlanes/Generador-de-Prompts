@@ -14,7 +14,7 @@ export function initChrome() {
   const shared = readSharedFromLocation();
   if (shared) {
     store.replaceSelection(shared.sel);
-    store.set({ detail: shared.detail, boost: shared.boost, aspect: shared.aspect, custom: shared.custom });
+    store.set({ detail: shared.detail, boost: shared.boost, aspect: shared.aspect, custom: shared.custom, attach: shared.attach });
     queueMicrotask(() => toast('Prompt compartido cargado'));
   }
 

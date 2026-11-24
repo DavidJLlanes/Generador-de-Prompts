@@ -107,7 +107,9 @@ export const GUIDES = [
   <tbody>
     <tr><td><strong>Texto</strong></td><td>Texto continuo en inglés, en frases</td><td>Cualquier generador</td></tr>
     <tr><td><strong>ChatGPT / Gemini</strong></td><td>Lenguaje natural, por bloques (Subject, Setting…)</td><td>Asistentes de chat que generan imágenes</td></tr>
-    <tr><td><strong>Stable Diffusion / Flux</strong></td><td>Prompt positivo y negativo, con tamaño sugerido</td><td>ComfyUI, interfaces de Stable Diffusion, Flux</td></tr>
+    <tr><td><strong>Stable Diffusion</strong></td><td>Prompt positivo y negativo, con tamaño sugerido</td><td>ComfyUI e interfaces de Stable Diffusion</td></tr>
+    <tr><td><strong>Flux</strong></td><td>Texto continuo sin prompt negativo, con tamaño sugerido</td><td>Flux (ComfyUI, APIs)</td></tr>
+    <tr><td><strong>DALL·E / gpt-image</strong></td><td>Descripción natural, negativos como «Do not include» y tamaño admitido</td><td>ChatGPT, API de OpenAI</td></tr>
     <tr><td><strong>Ideogram (JSON)</strong></td><td>Descripción, estilo y composición estructurados</td><td>Ideogram, si admite descripciones estructuradas</td></tr>
     <tr><td><strong>Midjourney</strong></td><td>Descripción corta con <code>--ar</code> y <code>--no</code></td><td>Midjourney</td></tr>
   </tbody>

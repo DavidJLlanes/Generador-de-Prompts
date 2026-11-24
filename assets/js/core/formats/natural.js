@@ -23,6 +23,14 @@ export function formatNatural(c, state) {
       if (other.length) lines.push(`${label}: ${toSentences(other.map(sentenceItem)).join(' ')}`);
       continue;
     }
+    if (s.slot === 'attribute' && subs.length > 1) {
+      // Atributos de varios sujetos: una línea por sujeto, según a quién se hayan asignado.
+      for (const sub of subs) {
+        const own = parts.filter(p => p.owner === sub.lead);
+        if (own.length) lines.push(`${SLOT_BY_ID.attribute.en} (${sub.lead}): ${toSentences(own.map(sentenceItem)).join(' ')}`);
+      }
+      continue;
+    }
     lines.push(`${SLOT_BY_ID[s.slot].en}: ${toSentences(parts.map(sentenceItem)).join(' ')}`);
   }
   const custom = c.parts.find(p => p.custom);

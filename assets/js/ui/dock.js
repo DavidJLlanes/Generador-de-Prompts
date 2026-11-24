@@ -10,6 +10,7 @@ import { renderFormat } from '../core/formats/index.js';
 import { createPromptPanel } from './prompt-panel.js';
 import { copyText } from './clipboard.js';
 import { recordHistory } from '../core/library.js';
+import { manual } from '../core/manual.js';
 
 let api = null;
 
@@ -27,7 +28,7 @@ export function mountDock() {
   const preview = h('p', { class: 'dock__preview', 'aria-hidden': 'true' });
   const toggle = h('button', { type: 'button', class: 'dock__toggle', 'aria-expanded': 'false', 'aria-controls': 'dock-sheet', onClick: () => (isOpen() ? close() : open()) },
     h('span', { class: 'dock__chev', html: icon('up') }), count);
-  const copy = h('button', { type: 'button', class: 'btn btn--primary btn--sm', onClick: () => { const { composed, state } = live.get(); if (!composed.empty) { copyText(renderFormat(state.format, composed, state).text, 'Prompt copiado'); recordHistory(state); } } }, h('span', { html: icon('copy', 16) }), 'Copiar');
+  const copy = h('button', { type: 'button', class: 'btn btn--primary btn--sm', onClick: () => { const { composed, state } = live.get(); if (!composed.empty) { copyText(manual.resolve(renderFormat(state.format, composed, state).text), 'Prompt copiado'); recordHistory(state); } } }, h('span', { html: icon('copy', 16) }), 'Copiar');
   const bar = h('div', { class: 'dock__bar' }, h('div', { class: 'container dock__bar-inner' }, toggle, preview, copy));
 
   const root = h('div', { class: 'dock is-empty', id: 'dock' }, sheet, bar);

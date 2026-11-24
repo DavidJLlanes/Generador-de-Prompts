@@ -61,3 +61,16 @@ export const sentenceItem = p => ({ t: p.text, phrase: PHRASE_SLOTS.has(p.slot) 
 
 const NF = new Intl.NumberFormat('es-ES', { useGrouping: 'always' });
 export const fmtNumber = n => NF.format(n);
+
+/**
+ * Generador pseudoaleatorio con semilla (mulberry32 sobre un hash de la cadena): misma semilla, misma secuencia.
+ * Sirve para el «prompt del día»: todo el mundo obtiene el mismo el mismo día.
+ * @param {string} seed
+ * @returns {() => number} función que devuelve números en [0, 1)
+ */
+export function seededRng(seed) {
+  let h = 1779033703 ^ String(seed).length;
+  for (let i = 0; i < String(seed).length; i++) { h = Math.imul(h ^ String(seed).charCodeAt(i), 3432918353); h = (h << 13) | (h >>> 19); }
+  let a = (h = Math.imul(h ^ (h >>> 16), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909)) ^ (h >>> 16);
+  return () => { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
