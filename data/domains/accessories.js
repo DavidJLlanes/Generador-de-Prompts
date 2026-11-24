@@ -1204,7 +1204,7 @@ export default {
         {"id":"grants-magical-resistance","es":"Otorga resistencia mágica","en":"grants magical resistance"},
         {"id":"grants-night-vision","es":"Otorga vista nocturna","en":"grants night vision"},
         {"id":"grants-telepathy","es":"Otorga telepátía","en":"grants telepathy"},
-        {"id":"grants-telekinesis","es":"Otorga telepatía","en":"grants telekinesis"},
+        {"id":"grants-telekinesis","es":"Otorga telequinesis","en":"grants telekinesis"},
         {"id":"grants-healing","es":"Otorga curación","en":"grants healing"},
         {"id":"grants-protection","es":"Otorga protección","en":"grants protection"},
         {"id":"grants-magical-attack","es":"Otorga ataque mágico","en":"grants magical attack"},

@@ -138,8 +138,7 @@ export default {
         {"id":"icy-white-hair","es":"Blanco hielo","en":"icy white hair"},
         {"id":"hair-with-gray-streaks","es":"Con canas","en":"hair with gray streaks"},
         {"id":"natural-gray-hair","es":"Gris natural","en":"natural gray hair"},
-        {"id":"dyed-blue-hair","es":"Azul teñido","en":"dyed blue hair"},
-        {"id":"jet-black-hair-2","es":"Negro azabache","en":"jet black hair"}
+        {"id":"dyed-blue-hair","es":"Azul teñido","en":"dyed blue hair"}
       ]
     },
     {

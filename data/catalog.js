@@ -3,7 +3,7 @@ export default {
   "totals": {
     "domains": 28,
     "sections": 752,
-    "options": 21844,
+    "options": 21778,
     "presets": 1071
   },
   "domains": [
@@ -33,7 +33,7 @@ export default {
       "kicker": "Hombres · Rostro · Cuerpo · Vestuario · Expresión",
       "summary": "Genera prompts para crear personajes masculinos realistas con IA. Define rasgos, vestuario, expresión y pose.",
       "sections": 17,
-      "options": 287,
+      "options": 286,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -108,7 +108,7 @@ export default {
       "kicker": "Diseñador de Vehículos · Naves Mágicas · Máquinas de Combate · Transportes Legendarios",
       "summary": "Generador de prompts para vehículos futuristas y realistas con IA. Define tipo, estilo, contexto y detalles.",
       "sections": 28,
-      "options": 845,
+      "options": 844,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -183,7 +183,7 @@ export default {
       "kicker": "Épocas · Culturas · Moda · Maquillaje · Poses · Escenarios",
       "summary": "Generador avanzado de personajes femeninos adultos: 13 épocas, 6 culturas, identidad, cuerpo, rostro, pelo, maquillaje, vestuario con 68 colores y 22 tejidos, poses y escenarios.",
       "sections": 82,
-      "options": 3139,
+      "options": 3135,
       "presets": 11,
       "presetsLabel": "recetas"
     },
@@ -228,7 +228,7 @@ export default {
       "kicker": "Diseñador de Tatuajes · Arte Corporal · Marcas · Simbología",
       "summary": "Generador de prompts para diseños de tatuajes únicos con IA. Controla estilo, tamaño, motivo y detalle.",
       "sections": 40,
-      "options": 800,
+      "options": 799,
       "presets": 0,
       "presetsLabel": "ideas"
     },
@@ -423,7 +423,7 @@ export default {
       "kicker": "Cámara · Iluminación · Composición · Color · Acabado",
       "summary": "Cámara, luz, composición, color y acabado de máxima calidad, compartidos por todos los generadores.",
       "sections": 13,
-      "options": 866,
+      "options": 807,
       "presets": 0,
       "presetsLabel": "ideas"
     }

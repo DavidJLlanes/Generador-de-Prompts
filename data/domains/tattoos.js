@@ -301,7 +301,6 @@ export default {
         {"id":"jawline","es":"Línea de mandíbula","en":"jawline"},
         {"id":"side-of-neck","es":"Costado cuello","en":"side of neck"},
         {"id":"front-of-neck","es":"Frontal cuello","en":"front of neck"},
-        {"id":"back-of-neck-2","es":"Dorso cuello","en":"back of neck"},
         {"id":"entire-neck","es":"Cuello entero","en":"entire neck"}
       ]
     },

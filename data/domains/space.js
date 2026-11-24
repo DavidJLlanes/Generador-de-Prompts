@@ -215,7 +215,7 @@ export default {
       "options": [
         {"id":"dense-starfield","es":"Campo estelar denso","en":"dense starfield"},
         {"id":"sparse-scattered-stars","es":"Estrellas dispersas","en":"sparse scattered stars"},
-        {"id":"milky-way-band","es":"Banda de la Vía Láctea","en":"Milky Way band"},
+        {"id":"milky-way-band","es":"Banda de la vía láctea","en":"Milky Way band"},
         {"id":"nearby-bright-cluster","es":"Cúmulo brillante cercano","en":"nearby bright cluster"},
         {"id":"twinkling-stars","es":"Estrellas centelleantes","en":"twinkling stars"},
         {"id":"few-stars-in-the-void","es":"Pocas estrellas en vacío","en":"few stars in the void"},

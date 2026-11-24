@@ -668,7 +668,7 @@ export default {
         {"id":"religious-iconography","es":"Iconografía religiosa","en":"religious iconography"},
         {"id":"ancient-mythology","es":"Mitología antigua","en":"ancient mythology"},
         {"id":"archetypal-psychology","es":"Psicología arquetípica","en":"archetypal psychology"},
-        {"id":"yin-yang-duality","es":"Dualismo Yin Yang","en":"yin yang duality"},
+        {"id":"yin-yang-duality","es":"Dualismo yin yang","en":"yin yang duality"},
         {"id":"phoenix-rebirth","es":"Renacimiento fénix","en":"phoenix rebirth"},
         {"id":"death-and-rebirth","es":"Muerte y renacimiento","en":"death and rebirth"},
         {"id":"sacrifice-redemption","es":"Sacrificio redención","en":"sacrifice redemption"},

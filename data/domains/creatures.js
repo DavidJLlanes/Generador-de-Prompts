@@ -52,7 +52,7 @@ export default {
         {"id":"primal-savage-beast","es":"Bestia salvaje","en":"primal savage beast"},
         {"id":"apex-alien-predator","es":"Depredador alienígena","en":"apex alien predator"},
         {"id":"radiation-mutated-creature","es":"Mutante radiacción","en":"radiation-mutated creature"},
-        {"id":"deep-space-eldritch-entity","es":"Criatura del Espacio Profundo","en":"deep space eldritch entity"},
+        {"id":"deep-space-eldritch-entity","es":"Criatura del espacio profundo","en":"deep space eldritch entity"},
         {"id":"cosmic-horror-entity","es":"Entidad cósmica","en":"cosmic horror entity"}
       ]
     },

@@ -17,6 +17,7 @@
  *     refPose, refCostume: boolean                               // añadirá una imagen de referencia de pose / vestuario
  *   }
  */
+import { OPTION_ALIASES } from '../../../data/aliases.js';
 import { loadJSON, saveJSON } from './storage.js';
 import { FORMATS as FORMAT_LIST } from './formats/index.js';
 import { conflictsOf } from './conflicts.js';
@@ -36,7 +37,8 @@ export function sanitizeSel(sel) {
     if (!secs || typeof secs !== 'object') continue;
     for (const [s, ids] of Object.entries(secs)) {
       if (!Array.isArray(ids)) continue;
-      const clean = ids.filter(x => typeof x === 'string');
+      const alias = OPTION_ALIASES[d]?.[s];
+      const clean = [...new Set(ids.filter(x => typeof x === 'string').map(x => (alias && alias[x]) || x))];
       if (clean.length) (out[d] ||= {})[s] = clean;
     }
   }

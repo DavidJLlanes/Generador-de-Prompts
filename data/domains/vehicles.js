@@ -554,7 +554,6 @@ export default {
         {"id":"diamond-wheels","es":"Ruedas de diamante","en":"diamond wheels"},
         {"id":"gold-wheels","es":"Ruedas de oro","en":"gold wheels"},
         {"id":"wood-wheels","es":"Ruedas de madera","en":"wood wheels"},
-        {"id":"crystal-wheels-2","es":"Ruedas de cristal","en":"crystal wheels"},
         {"id":"eternal-ice-wheels","es":"Ruedas de hielo eterno","en":"eternal ice wheels"}
       ]
     },
