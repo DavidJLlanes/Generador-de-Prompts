@@ -19,6 +19,7 @@
     "check": "npm run validate && npm run build && npm test",
     "test:e2e": "node e2e/run.mjs",
     "audit:a11y": "node scripts/audit-a11y.mjs",
+    "audit:data": "node scripts/audit-data.mjs",
     "og": "node scripts/generate-og.mjs"
   }
 }
