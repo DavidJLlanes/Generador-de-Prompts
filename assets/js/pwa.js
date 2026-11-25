@@ -4,6 +4,13 @@ const installDialog = document.querySelector('[data-install-help]');
 const instructionText = document.querySelector('[data-install-instructions]');
 let installPrompt = null;
 
+// «Buscar actualizaciones» (menú): el diálogo y la consulta a GitHub se cargan solo al pulsar.
+document.querySelector('[data-update-check]')?.addEventListener('click', async () => {
+  document.querySelector('.nav-toggle')?.setAttribute('aria-expanded', 'false');
+  document.querySelector('#site-nav')?.classList.remove('is-open');
+  (await import('./ui/update-check.js')).openUpdateCheck();
+});
+
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
   || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isAndroid = /android/i.test(navigator.userAgent);

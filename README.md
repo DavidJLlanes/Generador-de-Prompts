@@ -211,7 +211,7 @@ sudo nginx -t && sudo systemctl reload nginx
 Puntos a tener en cuenta:
 
 - Las ubicaciones de login y registro deben incluir `proxy_set_header X-Real-IP $remote_addr;` para limitar los intentos fallidos por IP.
-- Si tu dominio aplica una **CSP**, `connect-src` debe permitir `'self'` y los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`.
+- Si tu dominio aplica una **CSP**, `connect-src` debe permitir `'self'`, `https://raw.githubusercontent.com` (para «Buscar actualizaciones» del menú) y los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`.
 - Las carpetas internas (`docs`, `deploy`, `scripts`, `tests`, `e2e`, `node_modules`) ya quedan denegadas en el ejemplo.
 
 ### 4. Actualizar

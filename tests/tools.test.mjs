@@ -349,3 +349,18 @@ test('biblioteca: estrellas y modelo se guardan, se limpian y alimentan el resum
   assert.ok(lib.loadLibrary().saved.some(i => i.rating === 5 && i.model === 'Flux dev'));
   for (const it of lib.loadLibrary().saved) lib.deleteItem('saved', it.id);
 });
+
+test('versión: data/version.json está al día y compareVersions distingue los cuatro casos', async () => {
+  const { versionFiles } = await import('../scripts/lib/version.mjs');
+  const root = new URL('..', import.meta.url).pathname;
+  const fresh = versionFiles(root);
+  assert.equal(readFileSync(new URL('../data/version.json', import.meta.url), 'utf8'), fresh.json, 'ejecuta «npm run build»');
+  assert.equal(readFileSync(new URL('../data/version.js', import.meta.url), 'utf8'), fresh.js);
+  const { compareVersions } = await import('../assets/js/ui/update-check.js');
+  const a = { id: 'a' }, b = { id: 'b' };
+  assert.equal(compareVersions(a, a, a), 'ok');
+  assert.equal(compareVersions(a, b, b), 'reload');
+  assert.equal(compareVersions(a, a, b), 'behind');
+  assert.equal(compareVersions(a, a, null), 'offline');
+  assert.equal(compareVersions(a, null, a), 'ok');
+});

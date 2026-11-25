@@ -64,3 +64,8 @@
 .var-card__full { font-size: var(--fs-xs); color: var(--text-3); }
 .var-card__full summary { cursor: pointer; }
 .var-card__full p { margin: 6px 0 0; color: var(--text-2); line-height: 1.5; overflow-wrap: anywhere; }
+.tool-card__title { margin: 0 0 4px; font-family: var(--font-display); font-weight: 400; font-size: var(--fs-lg); }
+.update-rows { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 14px 0; font-size: var(--fs-sm); }
+.update-rows dt { color: var(--text-3); }
+.update-rows dd { margin: 0; font-family: var(--font-mono); overflow-wrap: anywhere; }
+.update-cmd { display: block; margin: 10px 0; padding: 10px 12px; border-radius: var(--radius-sm, 8px); background: var(--surface-2); font-size: var(--fs-xs); overflow-wrap: anywhere; user-select: all; }

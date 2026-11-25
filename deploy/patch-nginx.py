@@ -24,7 +24,7 @@ LOGIN_CSP = ("add_header Content-Security-Policy \"default-src 'none'; "
              "script-src 'sha256-6cKrCQs1bcUyfOYPDV9DTwrKEaYy356cNPTEJc8Frfg=' 'sha256-sKG38MKTTkiCHCFF9uuv/ZUwW+qDI2wAFYZ8diYwExg='; "
              "style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'\" always;")
 APP_CSP = ("add_header Content-Security-Policy \"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
-           "img-src 'self' data:; font-src 'self'; connect-src 'self' https://openrouter.ai https://api.openai.com "
+           "img-src 'self' data:; font-src 'self'; connect-src 'self' https://raw.githubusercontent.com https://openrouter.ai https://api.openai.com "
            "https://api.anthropic.com https://generativelanguage.googleapis.com; worker-src 'self'; manifest-src 'self'; "
            "object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'\" always;")
 NO_STORE = 'add_header Cache-Control "no-store" always;'

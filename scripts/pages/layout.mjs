@@ -24,6 +24,7 @@ function header() {
       <a href="/constructor/">Constructor</a>
       <a href="/generadores/escenarios/">Escenarios</a>
       <a href="/guias/">Guías</a>
+      <button type="button" class="nav-check" data-update-check>Buscar actualizaciones</button>
     </nav>
     <div class="site-header__actions">
       <button type="button" class="btn btn--outline btn--sm" data-dock-open>${icon('layers', 16)}<span class="btn__label">Mi prompt</span><span class="badge" data-count hidden>0</span></button>

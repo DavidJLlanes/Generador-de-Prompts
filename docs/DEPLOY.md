@@ -49,7 +49,7 @@ sudo rm -f /etc/nginx/.htpasswd-lumen-prompt
 
 Las ubicaciones proxy de `/prompt/auth/login/` y `/prompt/auth/register/` deben incluir `proxy_set_header X-Real-IP $remote_addr;` para limitar los intentos fallidos por IP.
 
-Si el dominio ya aplica una política CSP, su directiva `connect-src` debe permitir `'self'` y los orígenes de los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`. La clave se introduce en «Constructor → Configurar IA» y se guarda en el navegador.
+Si el dominio ya aplica una política CSP, su directiva `connect-src` debe permitir `'self'`, `https://raw.githubusercontent.com` (para «Buscar actualizaciones» del menú) y los orígenes de los proveedores de IA que uses: `https://openrouter.ai`, `https://api.openai.com`, `https://api.anthropic.com` y `https://generativelanguage.googleapis.com`. La clave se introduce en «Constructor → Configurar IA» y se guarda en el navegador.
 
 El sitemap está en `https://djl.com.es/prompt/sitemap.xml`. Para anunciarlo a los buscadores, añade esa URL al `robots.txt` de la raíz de `djl.com.es` sin sustituir sus reglas actuales.
 

@@ -75,3 +75,10 @@ console.log('importador: índice de frases generado');
 
 /* ---------- páginas, sitemap, robots y manifiesto ---------- */
 await buildPages({ domains, totals, all, write });
+
+/* ---------- versión del sitio (para «Buscar actualizaciones»): se calcula al final, con todo lo demás ya escrito ---------- */
+import { versionFiles } from './lib/version.mjs';
+const ver = versionFiles(ROOT);
+write('data/version.json', ver.json);
+write('data/version.js', ver.js);
+console.log(`versión: ${ver.json.trim()}`);
