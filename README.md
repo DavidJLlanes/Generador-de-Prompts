@@ -53,6 +53,13 @@ El catálogo actual ronda los **22.000 opciones**, **750 secciones** y **1.000 i
 - **Siete formatos de salida:** texto continuo, bloques por ranura (ChatGPT/Gemini), positivo/negativo con tamaño (Stable Diffusion), texto sin negativo con tamaño (Flux), descripción natural con tamaño admitido (DALL·E / gpt-image), parámetros `--ar`/`--no` (Midjourney) y JSON estructurado (Ideogram).
 - **Prueba rápida en la portada:** elige generador y proporción (o deja que decida el azar) y genera un prompt al momento. Puedes bloquear etiquetas y relanzar el resto, abrir el «Prompt del día» (el mismo para todos), ver el historial con favoritos y compartir por enlace. No toca tu selección del constructor.
 - **Plantillas de partida:** 18 combinaciones de varios generadores (retrato editorial, clásico en un puerto de montaña, dragón en la tormenta, ciudad cyberpunk…) para cargar con un toque desde la portada o el constructor y retocar. Se pueden deshacer.
+- **Revisión de contradicciones:** avisa cuando dos piezas se pisan («noche» con «pleno sol», «primer plano» con «cuerpo entero», fotografía con anime, blanco y negro con colores vivos…), también con tu texto libre, y deja quitar una de las dos con un toque. Solo avisa: nunca cambia tu selección.
+- **Tokens y prioridad:** en Stable Diffusion, Flux y Midjourney muestra cuántos tokens ocupa el prompt (cálculo aproximado) y qué piezas quedarían fuera; el interruptor «Estilo y escena primero» reordena el prompt para que lo esencial vaya al principio.
+- **Ajustes de Midjourney** (versión, `--s`, `--chaos`, `--weird`, `--raw`) y **negativo coherente** en Stable Diffusion: contra «cartoon» si es una foto, contra «photorealistic» si es un dibujo, y los fallos típicos de manos y rostro si el sujeto es una persona.
+- **Importar un prompt:** pega uno en inglés (de esta web o de otra parte, con parámetros de Midjourney, pesos o JSON) y se desglosa en opciones; lo que no reconoce pasa al texto libre.
+- **Variantes A/B:** cambia una sola sección y compara cuatro prompts con lo diferente resaltado.
+- **Exportar en lote:** hasta 200 prompts aleatorios en CSV, o las listas de opciones como wildcards (ZIP) para ComfyUI y Stable Diffusion WebUI. Los wildcards no incluyen contenido para adultos ni de menores o aspecto joven.
+- **Valoración de prompts guardados:** estrellas y modelo usado, y un resumen de qué opciones se repiten en tus mejores prompts.
 - **Retoque del prompt final:** edítalo a mano, púlelo con tu IA («Pulir con IA», con tu propia clave) o compara dos variantes con las diferencias marcadas.
 - **Aleatorio coherente:** cada tirada tiene un ánimo (suave, neutro o intenso) y no mezcla rasgos de tonos opuestos. Con varios sujetos, eliges a cuál se aplican los atributos (rostro, peinado…).
 - **Nivel de detalle** conciso o detallado, y modo «Calidad máxima».
@@ -97,6 +104,7 @@ El catálogo actual ronda los **22.000 opciones**, **750 secciones** y **1.000 i
 | Vaciar una sección | Icono ✕ de su cabecera |
 | Compartir una selección | Copia el enlace del constructor: la selección va en la URL |
 | Guardar un prompt | Biblioteca, desde el constructor |
+| Importar, variantes A/B, exportar en lote | Menú **Herramientas** del panel «Mi prompt» |
 
 ### Conectar una IA (opcional)
 
@@ -131,7 +139,7 @@ y haz commit **incluyendo los archivos generados** (`data/catalog.js`, páginas 
 │   ├── domains/          Un archivo por generador (28)
 │   └── catalogs/         Secciones compartidas (poses, vestuario)
 ├── assets/
-│   ├── js/core/          Lógica pura: compositor, formatos, aleatorio, esquema, store, IA
+│   ├── js/core/          Lógica pura: compositor, formatos, aleatorio, esquema, store, IA, revisión (lint), tokens, importador, variantes, exportación
 │   ├── js/ui/            Componentes de interfaz (acordeón de opciones, dock, paneles)
 │   ├── js/pages/         Punto de entrada de cada tipo de página
 │   └── css/              tokens → base → layout → components

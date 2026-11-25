@@ -1,6 +1,6 @@
 const scope = self.registration.scope;
 const cachePrefix = `lumen-vitae:${scope}:`;
-const CACHE_NAME = `${cachePrefix}shell-v2`; // al subir la versión se borran las cachés anteriores (posibles respuestas envenenadas)
+const CACHE_NAME = `${cachePrefix}shell-v3`; // al subir la versión se borran las cachés anteriores (posibles respuestas envenenadas)
 const CORE_ASSETS = [
   './',
   'manifest.webmanifest',

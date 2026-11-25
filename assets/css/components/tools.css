@@ -1,0 +1,66 @@
+/* Herramientas del panel «Mi prompt»: menú, presupuesto de tokens, ajustes de Midjourney, avisos y diálogos
+   (importar, variantes, exportar) y valoraciones de «Mis prompts». */
+
+/* ---------- menú «Herramientas» ---------- */
+.tools-menu { position: relative; }
+.tools-menu > summary { list-style: none; cursor: pointer; }
+.tools-menu > summary::-webkit-details-marker { display: none; }
+.tools-menu__list { position: absolute; z-index: 30; bottom: calc(100% + 6px); left: 0; display: grid; gap: 2px; min-width: min(280px, calc(100vw - 32px)); padding: 6px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--bg-2); box-shadow: var(--shadow-pop); }
+.tools-menu__item { display: grid; gap: 2px; width: 100%; padding: 10px 12px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text); font-size: var(--fs-sm); text-align: left; cursor: pointer; }
+.tools-menu__item small { color: var(--text-3); font-size: var(--fs-xs); }
+.tools-menu__item:hover, .tools-menu__item:focus-visible { outline: none; background: var(--surface-2); }
+
+/* ---------- presupuesto de tokens y ajustes por formato ---------- */
+.prompt-tokens { display: grid; gap: 6px; margin: 0; font-size: var(--fs-xs); color: var(--text-3); }
+.prompt-tokens:empty { display: none; }
+.prompt-tokens__line { margin: 0; }
+.prompt-tokens.is-high .prompt-tokens__line { color: var(--text-2); }
+.prompt-tokens.is-over .prompt-tokens__line { color: var(--rose); }
+.prompt-tokens__cut { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.prompt-panel__mj { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.prompt-panel__mj[hidden] { display: none; }
+.mj-field { display: grid; gap: 4px; font-size: var(--fs-xs); color: var(--text-3); }
+.mj-field .select, .mj-field input[type="number"] { width: 96px; padding: 8px 10px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text); font-size: var(--fs-sm); }
+.mj-field .select { width: auto; min-width: 110px; }
+.mj-field--check { grid-auto-flow: column; align-items: center; gap: 8px; padding-bottom: 8px; color: var(--text-2); }
+
+/* ---------- avisos de contradicción ---------- */
+.prompt-review__warn { margin: 0 0 6px; color: var(--text-2); }
+.prompt-review__warn strong { color: var(--rose); font-weight: 600; }
+
+/* ---------- diálogos ---------- */
+.tool-dialog textarea.field__textarea { min-height: 120px; font-family: var(--font-mono); font-size: var(--fs-xs); }
+.tool-body { display: grid; gap: var(--space-4); overflow: auto; min-height: 0; padding-right: 4px; }
+.tool-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); }
+.tool-status { margin: 0; color: var(--text-2); font-size: var(--fs-sm); }
+.tool-status.is-warn { color: var(--rose); }
+.tool-note { margin: 0; color: var(--text-3); font-size: var(--fs-xs); }
+.tool-block { display: grid; gap: var(--space-3); padding: var(--space-4); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.tool-block h3 { margin: 0; font-size: var(--fs-lg); }
+.tool-label { display: grid; gap: 4px; font-size: var(--fs-xs); color: var(--text-3); }
+.tool-label .select, .tool-label input[type="number"] { padding: 8px 10px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text); font-size: var(--fs-sm); }
+.imp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.imp-chip small { margin-left: 6px; color: var(--text-3); }
+.imp-custom { margin: 0; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text-2); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+.var-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.var-card { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4); border: 1px solid var(--line-2); border-radius: var(--radius); background: linear-gradient(160deg, var(--surface-2), var(--surface)); }
+.var-card__tag { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+.var-card__title { margin: 0; font-family: var(--font-display, inherit); font-size: 1.2rem; line-height: 1.15; }
+.var-card__text { margin: 0; flex: 1; color: var(--text-2); font-size: var(--fs-xs); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.var-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+/* ---------- valoración en «Mis prompts» ---------- */
+.lib__rating { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.stars { display: inline-flex; gap: 2px; }
+.star { width: 28px; height: 28px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--text-3); font-size: 1.15rem; line-height: 1; cursor: pointer; }
+.star:hover, .star:focus-visible { outline: none; color: #e2b858; background: var(--surface-2); }
+.star.is-on { color: #e2b858; }
+.lib__model { width: 190px; max-width: 100%; padding: 6px 10px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); background: var(--surface); color: var(--text); font-size: var(--fs-xs); }
+.lib__tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.lib__insights { display: grid; gap: 6px; padding: var(--space-3) var(--space-4); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); font-size: var(--fs-xs); color: var(--text-2); }
+.lib__insights p { margin: 0; }
+.lib__insights strong { color: var(--text); font-weight: 600; }
+.var-mark { padding: 0 3px; border-radius: 4px; background: rgba(226, 184, 88, 0.22); color: var(--text); }
+.var-card__full { font-size: var(--fs-xs); color: var(--text-3); }
+.var-card__full summary { cursor: pointer; }
+.var-card__full p { margin: 6px 0 0; color: var(--text-2); line-height: 1.5; overflow-wrap: anywhere; }

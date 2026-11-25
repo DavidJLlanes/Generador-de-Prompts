@@ -4,13 +4,15 @@
  * para que siga siendo válido si se amplían los datos. Se puede exportar e importar como JSON.
  *
  *   { v: 1, saved: [Item], history: [Item] }
- *   Item = { id, name, ts, snap: { sel, detail, boost, aspect, custom } }
+ *   Item = { id, name, ts, snap: { sel, detail, boost, aspect, custom }, rating?: 0-5, model?: string }
+ *   `rating` (estrellas) y `model` (dónde lo usaste) los pone el usuario en «Guardados»; no cuentan para detectar duplicados.
  */
 import { loadJSON, saveJSON } from './storage.js';
 import { sanitizeSel, CUSTOM_MAX } from './store.js';
 
 const KEY = 'lv:v1:library';
-export const LIMITS = { saved: 200, history: 30, name: 80 };
+export const LIMITS = { saved: 200, history: 30, name: 80, model: 40 };
+export const MAX_RATING = 5;
 
 const empty = () => ({ v: 1, saved: [], history: [] });
 
@@ -29,6 +31,8 @@ const isEmptySnap = s => !Object.keys(s.sel).length && !s.custom.trim();
 const signature = s => JSON.stringify([s.sel, s.detail, s.boost, s.aspect, s.custom]);
 const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
+const cleanRating = v => (Number.isInteger(v) && v >= 0 && v <= MAX_RATING ? v : 0);
+
 function cleanItem(raw) {
   if (!raw || typeof raw !== 'object' || !raw.snap || typeof raw.snap !== 'object') return null;
   const snap = snapshotOf(raw.snap);
@@ -38,6 +42,8 @@ function cleanItem(raw) {
     name: String(raw.name || 'Sin nombre').trim().slice(0, LIMITS.name) || 'Sin nombre',
     ts: Number.isFinite(raw.ts) ? raw.ts : Date.now(),
     snap,
+    rating: cleanRating(raw.rating),
+    model: typeof raw.model === 'string' ? raw.model.trim().slice(0, LIMITS.model) : '',
   };
 }
 
@@ -60,6 +66,43 @@ export function saveItem(name, state) {
   lib.saved = [item, ...lib.saved].slice(0, LIMITS.saved);
   persist(lib);
   return item;
+}
+
+/** Pone las estrellas (0 las quita) a un prompt guardado. */
+export function rateItem(id, rating) {
+  const lib = loadLibrary();
+  const it = lib.saved.find(x => x.id === id);
+  if (it) it.rating = cleanRating(rating);
+  return persist(lib);
+}
+
+/** Anota en qué modelo o programa se usó un prompt guardado. */
+export function setItemModel(id, model) {
+  const lib = loadLibrary();
+  const it = lib.saved.find(x => x.id === id);
+  if (it) it.model = String(model || '').trim().slice(0, LIMITS.model);
+  return persist(lib);
+}
+
+/**
+ * Qué te funciona: de los prompts guardados con estrellas, las opciones que se repiten en los de 4-5 estrellas
+ * y la media por modelo. Solo cuenta lo que el usuario ha valorado.
+ * @returns {{rated: number, good: number, top: {domain: string, section: string, option: string, count: number}[], models: {model: string, avg: number, n: number}[]}}
+ */
+export function libraryInsights(saved) {
+  const rated = saved.filter(i => i.rating > 0);
+  const good = rated.filter(i => i.rating >= 4);
+  const count = new Map();
+  for (const it of good) for (const [d, secs] of Object.entries(it.snap.sel)) for (const [s, ids] of Object.entries(secs)) for (const o of ids) {
+    const k = [d, s, o].join('\u0000');
+    count.set(k, (count.get(k) || 0) + 1);
+  }
+  const top = [...count].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).slice(0, 8)
+    .map(([k, n]) => { const [domain, section, option] = k.split('\u0000'); return { domain, section, option, count: n }; });
+  const byModel = new Map();
+  for (const it of rated) if (it.model) { const m = byModel.get(it.model) || { sum: 0, n: 0 }; m.sum += it.rating; m.n++; byModel.set(it.model, m); }
+  const models = [...byModel].map(([model, m]) => ({ model, avg: m.sum / m.n, n: m.n })).sort((a, b) => b.avg - a.avg || b.n - a.n);
+  return { rated: rated.length, good: good.length, top, models };
 }
 
 export function deleteItem(kind, id) {

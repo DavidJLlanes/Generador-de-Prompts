@@ -21,6 +21,12 @@ import { getAIConfig, getAIProvider, reviewSelectionWithAI, setAIProvider, polis
 import { manual } from '../core/manual.js';
 import { openCompare } from './compare-dialog.js';
 import { openAISettings } from './ai-settings.js';
+import { lintComposed } from '../core/lint.js';
+import { budgetReport } from '../core/tokens.js';
+import { MJ_VERSIONS, MJ_RANGES } from '../core/formats/midjourney.js';
+import { openImport } from './import-dialog.js';
+import { openVariants } from './variants-dialog.js';
+import { openExport } from './export-dialog.js';
 
 function aspectSelect() {
   const select = h('select', { class: 'select', 'aria-label': 'Proporción de la imagen', onChange: e => store.set({ aspect: e.target.value }) });
@@ -57,9 +63,26 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     if (profiles[e.target.value]) store.set(profiles[e.target.value]);
   } }, h('option', { value: '' }, 'Perfil de salida…'), h('option', { value: 'editorial' }, 'Retrato editorial'), h('option', { value: 'phone' }, 'Wallpaper móvil'), h('option', { value: 'product' }, 'Producto cuadrado'), h('option', { value: 'social' }, 'Publicación vertical'), h('option', { value: 'character' }, 'Personaje vertical'));
 
+  const priorityInput = h('input', { type: 'checkbox', class: 'switch__input', onChange: e => store.set({ priority: e.target.checked }) });
+  const priority = h('label', { class: 'switch', title: 'Pone primero el sujeto, el estilo y el escenario, y deja para el final los detalles finos y la atmósfera. En Stable Diffusion y Midjourney lo que va antes pesa más.' }, priorityInput, h('span', { class: 'switch__track', 'aria-hidden': 'true' }), h('span', { class: 'switch__label' }, 'Estilo y escena primero'));
+
+  // Ajustes de Midjourney: solo visibles en esa pestaña. Vacío = no se añade el parámetro.
+  const mjVersion = h('select', { class: 'select', 'aria-label': 'Versión de Midjourney', onChange: e => store.set({ mj: { v: e.target.value } }) }, MJ_VERSIONS.map(([v, l]) => h('option', { value: v }, l)));
+  const mjNumber = (key, label) => {
+    const [lo, hi] = MJ_RANGES[key];
+    const input = h('input', { type: 'number', min: String(lo), max: String(hi), step: '1', placeholder: '—', 'aria-label': `${label} (${lo} a ${hi})` });
+    input.addEventListener('change', () => store.set({ mj: { [key]: input.value } }));
+    return { key, input, el: h('label', { class: 'mj-field' }, `${label} (${lo}–${hi})`, input) };
+  };
+  const mjFields = [mjNumber('stylize', 'Stylize'), mjNumber('chaos', 'Chaos'), mjNumber('weird', 'Weird')];
+  const mjRawInput = h('input', { type: 'checkbox', onChange: e => store.set({ mj: { raw: e.target.checked } }) });
+  const mjBox = h('div', { class: 'prompt-panel__mj', role: 'group', 'aria-label': 'Parámetros de Midjourney', hidden: true },
+    h('label', { class: 'mj-field' }, 'Versión', mjVersion), mjFields.map(f => f.el), h('label', { class: 'mj-field mj-field--check' }, mjRawInput, 'Raw'));
+
   const hint = h('p', { class: 'prompt-panel__hint' });
   const out = h('div', { class: 'prompt-panel__out', 'aria-live': 'polite' });
   const meta = h('p', { class: 'prompt-panel__meta' });
+  const tokensBox = h('div', { class: 'prompt-tokens' });
   const summary = h('div', { class: 'prompt-panel__summary' });
   const review = h('div', { class: 'prompt-review', role: 'status', 'aria-live': 'polite' });
   const aiReviewStatus = h('p', { class: 'idea-interpreter__status', role: 'status', 'aria-live': 'polite' });
@@ -141,13 +164,49 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   const clearBtn = h('button', { type: 'button', class: 'btn btn--ghost', onClick: () => store.clearAll() }, h('span', { html: icon('trash') }), 'Vaciar');
   const undoBtn = h('button', { type: 'button', class: 'btn btn--outline', onClick: () => store.undo() }, 'Deshacer');
 
+  // Herramientas: importar un prompt ajeno, variantes A/B y exportación en lote.
+  const toolsItems = [
+    ['Importar un prompt', 'Pega un prompt y lo convierto en opciones', openImport],
+    ['Variantes A/B', 'Cambia una sección y compara cuatro prompts', openVariants],
+    ['Exportar en lote', 'CSV de prompts aleatorios o wildcards', openExport],
+  ];
+  const toolsMenu = h('details', { class: 'tools-menu' },
+    h('summary', { class: 'btn btn--outline', 'aria-haspopup': 'true' }, 'Herramientas'),
+    h('div', { class: 'tools-menu__list' }, toolsItems.map(([title, sub, fn]) => h('button', { type: 'button', class: 'tools-menu__item', onClick: () => { toolsMenu.open = false; fn(); } }, title, h('small', {}, sub)))));
+  const closeTools = e => { if (toolsMenu.open && !toolsMenu.contains(e.target)) toolsMenu.open = false; };
+  document.addEventListener('click', closeTools);
+  toolsMenu.addEventListener('keydown', e => { if (e.key === 'Escape' && toolsMenu.open) { e.stopPropagation(); toolsMenu.open = false; toolsMenu.querySelector('summary').focus(); } });
+
   const el = h('section', { class: `prompt-panel prompt-panel--${variant}`, 'aria-label': 'Tu prompt' },
     tabs,
-    h('div', { class: 'prompt-panel__controls' }, detail, boost, profile, aspect),
+    h('div', { class: 'prompt-panel__controls' }, detail, boost, profile, aspect, priority),
+    mjBox,
     customField,
     refs,
-    hint, out, meta, review, aiReviewActions, summary,
-    h('div', { class: 'prompt-panel__actions' }, copyBtn, randomBtn, linkBtn, libBtn, editBtn, polishBtn, compareBtn, undoBtn, clearBtn));
+    hint, out, meta, tokensBox, review, aiReviewActions, summary,
+    h('div', { class: 'prompt-panel__actions' }, copyBtn, randomBtn, linkBtn, libBtn, editBtn, polishBtn, compareBtn, undoBtn, clearBtn, toolsMenu));
+
+  const removePart = p => (p.custom ? store.set({ custom: '' }) : store.removeOption(p.domain, p.section, p.option));
+  const partChips = (parts, cls = 'prompt-review__chips') => h('div', { class: cls }, parts.map(p => h('button', { type: 'button', class: 'chip chip--removable', title: 'Quitar del prompt', 'aria-label': `Quitar ${p.es}`, onClick: () => removePart(p) }, p.es)));
+
+  /** Cuántos tokens ocupa el prompt en el formato activo y qué quedaría fuera si no cabe. */
+  function renderTokens(rep, state) {
+    clear(tokensBox);
+    tokensBox.className = `prompt-tokens${rep ? ` is-${rep.level}` : ''}`;
+    if (!rep) return;
+    const edge = rep.limit ?? rep.soft;
+    tokensBox.append(h('p', { class: 'prompt-tokens__line' }, `≈ ${rep.tokens} tokens${edge ? ` de ${edge}${rep.limit ? '' : ' recomendados'}` : ''} (cálculo aproximado). ${rep.level === 'ok' ? '' : rep.note}`));
+    if (rep.cut.length) {
+      const shown = rep.cut.slice(0, 8);
+      const row = h('div', { class: 'prompt-tokens__cut' }, h('span', {}, rep.limit ? 'Quedarían fuera:' : 'Pasan de lo recomendado:'));
+      row.append(partChips(shown, 'prompt-review__chips'));
+      if (rep.cut.length > shown.length) row.append(h('span', {}, `y ${rep.cut.length - shown.length} más`));
+      tokensBox.append(row);
+    }
+    if (rep.level !== 'ok' && ['sd', 'midjourney'].includes(state.format) && !state.priority) {
+      tokensBox.append(h('div', {}, h('button', { type: 'button', class: 'btn btn--outline btn--sm', onClick: () => store.set({ priority: true }) }, 'Poner estilo y escena primero')));
+    }
+  }
 
   function renderSummary(composed) {
     clear(summary);
@@ -173,6 +232,12 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
     el.querySelectorAll('.tab').forEach(t => { const on = t.dataset.format === state.format; t.classList.toggle('is-active', on); t.setAttribute('aria-selected', on); });
     detail.querySelectorAll('.segmented__btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.value === state.detail));
     boostInput.checked = state.boost;
+    priorityInput.checked = state.priority === true;
+    priority.hidden = !['sd', 'midjourney'].includes(state.format);
+    mjBox.hidden = state.format !== 'midjourney';
+    if (document.activeElement !== mjVersion) mjVersion.value = state.mj.v;
+    mjFields.forEach(f => { if (document.activeElement !== f.input) f.input.value = state.mj[f.key] ?? ''; });
+    mjRawInput.checked = state.mj.raw === true;
     refPoseInput.checked = state.refPose === true;
     refCostumeInput.checked = state.refCostume === true;
     const refOk = state.format === 'text' || state.format === 'natural';
@@ -191,6 +256,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
         h('p', {}, 'Elige opciones en cualquier generador. Puedes mezclar sujeto, escenario, clima y fotografía: si no eliges algo, simplemente no se incluye.'),
         h('a', { class: 'btn btn--outline btn--sm', href: sitePath('/generadores/') }, 'Explorar generadores')));
       meta.textContent = '';
+      renderTokens(null, state);
       copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = editBtn.disabled = polishBtn.disabled = compareBtn.disabled = true;
     } else {
       copyBtn.disabled = linkBtn.disabled = clearBtn.disabled = editBtn.disabled = compareBtn.disabled = false;
@@ -223,6 +289,7 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
           many ? h('div', { class: 'out-block__head' }, h('h3', {}, b.title), h('button', { type: 'button', class: 'btn btn--ghost btn--sm', onClick: () => copyText(b.text, `${b.title} copiado`) }, h('span', { html: icon('copy', 16) }), 'Copiar')) : null,
           h('pre', { class: `out-block__text${state.format === 'ideogram' ? ' is-json' : ''}`, tabindex: '0' }, b.text))));
       }
+      renderTokens(budgetReport(state.format, result), state);
       const words = finalText.trim().split(/\s+/).length;
       meta.textContent = `${fmtNumber(words)} palabras · ${fmtNumber(finalText.length)} caracteres`;
     }
@@ -253,8 +320,10 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
         if (repeated) notes.push(`El texto libre repite «${repeated.short.slice(0, 72)}${repeated.short.length > 72 ? '…' : ''}», que ya está seleccionado; puedes quitar una de las dos apariciones.`);
       }
       if (state.aspect && !['sd', 'midjourney', 'dalle'].includes(state.format)) notes.push(`La proporción ${state.aspect} se expresa en la descripción del formato elegido.`);
+      const clashes = lintComposed(composed, state);
+      for (const w of clashes) review.append(h('div', { class: 'prompt-review__warn' }, h('p', {}, h('strong', {}, `${w.title}: `), w.text), partChips(w.parts)));
       if (notes.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión: ', notes.join(' ')));
-      else review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
+      else if (!clashes.length) review.append(h('p', { class: 'prompt-review__ok' }, 'La estructura incluye sujeto y varias categorías. Revisa el resultado antes de copiarlo.'));
       if (aiFindings?.signature === signature) {
         if (!aiFindings.groups.length) review.append(h('p', { class: 'prompt-review__note' }, 'Revisión IA: no detectó repeticiones semánticas claras.'));
         for (const group of aiFindings.groups) {
@@ -275,5 +344,5 @@ export function createPromptPanel({ variant = 'inline' } = {}) {
   refreshAI();
   window.addEventListener('lumen-ai-config-change', refreshAI);
   const off = live.subscribe(render);
-  return { el, destroy: () => { off(); window.removeEventListener('lumen-ai-config-change', refreshAI); } };
+  return { el, destroy: () => { off(); document.removeEventListener('click', closeTools); window.removeEventListener('lumen-ai-config-change', refreshAI); } };
 }

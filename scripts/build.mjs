@@ -65,5 +65,13 @@ const searchIndex = {
 write('data/search-index.json', JSON.stringify(searchIndex));
 console.log(`buscador: ${searchIndex.o.reduce((n, s) => n + s[3].length, 0)} etiquetas indexadas`);
 
+/* ---------- índice del importador de prompts (se carga bajo demanda desde el constructor) ---------- */
+// { d: [id de dominio], l: [«lead» de cada dominio o ''], s: [[índice de dominio, id de sección, 1 si es de elección única]],
+//   o: [[índice de sección, id de opción, texto en inglés corto, texto largo (solo si existe)]] }
+// Permite convertir un prompt pegado (de esta web o ajeno) en selección: coincide frases de las opciones con su texto en inglés.
+import { buildImportIndexData } from './lib/import-index.mjs';
+write('data/import-index.json', JSON.stringify(buildImportIndexData(all.map(x => x.domain))));
+console.log('importador: índice de frases generado');
+
 /* ---------- páginas, sitemap, robots y manifiesto ---------- */
 await buildPages({ domains, totals, all, write });

@@ -15,6 +15,8 @@
  *     custom: string                                             // texto libre del usuario (máx. 800)
  *     adult: boolean                                             // ha confirmado ser mayor de 18 años (muestra el contenido para adultos)
  *     refPose, refCostume: boolean                               // añadirá una imagen de referencia de pose / vestuario
+ *     priority: boolean                                          // «Estilo y escena primero»: reordena el prompt de Stable Diffusion y Midjourney
+ *     mj: { v, stylize, chaos, weird, raw }                      // parámetros de Midjourney (null = no se añade)
  *   }
  */
 import { OPTION_ALIASES } from '../../../data/aliases.js';
@@ -23,12 +25,13 @@ import { FORMATS as FORMAT_LIST } from './formats/index.js';
 import { conflictsOf } from './conflicts.js';
 import { clearFamily } from './families.js';
 import { enforce, reasonBlocked } from './exclusions.js';
+import { cleanMj, MJ_DEFAULT } from './formats/midjourney.js';
 
 const KEY = 'lv:v1:workspace';
 const FORMATS = FORMAT_LIST.map(f => f.id);
 export const CUSTOM_MAX = 800;
 
-const fresh = () => ({ v: 1, sel: {}, locks: {}, attach: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '', adult: false, refPose: false, refCostume: false });
+const fresh = () => ({ v: 1, sel: {}, locks: {}, attach: {}, detail: 'rich', boost: true, aspect: '', format: 'text', custom: '', adult: false, refPose: false, refCostume: false, priority: false, mj: { ...MJ_DEFAULT } });
 
 export function sanitizeSel(sel) {
   const out = {};
@@ -60,6 +63,8 @@ function normalize(raw) {
     adult: raw.adult === true,
     refPose: raw.refPose === true,
     refCostume: raw.refCostume === true,
+    priority: raw.priority === true,
+    mj: cleanMj(raw.mj),
     sel: enforce(sanitizeSel(raw.sel), { adult: raw.adult === true }).sel,
     locks: raw.locks && typeof raw.locks === 'object' ? raw.locks : {},
     attach: cleanAttach(raw.attach),
@@ -155,7 +160,7 @@ export const store = {
   },
 
   /** Vacía selección y texto libre; conserva las preferencias (detalle, calidad, proporción, formato, bloqueos). */
-  clearAll() { commit({ ...fresh(), detail: state.detail, boost: state.boost, aspect: state.aspect, format: state.format, locks: state.locks, adult: state.adult, refPose: state.refPose, refCostume: state.refCostume }); },
+  clearAll() { commit({ ...fresh(), detail: state.detail, boost: state.boost, aspect: state.aspect, format: state.format, locks: state.locks, adult: state.adult, refPose: state.refPose, refCostume: state.refCostume, priority: state.priority, mj: state.mj }); },
 
   /** Carga un prompt guardado: sustituye selección y ajustes del prompt, y conserva formato y bloqueos. */
   loadSnapshot(snap) {
@@ -185,6 +190,8 @@ export const store = {
     if ('attach' in partial) next.attach = cleanAttach(partial.attach);
     if ('refPose' in partial) next.refPose = !!partial.refPose;
     if ('refCostume' in partial) next.refCostume = !!partial.refCostume;
+    if ('priority' in partial) next.priority = partial.priority === true;
+    if ('mj' in partial) next.mj = cleanMj({ ...state.mj, ...partial.mj });
     if ('sel' in partial) next.sel = sanitizeSel(partial.sel); // selección y ajustes en un solo paso de «Deshacer»
     commit(next);
   },

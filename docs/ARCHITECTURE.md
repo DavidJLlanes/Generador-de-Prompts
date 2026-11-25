@@ -58,6 +58,19 @@ Presentan las piezas; no deciden nada del contenido. Cada formato es un módulo 
 | `sd` | Prompt positivo y negativo por separado + tamaño sugerido (≈1 Mpx, múltiplos de 64) |
 | `ideogram` | JSON estructurado (descripción, estilo, composición, paletas deducidas) |
 
+### Herramientas sobre el prompt compuesto
+
+Todas son módulos puros de `core/` (se prueban en Node, sin DOM) y la interfaz solo los pinta:
+
+| Módulo | Qué hace |
+|---|---|
+| `lint.js` | Detecta contradicciones **en el texto** compuesto (hora, estación, plano, medio, color, foco, luz, mirada, tono, proporción) entre piezas distintas, incluido el texto libre. Solo avisa. Complementa a `exclusions.js`, que bloquea pares concretos antes de elegirlos. `mediumOf` deduce foto o dibujo para el negativo. |
+| `tokens.js` | Recuento aproximado de tokens, límites por formato (`BUDGETS`) y orden «Estilo y escena primero» (`orderParts`). Los formatos `sd` y `midjourney` devuelven además `pieces` y `budgetText` para saber qué piezas caen fuera del límite. |
+| `importer.js` | Convierte un prompt en selección: busca las frases más largas que coinciden con el inglés (`en`/`rich`) de alguna opción en `data/import-index.json` (generado por `npm run build`, 1,5 MB, se descarga solo al abrir «Importar»). Lo que no reconoce va al texto libre. Un test comprueba que el índice está al día y que un prompt de la web vuelve a ser casi la misma selección en los siete formatos. |
+| `variants.js` | Cambia una sección por otras opciones compatibles (exclusiones y puerta de edad incluidas). |
+| `export.js`, `zip.js` | Wildcards en `.txt` (nunca incluyen `adult-only`, `minor` ni `youthful`: fuera de la web nadie aplicaría las exclusiones entre generadores) y CSV con BOM y protección contra fórmulas; ZIP «stored» sin dependencias. |
+| `library.js` | Además de guardar, anota estrellas y modelo y calcula qué se repite en los prompts de 4-5 estrellas. |
+
 ### Nivel de detalle
 
 Cada opción tiene un texto corto `en` y, opcionalmente, uno largo `rich`. «Detallado» usa `rich` cuando existe; «Conciso» usa siempre `en` (y Stable Diffusion también, por el límite de tokens).
