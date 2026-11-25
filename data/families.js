@@ -56,22 +56,22 @@ export const FAMILIES = [
   { id: 'pose', label: 'pose', sections: ['poses/poses', 'woman/pose-galeria', 'girl/pose-galeria', 'girl/pose-body-pose'] },
 
   /* ---------- Cámara y composición ---------- */
-  { id: 'plano', label: 'tipo de plano', sections: ['girl/camera-shot-type', 'landscape/primo-plano', 'landscape/1-plano', 'space/primer-plano'] },
+  { id: 'plano', label: 'tipo de plano', sections: ['girl/camera-shot-type', 'landscape/primo-plano', 'landscape/1-plano', 'space/primer-plano', 'robots/encuadre', 'plants/encuadre', 'mythology/encuadre', 'architecture/vista'] },
   { id: 'angulo', label: 'ángulo de cámara', sections: ['girl/camera-angle', 'photo/perspective', 'anatomy/perspectiva', 'landscape/2-angulo', 'scenes/punto-vista-camara'] },
   { id: 'objetivo', label: 'objetivo', sections: ['photo/lens', 'girl/camera-lens', 'anatomy/objetivo'] },
   { id: 'profundidad', label: 'profundidad de campo', sections: ['photo/depth-of-field', 'girl/camera-dof', 'anatomy/bokeh', 'anatomy/bokeh-final', 'space/profundidad'] },
-  { id: 'composicion', label: 'composición', sections: ['photo/composition', 'anatomy/composicion', 'landscape/composicion'] },
+  { id: 'composicion', label: 'composición', sections: ['photo/composition', 'anatomy/composicion', 'landscape/composicion', 'art/composicion'] },
 
   /* ---------- Luz, clima y atmósfera ---------- */
-  { id: 'luz', label: 'iluminación', sections: ['photo/lighting', 'girl/lighting-type', 'interior/iluminacion', 'landscape/ilum-natural', 'anatomy/iluminacion', 'scenes/ilum-atmosferica', 'weather/luz-ambiente', 'space/fuente-luz'] },
+  { id: 'luz', label: 'iluminación', sections: ['photo/lighting', 'girl/lighting-type', 'interior/iluminacion', 'landscape/ilum-natural', 'anatomy/iluminacion', 'scenes/ilum-atmosferica', 'weather/luz-ambiente', 'space/fuente-luz', 'robots/luz', 'plants/luz', 'mythology/luz', 'architecture/luz-edificio'] },
   { id: 'clima', label: 'clima', sections: ['weather/tipo-clima', 'girl/setting-weather', 'scenes/clima', 'landscape/clima', 'animated/clima'] },
   { id: 'hora', label: 'hora del día', sections: ['girl/setting-time-of-day', 'scenes/hora-dia', 'landscape/hora', 'animated/hora'] },
-  { id: 'estacion', label: 'estación', sections: ['girl/setting-season', 'landscape/estacion'] },
-  { id: 'atmosfera', label: 'atmósfera', sections: ['photo/atmosphere', 'anatomy/atmosfera', 'interior/atmosfera'] },
+  { id: 'estacion', label: 'estación', sections: ['girl/setting-season', 'landscape/estacion', 'plants/estacion'] },
+  { id: 'atmosfera', label: 'atmósfera', sections: ['photo/atmosphere', 'anatomy/atmosfera', 'interior/atmosfera', 'robots/atmosfera', 'mythology/atmosfera'] },
   { id: 'ambiente', label: 'ambiente emocional', sections: ['girl/mood-tone', 'weather/atmosfera-emocional', 'scenes/tono-emocional'] },
-  { id: 'paleta', label: 'paleta de color', sections: ['girl/mood-palette', 'scenarios/paleta', 'space/paleta-cosmica'] },
+  { id: 'paleta', label: 'paleta de color', sections: ['girl/mood-palette', 'scenarios/paleta', 'space/paleta-cosmica', 'art/paleta'] },
 
   /* ---------- Lugar y estilo ---------- */
-  { id: 'lugar', label: 'lugar', sections: ['locations/locations', 'scenarios/motivo', 'girl/setting-place', 'landscape/locs', 'scenes/ubicacion', 'interior/tipo', 'space/tipo-escena'] },
-  { id: 'estilo', label: 'estilo visual', sections: ['photo/style', 'girl/art-style-style', 'scenarios/estilo', 'magic/estilo-representacion', 'space/estilo-astro'] },
+  { id: 'lugar', label: 'lugar', sections: ['locations/locations', 'scenarios/motivo', 'girl/setting-place', 'landscape/locs', 'scenes/ubicacion', 'interior/tipo', 'space/tipo-escena', 'robots/entorno', 'mythology/entorno'] },
+  { id: 'estilo', label: 'estilo visual', sections: ['photo/style', 'girl/art-style-style', 'scenarios/estilo', 'magic/estilo-representacion', 'space/estilo-astro', 'robots/render', 'plants/estilo', 'architecture/representacion', 'art/movimiento'] },
 ];

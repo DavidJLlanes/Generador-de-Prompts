@@ -28,7 +28,7 @@ export const LINT_RULES = [
   } },
   { id: 'medium', title: 'Medio o estilo visual', groups: {
     photo: { label: 'fotografía', rx: rx('photograph\\w*|photo-?realistic|hyper-?realistic|dslr|raw photo|film still|documentary photo\\w*') },
-    drawn: { label: 'ilustración o dibujo', rx: rx('anime|manga|cartoon\\w*|illustration|watercolou?r|oil painting|pixel art|comic(?: book)?|cel[- ]shad\\w*|vector art|low[- ]poly|claymation|flat design|ink drawing|pencil sketch') },
+    drawn: { label: 'ilustración o dibujo', rx: rx('anime|manga|cartoon\\w*|illustration|watercolou?r|oil painting|pixel art|comic(?: book)?|cel[- ]shad\\w*|vector art|low[- ]poly|claymation|flat design|ink drawing|pencil sketch|gouache|tempera|fresco|woodcut|linocut|lithograph|etching|engraving|screen print|risograph|cyanotype|charcoal drawing|soft pastel|oil pastel|impasto|oil painting|acrylic painting|digital painting|ukiyo-e|in the style of') },
   } },
   { id: 'palette', title: 'Color', groups: {
     mono: { label: 'blanco y negro', rx: rx('black and white|black-and-white|monochrom\\w*|grayscale|greyscale|sepia|b&w') },

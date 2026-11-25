@@ -42,13 +42,13 @@ Combina generadores (personajes, escenarios, coches, criaturas, fotografía…) 
 
 Generador de Prompts es un sitio **100 % estático** (HTML, CSS y módulos ES nativos, sin framework ni bundler) que ayuda a escribir prompts largos y coherentes para generadores de imágenes. La interfaz está en **español** y los prompts se generan en **inglés**: cada opción lleva un texto visible (`es`) y el texto que entra en el prompt (`en`).
 
-En lugar de un cuadro de texto vacío, eliges opciones de **28 generadores** temáticos. El motor las ordena por *ranuras* (sujeto → atributos → acción → escenario → atmósfera → técnica) y produce un prompt completo sin importar en qué orden las elegiste ni cuántos generadores mezcles.
+En lugar de un cuadro de texto vacío, eliges opciones de **33 generadores** temáticos. El motor las ordena por *ranuras* (sujeto → atributos → acción → escenario → atmósfera → técnica) y produce un prompt completo sin importar en qué orden las elegiste ni cuántos generadores mezcles.
 
-El catálogo actual ronda los **22.000 opciones**, **750 secciones** y **1.000 ideas y recetas** de partida. Todo se deriva de los archivos de datos en `data/`.
+El catálogo actual ronda las **28.000 opciones**, **850 secciones** y **1.300 ideas y recetas** de partida. Todo se deriva de los archivos de datos en `data/`.
 
 ## Características
 
-- **28 generadores** combinables: Personajes femeninos y masculinos, Personaje avanzado (épocas y culturas), Personajes animados, Rostros, Peinados, Anatomía, Accesorios, Tatuajes, Animales, Criaturas, Cosas extrañas, Magia, Efectos visuales, Vehículos, Coches míticos y actuales, Cohetes, Espacio, Armas, Objetos, Interiores, Paisajes, Escenas, Escenarios y mundos, Clima, Localizaciones, Poses y Fotografía y estilo.
+- **33 generadores** combinables: Personajes femeninos y masculinos, Personaje avanzado (épocas y culturas), Personajes animados, Rostros, Peinados, Anatomía, Accesorios, Tatuajes, Animales, Criaturas, Robots y mechas, Mitología y religión, Plantas y flores, Cosas extrañas, Magia, Efectos visuales, Vehículos, Coches míticos y actuales, Cohetes, Espacio, Armas, Objetos, Interiores, Arquitectura, Paisajes, Escenas, Escenarios y mundos, Clima, Localizaciones, Poses, Fotografía y estilo e Ilustración y estilos de arte.
 - **Un único prompt entre páginas:** la selección persiste en el navegador, así que puedes ir de un personaje a «Escenarios» y a «Clima» construyendo una sola composición. El dock «Mi prompt» la muestra en cualquier página.
 - **Siete formatos de salida:** texto continuo, bloques por ranura (ChatGPT/Gemini), positivo/negativo con tamaño (Stable Diffusion), texto sin negativo con tamaño (Flux), descripción natural con tamaño admitido (DALL·E / gpt-image), parámetros `--ar`/`--no` (Midjourney) y JSON estructurado (Ideogram).
 - **Prueba rápida en la portada:** elige generador y proporción (o deja que decida el azar) y genera un prompt al momento. Puedes bloquear etiquetas y relanzar el resto, abrir el «Prompt del día» (el mismo para todos), ver el historial con favoritos y compartir por enlace. No toca tu selección del constructor.
@@ -136,7 +136,7 @@ y haz commit **incluyendo los archivos generados** (`data/catalog.js`, páginas 
 
 ```text
 ├── data/                 Fuente de verdad: dominios, catálogos, presets, familias, exclusiones
-│   ├── domains/          Un archivo por generador (28)
+│   ├── domains/          Un archivo por generador (33)
 │   └── catalogs/         Secciones compartidas (poses, vestuario)
 ├── assets/
 │   ├── js/core/          Lógica pura: compositor, formatos, aleatorio, esquema, store, IA, revisión (lint), tokens, importador, variantes, exportación

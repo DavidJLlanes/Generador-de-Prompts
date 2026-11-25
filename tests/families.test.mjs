@@ -36,7 +36,7 @@ test('las familias cubren lo que se solapa entre Mujer y los generadores especia
     assert.ok(familyOf(d, s), `«${d}/${s}» debería estar en una familia`);
   }
   assert.deepEqual(familySiblings('woman', 'colorpelo').map(x => `${x.domain}/${x.section}`).sort(), ['girl/hair-color', 'hairstyles/color-principal'], 'Personaje avanzado describe a la misma mujer y compite; Hombre es otro sujeto y no');
-  assert.deepEqual(familySiblings('photo', 'composition').length, 2);
+  assert.deepEqual(familySiblings('photo', 'composition').length, 3);
   assert.equal(familyOf('cars', 'marca'), null, 'lo que no se solapa no entra en ninguna familia');
 });
 

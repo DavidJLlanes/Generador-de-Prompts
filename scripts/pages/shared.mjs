@@ -28,7 +28,16 @@ const RELATED = {
   technical: ['woman', 'man', 'cars', 'scenarios', 'landscape'],
 };
 
+/** Relaciones a medida para generadores concretos (si no hay, se usa la lista por rol). */
+const RELATED_BY_ID = {
+  architecture: ['landscape', 'interior', 'weather', 'locations', 'scenarios', 'photo', 'art'],
+  plants: ['landscape', 'weather', 'animals', 'locations', 'scenarios', 'photo', 'art'],
+  robots: ['space', 'cars', 'effects', 'weapons', 'scenarios', 'photo', 'art'],
+  mythology: ['creatures', 'magic', 'architecture', 'landscape', 'effects', 'photo', 'art'],
+  art: ['woman', 'man', 'landscape', 'mythology', 'animals', 'plants', 'scenarios'],
+};
+
 export function relatedFor(d, domains) {
   const byId = Object.fromEntries(domains.map(x => [x.id, x]));
-  return (RELATED[d.role] || []).filter(id => id !== d.id && byId[id]).slice(0, 7).map(id => byId[id]);
+  return (RELATED_BY_ID[d.id] || RELATED[d.role] || []).filter(id => id !== d.id && byId[id]).slice(0, 7).map(id => byId[id]);
 }

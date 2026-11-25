@@ -1,10 +1,10 @@
 // GENERADO por scripts/build.mjs a partir de data/domains/*.js — no editar a mano.
 export default {
   "totals": {
-    "domains": 28,
-    "sections": 752,
-    "options": 21778,
-    "presets": 1071
+    "domains": 33,
+    "sections": 849,
+    "options": 28310,
+    "presets": 1323
   },
   "domains": [
     {
@@ -186,6 +186,66 @@ export default {
       "options": 3135,
       "presets": 11,
       "presetsLabel": "recetas"
+    },
+    {
+      "id": "architecture",
+      "slug": "arquitectura",
+      "role": "subject",
+      "order": 22,
+      "lead": "an architectural subject",
+      "title": "Arquitectura",
+      "short": "Arquitectura",
+      "kicker": "Edificios · Estilos · Monumentos · Ciudades",
+      "summary": "Generador de prompts de arquitectura para IA: edificios, estilos de todas las épocas, monumentos célebres, materiales, fachadas, entorno y punto de vista.",
+      "sections": 24,
+      "options": 1387,
+      "presets": 45,
+      "presetsLabel": "ideas"
+    },
+    {
+      "id": "plants",
+      "slug": "plantas-y-flores",
+      "role": "subject",
+      "order": 23,
+      "lead": "a botanical subject",
+      "title": "Plantas y flores",
+      "short": "Plantas",
+      "kicker": "Flores · Árboles · Jardines · Hongos · Plantas fantásticas",
+      "summary": "Generador de prompts de plantas, flores, árboles y jardines para IA: especie, floración, hojas, composición, jardín, luz, macro y estilo botánico.",
+      "sections": 20,
+      "options": 1283,
+      "presets": 46,
+      "presetsLabel": "ideas"
+    },
+    {
+      "id": "robots",
+      "slug": "robots-y-mechas",
+      "role": "subject",
+      "order": 24,
+      "lead": "a robot",
+      "title": "Robots y mechas",
+      "short": "Robots",
+      "kicker": "Androides · Mechas · Drones · Autómatas · Cíborgs",
+      "summary": "Generador de prompts de robots, androides, mechas y autómatas para IA: tipo, diseño, anatomía, materiales, desgaste, entorno, luz y estilo de imagen.",
+      "sections": 24,
+      "options": 1546,
+      "presets": 48,
+      "presetsLabel": "ideas"
+    },
+    {
+      "id": "mythology",
+      "slug": "mitologia-y-religion",
+      "role": "subject",
+      "order": 25,
+      "lead": "a sacred and mythological subject",
+      "title": "Mitología y religión",
+      "short": "Mitología",
+      "kicker": "Dioses · Héroes · Criaturas · Templos · Arte sagrado",
+      "summary": "Generador de prompts de mitología y arte sagrado para IA: panteones de todo el mundo, criaturas, héroes, templos, estatuas, atributos, materiales y estilo artístico.",
+      "sections": 16,
+      "options": 1223,
+      "presets": 54,
+      "presetsLabel": "ideas"
     },
     {
       "id": "faces",
@@ -425,6 +485,21 @@ export default {
       "sections": 13,
       "options": 807,
       "presets": 0,
+      "presetsLabel": "ideas"
+    },
+    {
+      "id": "art",
+      "slug": "ilustracion-y-estilos-de-arte",
+      "role": "technical",
+      "order": 91,
+      "lead": null,
+      "title": "Ilustración y estilos de arte",
+      "short": "Arte",
+      "kicker": "Movimientos · Técnicas · Pincelada · Paleta · Soporte · Grabado",
+      "summary": "Movimientos artísticos, técnicas y medios, línea, pincelada, soporte, paleta, composición pictórica y estilos de artistas fallecidos, compartidos por todos los generadores.",
+      "sections": 13,
+      "options": 1093,
+      "presets": 59,
       "presetsLabel": "ideas"
     }
   ]
