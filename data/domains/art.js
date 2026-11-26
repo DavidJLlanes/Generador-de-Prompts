@@ -228,6 +228,7 @@ export default {
         {"id":"marker-illustration","es":"Rotulador","en":"marker illustration","group":"seco"},
         {"id":"alcohol-marker-rendering","es":"Rotulador de alcohol","en":"alcohol marker rendering","group":"seco"},
         {"id":"ballpoint-pen-drawing","es":"Bolígrafo","en":"ballpoint pen drawing","group":"seco"},
+        {"id":"zentangle-pattern-drawing","es":"Zentangle","en":"zentangle pattern drawing","group":"seco"},
         {"id":"pen-and-ink","es":"Pluma y tinta","en":"pen and ink","group":"seco"},
         {"id":"fountain-pen-sketch","es":"Pluma estilográfica","en":"fountain pen sketch","group":"seco"},
         {"id":"dip-pen-drawing","es":"Plumilla","en":"dip pen drawing","group":"seco"},

@@ -470,7 +470,8 @@ export default {
         {"id":"romantic-sublime","es":"Romántico sublime","en":"romantic sublime"},
         {"id":"sensual-erotic","es":"Sensual erótico","en":"sensual erotic","tags":["adult-only"]},
         {"id":"sense-of-awe","es":"Sensación de asombro","en":"sense of awe"},
-        {"id":"creepy-unsettling-mood","es":"Ambiente siniestro e inquietante","en":"creepy unsettling mood"}
+        {"id":"creepy-unsettling-mood","es":"Ambiente siniestro e inquietante","en":"creepy unsettling mood"},
+        {"id":"macabre-mood","es":"Ambiente macabro","en":"macabre mood"}
       ]
     },
     {
@@ -869,7 +870,16 @@ export default {
         {"id":"weird-fiction","es":"Ficción extraña","en":"weird fiction","group":"generos-y-estetica"},
         {"id":"new-weird-fiction","es":"Nueva fantasía extraña","en":"new weird fiction","group":"generos-y-estetica"},
         {"id":"hardboiled-detective-noir","es":"Novela negra detectivesca","en":"hardboiled detective noir","group":"generos-y-estetica"},
-        {"id":"cyber-thriller","es":"Ciberthriller","en":"cyber thriller","group":"generos-y-estetica"}
+        {"id":"cyber-thriller","es":"Ciberthriller","en":"cyber thriller","group":"generos-y-estetica"},
+        {"id":"corporate-photography","es":"Fotografía corporativa","en":"corporate photography","group":"fotografia"},
+        {"id":"real-estate-photography","es":"Fotografía inmobiliaria","en":"real estate photography","group":"fotografia"},
+        {"id":"retail-product-catalogue-photography","es":"Fotografía de catálogo comercial","en":"retail product catalogue photography","group":"fotografia"},
+        {"id":"gourmet-food-photography","es":"Fotografía gastronómica de alta cocina","en":"gourmet food photography","group":"fotografia"},
+        {"id":"smartphone-snapshot-photography","es":"Foto de móvil","en":"smartphone snapshot photography","group":"fotografia"},
+        {"id":"neon-noir","es":"Neo noir de neón","en":"neon noir","group":"generos-y-estetica"},
+        {"id":"neonpunk","es":"Neonpunk","en":"neonpunk","group":"generos-y-estetica"},
+        {"id":"fighting-game-art","es":"Arte de videojuego de lucha","en":"fighting game art","group":"ilustracion-y-digital"},
+        {"id":"strategy-game-art","es":"Arte de videojuego de estrategia","en":"strategy game art","group":"ilustracion-y-digital"}
       ]
     },
     {
