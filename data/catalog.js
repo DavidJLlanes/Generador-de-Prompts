@@ -3,7 +3,7 @@ export default {
   "totals": {
     "domains": 33,
     "sections": 849,
-    "options": 28416,
+    "options": 28445,
     "presets": 1323
   },
   "domains": [
@@ -483,7 +483,7 @@ export default {
       "kicker": "Cámara · Iluminación · Composición · Color · Acabado",
       "summary": "Cámara, luz, composición, color y acabado de máxima calidad, compartidos por todos los generadores.",
       "sections": 13,
-      "options": 861,
+      "options": 868,
       "presets": 0,
       "presetsLabel": "ideas"
     },
@@ -498,7 +498,7 @@ export default {
       "kicker": "Movimientos · Técnicas · Pincelada · Paleta · Soporte · Grabado",
       "summary": "Movimientos artísticos, técnicas y medios, línea, pincelada, soporte, paleta, composición pictórica y estilos de artistas fallecidos, compartidos por todos los generadores.",
       "sections": 13,
-      "options": 1109,
+      "options": 1131,
       "presets": 59,
       "presetsLabel": "ideas"
     }

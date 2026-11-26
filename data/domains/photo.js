@@ -471,7 +471,9 @@ export default {
         {"id":"sensual-erotic","es":"Sensual erótico","en":"sensual erotic","tags":["adult-only"]},
         {"id":"sense-of-awe","es":"Sensación de asombro","en":"sense of awe"},
         {"id":"creepy-unsettling-mood","es":"Ambiente siniestro e inquietante","en":"creepy unsettling mood"},
-        {"id":"macabre-mood","es":"Ambiente macabro","en":"macabre mood"}
+        {"id":"macabre-mood","es":"Ambiente macabro","en":"macabre mood"},
+        {"id":"rain-streaks","es":"Estelas de lluvia","en":"rain streaks"},
+        {"id":"misty-air","es":"Aire neblinoso","en":"misty air"}
       ]
     },
     {
@@ -544,7 +546,12 @@ export default {
         {"id":"forest-green-spectrum","es":"Gama verde bosque","en":"forest green spectrum"},
         {"id":"vintage-film-grain","es":"Grano de película vintage","en":"vintage film grain"},
         {"id":"natural-earth-tones","es":"Tierra natural","en":"natural earth tones"},
-        {"id":"kodachrome-look","es":"Aspecto Kodachrome","en":"Kodachrome film look"}
+        {"id":"kodachrome-look","es":"Aspecto Kodachrome","en":"Kodachrome film look"},
+        {"id":"punchy-blacks","es":"Negros contundentes","en":"punchy blacks"},
+        {"id":"soft-highlight-roll-off","es":"Caída suave de luces altas","en":"soft highlight roll-off"},
+        {"id":"slight-scan-line-texture","es":"Textura de líneas de barrido","en":"slight scan-line texture"},
+        {"id":"real-tv-compression-artifacts","es":"Artefactos de compresión de televisión","en":"real TV compression artifacts"},
+        {"id":"slight-organic-camera-shake","es":"Ligero temblor orgánico de cámara","en":"slight organic camera shake"}
       ]
     },
     {
