@@ -47,7 +47,7 @@ function footer(domains) {
     <div><h2>Herramientas</h2><ul><li><a href="/constructor/">Constructor</a></li><li><a href="/generadores/escenarios/">Galería de ideas</a></li><li><a href="/guias/">Guías</a></li></ul></div>
     <div><h2>Legal</h2><ul><li><a href="/legal/aviso-legal/">Aviso legal</a></li><li><a href="/legal/privacidad/">Privacidad</a></li><li><a href="/legal/cookies/">Cookies</a></li><li><a href="/legal/terminos/">Términos de uso</a></li></ul></div>
   </div>
-  <div class="container footer-base"><span>© ${SITE.year} Generador de Prompts</span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
+  <div class="container footer-base"><span>© ${SITE.year} Generador de Prompts · <a href="https://github.com/DavidJLlanes/Generador-de-Prompts/blob/main/LICENSE">Licencia no comercial</a></span><span>Los prompts no contienen datos personales y se procesan en tu navegador.</span></div>
 </footer>`;
 }
 

@@ -266,4 +266,8 @@ La web es pública. Se admite moda y estética adulta de buen gusto **solo para 
 
 ## Licencia
 
-Todos los derechos reservados © David Jiménez Llanes. El código y los datos se publican para consulta; no se concede licencia de reutilización. Para cualquier uso distinto, contacta con el autor.
+- **Código:** [PolyForm Noncommercial 1.0.0](LICENSE). Libre para uso personal y otros fines no comerciales; el uso comercial por terceros requiere permiso del autor.
+- **Datos (`data/`):** [CC BY-NC 4.0](LICENSE-DATA.txt). Se puede copiar y adaptar sin fines comerciales citando «Generador de Prompts, de David Jiménez Llanes».
+- **Material de terceros:** solo se incorpora contenido con licencia compatible (CC0, MIT, Apache 2.0, CC BY), con su aviso en [NOTICE.md](NOTICE.md). No se admite material CC BY-SA, GPL/AGPL ni sin licencia.
+
+© 2026 David Jiménez Llanes. Todo el uso comercial queda reservado al autor.
