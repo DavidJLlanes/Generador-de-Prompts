@@ -423,7 +423,16 @@ export default {
         {"id":"floating-island","es":"Isla flotante","en":"floating island","group":"mundos-sobrenaturales"},
         {"id":"magical-portal-gateway","es":"Portal mágico","en":"magical portal gateway","group":"mundos-sobrenaturales"},
         {"id":"inverted-reality","es":"Universo invertido","en":"inverted reality","group":"mundos-sobrenaturales"},
-        {"id":"quantum-space","es":"Espacio cuántico","en":"quantum space","group":"mundos-sobrenaturales"}
+        {"id":"quantum-space","es":"Espacio cuántico","en":"quantum space","group":"mundos-sobrenaturales"},
+        {"id":"temperate-rainforest","es":"Selva templada","en":"temperate rainforest","group":"bosques-y-vegetacion"},
+        {"id":"temperate-coniferous-forest","es":"Bosque de coníferas templado","en":"temperate coniferous forest","group":"bosques-y-vegetacion"},
+        {"id":"cold-steppe-grassland","es":"Estepa fría","en":"cold steppe grassland","group":"desiertos-y-aridos"},
+        {"id":"subtropical-desert","es":"Desierto subtropical","en":"subtropical desert","group":"desiertos-y-aridos"},
+        {"id":"coastal-desert","es":"Desierto costero","en":"coastal desert","group":"desiertos-y-aridos"},
+        {"id":"polar-desert","es":"Desierto polar","en":"polar desert","group":"ambientes-frios"},
+        {"id":"alpine-tundra","es":"Tundra alpina","en":"alpine tundra","group":"montanas-y-alturas"},
+        {"id":"temperate-savanna","es":"Sabana templada","en":"temperate savanna","group":"desiertos-y-aridos"},
+        {"id":"temperate-grassland","es":"Pradera templada","en":"temperate grassland","group":"bosques-y-vegetacion"}
       ]
     },
     {

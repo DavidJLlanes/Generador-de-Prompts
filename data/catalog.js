@@ -3,7 +3,7 @@ export default {
   "totals": {
     "domains": 33,
     "sections": 849,
-    "options": 28342,
+    "options": 28405,
     "presets": 1323
   },
   "domains": [
@@ -78,7 +78,7 @@ export default {
       "kicker": "Diseñador de Criaturas · Bestias Mitológicas · Aliens · Monstruos · Fantasía",
       "summary": "Crea prompts para diseñar criaturas fantásticas y realistas con IA. Define especie, características y contexto.",
       "sections": 31,
-      "options": 597,
+      "options": 624,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -348,7 +348,7 @@ export default {
       "kicker": "Paisajes · Mundos · Naturaleza · Escenarios",
       "summary": "Generador de prompts para crear paisajes hermosos y detallados con IA. Controla clima, hora, estilo y composición.",
       "sections": 21,
-      "options": 316,
+      "options": 325,
       "presets": 6,
       "presetsLabel": "recetas"
     },
@@ -483,7 +483,7 @@ export default {
       "kicker": "Cámara · Iluminación · Composición · Color · Acabado",
       "summary": "Cámara, luz, composición, color y acabado de máxima calidad, compartidos por todos los generadores.",
       "sections": 13,
-      "options": 824,
+      "options": 851,
       "presets": 0,
       "presetsLabel": "ideas"
     },
