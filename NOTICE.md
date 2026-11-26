@@ -4,7 +4,7 @@ Generador de Prompts © 2026 David Jiménez Llanes. Licencias propias en `LICENS
 
 ## Material de terceros incorporado
 
-Ninguno por ahora.
+Ninguno. Parte del vocabulario nuevo se ha decidido a partir de recuentos estadísticos de términos frecuentes en conjuntos públicos (DiffusionDB, CC0; wildcards CC0 y colecciones CC BY); no se ha copiado texto de ellos.
 
 ## Criterio para incorporar material externo
 

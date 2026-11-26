@@ -78,7 +78,8 @@ export default {
         {"id":"natural-framing","es":"Marco natural","en":"natural framing"},
         {"id":"concentric-radial","es":"Radial concéntrico","en":"concentric radial"},
         {"id":"minimalist-spacing","es":"Minimalismo","en":"minimalist spacing"},
-        {"id":"tightly-packed","es":"Abarrotado apretado","en":"tightly packed"}
+        {"id":"tightly-packed","es":"Abarrotado apretado","en":"tightly packed"},
+        {"id":"plain-uncluttered-background","es":"Fondo liso y despejado","en":"plain uncluttered background"}
       ]
     },
     {
@@ -166,7 +167,9 @@ export default {
         {"id":"low-ground-view","es":"Bajo suelo","en":"low ground view"},
         {"id":"elevated-upward-view","es":"Alto hacia arriba","en":"elevated upward view"},
         {"id":"forced-perspective","es":"Perspectiva forzada","en":"forced perspective"},
-        {"id":"symmetrical-straight","es":"Simétrico frontal","en":"symmetrical straight"}
+        {"id":"symmetrical-straight","es":"Simétrico frontal","en":"symmetrical straight"},
+        {"id":"long-shot","es":"Plano largo","en":"long shot"},
+        {"id":"headshot-portrait","es":"Retrato de cabeza","en":"headshot portrait"}
       ]
     },
     {
@@ -376,7 +379,12 @@ export default {
         {"id":"ethereal-spectral-light","es":"Luz espectral etérea","en":"ethereal spectral light"},
         {"id":"surreal-cosmic-light","es":"Luz cósmica surrealista","en":"surreal cosmic light"},
         {"id":"pulsing-rhythmic-light","es":"Luz pulsante rítmica","en":"pulsing rhythmic light"},
-        {"id":"cosmic-mystical","es":"Luz cósmica mística","en":"cosmic mystical"}
+        {"id":"cosmic-mystical","es":"Luz cósmica mística","en":"cosmic mystical"},
+        {"id":"dynamic-lighting","es":"Iluminación dinámica","en":"dynamic lighting"},
+        {"id":"atmospheric-lighting","es":"Iluminación atmosférica","en":"atmospheric lighting"},
+        {"id":"epic-lighting","es":"Iluminación épica","en":"epic lighting"},
+        {"id":"moody-lighting","es":"Iluminación de ambiente sombrío","en":"moody lighting"},
+        {"id":"deep-dark-shadows","es":"Sombras muy oscuras","en":"deep dark shadows"}
       ]
     },
     {
@@ -460,7 +468,9 @@ export default {
         {"id":"intimate-cozy","es":"Íntimo acogedor","en":"intimate cozy"},
         {"id":"alien-otherworldly","es":"Ajeno alienígena","en":"alien otherworldly"},
         {"id":"romantic-sublime","es":"Romántico sublime","en":"romantic sublime"},
-        {"id":"sensual-erotic","es":"Sensual erótico","en":"sensual erotic","tags":["adult-only"]}
+        {"id":"sensual-erotic","es":"Sensual erótico","en":"sensual erotic","tags":["adult-only"]},
+        {"id":"sense-of-awe","es":"Sensación de asombro","en":"sense of awe"},
+        {"id":"creepy-unsettling-mood","es":"Ambiente siniestro e inquietante","en":"creepy unsettling mood"}
       ]
     },
     {
@@ -532,7 +542,8 @@ export default {
         {"id":"neutral-earth-tones","es":"Tonos tierra neutros","en":"neutral earth tones"},
         {"id":"forest-green-spectrum","es":"Gama verde bosque","en":"forest green spectrum"},
         {"id":"vintage-film-grain","es":"Grano de película vintage","en":"vintage film grain"},
-        {"id":"natural-earth-tones","es":"Tierra natural","en":"natural earth tones"}
+        {"id":"natural-earth-tones","es":"Tierra natural","en":"natural earth tones"},
+        {"id":"kodachrome-look","es":"Aspecto Kodachrome","en":"Kodachrome film look"}
       ]
     },
     {
@@ -825,7 +836,13 @@ export default {
         {"id":"cosmic-lovecraftian","es":"Eldritch lovecraft","en":"cosmic lovecraftian","group":"generos"},
         {"id":"saturated-color-photography","es":"Fotografía en color saturado","en":"saturated color photography","group":"fotografia"},
         {"id":"vintage-polaroid","es":"Fotografía vintage polaroid","en":"vintage polaroid","group":"fotografia"},
-        {"id":"tasteful-boudoir-photography","es":"Boudoir elegante","en":"tasteful boudoir photography","group":"generos-de-belleza","tags":["adult-only"]}
+        {"id":"tasteful-boudoir-photography","es":"Boudoir elegante","en":"tasteful boudoir photography","group":"generos-de-belleza","tags":["adult-only"]},
+        {"id":"food-photography","es":"Fotografía gastronómica","en":"food photography","group":"fotografia"},
+        {"id":"surreal-photography","es":"Fotografía surrealista","en":"surreal photography","group":"fotografia"},
+        {"id":"character-art","es":"Arte de personaje","en":"character art","group":"ilustracion-y-digital"},
+        {"id":"anime-key-visual","es":"Ilustración clave de anime","en":"anime key visual","group":"ilustracion-y-digital"},
+        {"id":"fantasy-rpg-character-portrait","es":"Retrato de personaje de rol fantástico","en":"fantasy RPG character portrait","group":"ilustracion-y-digital"},
+        {"id":"neo-gothic-art","es":"Arte neogótico","en":"neo-gothic art","group":"generos-y-estetica"}
       ]
     },
     {
